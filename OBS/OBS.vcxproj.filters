@@ -13,10 +13,72 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\pipe">
+      <UniqueIdentifier>{94f97929-3c81-489e-9194-b588861d609e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\pipe">
+      <UniqueIdentifier>{36fc01d0-090e-4f89-8904-3a3ee3b32d8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\util">
+      <UniqueIdentifier>{1974cc72-421c-47e7-8688-82ead32fd1ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\util">
+      <UniqueIdentifier>{fe062ac6-b7f8-43c3-97ad-3930ca49229f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Lazysplits.cpp">
+    <ClInclude Include="src\LzsSourceData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pipe\LzsPipeServer.h">
+      <Filter>Header Files\pipe</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pipe\LzsPipeTask.h">
+      <Filter>Header Files\pipe</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\LzsObserver.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\LzsThread.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pipe\LzsMessageQueue.h">
+      <Filter>Header Files\pipe</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pipe\LzsPipeConstants.h">
+      <Filter>Header Files\pipe</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Lazysplits.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LzsSourceData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pipe\LzsPipeServer.cpp">
+      <Filter>Source Files\pipe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pipe\LzsPipeTaskBase.cpp">
+      <Filter>Source Files\pipe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pipe\LzsPipeTaskConnect.cpp">
+      <Filter>Source Files\pipe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pipe\LzsPipeTaskManager.cpp">
+      <Filter>Source Files\pipe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pipe\LzsPipeTaskRead.cpp">
+      <Filter>Source Files\pipe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pipe\LzsPipeTaskWrite.cpp">
+      <Filter>Source Files\pipe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\LzsObserver.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\LzsThread.cpp">
+      <Filter>Source Files\util</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

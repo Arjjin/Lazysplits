@@ -18,6 +18,27 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\LzsSourceData.h" />
+    <ClInclude Include="src\pipe\LzsMessageQueue.h" />
+    <ClInclude Include="src\pipe\LzsPipeConstants.h" />
+    <ClInclude Include="src\pipe\LzsPipeServer.h" />
+    <ClInclude Include="src\pipe\LzsPipeTask.h" />
+    <ClInclude Include="src\util\LzsObserver.h" />
+    <ClInclude Include="src\util\LzsThread.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Lazysplits.cpp" />
+    <ClCompile Include="src\LzsSourceData.cpp" />
+    <ClCompile Include="src\pipe\LzsPipeServer.cpp" />
+    <ClCompile Include="src\pipe\LzsPipeTaskBase.cpp" />
+    <ClCompile Include="src\pipe\LzsPipeTaskConnect.cpp" />
+    <ClCompile Include="src\pipe\LzsPipeTaskManager.cpp" />
+    <ClCompile Include="src\pipe\LzsPipeTaskRead.cpp" />
+    <ClCompile Include="src\pipe\LzsPipeTaskWrite.cpp" />
+    <ClCompile Include="src\util\LzsObserver.cpp" />
+    <ClCompile Include="src\util\LzsThread.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1B6ACD3E-86BD-4B49-98D9-B440F172A5AB}</ProjectGuid>
     <RootNamespace>OBS</RootNamespace>
@@ -38,7 +59,7 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -68,7 +89,12 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>LazysplitOBS</TargetName>
+    <TargetExt>.dll</TargetExt>
+    <IncludePath>$(ProjectDir)..\..\Deps\obs-studio\deps\w32-pthreads;$(ProjectDir)..\..\Deps\obs-studio\libobs;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)..\..\Deps\obs-build\deps\w32-pthreads\Debug;$(ProjectDir)..\..\Deps\obs-build\libobs\Debug;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -82,6 +108,9 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>obs.lib;w32-pthreads.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -109,9 +138,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Lazysplits.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
