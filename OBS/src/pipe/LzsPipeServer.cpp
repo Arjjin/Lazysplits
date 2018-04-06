@@ -75,7 +75,9 @@ void LzsPipeServer::ThreadFuncCleanup(){
 }
 
 void LzsPipeServer::ThreadTerminate(){
-	if( pipe_task_manager_->IsWaiting() ){ pipe_task_manager_->CancelTasks(); }
+	if( pipe_state_ >= PIPE_CREATED ){
+		if( pipe_task_manager_->IsWaiting() ){ pipe_task_manager_->CancelTasks(); }
+	}
 
 	LzsThread::ThreadTerminate();
 }
@@ -101,11 +103,13 @@ void LzsPipeServer::CreatePipe(){
 
     if ( pipe_handle_ == NULL ){
 		blog( LOG_ERROR,  "[Lazysplits][%s] Failed to create named pipe : handle is NULL", thread_name_.c_str(), GetLastError() );
+		pipe_state_ = PIPE_ERROR;
 		ThreadTerminate();
 		return;
 	}
 	else if( pipe_handle_ == INVALID_HANDLE_VALUE) {
 		blog( LOG_ERROR,  "[Lazysplits][%s] Failed to create named pipe : %i", thread_name_.c_str(), GetLastError() );
+		pipe_state_ = PIPE_ERROR;
 		ThreadTerminate();
 		return;
     }
