@@ -4,6 +4,7 @@
 
 #include "pipe\LzsPipeServer.h"
 #include "pipe\LzsMessageQueue.h"
+#include ".\util\LzsFrameBuffer.h"
 
 #include <string>
 
@@ -13,10 +14,11 @@ class LzsSourceData{
 	public :
 		LzsSourceData( obs_source_t* context );
 		~LzsSourceData();
-
-		LzsPipeServer pipe_server_;
-	private :
+		
 		obs_source_t* context_;
+		LzsPipeServer pipe_server_;
+		LzsFrameBuffer frame_buffer_;
+	private :
 		LzsMessageQueue<std::string> cv_to_pipe_queue_;
 		LzsMessageQueue<std::string> pipe_to_cv_queue_;
 };

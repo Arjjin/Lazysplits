@@ -24,6 +24,7 @@
     <ClInclude Include="src\pipe\LzsPipeConstants.h" />
     <ClInclude Include="src\pipe\LzsPipeServer.h" />
     <ClInclude Include="src\pipe\LzsPipeTask.h" />
+    <ClInclude Include="src\util\LzsFrameBuffer.h" />
     <ClInclude Include="src\util\LzsObserver.h" />
     <ClInclude Include="src\util\LzsThread.h" />
   </ItemGroup>
@@ -36,6 +37,7 @@
     <ClCompile Include="src\pipe\LzsPipeTaskManager.cpp" />
     <ClCompile Include="src\pipe\LzsPipeTaskRead.cpp" />
     <ClCompile Include="src\pipe\LzsPipeTaskWrite.cpp" />
+    <ClCompile Include="src\util\LzsFrameBuffer.cpp" />
     <ClCompile Include="src\util\LzsObserver.cpp" />
     <ClCompile Include="src\util\LzsThread.cpp" />
   </ItemGroup>
@@ -94,6 +96,7 @@
     <TargetExt>.dll</TargetExt>
     <IncludePath>$(ProjectDir)..\..\Deps\obs-studio\deps\w32-pthreads;$(ProjectDir)..\..\Deps\obs-studio\libobs;$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
+    <OutDir>..\..\Deps\obs-studio\debug64\rundir\Debug\obs-plugins\64bit</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

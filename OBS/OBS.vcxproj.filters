@@ -48,6 +48,9 @@
     <ClInclude Include="src\pipe\LzsPipeConstants.h">
       <Filter>Header Files\pipe</Filter>
     </ClInclude>
+    <ClInclude Include="src\util\LzsFrameBuffer.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lazysplits.cpp">
@@ -78,6 +81,9 @@
       <Filter>Source Files\util</Filter>
     </ClCompile>
     <ClCompile Include="src\util\LzsThread.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\LzsFrameBuffer.cpp">
       <Filter>Source Files\util</Filter>
     </ClCompile>
   </ItemGroup>

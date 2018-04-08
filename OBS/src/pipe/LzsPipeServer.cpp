@@ -36,26 +36,31 @@ void* LzsPipeServer::ThreadFunc(){
 		switch(pipe_state_){
 			case PIPE_CREATED :
 				if( !pipe_task_manager_->IsTaskInList(TASK_TYPE_CONNECT) ){ pipe_task_manager_->AddConnectTask(); }
+
+				pipe_task_manager_->StartTasks();
+				pipe_task_manager_->WaitOnTasks();
+				pipe_task_manager_->RemoveStrayTasks();
 			break;
 			case PIPE_CONNECTED :
 				//allow only one read task at a time
 				if( !pipe_task_manager_->IsTaskInList(TASK_TYPE_READ) ){ pipe_task_manager_->AddReadTask( pipe_params_.in_buffer_size, pipe_to_cv_queue_ ); }
 				//if our cv_to_pipe queue has messages for us to write, do so
 				CheckWriteQueue();
+
+				pipe_task_manager_->StartTasks();
+				pipe_task_manager_->WaitOnTasks();
+				pipe_task_manager_->RemoveStrayTasks();
 			break;
 			case PIPE_BROKEN :
 				if( pipe_handle_ != NULL ){
 					CloseHandle(pipe_handle_);
 					pipe_handle_ = NULL;
-					blog( LOG_DEBUG, "[Lazysplits][%s] Pipe handle closed" , thread_name_.c_str());
+					blog( LOG_INFO, "[Lazysplits][%s] Pipe handle closed (pipe broken)" , thread_name_.c_str());
 				}
 
 				CreatePipe();
 			break;
 		}
-		pipe_task_manager_->StartTasks();
-		pipe_task_manager_->WaitOnTasks();
-		pipe_task_manager_->RemoveStrayTasks();
 	}
 
 	ThreadFuncCleanup();
@@ -66,8 +71,7 @@ void LzsPipeServer::ThreadFuncCleanup(){
 	if( pipe_handle_ != NULL ){
 		CloseHandle(pipe_handle_);
 		pipe_handle_ = NULL;
-		blog( LOG_DEBUG, "[Lazysplits][%s] Pipe handle closed" , thread_name_.c_str());
-
+		blog( LOG_INFO, "[Lazysplits][%s] Pipe handle closed (thread terminating)" , thread_name_.c_str());
 	}
 	pipe_state_ = PIPE_NOT_CREATED;
 
