@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 
 namespace Lazysplits{
 
@@ -9,23 +10,23 @@ class LzsObserver;
 
 class LzsObservable{
 	public :
+		LzsObservable( const std::string& subject_name );
 		void AttachObserver( LzsObserver* observer );
 		void DetachObserver( LzsObserver* observer );
 		void NotifyAll();
 	private :
+		const std::string subject_name_;
 		std::vector<LzsObserver*> observer_list_;
 };
 
 class LzsObserver{
 	public :
-		LzsObserver();
 		~LzsObserver();
-		virtual void OnSubjectNotify() = 0;
+		virtual void OnSubjectNotify( std::string subject_name ) = 0;
 		void Attached( LzsObservable* subject );
-		void Detached();
+		void Detached( LzsObservable* subject );
 	private :
-		bool is_observer_attached_;
-		LzsObservable* observer_subject_;
+		std::vector<LzsObservable*> subject_list_;
 };
 
 } //namespace Lazysplits

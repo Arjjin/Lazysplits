@@ -31,7 +31,7 @@ class LzsPipeServer : public LzsThread, public LzsObserver {
 		void ThreadTerminate()override;
 
 		//observer event from message queue
-		void OnSubjectNotify()override;
+		void OnSubjectNotify( std::string subject_name )override;
 	private :
 		void CreatePipe();
 		void CheckWriteQueue();

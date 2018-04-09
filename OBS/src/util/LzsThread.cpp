@@ -96,13 +96,13 @@ void LzsThread::ThreadSleep(){
 	else if( is_sleeping_ ){ blog( LOG_DEBUG, "[Lazysplits][%s] sleep function called while thread is already sleeping!", thread_name_.c_str() ); }
 	else{
 		should_sleep_ = true;
-		blog( LOG_DEBUG, "[Lazysplits][%s] sleep signalled", thread_name_.c_str() );
+		//blog( LOG_DEBUG, "[Lazysplits][%s] sleep signalled", thread_name_.c_str() );
 	}
 }
 
 void LzsThread::ThreadWake(){
 	if( is_sleeping_ ){
-		blog( LOG_DEBUG, "[Lazysplits][%s] waking thread", thread_name_.c_str() );
+		//blog( LOG_DEBUG, "[Lazysplits][%s] waking thread", thread_name_.c_str() );
 		should_wake_ = true;
 
 		pthread_cond_signal(&COND_SHOULD_WAKE_);
@@ -140,14 +140,14 @@ void LzsThread::ThreadSleepInternal(){
 	is_sleeping_ = true;
 	should_sleep_ = false;
 	
-	blog( LOG_DEBUG, "[Lazysplits][%s] thread sleeping", thread_name_.c_str() );
+	//blog( LOG_DEBUG, "[Lazysplits][%s] thread sleeping", thread_name_.c_str() );
 	while(!should_wake_){
 		pthread_cond_wait( &COND_SHOULD_WAKE_, &thread_mutex_ );
 	}
 
 	pthread_mutex_unlock(&thread_mutex_);
 	
-	blog( LOG_DEBUG, "[Lazysplits][%s] thread woke", thread_name_.c_str() );
+	//blog( LOG_DEBUG, "[Lazysplits][%s] thread woke", thread_name_.c_str() );
 
 	is_sleeping_ = false;
 	should_wake_ = false;

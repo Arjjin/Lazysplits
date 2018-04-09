@@ -1,13 +1,5 @@
 #include <obs-module.h>
 
-#include <graphics\vec2.h>
-
-//#include <opencv2\highgui\highgui.hpp>
-//#include <opencv2\imgproc\imgproc.hpp>
-
-//#include "SM64_constants.h"
-//#include "ls_filter_data.h"
-//#include "ls_util.h"
 #include "LzsSourceData.h"
 
 #include <string>
@@ -33,16 +25,18 @@ static void lzs_source_destroy(void* data) {
 }
 
 static void lzs_source_video_tick( void *data, float seconds ){
-
+	LzsSourceData* source_data = static_cast<LzsSourceData*>(data);
+	source_data->FrameTick();
 }
 
 static void lzs_source_render_video(void *data, gs_effect_t *effect){
 
 }
 
-static struct obs_source_frame* lzs_filter_video( void* data, struct obs_source_frame* frame){
+static struct obs_source_frame* lzs_source_filter_video( void* data, struct obs_source_frame* frame){
 	LzsSourceData* source_data = static_cast<LzsSourceData*>(data);
-	source_data->frame_buffer_.PushFrame(frame);
+
+	if( ( source_data->FrameCount() % 4 ) == 0 ){ source_data->frame_buffer_.PushFrame(frame); }
 
 	return frame;
 }
@@ -113,9 +107,9 @@ static struct obs_source_info lzs_source_info = {
     /* deactivate          */ 0,
     /* show                */ 0,
     /* hide                */ 0,
-    /* video_tick          */ 0,//lzs_filter_video_tick,
+    /* video_tick          */ lzs_source_video_tick,
     /* video_render        */ 0,//lzs_filter_render_video,
-    /* filter_video        */ lzs_filter_video,
+    /* filter_video        */ lzs_source_filter_video,
     /* filter_audio        */ 0,
     /* enum_active_sources */ 0,
     /* save                */ 0,

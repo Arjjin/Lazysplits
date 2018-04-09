@@ -1,26 +1,14 @@
 #include "LzsObserver.h"
 
+#include <obs.h>
+
 namespace Lazysplits{
 
-LzsObserver::LzsObserver(){
-	is_observer_attached_ = false;
-}
+//TODO : (1) all the recursive vector looping can be extremely bad with many subjects/observers connected to each other, (2) nothing has any thread safety
 
-LzsObserver::~LzsObserver(){
-	//attempted thread safety, observer will detach itself from subject when destructor is called
-	if(is_observer_attached_){ observer_subject_->DetachObserver(this); }
-}
-
-void LzsObserver::Attached( LzsObservable* subject ){
-	//bad stuff with multiple subjects
-	observer_subject_ = subject;
-	is_observer_attached_ = true;
-}
-
-void LzsObserver::Detached(){
-	is_observer_attached_ = false;
-	observer_subject_ = nullptr;
-}
+LzsObservable::LzsObservable( const std::string& subject_name )
+	:subject_name_(subject_name)
+{}
 
 void LzsObservable::AttachObserver( LzsObserver* observer ){
 	observer_list_.push_back(observer);
@@ -31,7 +19,7 @@ void LzsObservable::DetachObserver( LzsObserver* observer ){
 	for( auto observer_it = observer_list_.begin(); observer_it != observer_list_.end(); ++observer_it ){
 		//comparing pointers for identity, good enough?
 		if( observer == *observer_it ){
-			observer->Detached();
+			observer->Detached(this);
 			observer_list_.erase(observer_it);
 			return;
 		}
@@ -40,7 +28,27 @@ void LzsObservable::DetachObserver( LzsObserver* observer ){
 
 void LzsObservable::NotifyAll(){
 	for( auto observer_it = observer_list_.begin(); observer_it != observer_list_.end(); ++observer_it ){
-		(*observer_it)->OnSubjectNotify();
+		(*observer_it)->OnSubjectNotify( subject_name_ );
+	}
+}
+
+LzsObserver::~LzsObserver(){
+	//observer will detach itself from subject/subjects when destructor is called
+	if( !subject_list_.empty() ){
+		for( auto subject_it = subject_list_.begin(); subject_it != subject_list_.end(); ++subject_it ){
+			(*subject_it)->DetachObserver(this);
+		}
+	}
+}
+
+void LzsObserver::Attached( LzsObservable* subject ){ subject_list_.push_back(subject); }
+
+void LzsObserver::Detached( LzsObservable* subject ){
+	for( auto subject_it = subject_list_.begin(); subject_it != subject_list_.end(); ++subject_it ){
+		if( (*subject_it) == subject ){
+			subject_list_.erase(subject_it);
+			return;
+		}
 	}
 }
 

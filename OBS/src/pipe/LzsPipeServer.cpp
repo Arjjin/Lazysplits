@@ -18,14 +18,14 @@ LzsPipeServer::LzsPipeServer( std::string pipe_name, DWORD buffer_size, LzsMessa
 
 	cv_to_pipe_queue_ = cv_to_pipe_queue;
 	pipe_to_cv_queue_ = pipe_to_cv_queue;
-	cv_to_pipe_queue_->AttachObserver(this);
 
 	pipe_state_ = PIPE_NOT_CREATED;
 }
 
 void LzsPipeServer::ThreadFuncInit(){
 	LzsThread::ThreadFuncInit();
-
+	
+	cv_to_pipe_queue_->AttachObserver(this);
 	CreatePipe();
 }
 
@@ -74,6 +74,8 @@ void LzsPipeServer::ThreadFuncCleanup(){
 		blog( LOG_INFO, "[Lazysplits][%s] Pipe handle closed (thread terminating)" , thread_name_.c_str());
 	}
 	pipe_state_ = PIPE_NOT_CREATED;
+	
+	cv_to_pipe_queue_->DetachObserver(this);
 
 	LzsThread::ThreadFuncCleanup();
 }
@@ -86,8 +88,10 @@ void LzsPipeServer::ThreadTerminate(){
 	LzsThread::ThreadTerminate();
 }
 
-void LzsPipeServer::OnSubjectNotify(){
-	if( pipe_task_manager_->IsWaiting() ){ pipe_task_manager_->CancelWait(); }
+void LzsPipeServer::OnSubjectNotify( std::string subject_name ){
+	if( pipe_state_ >= PIPE_CREATED ){
+		if( pipe_task_manager_->IsWaiting() ){ pipe_task_manager_->CancelWait(); }
+	}
 }
 
 void LzsPipeServer::CreatePipe(){

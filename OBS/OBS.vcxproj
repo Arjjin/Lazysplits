@@ -19,16 +19,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\cv\LzsCvThread.h" />
     <ClInclude Include="src\LzsSourceData.h" />
     <ClInclude Include="src\pipe\LzsMessageQueue.h" />
     <ClInclude Include="src\pipe\LzsPipeConstants.h" />
     <ClInclude Include="src\pipe\LzsPipeServer.h" />
     <ClInclude Include="src\pipe\LzsPipeTask.h" />
     <ClInclude Include="src\util\LzsFrameBuffer.h" />
+    <ClInclude Include="src\util\LzsImgProc.h" />
     <ClInclude Include="src\util\LzsObserver.h" />
     <ClInclude Include="src\util\LzsThread.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\cv\LzsCvThread.cpp" />
     <ClCompile Include="src\Lazysplits.cpp" />
     <ClCompile Include="src\LzsSourceData.cpp" />
     <ClCompile Include="src\pipe\LzsPipeServer.cpp" />
@@ -38,6 +41,7 @@
     <ClCompile Include="src\pipe\LzsPipeTaskRead.cpp" />
     <ClCompile Include="src\pipe\LzsPipeTaskWrite.cpp" />
     <ClCompile Include="src\util\LzsFrameBuffer.cpp" />
+    <ClCompile Include="src\util\LzsImgProc.cpp" />
     <ClCompile Include="src\util\LzsObserver.cpp" />
     <ClCompile Include="src\util\LzsThread.cpp" />
   </ItemGroup>
@@ -94,9 +98,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>LazysplitOBS</TargetName>
     <TargetExt>.dll</TargetExt>
-    <IncludePath>$(ProjectDir)..\..\Deps\obs-studio\deps\w32-pthreads;$(ProjectDir)..\..\Deps\obs-studio\libobs;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\..\Deps\obs-studio\libobs;$(ProjectDir)..\..\Deps\obs-studio\deps\w32-pthreads;$(ProjectDir)..\..\Deps\opencv\build\install\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
-    <OutDir>..\..\Deps\obs-studio\debug64\rundir\Debug\obs-plugins\64bit</OutDir>
+    <OutDir>..\..\Deps\obs-studio\debug64\rundir\Debug\obs-plugins\64bit\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -110,13 +114,15 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>obs.lib;w32-pthreads.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\..\Deps\obs-studio\debug64\libobs\Debug;$(ProjectDir)..\..\Deps\obs-studio\debug64\deps\w32-pthreads\Debug;$(LibraryPath)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>obs.lib;w32-pthreads.lib;IlmImfd.lib;ittnotifyd.lib;libjasperd.lib;libjpegd.lib;libpngd.lib;libprotobufd.lib;libtiffd.lib;libwebpd.lib;opencv_calib3d341d.lib;opencv_core341d.lib;opencv_dnn341d.lib;opencv_features2d341d.lib;opencv_flann341d.lib;opencv_highgui341d.lib;opencv_imgcodecs341d.lib;opencv_imgproc341d.lib;opencv_ml341d.lib;opencv_objdetect341d.lib;opencv_photo341d.lib;opencv_shape341d.lib;opencv_stitching341d.lib;opencv_superres341d.lib;opencv_video341d.lib;opencv_videoio341d.lib;opencv_videostab341d.lib;zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\Deps\obs-studio\debug64\libobs\Debug;$(ProjectDir)..\..\Deps\obs-studio\debug64\deps\w32-pthreads\Debug;$(ProjectDir)..\..\Deps\opencv\build\install\x64\vc14\staticlib;$(LibraryPath)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>
       </SubSystem>

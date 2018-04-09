@@ -2,7 +2,9 @@
 
 namespace Lazysplits{
 
-LzsFrameBuffer::LzsFrameBuffer( obs_source_t* frame_source, int buf_max_count ){
+LzsFrameBuffer::LzsFrameBuffer( obs_source_t* frame_source, int buf_max_count )
+	:LzsObservable("frame buf")
+{
 	frame_source_ = frame_source;
 	buf_max_count_ = buf_max_count;
 	frame_count_ = 0;
@@ -36,12 +38,22 @@ void LzsFrameBuffer::PopFrame( ){
 	UnlockMutex();
 }
 
+int LzsFrameBuffer::FrameCount(){
+	int frame_count = 0;
+	LockMutex();
+	frame_count = frame_count_;
+	UnlockMutex();
+
+	return frame_count;
+}
+
 void LzsFrameBuffer::PushFrameInternal( obs_source_frame* frame ){
 	if(frame){
 		//pop a frame if our buffer is at max capacity
 		if( frame_count_ == buf_max_count_ ){ PopFrameInternal(); }
-		circlebuf_push_back( &buf_, frame, sizeof(obs_source_frame*) );
+		circlebuf_push_back( &buf_, &frame, sizeof(obs_source_frame*) );
 		frame_count_++;
+		NotifyAll();
 	}
 }
 
@@ -55,7 +67,7 @@ obs_source_frame* const LzsFrameBuffer::PeekFrameInternal(){
 void LzsFrameBuffer::PopFrameInternal(){
 	obs_source_frame* frame;
 	circlebuf_pop_front( &buf_, &frame, sizeof(obs_source_frame*) );
-	if(frame){ obs_source_release_frame( frame_source_, frame ); }
+	//if(frame){ obs_source_release_frame( frame_source_, frame ); }
 	frame_count_--;
 }
 

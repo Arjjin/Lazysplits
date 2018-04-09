@@ -14,7 +14,11 @@ simply duplicates queue methods with mutex locking/unlocking wrapped around them
 race conditions for multiple threads between method calls still apply */
 template <class T> class LzsMessageQueue : public LzsObservable{
 public :
-	LzsMessageQueue(){ pthread_mutex_init( &queue_mutex_, NULL ); }
+	LzsMessageQueue( std::string subject_name )
+		:LzsObservable(subject_name)
+	{ 
+		pthread_mutex_init( &queue_mutex_, NULL );
+	}
 	~LzsMessageQueue(){ pthread_mutex_destroy(&queue_mutex_); }
 
 	bool QueueIsEmpty(){

@@ -25,6 +25,12 @@
     <Filter Include="Source Files\util">
       <UniqueIdentifier>{fe062ac6-b7f8-43c3-97ad-3930ca49229f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\cv">
+      <UniqueIdentifier>{767ce49e-4379-4451-8cbf-6367023d34a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\cv">
+      <UniqueIdentifier>{7426a796-cd83-41fc-93a3-4ed4df4ea946}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\LzsSourceData.h">
@@ -50,6 +56,12 @@
     </ClInclude>
     <ClInclude Include="src\util\LzsFrameBuffer.h">
       <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\LzsImgProc.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cv\LzsCvThread.h">
+      <Filter>Header Files\cv</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +97,12 @@
     </ClCompile>
     <ClCompile Include="src\util\LzsFrameBuffer.cpp">
       <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\LzsImgProc.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cv\LzsCvThread.cpp">
+      <Filter>Source Files\cv</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
