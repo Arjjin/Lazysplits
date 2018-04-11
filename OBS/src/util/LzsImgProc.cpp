@@ -4,7 +4,6 @@
 
 namespace Lazysplits{
 namespace ImgProc{
-
 cv::Mat FrameToBGRMat( obs_source_frame* frame ){
 	cv::Mat BGR_out;
 
