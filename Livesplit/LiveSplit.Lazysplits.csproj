@@ -62,25 +62,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LazysplitsComponentFactory.cs" />
-    <Compile Include="LazysplitsComponentSettings.cs">
+    <Compile Include="src\LazysplitsComponentFactory.cs" />
+    <Compile Include="src\LazysplitsComponentSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="LazysplitsComponentSettings.Designer.cs">
+    <Compile Include="src\LazysplitsComponentSettings.Designer.cs">
       <DependentUpon>LazysplitsComponentSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="LazysplitsComponent.cs" />
-    <Compile Include="Pipe\LszPipeTaskManager.cs" />
-    <Compile Include="Pipe\LzsMessageQueue.cs" />
-    <Compile Include="LzsTimerModel.cs" />
-    <Compile Include="Util\LzsObserver.cs" />
-    <Compile Include="Pipe\LzsPipeClient.cs" />
-    <Compile Include="Pipe\LzsPipeTask.cs" />
-    <Compile Include="Util\LzsThread.cs" />
+    <Compile Include="src\LazysplitsComponent.cs" />
+    <Compile Include="src\Pipe\LszPipeTaskManager.cs" />
+    <Compile Include="src\Pipe\LzsMessageQueue.cs" />
+    <Compile Include="src\LzsTimerModel.cs" />
+    <Compile Include="src\Util\LzsObserver.cs" />
+    <Compile Include="src\Pipe\LzsPipeClient.cs" />
+    <Compile Include="src\Pipe\LzsPipeTask.cs" />
+    <Compile Include="src\Util\LzsThread.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="LazysplitsComponentSettings.resx">
+    <EmbeddedResource Include="src\LazysplitsComponentSettings.resx">
       <DependentUpon>LazysplitsComponentSettings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
