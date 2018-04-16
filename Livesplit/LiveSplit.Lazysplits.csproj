@@ -9,14 +9,15 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Livesplit.Lazysplits</RootNamespace>
     <AssemblyName>Livesplit.Lazysplits</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components\</OutputPath>
+    <OutputPath>Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -29,13 +30,26 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="LiveSplit.Core">
       <HintPath>..\..\Deps\LiveSplit\LiveSplit\bin\Debug\LiveSplit.Core.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.5.2\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -56,6 +70,13 @@
       <DependentUpon>LazysplitsComponentSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="LazysplitsComponent.cs" />
+    <Compile Include="Pipe\LszPipeTaskManager.cs" />
+    <Compile Include="Pipe\LzsMessageQueue.cs" />
+    <Compile Include="LzsTimerModel.cs" />
+    <Compile Include="Util\LzsObserver.cs" />
+    <Compile Include="Pipe\LzsPipeClient.cs" />
+    <Compile Include="Pipe\LzsPipeTask.cs" />
+    <Compile Include="Util\LzsThread.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,7 +84,19 @@
       <DependentUpon>LazysplitsComponentSettings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Debug (
+cd $(ProjectDir)
+copy /y debug\Livesplit.Lazysplits.dll ..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
+copy /y debug\Livesplit.Lazysplits.pdb ..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
+copy /y debug\NLog.dll ..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
+copy /y debug\NLog.xml ..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
+)</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

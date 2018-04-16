@@ -3,6 +3,7 @@ using LiveSplit.Model;
 using LiveSplit.UI.Components;
 using LiveSplit.Lazysplits;
 
+
 [assembly: ComponentFactory(typeof(LazysplitsComponentFactory))]
 
 namespace LiveSplit.Lazysplits
@@ -20,7 +21,16 @@ namespace LiveSplit.Lazysplits
 
         public IComponent Create(LiveSplitState state)
         {
+            var ComponentIt = state.Layout.Components.GetEnumerator();
+            while( ComponentIt.MoveNext() )
+            {
+                if( ComponentIt.Current.ComponentName == "Lazysplits" )
+                {
+                    throw new Exception("Lazysplits component does not allow duplicate instaces");
+                }
+            }
+
             return new LazysplitsComponent(state);
         }
     }
-}
+} //namespace LiveSplit.Lazysplits

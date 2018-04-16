@@ -22,4 +22,4 @@ namespace LiveSplit.Lazysplits
         {
         }
     }
-}
+} //namespace LiveSplit.Lazysplits
