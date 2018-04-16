@@ -1,0 +1,4 @@
+##ignore protoc and bat file
+
+*.bat
+*.exe
