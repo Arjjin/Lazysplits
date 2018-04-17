@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package LiveSplit.Lazysplits.Proto;
+package Lazysplits.Proto;
 
 message CsMessage {
 	int32 message_id = 1;

@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package LiveSplit.Lazysplits.Proto;
+
+message CppMessage {
+	int32 message_id = 1;
+	MessageType message_type = 2;
+
+	bool pipe_connected = 3;
+
+	uint32 target_index = 4;
+	uint64 target_timestamp = 5;
+
+	enum MessageType{
+		NONE = 0;
+		PIPE_INFO = 1;
+		REQUEST_CV_TARGET = 2;
+		TARGET_FOUND = 3;
+	}
+}
+
+message CsMessage {
+	int32 message_id = 1;
+	MessageType message_type = 2;
+
+	bool pipe_connected = 3;
+
+	uint32 target_index = 4;
+
+	enum MessageType{
+		NONE = 0;
+		PIPE_INFO = 1;
+		SOURCE_CV_TARGET = 2;
+	}
+}

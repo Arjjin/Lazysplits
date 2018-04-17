@@ -2,7 +2,7 @@
 
 #include <obs-module.h>
 
-#include ".\util\LzsFrameBuffer.h"
+#include "util\LzsFrameBuffer.h"
 #include "cv\LzsCvThread.h"
 #include "pipe\LzsPipeServer.h"
 #include "pipe\LzsMessageQueue.h"

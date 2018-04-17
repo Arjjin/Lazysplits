@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Protobuf\classes\LzsProtobufCpp.pb.h" />
     <ClInclude Include="src\cv\LzsCvThread.h" />
     <ClInclude Include="src\LzsSourceData.h" />
     <ClInclude Include="src\pipe\LzsMessageQueue.h" />
@@ -28,9 +29,11 @@
     <ClInclude Include="src\util\LzsFrameBuffer.h" />
     <ClInclude Include="src\util\LzsImgProc.h" />
     <ClInclude Include="src\util\LzsObserver.h" />
+    <ClInclude Include="src\util\LzsProtoHelper.h" />
     <ClInclude Include="src\util\LzsThread.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Protobuf\classes\LzsProtobufCpp.pb.cc" />
     <ClCompile Include="src\cv\LzsCvThread.cpp" />
     <ClCompile Include="src\Lazysplits.cpp" />
     <ClCompile Include="src\LzsSourceData.cpp" />
@@ -43,13 +46,14 @@
     <ClCompile Include="src\util\LzsFrameBuffer.cpp" />
     <ClCompile Include="src\util\LzsImgProc.cpp" />
     <ClCompile Include="src\util\LzsObserver.cpp" />
+    <ClCompile Include="src\util\LzsProtoHelper.cpp" />
     <ClCompile Include="src\util\LzsThread.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5E06855C-BBD4-48BF-B529-08B288BFB316}</ProjectGuid>
     <RootNamespace>OBS</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
     <ProjectName>LazysplitsOBS</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -68,8 +72,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -97,12 +101,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <TargetName>LazysplitOBS</TargetName>
-    <TargetExt>.dll</TargetExt>
-    <IncludePath>$(dep_path)\obs-studio\libobs;$(dep_path)\obs-studio\deps\w32-pthreads;$(dep_path)\opencv\build\install\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
-    <OutDir>$(dep_path)\obs-studio\debug64\rundir\Debug\obs-plugins\64bit\</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\LazysplitsOBS\</IntDir>
+    <TargetName>LazysplitsOBS</TargetName>
+    <IncludePath>$(dep_path)\obs-studio\libobs;$(dep_path)\obs-studio\deps\w32-pthreads;$(dep_path)\opencv\build\install\include;$(dep_path)\protobuf\src;$(IncludePath)</IncludePath>
+    <LibraryPath>$(dep_path)\obs-studio\debug64\libobs\Debug;$(dep_path)\obs-studio\debug64\deps\w32-pthreads\Debug;$(dep_path)\opencv\build\install\x64\vc14\staticlib;$(dep_path)\protobuf\cmake\build\Debug;$(LibraryPath)</LibraryPath>
+    <OutDir>$(dep_path)\obs-studio\debug64\rundir\Debug\obs-plugins\64bit</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -114,24 +116,19 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>C:\Users\G\Desktop\lazysplits_dirs\Lazysplits\OBS\src;C:\Users\G\Desktop\lazysplits_dirs\Lazysplits\Protobuf\classes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>obs.lib;w32-pthreads.lib;IlmImfd.lib;ittnotifyd.lib;libjasperd.lib;libjpegd.lib;libpngd.lib;libprotobufd.lib;libtiffd.lib;libwebpd.lib;opencv_calib3d341d.lib;opencv_core341d.lib;opencv_dnn341d.lib;opencv_features2d341d.lib;opencv_flann341d.lib;opencv_highgui341d.lib;opencv_imgcodecs341d.lib;opencv_imgproc341d.lib;opencv_ml341d.lib;opencv_objdetect341d.lib;opencv_photo341d.lib;opencv_shape341d.lib;opencv_stitching341d.lib;opencv_superres341d.lib;opencv_video341d.lib;opencv_videoio341d.lib;opencv_videostab341d.lib;zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(dep_path)\obs-studio\debug64\libobs\Debug;$(dep_path)\obs-studio\debug64\deps\w32-pthreads\Debug;$(dep_path)\opencv\build\install\x64\vc14\staticlib;$(LibraryPath)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>obs.lib;w32-pthreads.lib;libprotobufd.lib;IlmImfd.lib;ittnotifyd.lib;libjasperd.lib;libjpegd.lib;libpngd.lib;libtiffd.lib;libwebpd.lib;opencv_calib3d341d.lib;opencv_core341d.lib;opencv_features2d341d.lib;opencv_flann341d.lib;opencv_highgui341d.lib;opencv_imgcodecs341d.lib;opencv_imgproc341d.lib;opencv_ml341d.lib;opencv_objdetect341d.lib;opencv_photo341d.lib;opencv_shape341d.lib;opencv_stitching341d.lib;opencv_superres341d.lib;opencv_video341d.lib;opencv_videoio341d.lib;opencv_videostab341d.lib;zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(LibraryPath)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>
       </SubSystem>
     </Link>
-    <ProjectReference>
-      <LinkLibraryDependencies>false</LinkLibraryDependencies>
-    </ProjectReference>
+    <ProjectReference />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>

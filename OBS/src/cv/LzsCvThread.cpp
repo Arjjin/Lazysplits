@@ -1,20 +1,26 @@
 #include "LzsCvThread.h"
-#include "../util/LzsImgProc.h"
-
-#include <opencv2\highgui.hpp>
+#include "util\LzsImgProc.h"
+#include "util\LzsProtoHelper.h"
 
 #include <obs.h>
+#include <opencv2\highgui.hpp>
 
 namespace Lazysplits{
 
 LzsCvThread::LzsCvThread( LzsFrameBuffer* frame_buf, LzsMessageQueue<std::string>* cv_to_pipe_queue, LzsMessageQueue<std::string>* pipe_to_cv_queue )
 	:LzsThread("CV thread")
 {
+	GOOGLE_PROTOBUF_VERIFY_VERSION;
+
 	frame_buf_ = frame_buf;
 	cv_to_pipe_queue_ = cv_to_pipe_queue;
 	pipe_to_cv_queue_ = pipe_to_cv_queue;
 	should_read_queue_ = false;
+	is_cv_active_ = false;
+	message_id_ref_ = 0;
 }
+
+bool LzsCvThread::IsCvActive(){ return is_cv_active_; }
 
 void LzsCvThread::OnSubjectNotify( std::string subject_name ){
 	if( subject_name == "cv queue"){
@@ -30,6 +36,11 @@ void LzsCvThread::ThreadFuncInit(){
 	//subscribe to message queue and frame buffer
 	pipe_to_cv_queue_->AttachObserver(this);
 	frame_buf_->AttachObserver(this);
+
+	//push initial request message
+	std::string serialized_request;
+	Proto::SerializeRequestMessage( serialized_request, message_id_ref_ );
+	cv_to_pipe_queue_->QueuePush(serialized_request);
 }
 
 void* LzsCvThread::ThreadFunc(){
@@ -40,8 +51,8 @@ void* LzsCvThread::ThreadFunc(){
 		if( should_read_queue_ ){
 			HandleMessages();
 		}
-		//handle frames in frame buffer
-		else if( frame_buf_->FrameCount() > 0 ){
+		//handle one frame per loop in frame buffer
+		else if( is_cv_active_ && frame_buf_->FrameCount() > 0 ){
 			HandleFrameBuffer();
 		}
 		//no work to do, go to sleep
@@ -60,10 +71,24 @@ void LzsCvThread::ThreadFuncCleanup(){
 	LzsThread::ThreadFuncCleanup();
 }
 
-void LzsCvThread::HandleMessages(){
-	//do stuff
+void LzsCvThread::ActivateCv(){ is_cv_active_ = true; }
+void LzsCvThread::DeactivateCv(){ is_cv_active_ = false; }
 
-	if( pipe_to_cv_queue_->QueueIsEmpty() ){ should_read_queue_ = false; }
+void LzsCvThread::HandleMessages(){
+	Proto::CppMessage message;
+
+	while( !pipe_to_cv_queue_->QueueIsEmpty() ){
+		std::string message_string = pipe_to_cv_queue_->QueueFront();
+		if( message.ParseFromString(message_string) ){
+			blog( LOG_DEBUG, "[lazysplits][%s] deserialized protobuf of type : %i", thread_name_, message.message_type() ); 
+		}
+		else{
+			blog( LOG_WARNING, "[lazysplits][%s] failed to parse protobuf from message queue!", thread_name_ ); 
+		}
+		pipe_to_cv_queue_->QueuePop();
+	}
+
+	should_read_queue_ = false;
 }
 
 void LzsCvThread::HandleFrameBuffer(){

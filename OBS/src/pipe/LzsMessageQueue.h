@@ -5,7 +5,7 @@
 #include "obs.h"
 #include <util\threading.h>
 
-#include "..\util\LzsObserver.h"
+#include "util\LzsObserver.h"
 
 namespace Lazysplits {
 

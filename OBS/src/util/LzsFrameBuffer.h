@@ -1,6 +1,6 @@
 #pragma once
 
-#include ".\LzsObserver.h"
+#include "LzsObserver.h"
 
 #include <obs.h>
 #include <util\circlebuf.h>

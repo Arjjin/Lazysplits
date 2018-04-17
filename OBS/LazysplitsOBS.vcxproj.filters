@@ -31,6 +31,12 @@
     <Filter Include="Source Files\cv">
       <UniqueIdentifier>{7426a796-cd83-41fc-93a3-4ed4df4ea946}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\protobuf">
+      <UniqueIdentifier>{7ad1fe4b-ae46-4f98-82d1-3cc1defc4102}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\protobuf">
+      <UniqueIdentifier>{ae59e500-00c6-40b3-a715-2557837da03d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\LzsSourceData.h">
@@ -62,6 +68,12 @@
     </ClInclude>
     <ClInclude Include="src\cv\LzsCvThread.h">
       <Filter>Header Files\cv</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\LzsProtoHelper.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Protobuf\classes\LzsProtobufCpp.pb.h">
+      <Filter>Header Files\protobuf</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +115,12 @@
     </ClCompile>
     <ClCompile Include="src\cv\LzsCvThread.cpp">
       <Filter>Source Files\cv</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\LzsProtoHelper.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Protobuf\classes\LzsProtobufCpp.pb.cc">
+      <Filter>Source Files\protobuf</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

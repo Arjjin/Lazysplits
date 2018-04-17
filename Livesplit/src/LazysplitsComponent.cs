@@ -13,10 +13,11 @@ using LiveSplit.UI;
 using LiveSplit.UI.Components;
 
 using LiveSplit.Lazysplits.Pipe;
+using LiveSplit.Lazysplits.Proto;
 
 namespace LiveSplit.Lazysplits
 {
-    public class LazysplitsComponent : IComponent
+    public class LazysplitsComponent : IComponent, ILzsObserver
     {
         public LazysplitsComponentSettings Settings { get; set; }
         public string ComponentName{ get { return "Lazysplits"; } }
@@ -55,6 +56,7 @@ namespace LiveSplit.Lazysplits
             
             LsToPipeQueue = new LzsMessageQueue<byte[]>();
             PipeToLsQueue = new LzsMessageQueue<byte[]>();
+            PipeToLsQueue.AttachObserver(this);
             PipeClient = new LzsPipeClient( "Pipe client thread", "lazysplits_pipe", LsToPipeQueue, PipeToLsQueue );
             
             VerticalHeight = 10;
@@ -158,6 +160,37 @@ namespace LiveSplit.Lazysplits
             {
                 StopPipeClient();
                 StartPipeClient();
+            }
+        }
+
+        public void OnSubjectNotify()
+        {
+            CheckReadQueue();
+        }
+
+        private void CheckReadQueue()
+        {
+            while( !PipeToLsQueue.IsEmpty() )
+            {
+                byte[] SerializedMessage;
+                if( PipeToLsQueue.TryDequeue( out SerializedMessage ) )
+                {
+                    CppMessage CvMessage;
+                    try
+                    {
+                        CvMessage = CppMessage.Parser.ParseFrom(SerializedMessage);
+                    }
+                    catch( Google.Protobuf.InvalidProtocolBufferException e )
+                    {
+                        Log.Warn("Error deserializing protobuf : "+e.Message);
+                        return;
+                    }
+                    Log.Debug("Deserialized message - id : "+CvMessage.MessageId+", type : "+CvMessage.MessageType.ToString() );
+                }
+                else
+                {
+                    System.Threading.Thread.Sleep(50);
+                }
             }
         }
         

@@ -46,7 +46,6 @@ void LzsPipeTaskConnect::StartTask(){
 }
 
 void LzsPipeTaskConnect::HandleTaskResult(){
-	//do stuff
 	pipe_server_state_ = PIPE_CONNECTED;
 	task_status_ = TASK_STATUS_COMPLETED;
 	LzsPipeTaskBase::HandleTaskResult();

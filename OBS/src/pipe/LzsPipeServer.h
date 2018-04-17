@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\util\LzsThread.h"
-#include "..\util\LzsObserver.h"
+#include "util\LzsThread.h"
+#include "util\LzsObserver.h"
 #include "LzsPipeConstants.h"
 #include "LzsPipeTask.h"
 #include "LzsMessageQueue.h"
@@ -24,17 +24,19 @@ struct LzsPipeParams{
 class LzsPipeServer : public LzsThread, public LzsObserver {
 	public :
 		LzsPipeServer( std::string pipe_name, DWORD buffer_size, LzsMessageQueue<std::string>* cv_to_pipe_queue, LzsMessageQueue<std::string>* pipe_to_cv_queue );
-		void ThreadFuncInit()override;
-		void* ThreadFunc()override;
-		void ThreadFuncCleanup()override;
 
 		void ThreadTerminate()override;
+		bool IsConnected();
 
 		//observer event from message queue
 		void OnSubjectNotify( std::string subject_name )override;
 	private :
 		void CreatePipe();
 		void CheckWriteQueue();
+
+		void ThreadFuncInit()override;
+		void* ThreadFunc()override;
+		void ThreadFuncCleanup()override;
 		
 		HANDLE pipe_handle_;
 		LzsPipeParams pipe_params_;

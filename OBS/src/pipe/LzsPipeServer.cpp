@@ -88,6 +88,10 @@ void LzsPipeServer::ThreadTerminate(){
 	LzsThread::ThreadTerminate();
 }
 
+bool LzsPipeServer::IsConnected(){
+	return pipe_state_ == PIPE_CONNECTED;
+}
+
 void LzsPipeServer::OnSubjectNotify( std::string subject_name ){
 	if( pipe_state_ >= PIPE_CREATED ){
 		if( pipe_task_manager_->IsWaiting() ){ pipe_task_manager_->CancelWait(); }
