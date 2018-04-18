@@ -5,7 +5,7 @@
 namespace Lazysplits{
 
 LzsPipeServer::LzsPipeServer( std::string pipe_name, DWORD buffer_size, LzsMessageQueue<std::string>* cv_to_pipe_queue, LzsMessageQueue<std::string>* pipe_to_cv_queue  )
-	:LzsThread("Pipe server thread")
+	:LzsThread("Pipe server thread"), LzsObservable("Pipe")
 {
 	pipe_params_.name = pipe_name;
 	pipe_params_.open_mode = PIPE_ACCESS_DUPLEX | FILE_FLAG_FIRST_PIPE_INSTANCE | FILE_FLAG_OVERLAPPED; // duplex directional pipe, function will fail if pipe already exists, using overlapped IO
@@ -32,6 +32,7 @@ void LzsPipeServer::ThreadFuncInit(){
 void* LzsPipeServer::ThreadFunc(){
 	ThreadFuncInit();
 
+	LZS_PIPE_STATE state_last_loop = pipe_state_;
 	while( ThreadFuncShouldLoop() ){
 		switch(pipe_state_){
 			case PIPE_CREATED :
@@ -61,6 +62,19 @@ void* LzsPipeServer::ThreadFunc(){
 				CreatePipe();
 			break;
 		}
+		
+		//inform CV thread if pipe just connected/disconnected
+		if( pipe_state_ != state_last_loop){
+			//connected
+			if( pipe_state_ == PIPE_CONNECTED ){
+				NotifyAll("Connected");
+			}
+			//disconnected
+			else if( state_last_loop == PIPE_CONNECTED ){
+				NotifyAll("Disconnected");
+			}
+		}
+		state_last_loop = pipe_state_;
 	}
 
 	ThreadFuncCleanup();
@@ -92,7 +106,7 @@ bool LzsPipeServer::IsConnected(){
 	return pipe_state_ == PIPE_CONNECTED;
 }
 
-void LzsPipeServer::OnSubjectNotify( std::string subject_name ){
+void LzsPipeServer::OnSubjectNotify( std::string subject_name, std::string subject_message ){
 	if( pipe_state_ >= PIPE_CREATED ){
 		if( pipe_task_manager_->IsWaiting() ){ pipe_task_manager_->CancelWait(); }
 	}

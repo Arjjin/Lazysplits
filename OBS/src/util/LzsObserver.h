@@ -5,7 +5,7 @@
 
 namespace Lazysplits{
 
-//forward declaration to prevent circular refrence between LzsObserver and LzsSubject
+//forward declaration to prevent circular refrence
 class LzsObserver;
 
 class LzsObservable{
@@ -14,6 +14,7 @@ class LzsObservable{
 		void AttachObserver( LzsObserver* observer );
 		void DetachObserver( LzsObserver* observer );
 		void NotifyAll();
+		void NotifyAll( std::string message );
 	private :
 		const std::string subject_name_;
 		std::vector<LzsObserver*> observer_list_;
@@ -22,7 +23,7 @@ class LzsObservable{
 class LzsObserver{
 	public :
 		~LzsObserver();
-		virtual void OnSubjectNotify( std::string subject_name ) = 0;
+		virtual void OnSubjectNotify( std::string subject_name, std::string subject_message ) = 0;
 		void Attached( LzsObservable* subject );
 		void Detached( LzsObservable* subject );
 	private :

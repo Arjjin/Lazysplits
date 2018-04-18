@@ -12,7 +12,7 @@ namespace Lazysplits{
 //I'm a genius
 class LzsFrameBuffer : public LzsObservable{
 	public :
-		LzsFrameBuffer( obs_source_t* frame_source, int buf_max_count );
+		LzsFrameBuffer( int buf_max_count );
 		~LzsFrameBuffer();
 
 		void PushFrame( obs_source_frame* frame );
@@ -30,7 +30,6 @@ class LzsFrameBuffer : public LzsObservable{
 
 		circlebuf buf_;
 		pthread_mutex_t buf_mutex_;
-		obs_source_t* frame_source_;
 		int buf_max_count_;
 		int frame_count_;
 };

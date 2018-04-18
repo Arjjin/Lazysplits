@@ -21,7 +21,7 @@ struct LzsPipeParams{
 	LPSECURITY_ATTRIBUTES security_attributes;
 };
 
-class LzsPipeServer : public LzsThread, public LzsObserver {
+class LzsPipeServer : public LzsThread, public LzsObserver, public LzsObservable {
 	public :
 		LzsPipeServer( std::string pipe_name, DWORD buffer_size, LzsMessageQueue<std::string>* cv_to_pipe_queue, LzsMessageQueue<std::string>* pipe_to_cv_queue );
 
@@ -29,7 +29,7 @@ class LzsPipeServer : public LzsThread, public LzsObserver {
 		bool IsConnected();
 
 		//observer event from message queue
-		void OnSubjectNotify( std::string subject_name )override;
+		void OnSubjectNotify( std::string subject_name, std::string subject_message )override;
 	private :
 		void CreatePipe();
 		void CheckWriteQueue();

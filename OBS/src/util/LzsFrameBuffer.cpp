@@ -2,10 +2,9 @@
 
 namespace Lazysplits{
 
-LzsFrameBuffer::LzsFrameBuffer( obs_source_t* frame_source, int buf_max_count )
+LzsFrameBuffer::LzsFrameBuffer( int buf_max_count )
 	:LzsObservable("frame buf")
 {
-	frame_source_ = frame_source;
 	buf_max_count_ = buf_max_count;
 	frame_count_ = 0;
 	circlebuf_init(&buf_);
@@ -67,7 +66,6 @@ obs_source_frame* const LzsFrameBuffer::PeekFrameInternal(){
 void LzsFrameBuffer::PopFrameInternal(){
 	obs_source_frame* frame;
 	circlebuf_pop_front( &buf_, &frame, sizeof(obs_source_frame*) );
-	//if(frame){ obs_source_release_frame( frame_source_, frame ); }
 	frame_count_--;
 }
 

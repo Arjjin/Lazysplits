@@ -15,7 +15,7 @@ class LzsCvThread : public LzsThread, public LzsObserver{
 		
 		bool IsCvActive();
 
-		void OnSubjectNotify( std::string subject_name )override;
+		void OnSubjectNotify( std::string subject_name, std::string subject_message )override;
 	private :
 		void ThreadFuncInit()override;
 		void* ThreadFunc()override;

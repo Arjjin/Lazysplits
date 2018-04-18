@@ -22,9 +22,17 @@ LzsCvThread::LzsCvThread( LzsFrameBuffer* frame_buf, LzsMessageQueue<std::string
 
 bool LzsCvThread::IsCvActive(){ return is_cv_active_; }
 
-void LzsCvThread::OnSubjectNotify( std::string subject_name ){
+void LzsCvThread::OnSubjectNotify( std::string subject_name, std::string subject_message ){
 	if( subject_name == "cv queue"){
 		should_read_queue_ = true;
+	}
+	else if( subject_name == "Pipe"){
+		if( subject_message == "Connected"){
+			blog( LOG_DEBUG, "[lazysplits][%s] pipe connected", thread_name_.c_str() ); 
+		}
+		else if( subject_message == "Disconnected"){
+			blog( LOG_DEBUG, "[lazysplits][%s] pipe disconnected", thread_name_.c_str() ); 
+		}
 	}
 
 	if( IsThreadSleeping() ){ ThreadWake(); }
@@ -36,11 +44,6 @@ void LzsCvThread::ThreadFuncInit(){
 	//subscribe to message queue and frame buffer
 	pipe_to_cv_queue_->AttachObserver(this);
 	frame_buf_->AttachObserver(this);
-
-	//push initial request message
-	std::string serialized_request;
-	Proto::SerializeRequestMessage( serialized_request, message_id_ref_ );
-	cv_to_pipe_queue_->QueuePush(serialized_request);
 }
 
 void* LzsCvThread::ThreadFunc(){
@@ -80,10 +83,10 @@ void LzsCvThread::HandleMessages(){
 	while( !pipe_to_cv_queue_->QueueIsEmpty() ){
 		std::string message_string = pipe_to_cv_queue_->QueueFront();
 		if( message.ParseFromString(message_string) ){
-			blog( LOG_DEBUG, "[lazysplits][%s] deserialized protobuf of type : %i", thread_name_, message.message_type() ); 
+			blog( LOG_DEBUG, "[lazysplits][%s] deserialized protobuf of type : %i", thread_name_.c_str(), message.message_type() ); 
 		}
 		else{
-			blog( LOG_WARNING, "[lazysplits][%s] failed to parse protobuf from message queue!", thread_name_ ); 
+			blog( LOG_WARNING, "[lazysplits][%s] failed to parse protobuf from message queue!", thread_name_.c_str() ); 
 		}
 		pipe_to_cv_queue_->QueuePop();
 	}
@@ -106,7 +109,7 @@ void LzsCvThread::HandleFrameBuffer(){
 		cv::imwrite( "../img.png", BGR_frame, compression_params );
 		*/
 	}
-	else{ blog( LOG_WARNING, "[lazysplits][%s] frame buffer peek is bad", thread_name_ ); }
+	else{ blog( LOG_WARNING, "[lazysplits][%s] frame buffer peek is bad", thread_name_.c_str() ); }
 	frame_buf_->PopFrame();
 }
 
