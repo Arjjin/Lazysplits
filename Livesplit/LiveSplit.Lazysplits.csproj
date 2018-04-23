@@ -77,12 +77,14 @@
     <Compile Include="src\Pipe\LszPipeTaskManager.cs" />
     <Compile Include="src\Pipe\LzsMessageQueue.cs" />
     <Compile Include="src\LzsTimerModel.cs" />
-    <Compile Include="src\Protobuf\LzsProtobufCs.cs" />
+    <Compile Include="src\Protobuf\LzsCvDataProtoCs.cs" />
+    <Compile Include="src\Protobuf\LzsPipeProtoCs.cs" />
     <Compile Include="src\Util\LzsObserver.cs" />
     <Compile Include="src\Pipe\LzsPipeClient.cs" />
     <Compile Include="src\Pipe\LzsPipeTask.cs" />
     <Compile Include="src\Util\LzsThread.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\Util\LzsSharedCvData.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="src\LazysplitsComponentSettings.resx">

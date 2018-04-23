@@ -66,14 +66,17 @@
     <ClInclude Include="src\util\LzsImgProc.h">
       <Filter>Header Files\util</Filter>
     </ClInclude>
-    <ClInclude Include="src\cv\LzsCvThread.h">
-      <Filter>Header Files\cv</Filter>
-    </ClInclude>
     <ClInclude Include="src\util\LzsProtoHelper.h">
       <Filter>Header Files\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\Protobuf\classes\LzsProtobufCpp.pb.h">
+    <ClInclude Include="..\Protobuf\classes\LzsPipeProtoCpp.pb.h">
       <Filter>Header Files\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cv\LzsCvThread.h">
+      <Filter>Header Files\cv</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LzsObsProps.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -113,14 +116,17 @@
     <ClCompile Include="src\util\LzsImgProc.cpp">
       <Filter>Source Files\util</Filter>
     </ClCompile>
-    <ClCompile Include="src\cv\LzsCvThread.cpp">
-      <Filter>Source Files\cv</Filter>
-    </ClCompile>
     <ClCompile Include="src\util\LzsProtoHelper.cpp">
       <Filter>Source Files\util</Filter>
     </ClCompile>
-    <ClCompile Include="..\Protobuf\classes\LzsProtobufCpp.pb.cc">
+    <ClCompile Include="..\Protobuf\classes\LzsPipeProtoCpp.pb.cc">
       <Filter>Source Files\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cv\LzsCvThread.cpp">
+      <Filter>Source Files\cv</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LzsObsProps.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

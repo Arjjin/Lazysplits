@@ -45,56 +45,27 @@ namespace LiveSplit.Lazysplits
 
         public LazysplitsComponent(LiveSplitState state)
         {
+            //InitNLog();
+            
+            Settings = new LazysplitsComponentSettings();
             State = state;
             Timer = new LzsTimerModel { CurrentState = state };
-            Settings = new LazysplitsComponentSettings();
             
             ContextMenuControls = new Dictionary<string, Action>();
             ContextMenuControls.Add( "Lazysplits : Start pipe", StartPipeClient );
-            
-            InitNLog();
             
             LsToPipeQueue = new LzsMessageQueue<byte[]>();
             PipeToLsQueue = new LzsMessageQueue<byte[]>();
             PipeToLsQueue.AttachObserver(this);
             PipeClient = new LzsPipeClient( "Pipe client thread", "lazysplits_pipe", LsToPipeQueue, PipeToLsQueue );
+            //state.Run.PropertyChanged +=  ;
+            //state.RunManuallyModified +=  ;
+            Settings.SharedDataRootDirChanged += OnRootDirChanged;
             
             VerticalHeight = 10;
             HorizontalWidth = 10;
         }
 
-        private void InitNLog()
-        {
-            if( LogManager.Configuration == null )
-            {
-                LoggingConfiguration LogConfig = new LoggingConfiguration();
-
-                FileTarget LogFileTarget = new FileTarget();
-                LogFileTarget.FileName = "${basedir}/Components/Lazysplits-log.txt";
-                LogFileTarget.DeleteOldFileOnStartup = true;
-                LogFileTarget.Layout = @"NLog|${date:format=HH\:mm\:ss.ff}|${pad:padding=5:inner=${level}}|${logger}|${message}";
-
-                #if DEBUG
-                    LoggingRule FileRule = new LoggingRule( "*", LogLevel.Trace, LogFileTarget );
-                #else
-                    LoggingRule FileRule = new LoggingRule( "*", LogLevel.Info, LogFileTarget );
-                #endif
-
-                LogConfig.AddTarget( "File", LogFileTarget );
-                LogConfig.LoggingRules.Add(FileRule);
-
-                #if DEBUG
-                    TraceTarget LogTraceTarget = new TraceTarget();
-                    LogTraceTarget.Layout = @"NLog|${date:format=HH\:mm\:ss.ff}|${pad:padding=5:inner=${level}}|${logger}|${message}";
-                    LoggingRule TraceRule = new LoggingRule( "*", LogLevel.Trace, LogTraceTarget );
-                    LogConfig.AddTarget( "File", LogTraceTarget );
-                    LogConfig.LoggingRules.Add(TraceRule);
-                #endif
-
-                LogManager.Configuration = LogConfig;
-            }
-        }
-        
         public Control GetSettingsControl(LayoutMode mode)
         {
             return this.Settings;
@@ -133,15 +104,17 @@ namespace LiveSplit.Lazysplits
             DrawBase(g, state, width, VerticalHeight, LayoutMode.Vertical);
         }
 
+        /* pipe methods */
+
         public void StartPipeClient()
         {
             if( !PipeClient.ThreadIsLive() )
             {
                 PipeClient.ThreadCreate();
-                ContextMenuControls.Remove("Lazysplits : Start pipe");
-                ContextMenuControls.Add( "Lazysplits : Stop pipe", StopPipeClient );
-                ContextMenuControls.Add( "Lazysplits : Reset pipe", ResetPipeClient );
             }
+            ContextMenuControls.Remove("Lazysplits : Start pipe");
+            ContextMenuControls.Add( "Lazysplits : Stop pipe", StopPipeClient );
+            ContextMenuControls.Add( "Lazysplits : Reset pipe", ResetPipeClient );
         }
         public void StopPipeClient()
         {
@@ -149,10 +122,10 @@ namespace LiveSplit.Lazysplits
             {
                 PipeClient.ThreadTerminate();
                 PipeClient.ThreadJoin();
-                ContextMenuControls.Remove("Lazysplits : Reset pipe");
-                ContextMenuControls.Remove("Lazysplits : Stop pipe");
-                ContextMenuControls.Add( "Lazysplits : Start pipe", StartPipeClient );
             }
+            ContextMenuControls.Remove("Lazysplits : Reset pipe");
+            ContextMenuControls.Remove("Lazysplits : Stop pipe");
+            ContextMenuControls.Add( "Lazysplits : Start pipe", StartPipeClient );
         }
         public void ResetPipeClient()
         {
@@ -193,7 +166,13 @@ namespace LiveSplit.Lazysplits
                 }
             }
         }
-        
+
+        //misc
+        public void OnRootDirChanged( object sender, EventArgs e )
+        {
+            ResetPipeClient();
+        }
+
         //IDisposable
         public void Dispose()
         {

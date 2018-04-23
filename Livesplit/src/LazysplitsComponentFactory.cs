@@ -3,6 +3,9 @@ using LiveSplit.Model;
 using LiveSplit.UI.Components;
 using LiveSplit.Lazysplits;
 
+using NLog;
+using NLog.Targets;
+using NLog.Config;
 
 [assembly: ComponentFactory(typeof(LazysplitsComponentFactory))]
 
@@ -21,16 +24,42 @@ namespace LiveSplit.Lazysplits
 
         public IComponent Create(LiveSplitState state)
         {
-            var ComponentIt = state.Layout.Components.GetEnumerator();
-            while( ComponentIt.MoveNext() )
-            {
-                if( ComponentIt.Current.ComponentName == "Lazysplits" )
-                {
-                    throw new Exception("Lazysplits component does not allow duplicate instaces");
-                }
-            }
-
+            InitNLog();
             return new LazysplitsComponent(state);
+        }
+
+        private void InitNLog()
+        {
+            if( LogManager.Configuration == null )
+            {
+                LoggingConfiguration LogConfig = new LoggingConfiguration();
+
+                //File log
+                FileTarget LogFileTarget = new FileTarget();
+                LogFileTarget.FileName = "${basedir}/Components/Lazysplits-log.txt";
+                LogFileTarget.DeleteOldFileOnStartup = true;
+                #if DEBUG
+                    LogFileTarget.Layout = @"NLog|${date:format=HH\:mm\:ss.ff}|${pad:padding=5:inner=${level}}|${logger}|${message}";
+                    LoggingRule FileRule = new LoggingRule( "*", LogLevel.Trace, LogFileTarget );
+                #else
+                    LogFileTarget.Layout = @"NLog|${date:format=HH\:mm\:ss.ff}|${logger}|${message}";
+                    LoggingRule FileRule = new LoggingRule( "*", LogLevel.Info, LogFileTarget );
+                #endif
+
+                LogConfig.AddTarget( "File", LogFileTarget );
+                LogConfig.LoggingRules.Add(FileRule);
+
+                //console log
+                #if DEBUG
+                    TraceTarget LogTraceTarget = new TraceTarget();
+                    LogTraceTarget.Layout = @"NLog|${date:format=HH\:mm\:ss.ff}|${pad:padding=5:inner=${level}}|${logger}|${message}";
+                    LoggingRule TraceRule = new LoggingRule( "*", LogLevel.Trace, LogTraceTarget );
+                    LogConfig.AddTarget( "File", LogTraceTarget );
+                    LogConfig.LoggingRules.Add(TraceRule);
+                #endif
+
+                LogManager.Configuration = LogConfig;
+            }
         }
     }
 } //namespace LiveSplit.Lazysplits

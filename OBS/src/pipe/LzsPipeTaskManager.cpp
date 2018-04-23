@@ -69,7 +69,7 @@ void LzsPipeTaskManager::WaitOnTasks(){
 	if( handle_vec.size() > 0 ){
 		handle_vec.push_back(wait_cancellation_handle_);
 
-		blog( LOG_DEBUG, "[Lazysplits][%s] waiting on %i tasks", owning_thread_name_.c_str(), handle_vec.size() );
+		//blog( LOG_DEBUG, "[Lazysplits][%s] waiting on %i tasks", owning_thread_name_.c_str(), handle_vec.size() );
 		is_waiting_ = true;
 		//timeout should be infinite instead of 2000ms, but a longish one prevents write queue race conditions from sloppy code, and shouldn't hit processor that hard
 		DWORD wait_result = WaitForMultipleObjects( handle_vec.size(), handle_vec.data(), FALSE, 2000 );
@@ -79,7 +79,7 @@ void LzsPipeTaskManager::WaitOnTasks(){
 			blog( LOG_WARNING, "[Lazysplits][%s] task wait failed : %i", owning_thread_name_.c_str(), GetLastError() );
 		}
 		else if( wait_result == WAIT_TIMEOUT ){
-			blog( LOG_DEBUG, "[Lazysplits][%s] task wait timed out", owning_thread_name_.c_str() );
+			//blog( LOG_DEBUG, "[Lazysplits][%s] task wait timed out", owning_thread_name_.c_str() );
 		}
 		else if( handle_vec.at(wait_result) == wait_cancellation_handle_ ){
 			blog( LOG_DEBUG, "[Lazysplits][%s] task wait cancelled", owning_thread_name_.c_str() );

@@ -1,13 +1,16 @@
 #pragma once
 
+#include <string>
+#include <vector>
+#include <memory>
+
 #include <obs-module.h>
 
-#include "util\LzsFrameBuffer.h"
+#include "LzsObsProps.h"
 #include "cv\LzsCvThread.h"
+#include "util\LzsFrameBuffer.h"
 #include "pipe\LzsPipeServer.h"
 #include "pipe\LzsMessageQueue.h"
-
-#include <string>
 
 namespace Lazysplits{
 
@@ -23,6 +26,12 @@ class LzsSourceData{
 		LzsPipeServer pipe_server_;
 		LzsCvThread cv_thread_;
 		LzsFrameBuffer frame_buffer_;
+
+		std::string shared_dir_root_;
+
+		bool test_bool;
+		int64_t test_int;
+		LzsObsPropList properties_;
 	private :
 		long frame_count_;
 

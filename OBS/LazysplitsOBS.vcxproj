@@ -19,8 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Protobuf\classes\LzsProtobufCpp.pb.h" />
+    <ClInclude Include="..\Protobuf\classes\LzsPipeProtoCpp.pb.h" />
     <ClInclude Include="src\cv\LzsCvThread.h" />
+    <ClInclude Include="src\LzsObsProps.h" />
     <ClInclude Include="src\LzsSourceData.h" />
     <ClInclude Include="src\pipe\LzsMessageQueue.h" />
     <ClInclude Include="src\pipe\LzsPipeConstants.h" />
@@ -33,9 +34,10 @@
     <ClInclude Include="src\util\LzsThread.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Protobuf\classes\LzsProtobufCpp.pb.cc" />
+    <ClCompile Include="..\Protobuf\classes\LzsPipeProtoCpp.pb.cc" />
     <ClCompile Include="src\cv\LzsCvThread.cpp" />
     <ClCompile Include="src\Lazysplits.cpp" />
+    <ClCompile Include="src\LzsObsProps.cpp" />
     <ClCompile Include="src\LzsSourceData.cpp" />
     <ClCompile Include="src\pipe\LzsPipeServer.cpp" />
     <ClCompile Include="src\pipe\LzsPipeTaskBase.cpp" />

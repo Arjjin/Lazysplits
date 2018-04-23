@@ -1,6 +1,6 @@
 #pragma once
 
-#include "LzsProtobufCpp.pb.h"
+#include "LzsPipeProtoCpp.pb.h"
 #include <string>
 
 namespace Lazysplits{
