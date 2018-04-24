@@ -1,6 +1,7 @@
 #pragma once
 
 #include "util\LzsThread.h"
+#include "cv\LzsCvThread.h"
 #include "util\LzsObserver.h"
 #include "LzsPipeConstants.h"
 #include "LzsPipeTask.h"
@@ -21,15 +22,18 @@ struct LzsPipeParams{
 	LPSECURITY_ATTRIBUTES security_attributes;
 };
 
-class LzsPipeServer : public LzsThread, public LzsObserver, public LzsObservable {
+//forward declaration for circular dependency
+class LzsCvThread;
+
+class LzsPipeServer : public LzsThread, public LzsObserver{
 	public :
-		LzsPipeServer( std::string pipe_name, DWORD buffer_size, LzsMessageQueue<std::string>* cv_to_pipe_queue, LzsMessageQueue<std::string>* pipe_to_cv_queue );
+		LzsPipeServer( std::string pipe_name, DWORD buffer_size );
+		void AssignCvThread( LzsCvThread* cv_thread );
 
 		void ThreadTerminate()override;
 		bool IsConnected();
 
-		//observer event from message queue
-		void OnSubjectNotify( std::string subject_name, std::string subject_message )override;
+		void OnSubjectNotify( const std::string& subject_name, const std::string& subject_message );
 	private :
 		void CreatePipe();
 		void CheckWriteQueue();
@@ -44,9 +48,11 @@ class LzsPipeServer : public LzsThread, public LzsObserver, public LzsObservable
 
 		std::shared_ptr<LzsPipeTaskManager> pipe_task_manager_;
 
+		//pointer to cv thread
+		LzsCvThread* cv_thread_;
+
 		//message queue stuff
-		LzsMessageQueue<std::string>* cv_to_pipe_queue_;
-		LzsMessageQueue<std::string>* pipe_to_cv_queue_;
+		LzsMsgQueue<std::string> msg_queue_;
 };
 
 } //namespace Lazysplits

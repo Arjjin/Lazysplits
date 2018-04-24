@@ -30,7 +30,7 @@ class LzsFrameBuffer : public LzsObservable{
 
 		circlebuf buf_;
 		pthread_mutex_t buf_mutex_;
-		int buf_max_count_;
+		const int buf_max_count_;
 		int frame_count_;
 };
 

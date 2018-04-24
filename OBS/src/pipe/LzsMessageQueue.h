@@ -15,40 +15,40 @@ simply duplicates queue methods with mutex wrapped around them
 race conditions for multiple threads between method calls still apply
 should incorporate bool try methods
 */
-template <class T> class LzsMessageQueue : public LzsObservable{
+template <class T> class LzsMsgQueue : public LzsObservable{
 	public :
-		LzsMessageQueue( std::string subject_name )
+		LzsMsgQueue( std::string subject_name )
 			:LzsObservable(subject_name)
 		{ 
 			pthread_mutex_init( &queue_mutex_, NULL );
 		}
-		~LzsMessageQueue(){ pthread_mutex_destroy(&queue_mutex_); }
+		~LzsMsgQueue(){ pthread_mutex_destroy(&queue_mutex_); }
 
-		bool QueueIsEmpty(){
+		bool IsEmpty(){
 			pthread_mutex_lock(&queue_mutex_);
 			bool is_empty = queue_.empty();
 			pthread_mutex_unlock(&queue_mutex_);
 
 			return is_empty;
 		}
-		void QueueFlush(){
+		void Flush(){
 			pthread_mutex_lock(&queue_mutex_);
 			queue_ = {};
 			pthread_mutex_unlock(&queue_mutex_);
 		}
-		const T& QueueFront(){
+		const T& Peek(){
 			pthread_mutex_lock(&queue_mutex_);
 			const T& element = queue_.front();
 			pthread_mutex_unlock(&queue_mutex_);
 
 			return element;
 		}
-		void QueuePop(){
+		void Pop(){
 			pthread_mutex_lock(&queue_mutex_);
 			queue_.pop();
 			pthread_mutex_unlock(&queue_mutex_);
 		}
-		void QueuePush( const T& element ){
+		void Push( const T& element ){
 			pthread_mutex_lock(&queue_mutex_);
 			queue_.push(element);
 			pthread_mutex_unlock(&queue_mutex_);

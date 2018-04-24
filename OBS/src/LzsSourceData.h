@@ -19,24 +19,28 @@ class LzsSourceData{
 		LzsSourceData( obs_source_t* context );
 		~LzsSourceData();
 
-		void FrameTick();
-		long FrameCount();
+		void OnSourceCreate( obs_data_t* source_settings, obs_source_t* context );
+		obs_properties_t* GetSourceProps();
+		void OnSourceUpdate( obs_data_t* source_settings );
+		void OnSourceTick( float seconds );
+		void OnSourceFilterVideo( obs_source_frame* frame );
+
+		long GetFrameCount();
 		
 		obs_source_t* context_;
 		LzsPipeServer pipe_server_;
 		LzsCvThread cv_thread_;
 		LzsFrameBuffer frame_buffer_;
-
-		std::string shared_dir_root_;
-
-		bool test_bool;
-		int64_t test_int;
-		LzsObsPropList properties_;
 	private :
-		long frame_count_;
+		void InitProps( obs_source_t* context );
 
-		LzsMessageQueue<std::string> cv_to_pipe_queue_;
-		LzsMessageQueue<std::string> pipe_to_cv_queue_;
+		long frame_count_;
+		
+		//OBS props stuff
+		LzsObsPropList properties_;
+
+		std::string prop_shared_data_dir;
+		std::string prop_test_file;
 };
 
 } //namespace Lazysplits

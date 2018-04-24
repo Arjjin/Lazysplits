@@ -78,6 +78,12 @@
     <ClInclude Include="src\LzsObsProps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\util\LzsSharedData.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pipe\LzsMessage.h">
+      <Filter>Header Files\pipe</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lazysplits.cpp">
@@ -127,6 +133,12 @@
     </ClCompile>
     <ClCompile Include="src\LzsObsProps.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\LzsSharedData.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pipe\LzsMessage.cpp">
+      <Filter>Source Files\pipe</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

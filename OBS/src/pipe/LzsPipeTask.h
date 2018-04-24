@@ -43,13 +43,13 @@ class LzsPipeTaskConnect : public LzsPipeTaskBase{
 
 class LzsPipeTaskRead : public LzsPipeTaskBase{
 	public :
-		LzsPipeTaskRead( std::string owning_thread_name, HANDLE pipe_handle, LZS_PIPE_STATE& pipe_server_state, int read_buf_size, LzsMessageQueue<std::string>* read_queue );
+		LzsPipeTaskRead( std::string owning_thread_name, HANDLE pipe_handle, LZS_PIPE_STATE& pipe_server_state, int read_buf_size, LzsMsgQueue<std::string>* read_queue );
 		void StartTask()override;
 		void HandleTaskResult()override;
 	private :
 		//use vector for a safe runtime sized array, and pass it as a raw array with data()
 		std::vector<byte> read_buf_;
-		LzsMessageQueue<std::string>* read_queue_;
+		LzsMsgQueue<std::string>* read_queue_;
 };
 
 class LzsPipeTaskWrite : public LzsPipeTaskBase{
@@ -67,7 +67,7 @@ class LzsPipeTaskManager{
 		~LzsPipeTaskManager();
 		
 		void AddConnectTask();
-		void AddReadTask( int read_buf_size, LzsMessageQueue<std::string>* read_queue );
+		void AddReadTask( int read_buf_size, LzsMsgQueue<std::string>* read_queue );
 		void AddWriteTask( std::string serialized_protobuf );
 		void StartTasks();
 		void WaitOnTasks();

@@ -23,7 +23,7 @@ class LzsObservable{
 class LzsObserver{
 	public :
 		~LzsObserver();
-		virtual void OnSubjectNotify( std::string subject_name, std::string subject_message ) = 0;
+		virtual void OnSubjectNotify( const std::string& subject_name, const std::string& subject_message ) = 0;
 		void Attached( LzsObservable* subject );
 		void Detached( LzsObservable* subject );
 	private :

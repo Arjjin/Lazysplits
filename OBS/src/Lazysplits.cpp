@@ -16,20 +16,16 @@ static const char* lzs_source_name(void* type_data) {
 
 static void* lzs_source_create( obs_data_t* settings, obs_source_t* context ){
 	LzsSourceData* source_data = new LzsSourceData(context);
-
-	source_data->properties_.UpdateProperties(settings);
+	source_data->OnSourceCreate( settings, context );
 
 	return source_data;
 }
 
-static void lzs_source_destroy(void* data) {
-	delete static_cast<LzsSourceData*>(data);
-
-}
+static void lzs_source_destroy(void* data) { delete static_cast<LzsSourceData*>(data); }
 
 static void lzs_source_video_tick( void *data, float seconds ){
 	LzsSourceData* source_data = static_cast<LzsSourceData*>(data);
-	source_data->FrameTick();
+	source_data->OnSourceTick(seconds);
 }
 
 static void lzs_source_render_video(void *data, gs_effect_t *effect){
@@ -47,31 +43,20 @@ static struct obs_source_frame* lzs_source_filter_video( void* data, struct obs_
 static obs_properties_t* lzs_source_properties(void* data)
 {
 	LzsSourceData* source_data = static_cast<LzsSourceData*>(data);
-	obs_properties_t *props = obs_properties_create();
-	
-	source_data->properties_.AddProperties(props);
 
+	/*
+	obs_properties_t *props = obs_properties_create();
+	obs_properties_add_path( props, "test_path", "test path", OBS_PATH_DIRECTORY, NULL, NULL );
 	return props;
+	*/
+
+	return source_data->GetSourceProps();
 }
 
 static void lzs_source_update(void *data, obs_data_t *settings)
 {
 	LzsSourceData* source_data = static_cast<LzsSourceData*>(data);
-	blog( LOG_DEBUG, "[Lazysplits] lzs_filter_update" );
-	
-	blog( LOG_DEBUG, "[lazysplits] test bool : %i", source_data->test_int );
-	source_data->properties_.UpdateProperties(settings);
-	
-	blog( LOG_DEBUG, "[lazysplits] test bool : %i", source_data->test_int );
-
-	/*
-	std::string new_shared_dir_root = obs_data_get_string( settings, SETTING_SHARED_DATA_PATH );
-	if( new_shared_dir_root != source_data->shared_dir_root_ ){
-		source_data->shared_dir_root_ = new_shared_dir_root;
-		blog( LOG_DEBUG, "[Lazysplits] new shared data directory root");
-	}
-	*/
-
+	source_data->OnSourceUpdate(settings);
 }
 
 static void lzs_source_save( void* data, obs_data_t* settings ){

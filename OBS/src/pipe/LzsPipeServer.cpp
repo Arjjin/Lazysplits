@@ -4,8 +4,9 @@
 
 namespace Lazysplits{
 
-LzsPipeServer::LzsPipeServer( std::string pipe_name, DWORD buffer_size, LzsMessageQueue<std::string>* cv_to_pipe_queue, LzsMessageQueue<std::string>* pipe_to_cv_queue  )
-	:LzsThread("Pipe server thread"), LzsObservable("Pipe")
+LzsPipeServer::LzsPipeServer( std::string pipe_name, DWORD buffer_size )
+	:LzsThread("Pipe server thread"),
+	 msg_queue_("Pipe queue")
 {
 	pipe_params_.name = pipe_name;
 	pipe_params_.open_mode = PIPE_ACCESS_DUPLEX | FILE_FLAG_FIRST_PIPE_INSTANCE | FILE_FLAG_OVERLAPPED; // duplex directional pipe, function will fail if pipe already exists, using overlapped IO
@@ -16,16 +17,15 @@ LzsPipeServer::LzsPipeServer( std::string pipe_name, DWORD buffer_size, LzsMessa
 	pipe_params_.default_timeout = 50000; //defaults to 50ms
 	pipe_params_.security_attributes = NULL; // security attributes (NULL for default)
 
-	cv_to_pipe_queue_ = cv_to_pipe_queue;
-	pipe_to_cv_queue_ = pipe_to_cv_queue;
-
 	pipe_state_ = PIPE_NOT_CREATED;
 }
+
+void LzsPipeServer::AssignCvThread( LzsCvThread* cv_thread ){ cv_thread_ = cv_thread; }
 
 void LzsPipeServer::ThreadFuncInit(){
 	LzsThread::ThreadFuncInit();
 	
-	cv_to_pipe_queue_->AttachObserver(this);
+	msg_queue_.AttachObserver(this);
 	CreatePipe();
 }
 
@@ -44,7 +44,7 @@ void* LzsPipeServer::ThreadFunc(){
 			break;
 			case PIPE_CONNECTED :
 				//allow only one read task at a time
-				if( !pipe_task_manager_->IsTaskInList(TASK_TYPE_READ) ){ pipe_task_manager_->AddReadTask( pipe_params_.in_buffer_size, pipe_to_cv_queue_ ); }
+				if( !pipe_task_manager_->IsTaskInList(TASK_TYPE_READ) ){ pipe_task_manager_->AddReadTask( pipe_params_.in_buffer_size, &msg_queue_ ); }
 				//if our cv_to_pipe queue has messages for us to write, do so
 				CheckWriteQueue();
 
@@ -67,11 +67,11 @@ void* LzsPipeServer::ThreadFunc(){
 		if( pipe_state_ != state_last_loop){
 			//connected
 			if( pipe_state_ == PIPE_CONNECTED ){
-				NotifyAll("Connected");
+				cv_thread_->MsgPipeConnected(true);
 			}
 			//disconnected
 			else if( state_last_loop == PIPE_CONNECTED ){
-				NotifyAll("Disconnected");
+				cv_thread_->MsgPipeConnected(false);
 			}
 		}
 		state_last_loop = pipe_state_;
@@ -89,7 +89,7 @@ void LzsPipeServer::ThreadFuncCleanup(){
 	}
 	pipe_state_ = PIPE_NOT_CREATED;
 	
-	cv_to_pipe_queue_->DetachObserver(this);
+	msg_queue_.DetachObserver(this);
 
 	LzsThread::ThreadFuncCleanup();
 }
@@ -106,7 +106,7 @@ bool LzsPipeServer::IsConnected(){
 	return pipe_state_ == PIPE_CONNECTED;
 }
 
-void LzsPipeServer::OnSubjectNotify( std::string subject_name, std::string subject_message ){
+void LzsPipeServer::OnSubjectNotify( const std::string& subject_name, const std::string& subject_message ){
 	if( pipe_state_ >= PIPE_CREATED ){
 		if( pipe_task_manager_->IsWaiting() ){ pipe_task_manager_->CancelWait(); }
 	}
@@ -146,9 +146,9 @@ void LzsPipeServer::CreatePipe(){
 }
 
 void LzsPipeServer::CheckWriteQueue(){
-	while( !cv_to_pipe_queue_->QueueIsEmpty() ){
-		pipe_task_manager_->AddWriteTask( cv_to_pipe_queue_->QueueFront() );
-		cv_to_pipe_queue_->QueuePop();
+	while( !msg_queue_.IsEmpty() ){
+		pipe_task_manager_->AddWriteTask( msg_queue_.Peek() );
+		msg_queue_.Pop();
 	}
 }
 

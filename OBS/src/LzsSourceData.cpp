@@ -1,35 +1,20 @@
 #include "LzsSourceData.h"
-#include <util\circlebuf.h>
+
+#include "util\LzsSharedData.h"
 
 namespace Lazysplits{
 
 LzsSourceData::LzsSourceData( obs_source_t* context )
 	:context_(context),
-	 cv_to_pipe_queue_("pipe queue"),
-	 pipe_to_cv_queue_("cv queue"),
 	 frame_buffer_(30),
-	 test_int(870),
-	 pipe_server_( "lazysplits_pipe", 8192, &cv_to_pipe_queue_, &pipe_to_cv_queue_ ),
-	 cv_thread_( &frame_buffer_, &cv_to_pipe_queue_, &pipe_to_cv_queue_ )
+	 pipe_server_( "lazysplits_pipe", 8192 ),
+	 cv_thread_( &frame_buffer_ )
 {
+	pipe_server_.AssignCvThread(&cv_thread_);
+	cv_thread_.AssignPipe(&pipe_server_);
 	frame_count_ = 0;
-	shared_dir_root_ = "";
-	
-	test_bool = true;
-	test_int = 870;
 
-	obs_data_t* settings =  obs_source_get_settings(context);
-	obs_data_set_default_bool( settings, "test_bool", test_bool );
-	properties_.AddBool( &test_bool, "test_bool", "A test bool" );
-	obs_data_set_default_int( settings, "test_int", test_int );
-	properties_.AddInt( &test_int, "test_int", "A test int slider", 0, 1000, 10 );
-
-	/*
-	attach cv thread as observer to pipe thread so it can get informed of connection status of pipe while sleeping
-	pretty ugly; bypasses what should be the communication bridge between the two (the message queues)
-	prevents serializing/deserializing needlessly and awkwardly constructing messages inside pipe that aren't actually IPC
-	*/
-	pipe_server_.AttachObserver(&cv_thread_);
+	InitProps(context);
 
 	pipe_server_.ThreadCreate();
 	cv_thread_.ThreadCreate();
@@ -46,18 +31,42 @@ LzsSourceData::~LzsSourceData(){
 	}
 }
 
-//void LzsSourceData::SourceUpdate( obs_data_t *settings ){
-	/*
-	std::string updated_shared_dir_root = obs_data_get_string( settings, SETTING_SHARED_DATA_PATH );
-	if( new_shared_dir_root != source_data->shared_dir_root_ ){
-		source_data->shared_dir_root_ = new_shared_dir_root;
-		blog( LOG_DEBUG, "[Lazysplits] new shared data directory root");
+void LzsSourceData::InitProps( obs_source_t* context ){
+	properties_.AddPath( &prop_shared_data_dir, "shared_data_path", "Shared data directory", OBS_PATH_DIRECTORY, "", "" );
+	
+	obs_data_t* source_settings = obs_source_get_settings(context);
+	properties_.SetPropertyDefaults(source_settings);
+	obs_data_release(source_settings);
+}
+
+void LzsSourceData::OnSourceCreate( obs_data_t* source_settings, obs_source_t* context ){
+	properties_.UpdateProperties(source_settings);
+}
+
+obs_properties_t* LzsSourceData::GetSourceProps(){
+	obs_properties_t *props = obs_properties_create();
+	properties_.AddProperties(props);
+
+	return props;
+
+}
+
+void LzsSourceData::OnSourceUpdate( obs_data_t *settings ){
+	std::string cur_shared_data_dir = prop_shared_data_dir;
+
+	properties_.UpdateProperties(settings);
+
+	if( prop_shared_data_dir != cur_shared_data_dir  ){
+		cv_thread_.MsgSetSharedDataPath(prop_shared_data_dir);
 	}
-	*/
-//}
+}
 
-void LzsSourceData::FrameTick(){ frame_count_++; }
+void LzsSourceData::OnSourceTick( float seconds ){ frame_count_++; }
 
-long LzsSourceData::FrameCount(){ return frame_count_; }
+void LzsSourceData::OnSourceFilterVideo( obs_source_frame* frame ){
+
+}
+
+long LzsSourceData::GetFrameCount(){ return frame_count_; }
 
 } //namespace Lazysplits

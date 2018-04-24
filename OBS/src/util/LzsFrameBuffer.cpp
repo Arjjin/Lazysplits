@@ -3,11 +3,14 @@
 namespace Lazysplits{
 
 LzsFrameBuffer::LzsFrameBuffer( int buf_max_count )
-	:LzsObservable("frame buf")
+	:LzsObservable("frame buf"),
+	 buf_max_count_(buf_max_count)
 {
-	buf_max_count_ = buf_max_count;
 	frame_count_ = 0;
+
 	circlebuf_init(&buf_);
+	//hopefully this will prevent any dynamic upsizing?
+	circlebuf_reserve( &buf_, sizeof(obs_source_frame*)*buf_max_count_ );
 	pthread_mutex_init( &buf_mutex_, NULL );
 }
 

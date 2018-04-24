@@ -23,6 +23,7 @@
     <ClInclude Include="src\cv\LzsCvThread.h" />
     <ClInclude Include="src\LzsObsProps.h" />
     <ClInclude Include="src\LzsSourceData.h" />
+    <ClInclude Include="src\pipe\LzsMessage.h" />
     <ClInclude Include="src\pipe\LzsMessageQueue.h" />
     <ClInclude Include="src\pipe\LzsPipeConstants.h" />
     <ClInclude Include="src\pipe\LzsPipeServer.h" />
@@ -31,6 +32,7 @@
     <ClInclude Include="src\util\LzsImgProc.h" />
     <ClInclude Include="src\util\LzsObserver.h" />
     <ClInclude Include="src\util\LzsProtoHelper.h" />
+    <ClInclude Include="src\util\LzsSharedData.h" />
     <ClInclude Include="src\util\LzsThread.h" />
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +41,7 @@
     <ClCompile Include="src\Lazysplits.cpp" />
     <ClCompile Include="src\LzsObsProps.cpp" />
     <ClCompile Include="src\LzsSourceData.cpp" />
+    <ClCompile Include="src\pipe\LzsMessage.cpp" />
     <ClCompile Include="src\pipe\LzsPipeServer.cpp" />
     <ClCompile Include="src\pipe\LzsPipeTaskBase.cpp" />
     <ClCompile Include="src\pipe\LzsPipeTaskConnect.cpp" />
@@ -49,6 +52,7 @@
     <ClCompile Include="src\util\LzsImgProc.cpp" />
     <ClCompile Include="src\util\LzsObserver.cpp" />
     <ClCompile Include="src\util\LzsProtoHelper.cpp" />
+    <ClCompile Include="src\util\LzsSharedData.cpp" />
     <ClCompile Include="src\util\LzsThread.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

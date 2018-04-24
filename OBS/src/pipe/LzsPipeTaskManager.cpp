@@ -36,7 +36,7 @@ void LzsPipeTaskManager::AddConnectTask(){
 	task_list_.push_back(connect_task);
 }
 
-void LzsPipeTaskManager::AddReadTask( int read_buf_size, LzsMessageQueue<std::string>* read_queue ){
+void LzsPipeTaskManager::AddReadTask( int read_buf_size, LzsMsgQueue<std::string>* read_queue ){
 	std::shared_ptr<LzsPipeTaskRead> read_task = std::make_shared<LzsPipeTaskRead>( owning_thread_name_, pipe_handle_, pipe_server_state_, read_buf_size, read_queue );
 	task_list_.push_back(read_task);
 }

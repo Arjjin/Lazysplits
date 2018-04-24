@@ -4,7 +4,7 @@
 
 namespace Lazysplits {
 
-LzsPipeTaskRead::LzsPipeTaskRead( std::string owning_thread_name, HANDLE pipe_handle, LZS_PIPE_STATE& pipe_server_state, int read_buf_size, LzsMessageQueue<std::string>* read_queue )
+LzsPipeTaskRead::LzsPipeTaskRead( std::string owning_thread_name, HANDLE pipe_handle, LZS_PIPE_STATE& pipe_server_state, int read_buf_size, LzsMsgQueue<std::string>* read_queue )
 	:LzsPipeTaskBase( owning_thread_name, pipe_handle, TASK_TYPE_READ, pipe_server_state )
 {
 	read_buf_ = std::vector<byte>(read_buf_size);
@@ -77,7 +77,7 @@ void LzsPipeTaskRead::HandleTaskResult(){
 		read_buf_.resize(bytes_transferred);
 		//make a string from our vec
 		std::string message_string( read_buf_.begin(), read_buf_.end() );
-		read_queue_->QueuePush(message_string);
+		read_queue_->Push(message_string);
 		task_status_ = TASK_STATUS_COMPLETED;
 	}
 
