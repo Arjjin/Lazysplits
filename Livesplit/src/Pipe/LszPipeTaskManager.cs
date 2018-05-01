@@ -43,11 +43,11 @@ namespace LiveSplit.Lazysplits.Pipe
 
             return false;
         }
-        public bool AddReadTask( NamedPipeClientStream pipeStream, LzsMessageQueue<byte[]> toLivesplitQueue )
+        public bool AddReadTask( NamedPipeClientStream pipeStream, LazysplitsComponent lzsComponent )
         {
             if( !IsTaskInList( PipeTaskType.Read ) )
             {
-                PipeTaskRead ReadTask = new PipeTaskRead( pipeStream, toLivesplitQueue );
+                PipeTaskRead ReadTask = new PipeTaskRead( pipeStream, lzsComponent );
                 if( ReadTask.StartTask() )
                 {
                     PipeTaskList.Add(ReadTask);

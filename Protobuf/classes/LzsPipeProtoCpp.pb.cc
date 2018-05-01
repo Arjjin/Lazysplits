@@ -76,24 +76,26 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CppMessage, message_id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CppMessage, message_type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CppMessage, pipe_connected_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CppMessage, target_index_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CppMessage, id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CppMessage, type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CppMessage, shared_data_dir_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CppMessage, game_name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CppMessage, target_name_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CppMessage, target_timestamp_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage, message_id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage, message_type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage, pipe_connected_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage, target_index_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage, id_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage, type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage, shared_data_dir_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage, game_name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage, target_name_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Lazysplits::Proto::CppMessage)},
-  { 10, -1, sizeof(::Lazysplits::Proto::CsMessage)},
+  { 11, -1, sizeof(::Lazysplits::Proto::CsMessage)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -123,21 +125,21 @@ void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n\025LzsPipeProtoCpp.proto\022\020Lazysplits.Prot"
-      "o\"\371\001\n\nCppMessage\022\022\n\nmessage_id\030\001 \001(\005\022>\n\014"
-      "message_type\030\002 \001(\0162(.Lazysplits.Proto.Cp"
-      "pMessage.MessageType\022\026\n\016pipe_connected\030\003"
-      " \001(\010\022\024\n\014target_index\030\004 \001(\r\022\030\n\020target_tim"
-      "estamp\030\005 \001(\004\"O\n\013MessageType\022\010\n\004NONE\020\000\022\r\n"
-      "\tPIPE_INFO\020\001\022\025\n\021REQUEST_CV_TARGET\020\002\022\020\n\014T"
-      "ARGET_FOUND\020\003\"\312\001\n\tCsMessage\022\022\n\nmessage_i"
-      "d\030\001 \001(\005\022=\n\014message_type\030\002 \001(\0162\'.Lazyspli"
-      "ts.Proto.CsMessage.MessageType\022\026\n\016pipe_c"
-      "onnected\030\003 \001(\010\022\024\n\014target_index\030\004 \001(\r\"<\n\013"
-      "MessageType\022\010\n\004NONE\020\000\022\r\n\tPIPE_INFO\020\001\022\024\n\020"
-      "SOURCE_CV_TARGET\020\002b\006proto3"
+      "o\"\352\001\n\nCppMessage\022\n\n\002id\030\001 \001(\005\0226\n\004type\030\002 \001"
+      "(\0162(.Lazysplits.Proto.CppMessage.Message"
+      "Type\022\027\n\017shared_data_dir\030\003 \001(\t\022\021\n\tgame_na"
+      "me\030\004 \001(\t\022\023\n\013target_name\030\005 \001(\r\022\030\n\020target_"
+      "timestamp\030\006 \001(\004\"=\n\013MessageType\022\010\n\004NONE\020\000"
+      "\022\022\n\016REQUEST_RESYNC\020\001\022\020\n\014TARGET_FOUND\020\002\"\313"
+      "\001\n\tCsMessage\022\n\n\002id\030\001 \001(\005\0225\n\004type\030\002 \001(\0162\'"
+      ".Lazysplits.Proto.CsMessage.MessageType\022"
+      "\027\n\017shared_data_dir\030\003 \001(\t\022\021\n\tgame_name\030\004 "
+      "\001(\t\022\023\n\013target_name\030\005 \001(\t\":\n\013MessageType\022"
+      "\010\n\004NONE\020\000\022\021\n\rCLEAR_TARGETS\020\001\022\016\n\nNEW_TARG"
+      "ET\020\002b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 506);
+      descriptor, 492);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "LzsPipeProtoCpp.proto", &protobuf_RegisterTypes);
 }
@@ -164,7 +166,6 @@ bool CppMessage_MessageType_IsValid(int value) {
     case 0:
     case 1:
     case 2:
-    case 3:
       return true;
     default:
       return false;
@@ -173,8 +174,7 @@ bool CppMessage_MessageType_IsValid(int value) {
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const CppMessage_MessageType CppMessage::NONE;
-const CppMessage_MessageType CppMessage::PIPE_INFO;
-const CppMessage_MessageType CppMessage::REQUEST_CV_TARGET;
+const CppMessage_MessageType CppMessage::REQUEST_RESYNC;
 const CppMessage_MessageType CppMessage::TARGET_FOUND;
 const CppMessage_MessageType CppMessage::MessageType_MIN;
 const CppMessage_MessageType CppMessage::MessageType_MAX;
@@ -197,8 +197,8 @@ bool CsMessage_MessageType_IsValid(int value) {
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const CsMessage_MessageType CsMessage::NONE;
-const CsMessage_MessageType CsMessage::PIPE_INFO;
-const CsMessage_MessageType CsMessage::SOURCE_CV_TARGET;
+const CsMessage_MessageType CsMessage::CLEAR_TARGETS;
+const CsMessage_MessageType CsMessage::NEW_TARGET;
 const CsMessage_MessageType CsMessage::MessageType_MIN;
 const CsMessage_MessageType CsMessage::MessageType_MAX;
 const int CsMessage::MessageType_ARRAYSIZE;
@@ -209,10 +209,11 @@ const int CsMessage::MessageType_ARRAYSIZE;
 void CppMessage::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int CppMessage::kMessageIdFieldNumber;
-const int CppMessage::kMessageTypeFieldNumber;
-const int CppMessage::kPipeConnectedFieldNumber;
-const int CppMessage::kTargetIndexFieldNumber;
+const int CppMessage::kIdFieldNumber;
+const int CppMessage::kTypeFieldNumber;
+const int CppMessage::kSharedDataDirFieldNumber;
+const int CppMessage::kGameNameFieldNumber;
+const int CppMessage::kTargetNameFieldNumber;
 const int CppMessage::kTargetTimestampFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -227,16 +228,26 @@ CppMessage::CppMessage(const CppMessage& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::memcpy(&message_id_, &from.message_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&target_timestamp_) -
-    reinterpret_cast<char*>(&message_id_)) + sizeof(target_timestamp_));
+  shared_data_dir_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.shared_data_dir().size() > 0) {
+    shared_data_dir_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.shared_data_dir_);
+  }
+  game_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.game_name().size() > 0) {
+    game_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.game_name_);
+  }
+  ::memcpy(&id_, &from.id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&target_name_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(target_name_));
   // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.CppMessage)
 }
 
 void CppMessage::SharedCtor() {
-  ::memset(&message_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&target_timestamp_) -
-      reinterpret_cast<char*>(&message_id_)) + sizeof(target_timestamp_));
+  shared_data_dir_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  game_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&target_name_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(target_name_));
 }
 
 CppMessage::~CppMessage() {
@@ -245,6 +256,8 @@ CppMessage::~CppMessage() {
 }
 
 void CppMessage::SharedDtor() {
+  shared_data_dir_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  game_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void CppMessage::SetCachedSize(int size) const {
@@ -267,9 +280,11 @@ void CppMessage::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&message_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&target_timestamp_) -
-      reinterpret_cast<char*>(&message_id_)) + sizeof(target_timestamp_));
+  shared_data_dir_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  game_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&target_name_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(target_name_));
   _internal_metadata_.Clear();
 }
 
@@ -283,21 +298,21 @@ bool CppMessage::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 message_id = 1;
+      // int32 id = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &message_id_)));
+                 input, &id_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // .Lazysplits.Proto.CppMessage.MessageType message_type = 2;
+      // .Lazysplits.Proto.CppMessage.MessageType type = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
@@ -305,45 +320,63 @@ bool CppMessage::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          set_message_type(static_cast< ::Lazysplits::Proto::CppMessage_MessageType >(value));
+          set_type(static_cast< ::Lazysplits::Proto::CppMessage_MessageType >(value));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // bool pipe_connected = 3;
+      // string shared_data_dir = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &pipe_connected_)));
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_shared_data_dir()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->shared_data_dir().data(), static_cast<int>(this->shared_data_dir().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "Lazysplits.Proto.CppMessage.shared_data_dir"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // uint32 target_index = 4;
+      // string game_name = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &target_index_)));
+            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_game_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->game_name().data(), static_cast<int>(this->game_name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "Lazysplits.Proto.CppMessage.game_name"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // uint64 target_timestamp = 5;
+      // uint32 target_name = 5;
       case 5: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &target_name_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint64 target_timestamp = 6;
+      case 6: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(48u /* 48 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
@@ -380,30 +413,45 @@ void CppMessage::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 message_id = 1;
-  if (this->message_id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->message_id(), output);
+  // int32 id = 1;
+  if (this->id() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->id(), output);
   }
 
-  // .Lazysplits.Proto.CppMessage.MessageType message_type = 2;
-  if (this->message_type() != 0) {
+  // .Lazysplits.Proto.CppMessage.MessageType type = 2;
+  if (this->type() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      2, this->message_type(), output);
+      2, this->type(), output);
   }
 
-  // bool pipe_connected = 3;
-  if (this->pipe_connected() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->pipe_connected(), output);
+  // string shared_data_dir = 3;
+  if (this->shared_data_dir().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->shared_data_dir().data(), static_cast<int>(this->shared_data_dir().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.CppMessage.shared_data_dir");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->shared_data_dir(), output);
   }
 
-  // uint32 target_index = 4;
-  if (this->target_index() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->target_index(), output);
+  // string game_name = 4;
+  if (this->game_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->game_name().data(), static_cast<int>(this->game_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.CppMessage.game_name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->game_name(), output);
   }
 
-  // uint64 target_timestamp = 5;
+  // uint32 target_name = 5;
+  if (this->target_name() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->target_name(), output);
+  }
+
+  // uint64 target_timestamp = 6;
   if (this->target_timestamp() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(5, this->target_timestamp(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(6, this->target_timestamp(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -420,30 +468,47 @@ void CppMessage::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 message_id = 1;
-  if (this->message_id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->message_id(), target);
+  // int32 id = 1;
+  if (this->id() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->id(), target);
   }
 
-  // .Lazysplits.Proto.CppMessage.MessageType message_type = 2;
-  if (this->message_type() != 0) {
+  // .Lazysplits.Proto.CppMessage.MessageType type = 2;
+  if (this->type() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      2, this->message_type(), target);
+      2, this->type(), target);
   }
 
-  // bool pipe_connected = 3;
-  if (this->pipe_connected() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->pipe_connected(), target);
+  // string shared_data_dir = 3;
+  if (this->shared_data_dir().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->shared_data_dir().data(), static_cast<int>(this->shared_data_dir().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.CppMessage.shared_data_dir");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->shared_data_dir(), target);
   }
 
-  // uint32 target_index = 4;
-  if (this->target_index() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->target_index(), target);
+  // string game_name = 4;
+  if (this->game_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->game_name().data(), static_cast<int>(this->game_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.CppMessage.game_name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->game_name(), target);
   }
 
-  // uint64 target_timestamp = 5;
+  // uint32 target_name = 5;
+  if (this->target_name() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->target_name(), target);
+  }
+
+  // uint64 target_timestamp = 6;
   if (this->target_timestamp() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(5, this->target_timestamp(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(6, this->target_timestamp(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -463,36 +528,45 @@ size_t CppMessage::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // int32 message_id = 1;
-  if (this->message_id() != 0) {
+  // string shared_data_dir = 3;
+  if (this->shared_data_dir().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->shared_data_dir());
+  }
+
+  // string game_name = 4;
+  if (this->game_name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->game_name());
+  }
+
+  // int32 id = 1;
+  if (this->id() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->message_id());
+        this->id());
   }
 
-  // .Lazysplits.Proto.CppMessage.MessageType message_type = 2;
-  if (this->message_type() != 0) {
+  // .Lazysplits.Proto.CppMessage.MessageType type = 2;
+  if (this->type() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->message_type());
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
   }
 
-  // bool pipe_connected = 3;
-  if (this->pipe_connected() != 0) {
-    total_size += 1 + 1;
-  }
-
-  // uint32 target_index = 4;
-  if (this->target_index() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->target_index());
-  }
-
-  // uint64 target_timestamp = 5;
+  // uint64 target_timestamp = 6;
   if (this->target_timestamp() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->target_timestamp());
+  }
+
+  // uint32 target_name = 5;
+  if (this->target_name() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->target_name());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -522,20 +596,25 @@ void CppMessage::MergeFrom(const CppMessage& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.message_id() != 0) {
-    set_message_id(from.message_id());
+  if (from.shared_data_dir().size() > 0) {
+
+    shared_data_dir_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.shared_data_dir_);
   }
-  if (from.message_type() != 0) {
-    set_message_type(from.message_type());
+  if (from.game_name().size() > 0) {
+
+    game_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.game_name_);
   }
-  if (from.pipe_connected() != 0) {
-    set_pipe_connected(from.pipe_connected());
+  if (from.id() != 0) {
+    set_id(from.id());
   }
-  if (from.target_index() != 0) {
-    set_target_index(from.target_index());
+  if (from.type() != 0) {
+    set_type(from.type());
   }
   if (from.target_timestamp() != 0) {
     set_target_timestamp(from.target_timestamp());
+  }
+  if (from.target_name() != 0) {
+    set_target_name(from.target_name());
   }
 }
 
@@ -563,11 +642,14 @@ void CppMessage::Swap(CppMessage* other) {
 }
 void CppMessage::InternalSwap(CppMessage* other) {
   using std::swap;
-  swap(message_id_, other->message_id_);
-  swap(message_type_, other->message_type_);
-  swap(pipe_connected_, other->pipe_connected_);
-  swap(target_index_, other->target_index_);
+  shared_data_dir_.Swap(&other->shared_data_dir_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  game_name_.Swap(&other->game_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(id_, other->id_);
+  swap(type_, other->type_);
   swap(target_timestamp_, other->target_timestamp_);
+  swap(target_name_, other->target_name_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
@@ -582,10 +664,11 @@ void CppMessage::InternalSwap(CppMessage* other) {
 void CsMessage::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int CsMessage::kMessageIdFieldNumber;
-const int CsMessage::kMessageTypeFieldNumber;
-const int CsMessage::kPipeConnectedFieldNumber;
-const int CsMessage::kTargetIndexFieldNumber;
+const int CsMessage::kIdFieldNumber;
+const int CsMessage::kTypeFieldNumber;
+const int CsMessage::kSharedDataDirFieldNumber;
+const int CsMessage::kGameNameFieldNumber;
+const int CsMessage::kTargetNameFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 CsMessage::CsMessage()
@@ -599,16 +682,31 @@ CsMessage::CsMessage(const CsMessage& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::memcpy(&message_id_, &from.message_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&target_index_) -
-    reinterpret_cast<char*>(&message_id_)) + sizeof(target_index_));
+  shared_data_dir_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.shared_data_dir().size() > 0) {
+    shared_data_dir_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.shared_data_dir_);
+  }
+  game_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.game_name().size() > 0) {
+    game_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.game_name_);
+  }
+  target_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.target_name().size() > 0) {
+    target_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.target_name_);
+  }
+  ::memcpy(&id_, &from.id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&type_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(type_));
   // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.CsMessage)
 }
 
 void CsMessage::SharedCtor() {
-  ::memset(&message_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&target_index_) -
-      reinterpret_cast<char*>(&message_id_)) + sizeof(target_index_));
+  shared_data_dir_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  game_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  target_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&type_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(type_));
 }
 
 CsMessage::~CsMessage() {
@@ -617,6 +715,9 @@ CsMessage::~CsMessage() {
 }
 
 void CsMessage::SharedDtor() {
+  shared_data_dir_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  game_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  target_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void CsMessage::SetCachedSize(int size) const {
@@ -639,9 +740,12 @@ void CsMessage::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&message_id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&target_index_) -
-      reinterpret_cast<char*>(&message_id_)) + sizeof(target_index_));
+  shared_data_dir_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  game_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  target_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&type_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(type_));
   _internal_metadata_.Clear();
 }
 
@@ -655,21 +759,21 @@ bool CsMessage::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 message_id = 1;
+      // int32 id = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &message_id_)));
+                 input, &id_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // .Lazysplits.Proto.CsMessage.MessageType message_type = 2;
+      // .Lazysplits.Proto.CsMessage.MessageType type = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
@@ -677,35 +781,55 @@ bool CsMessage::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          set_message_type(static_cast< ::Lazysplits::Proto::CsMessage_MessageType >(value));
+          set_type(static_cast< ::Lazysplits::Proto::CsMessage_MessageType >(value));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // bool pipe_connected = 3;
+      // string shared_data_dir = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &pipe_connected_)));
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_shared_data_dir()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->shared_data_dir().data(), static_cast<int>(this->shared_data_dir().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "Lazysplits.Proto.CsMessage.shared_data_dir"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // uint32 target_index = 4;
+      // string game_name = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_game_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->game_name().data(), static_cast<int>(this->game_name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "Lazysplits.Proto.CsMessage.game_name"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
 
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &target_index_)));
+      // string target_name = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_target_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->target_name().data(), static_cast<int>(this->target_name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "Lazysplits.Proto.CsMessage.target_name"));
         } else {
           goto handle_unusual;
         }
@@ -738,25 +862,45 @@ void CsMessage::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 message_id = 1;
-  if (this->message_id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->message_id(), output);
+  // int32 id = 1;
+  if (this->id() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->id(), output);
   }
 
-  // .Lazysplits.Proto.CsMessage.MessageType message_type = 2;
-  if (this->message_type() != 0) {
+  // .Lazysplits.Proto.CsMessage.MessageType type = 2;
+  if (this->type() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      2, this->message_type(), output);
+      2, this->type(), output);
   }
 
-  // bool pipe_connected = 3;
-  if (this->pipe_connected() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->pipe_connected(), output);
+  // string shared_data_dir = 3;
+  if (this->shared_data_dir().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->shared_data_dir().data(), static_cast<int>(this->shared_data_dir().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.CsMessage.shared_data_dir");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->shared_data_dir(), output);
   }
 
-  // uint32 target_index = 4;
-  if (this->target_index() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->target_index(), output);
+  // string game_name = 4;
+  if (this->game_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->game_name().data(), static_cast<int>(this->game_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.CsMessage.game_name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      4, this->game_name(), output);
+  }
+
+  // string target_name = 5;
+  if (this->target_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->target_name().data(), static_cast<int>(this->target_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.CsMessage.target_name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      5, this->target_name(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -773,25 +917,48 @@ void CsMessage::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 message_id = 1;
-  if (this->message_id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->message_id(), target);
+  // int32 id = 1;
+  if (this->id() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->id(), target);
   }
 
-  // .Lazysplits.Proto.CsMessage.MessageType message_type = 2;
-  if (this->message_type() != 0) {
+  // .Lazysplits.Proto.CsMessage.MessageType type = 2;
+  if (this->type() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      2, this->message_type(), target);
+      2, this->type(), target);
   }
 
-  // bool pipe_connected = 3;
-  if (this->pipe_connected() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->pipe_connected(), target);
+  // string shared_data_dir = 3;
+  if (this->shared_data_dir().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->shared_data_dir().data(), static_cast<int>(this->shared_data_dir().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.CsMessage.shared_data_dir");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->shared_data_dir(), target);
   }
 
-  // uint32 target_index = 4;
-  if (this->target_index() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->target_index(), target);
+  // string game_name = 4;
+  if (this->game_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->game_name().data(), static_cast<int>(this->game_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.CsMessage.game_name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->game_name(), target);
+  }
+
+  // string target_name = 5;
+  if (this->target_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->target_name().data(), static_cast<int>(this->target_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.CsMessage.target_name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        5, this->target_name(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -811,29 +978,38 @@ size_t CsMessage::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // int32 message_id = 1;
-  if (this->message_id() != 0) {
+  // string shared_data_dir = 3;
+  if (this->shared_data_dir().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->shared_data_dir());
+  }
+
+  // string game_name = 4;
+  if (this->game_name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->game_name());
+  }
+
+  // string target_name = 5;
+  if (this->target_name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->target_name());
+  }
+
+  // int32 id = 1;
+  if (this->id() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->message_id());
+        this->id());
   }
 
-  // .Lazysplits.Proto.CsMessage.MessageType message_type = 2;
-  if (this->message_type() != 0) {
+  // .Lazysplits.Proto.CsMessage.MessageType type = 2;
+  if (this->type() != 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->message_type());
-  }
-
-  // bool pipe_connected = 3;
-  if (this->pipe_connected() != 0) {
-    total_size += 1 + 1;
-  }
-
-  // uint32 target_index = 4;
-  if (this->target_index() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->target_index());
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -863,17 +1039,23 @@ void CsMessage::MergeFrom(const CsMessage& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.message_id() != 0) {
-    set_message_id(from.message_id());
+  if (from.shared_data_dir().size() > 0) {
+
+    shared_data_dir_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.shared_data_dir_);
   }
-  if (from.message_type() != 0) {
-    set_message_type(from.message_type());
+  if (from.game_name().size() > 0) {
+
+    game_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.game_name_);
   }
-  if (from.pipe_connected() != 0) {
-    set_pipe_connected(from.pipe_connected());
+  if (from.target_name().size() > 0) {
+
+    target_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.target_name_);
   }
-  if (from.target_index() != 0) {
-    set_target_index(from.target_index());
+  if (from.id() != 0) {
+    set_id(from.id());
+  }
+  if (from.type() != 0) {
+    set_type(from.type());
   }
 }
 
@@ -901,10 +1083,14 @@ void CsMessage::Swap(CsMessage* other) {
 }
 void CsMessage::InternalSwap(CsMessage* other) {
   using std::swap;
-  swap(message_id_, other->message_id_);
-  swap(message_type_, other->message_type_);
-  swap(pipe_connected_, other->pipe_connected_);
-  swap(target_index_, other->target_index_);
+  shared_data_dir_.Swap(&other->shared_data_dir_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  game_name_.Swap(&other->game_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  target_name_.Swap(&other->target_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(id_, other->id_);
+  swap(type_, other->type_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 

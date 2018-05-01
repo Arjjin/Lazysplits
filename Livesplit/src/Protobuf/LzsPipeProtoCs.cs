@@ -25,22 +25,22 @@ namespace LiveSplit.Lazysplits.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChRMenNQaXBlUHJvdG9Dcy5wcm90bxIaTGl2ZVNwbGl0LkxhenlzcGxpdHMu",
-            "UHJvdG8igwIKCkNwcE1lc3NhZ2USEgoKbWVzc2FnZV9pZBgBIAEoBRJICgxt",
-            "ZXNzYWdlX3R5cGUYAiABKA4yMi5MaXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90",
-            "by5DcHBNZXNzYWdlLk1lc3NhZ2VUeXBlEhYKDnBpcGVfY29ubmVjdGVkGAMg",
-            "ASgIEhQKDHRhcmdldF9pbmRleBgEIAEoDRIYChB0YXJnZXRfdGltZXN0YW1w",
-            "GAUgASgEIk8KC01lc3NhZ2VUeXBlEggKBE5PTkUQABINCglQSVBFX0lORk8Q",
-            "ARIVChFSRVFVRVNUX0NWX1RBUkdFVBACEhAKDFRBUkdFVF9GT1VORBADItQB",
-            "CglDc01lc3NhZ2USEgoKbWVzc2FnZV9pZBgBIAEoBRJHCgxtZXNzYWdlX3R5",
-            "cGUYAiABKA4yMS5MaXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90by5Dc01lc3Nh",
-            "Z2UuTWVzc2FnZVR5cGUSFgoOcGlwZV9jb25uZWN0ZWQYAyABKAgSFAoMdGFy",
-            "Z2V0X2luZGV4GAQgASgNIjwKC01lc3NhZ2VUeXBlEggKBE5PTkUQABINCglQ",
-            "SVBFX0lORk8QARIUChBTT1VSQ0VfQ1ZfVEFSR0VUEAJiBnByb3RvMw=="));
+            "UHJvdG8i9AEKCkNwcE1lc3NhZ2USCgoCaWQYASABKAUSQAoEdHlwZRgCIAEo",
+            "DjIyLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3RvLkNwcE1lc3NhZ2UuTWVz",
+            "c2FnZVR5cGUSFwoPc2hhcmVkX2RhdGFfZGlyGAMgASgJEhEKCWdhbWVfbmFt",
+            "ZRgEIAEoCRITCgt0YXJnZXRfbmFtZRgFIAEoDRIYChB0YXJnZXRfdGltZXN0",
+            "YW1wGAYgASgEIj0KC01lc3NhZ2VUeXBlEggKBE5PTkUQABISCg5SRVFVRVNU",
+            "X1JFU1lOQxABEhAKDFRBUkdFVF9GT1VORBACItUBCglDc01lc3NhZ2USCgoC",
+            "aWQYASABKAUSPwoEdHlwZRgCIAEoDjIxLkxpdmVTcGxpdC5MYXp5c3BsaXRz",
+            "LlByb3RvLkNzTWVzc2FnZS5NZXNzYWdlVHlwZRIXCg9zaGFyZWRfZGF0YV9k",
+            "aXIYAyABKAkSEQoJZ2FtZV9uYW1lGAQgASgJEhMKC3RhcmdldF9uYW1lGAUg",
+            "ASgJIjoKC01lc3NhZ2VUeXBlEggKBE5PTkUQABIRCg1DTEVBUl9UQVJHRVRT",
+            "EAESDgoKTkVXX1RBUkdFVBACYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.CppMessage), global::LiveSplit.Lazysplits.Proto.CppMessage.Parser, new[]{ "MessageId", "MessageType", "PipeConnected", "TargetIndex", "TargetTimestamp" }, null, new[]{ typeof(global::LiveSplit.Lazysplits.Proto.CppMessage.Types.MessageType) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.CsMessage), global::LiveSplit.Lazysplits.Proto.CsMessage.Parser, new[]{ "MessageId", "MessageType", "PipeConnected", "TargetIndex" }, null, new[]{ typeof(global::LiveSplit.Lazysplits.Proto.CsMessage.Types.MessageType) }, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.CppMessage), global::LiveSplit.Lazysplits.Proto.CppMessage.Parser, new[]{ "Id", "Type", "SharedDataDir", "GameName", "TargetName", "TargetTimestamp" }, null, new[]{ typeof(global::LiveSplit.Lazysplits.Proto.CppMessage.Types.MessageType) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.CsMessage), global::LiveSplit.Lazysplits.Proto.CsMessage.Parser, new[]{ "Id", "Type", "SharedDataDir", "GameName", "TargetName" }, null, new[]{ typeof(global::LiveSplit.Lazysplits.Proto.CsMessage.Types.MessageType) }, null)
           }));
     }
     #endregion
@@ -72,10 +72,11 @@ namespace LiveSplit.Lazysplits.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public CppMessage(CppMessage other) : this() {
-      messageId_ = other.messageId_;
-      messageType_ = other.messageType_;
-      pipeConnected_ = other.pipeConnected_;
-      targetIndex_ = other.targetIndex_;
+      id_ = other.id_;
+      type_ = other.type_;
+      sharedDataDir_ = other.sharedDataDir_;
+      gameName_ = other.gameName_;
+      targetName_ = other.targetName_;
       targetTimestamp_ = other.targetTimestamp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -85,52 +86,63 @@ namespace LiveSplit.Lazysplits.Proto {
       return new CppMessage(this);
     }
 
-    /// <summary>Field number for the "message_id" field.</summary>
-    public const int MessageIdFieldNumber = 1;
-    private int messageId_;
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int MessageId {
-      get { return messageId_; }
+    public int Id {
+      get { return id_; }
       set {
-        messageId_ = value;
+        id_ = value;
       }
     }
 
-    /// <summary>Field number for the "message_type" field.</summary>
-    public const int MessageTypeFieldNumber = 2;
-    private global::LiveSplit.Lazysplits.Proto.CppMessage.Types.MessageType messageType_ = 0;
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 2;
+    private global::LiveSplit.Lazysplits.Proto.CppMessage.Types.MessageType type_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::LiveSplit.Lazysplits.Proto.CppMessage.Types.MessageType MessageType {
-      get { return messageType_; }
+    public global::LiveSplit.Lazysplits.Proto.CppMessage.Types.MessageType Type {
+      get { return type_; }
       set {
-        messageType_ = value;
+        type_ = value;
       }
     }
 
-    /// <summary>Field number for the "pipe_connected" field.</summary>
-    public const int PipeConnectedFieldNumber = 3;
-    private bool pipeConnected_;
+    /// <summary>Field number for the "shared_data_dir" field.</summary>
+    public const int SharedDataDirFieldNumber = 3;
+    private string sharedDataDir_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool PipeConnected {
-      get { return pipeConnected_; }
+    public string SharedDataDir {
+      get { return sharedDataDir_; }
       set {
-        pipeConnected_ = value;
+        sharedDataDir_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "target_index" field.</summary>
-    public const int TargetIndexFieldNumber = 4;
-    private uint targetIndex_;
+    /// <summary>Field number for the "game_name" field.</summary>
+    public const int GameNameFieldNumber = 4;
+    private string gameName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint TargetIndex {
-      get { return targetIndex_; }
+    public string GameName {
+      get { return gameName_; }
       set {
-        targetIndex_ = value;
+        gameName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "target_name" field.</summary>
+    public const int TargetNameFieldNumber = 5;
+    private uint targetName_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint TargetName {
+      get { return targetName_; }
+      set {
+        targetName_ = value;
       }
     }
 
     /// <summary>Field number for the "target_timestamp" field.</summary>
-    public const int TargetTimestampFieldNumber = 5;
+    public const int TargetTimestampFieldNumber = 6;
     private ulong targetTimestamp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ulong TargetTimestamp {
@@ -153,10 +165,11 @@ namespace LiveSplit.Lazysplits.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (MessageId != other.MessageId) return false;
-      if (MessageType != other.MessageType) return false;
-      if (PipeConnected != other.PipeConnected) return false;
-      if (TargetIndex != other.TargetIndex) return false;
+      if (Id != other.Id) return false;
+      if (Type != other.Type) return false;
+      if (SharedDataDir != other.SharedDataDir) return false;
+      if (GameName != other.GameName) return false;
+      if (TargetName != other.TargetName) return false;
       if (TargetTimestamp != other.TargetTimestamp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -164,10 +177,11 @@ namespace LiveSplit.Lazysplits.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (MessageId != 0) hash ^= MessageId.GetHashCode();
-      if (MessageType != 0) hash ^= MessageType.GetHashCode();
-      if (PipeConnected != false) hash ^= PipeConnected.GetHashCode();
-      if (TargetIndex != 0) hash ^= TargetIndex.GetHashCode();
+      if (Id != 0) hash ^= Id.GetHashCode();
+      if (Type != 0) hash ^= Type.GetHashCode();
+      if (SharedDataDir.Length != 0) hash ^= SharedDataDir.GetHashCode();
+      if (GameName.Length != 0) hash ^= GameName.GetHashCode();
+      if (TargetName != 0) hash ^= TargetName.GetHashCode();
       if (TargetTimestamp != 0UL) hash ^= TargetTimestamp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -182,24 +196,28 @@ namespace LiveSplit.Lazysplits.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (MessageId != 0) {
+      if (Id != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(MessageId);
+        output.WriteInt32(Id);
       }
-      if (MessageType != 0) {
+      if (Type != 0) {
         output.WriteRawTag(16);
-        output.WriteEnum((int) MessageType);
+        output.WriteEnum((int) Type);
       }
-      if (PipeConnected != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(PipeConnected);
+      if (SharedDataDir.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(SharedDataDir);
       }
-      if (TargetIndex != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(TargetIndex);
+      if (GameName.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(GameName);
+      }
+      if (TargetName != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(TargetName);
       }
       if (TargetTimestamp != 0UL) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(48);
         output.WriteUInt64(TargetTimestamp);
       }
       if (_unknownFields != null) {
@@ -210,17 +228,20 @@ namespace LiveSplit.Lazysplits.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (MessageId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MessageId);
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
       }
-      if (MessageType != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MessageType);
+      if (Type != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
-      if (PipeConnected != false) {
-        size += 1 + 1;
+      if (SharedDataDir.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SharedDataDir);
       }
-      if (TargetIndex != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TargetIndex);
+      if (GameName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(GameName);
+      }
+      if (TargetName != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TargetName);
       }
       if (TargetTimestamp != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(TargetTimestamp);
@@ -236,17 +257,20 @@ namespace LiveSplit.Lazysplits.Proto {
       if (other == null) {
         return;
       }
-      if (other.MessageId != 0) {
-        MessageId = other.MessageId;
+      if (other.Id != 0) {
+        Id = other.Id;
       }
-      if (other.MessageType != 0) {
-        MessageType = other.MessageType;
+      if (other.Type != 0) {
+        Type = other.Type;
       }
-      if (other.PipeConnected != false) {
-        PipeConnected = other.PipeConnected;
+      if (other.SharedDataDir.Length != 0) {
+        SharedDataDir = other.SharedDataDir;
       }
-      if (other.TargetIndex != 0) {
-        TargetIndex = other.TargetIndex;
+      if (other.GameName.Length != 0) {
+        GameName = other.GameName;
+      }
+      if (other.TargetName != 0) {
+        TargetName = other.TargetName;
       }
       if (other.TargetTimestamp != 0UL) {
         TargetTimestamp = other.TargetTimestamp;
@@ -263,22 +287,26 @@ namespace LiveSplit.Lazysplits.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            MessageId = input.ReadInt32();
+            Id = input.ReadInt32();
             break;
           }
           case 16: {
-            messageType_ = (global::LiveSplit.Lazysplits.Proto.CppMessage.Types.MessageType) input.ReadEnum();
+            type_ = (global::LiveSplit.Lazysplits.Proto.CppMessage.Types.MessageType) input.ReadEnum();
             break;
           }
-          case 24: {
-            PipeConnected = input.ReadBool();
+          case 26: {
+            SharedDataDir = input.ReadString();
             break;
           }
-          case 32: {
-            TargetIndex = input.ReadUInt32();
+          case 34: {
+            GameName = input.ReadString();
             break;
           }
           case 40: {
+            TargetName = input.ReadUInt32();
+            break;
+          }
+          case 48: {
             TargetTimestamp = input.ReadUInt64();
             break;
           }
@@ -292,9 +320,8 @@ namespace LiveSplit.Lazysplits.Proto {
     public static partial class Types {
       public enum MessageType {
         [pbr::OriginalName("NONE")] None = 0,
-        [pbr::OriginalName("PIPE_INFO")] PipeInfo = 1,
-        [pbr::OriginalName("REQUEST_CV_TARGET")] RequestCvTarget = 2,
-        [pbr::OriginalName("TARGET_FOUND")] TargetFound = 3,
+        [pbr::OriginalName("REQUEST_RESYNC")] RequestResync = 1,
+        [pbr::OriginalName("TARGET_FOUND")] TargetFound = 2,
       }
 
     }
@@ -327,10 +354,11 @@ namespace LiveSplit.Lazysplits.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public CsMessage(CsMessage other) : this() {
-      messageId_ = other.messageId_;
-      messageType_ = other.messageType_;
-      pipeConnected_ = other.pipeConnected_;
-      targetIndex_ = other.targetIndex_;
+      id_ = other.id_;
+      type_ = other.type_;
+      sharedDataDir_ = other.sharedDataDir_;
+      gameName_ = other.gameName_;
+      targetName_ = other.targetName_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -339,47 +367,58 @@ namespace LiveSplit.Lazysplits.Proto {
       return new CsMessage(this);
     }
 
-    /// <summary>Field number for the "message_id" field.</summary>
-    public const int MessageIdFieldNumber = 1;
-    private int messageId_;
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int MessageId {
-      get { return messageId_; }
+    public int Id {
+      get { return id_; }
       set {
-        messageId_ = value;
+        id_ = value;
       }
     }
 
-    /// <summary>Field number for the "message_type" field.</summary>
-    public const int MessageTypeFieldNumber = 2;
-    private global::LiveSplit.Lazysplits.Proto.CsMessage.Types.MessageType messageType_ = 0;
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 2;
+    private global::LiveSplit.Lazysplits.Proto.CsMessage.Types.MessageType type_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::LiveSplit.Lazysplits.Proto.CsMessage.Types.MessageType MessageType {
-      get { return messageType_; }
+    public global::LiveSplit.Lazysplits.Proto.CsMessage.Types.MessageType Type {
+      get { return type_; }
       set {
-        messageType_ = value;
+        type_ = value;
       }
     }
 
-    /// <summary>Field number for the "pipe_connected" field.</summary>
-    public const int PipeConnectedFieldNumber = 3;
-    private bool pipeConnected_;
+    /// <summary>Field number for the "shared_data_dir" field.</summary>
+    public const int SharedDataDirFieldNumber = 3;
+    private string sharedDataDir_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool PipeConnected {
-      get { return pipeConnected_; }
+    public string SharedDataDir {
+      get { return sharedDataDir_; }
       set {
-        pipeConnected_ = value;
+        sharedDataDir_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "target_index" field.</summary>
-    public const int TargetIndexFieldNumber = 4;
-    private uint targetIndex_;
+    /// <summary>Field number for the "game_name" field.</summary>
+    public const int GameNameFieldNumber = 4;
+    private string gameName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint TargetIndex {
-      get { return targetIndex_; }
+    public string GameName {
+      get { return gameName_; }
       set {
-        targetIndex_ = value;
+        gameName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "target_name" field.</summary>
+    public const int TargetNameFieldNumber = 5;
+    private string targetName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string TargetName {
+      get { return targetName_; }
+      set {
+        targetName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -396,20 +435,22 @@ namespace LiveSplit.Lazysplits.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (MessageId != other.MessageId) return false;
-      if (MessageType != other.MessageType) return false;
-      if (PipeConnected != other.PipeConnected) return false;
-      if (TargetIndex != other.TargetIndex) return false;
+      if (Id != other.Id) return false;
+      if (Type != other.Type) return false;
+      if (SharedDataDir != other.SharedDataDir) return false;
+      if (GameName != other.GameName) return false;
+      if (TargetName != other.TargetName) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (MessageId != 0) hash ^= MessageId.GetHashCode();
-      if (MessageType != 0) hash ^= MessageType.GetHashCode();
-      if (PipeConnected != false) hash ^= PipeConnected.GetHashCode();
-      if (TargetIndex != 0) hash ^= TargetIndex.GetHashCode();
+      if (Id != 0) hash ^= Id.GetHashCode();
+      if (Type != 0) hash ^= Type.GetHashCode();
+      if (SharedDataDir.Length != 0) hash ^= SharedDataDir.GetHashCode();
+      if (GameName.Length != 0) hash ^= GameName.GetHashCode();
+      if (TargetName.Length != 0) hash ^= TargetName.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -423,21 +464,25 @@ namespace LiveSplit.Lazysplits.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (MessageId != 0) {
+      if (Id != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(MessageId);
+        output.WriteInt32(Id);
       }
-      if (MessageType != 0) {
+      if (Type != 0) {
         output.WriteRawTag(16);
-        output.WriteEnum((int) MessageType);
+        output.WriteEnum((int) Type);
       }
-      if (PipeConnected != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(PipeConnected);
+      if (SharedDataDir.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(SharedDataDir);
       }
-      if (TargetIndex != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(TargetIndex);
+      if (GameName.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(GameName);
+      }
+      if (TargetName.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(TargetName);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -447,17 +492,20 @@ namespace LiveSplit.Lazysplits.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (MessageId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MessageId);
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
       }
-      if (MessageType != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MessageType);
+      if (Type != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
-      if (PipeConnected != false) {
-        size += 1 + 1;
+      if (SharedDataDir.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SharedDataDir);
       }
-      if (TargetIndex != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TargetIndex);
+      if (GameName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(GameName);
+      }
+      if (TargetName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(TargetName);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -470,17 +518,20 @@ namespace LiveSplit.Lazysplits.Proto {
       if (other == null) {
         return;
       }
-      if (other.MessageId != 0) {
-        MessageId = other.MessageId;
+      if (other.Id != 0) {
+        Id = other.Id;
       }
-      if (other.MessageType != 0) {
-        MessageType = other.MessageType;
+      if (other.Type != 0) {
+        Type = other.Type;
       }
-      if (other.PipeConnected != false) {
-        PipeConnected = other.PipeConnected;
+      if (other.SharedDataDir.Length != 0) {
+        SharedDataDir = other.SharedDataDir;
       }
-      if (other.TargetIndex != 0) {
-        TargetIndex = other.TargetIndex;
+      if (other.GameName.Length != 0) {
+        GameName = other.GameName;
+      }
+      if (other.TargetName.Length != 0) {
+        TargetName = other.TargetName;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -494,19 +545,23 @@ namespace LiveSplit.Lazysplits.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            MessageId = input.ReadInt32();
+            Id = input.ReadInt32();
             break;
           }
           case 16: {
-            messageType_ = (global::LiveSplit.Lazysplits.Proto.CsMessage.Types.MessageType) input.ReadEnum();
+            type_ = (global::LiveSplit.Lazysplits.Proto.CsMessage.Types.MessageType) input.ReadEnum();
             break;
           }
-          case 24: {
-            PipeConnected = input.ReadBool();
+          case 26: {
+            SharedDataDir = input.ReadString();
             break;
           }
-          case 32: {
-            TargetIndex = input.ReadUInt32();
+          case 34: {
+            GameName = input.ReadString();
+            break;
+          }
+          case 42: {
+            TargetName = input.ReadString();
             break;
           }
         }
@@ -519,8 +574,8 @@ namespace LiveSplit.Lazysplits.Proto {
     public static partial class Types {
       public enum MessageType {
         [pbr::OriginalName("NONE")] None = 0,
-        [pbr::OriginalName("PIPE_INFO")] PipeInfo = 1,
-        [pbr::OriginalName("SOURCE_CV_TARGET")] SourceCvTarget = 2,
+        [pbr::OriginalName("CLEAR_TARGETS")] ClearTargets = 1,
+        [pbr::OriginalName("NEW_TARGET")] NewTarget = 2,
       }
 
     }

@@ -10,6 +10,9 @@
 
 namespace Lazysplits{
 
+//forward declaration
+class LzsCvThread;
+
 class LzsPipeTaskBase{
 	public :
 		LzsPipeTaskBase( std::string owning_thread_name, HANDLE pipe_handle, LZS_PIPE_TASK_TYPE task_type, LZS_PIPE_STATE& pipe_server_state );
@@ -43,13 +46,13 @@ class LzsPipeTaskConnect : public LzsPipeTaskBase{
 
 class LzsPipeTaskRead : public LzsPipeTaskBase{
 	public :
-		LzsPipeTaskRead( std::string owning_thread_name, HANDLE pipe_handle, LZS_PIPE_STATE& pipe_server_state, int read_buf_size, LzsMsgQueue<std::string>* read_queue );
+		LzsPipeTaskRead( std::string owning_thread_name, HANDLE pipe_handle, LZS_PIPE_STATE& pipe_server_state, int read_buf_size, LzsCvThread* cv_thread );
 		void StartTask()override;
 		void HandleTaskResult()override;
 	private :
 		//use vector for a safe runtime sized array, and pass it as a raw array with data()
 		std::vector<byte> read_buf_;
-		LzsMsgQueue<std::string>* read_queue_;
+		LzsCvThread* cv_thread_;
 };
 
 class LzsPipeTaskWrite : public LzsPipeTaskBase{
@@ -67,7 +70,7 @@ class LzsPipeTaskManager{
 		~LzsPipeTaskManager();
 		
 		void AddConnectTask();
-		void AddReadTask( int read_buf_size, LzsMsgQueue<std::string>* read_queue );
+		void AddReadTask( int read_buf_size, LzsCvThread* cv_thread );
 		void AddWriteTask( std::string serialized_protobuf );
 		void StartTasks();
 		void WaitOnTasks();

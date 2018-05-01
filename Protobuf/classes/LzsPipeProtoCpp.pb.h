@@ -67,9 +67,8 @@ namespace Proto {
 
 enum CppMessage_MessageType {
   CppMessage_MessageType_NONE = 0,
-  CppMessage_MessageType_PIPE_INFO = 1,
-  CppMessage_MessageType_REQUEST_CV_TARGET = 2,
-  CppMessage_MessageType_TARGET_FOUND = 3,
+  CppMessage_MessageType_REQUEST_RESYNC = 1,
+  CppMessage_MessageType_TARGET_FOUND = 2,
   CppMessage_MessageType_CppMessage_MessageType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   CppMessage_MessageType_CppMessage_MessageType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
@@ -90,14 +89,14 @@ inline bool CppMessage_MessageType_Parse(
 }
 enum CsMessage_MessageType {
   CsMessage_MessageType_NONE = 0,
-  CsMessage_MessageType_PIPE_INFO = 1,
-  CsMessage_MessageType_SOURCE_CV_TARGET = 2,
+  CsMessage_MessageType_CLEAR_TARGETS = 1,
+  CsMessage_MessageType_NEW_TARGET = 2,
   CsMessage_MessageType_CsMessage_MessageType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   CsMessage_MessageType_CsMessage_MessageType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool CsMessage_MessageType_IsValid(int value);
 const CsMessage_MessageType CsMessage_MessageType_MessageType_MIN = CsMessage_MessageType_NONE;
-const CsMessage_MessageType CsMessage_MessageType_MessageType_MAX = CsMessage_MessageType_SOURCE_CV_TARGET;
+const CsMessage_MessageType CsMessage_MessageType_MessageType_MAX = CsMessage_MessageType_NEW_TARGET;
 const int CsMessage_MessageType_MessageType_ARRAYSIZE = CsMessage_MessageType_MessageType_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* CsMessage_MessageType_descriptor();
@@ -200,10 +199,8 @@ class CppMessage : public ::google::protobuf::Message /* @@protoc_insertion_poin
   typedef CppMessage_MessageType MessageType;
   static const MessageType NONE =
     CppMessage_MessageType_NONE;
-  static const MessageType PIPE_INFO =
-    CppMessage_MessageType_PIPE_INFO;
-  static const MessageType REQUEST_CV_TARGET =
-    CppMessage_MessageType_REQUEST_CV_TARGET;
+  static const MessageType REQUEST_RESYNC =
+    CppMessage_MessageType_REQUEST_RESYNC;
   static const MessageType TARGET_FOUND =
     CppMessage_MessageType_TARGET_FOUND;
   static inline bool MessageType_IsValid(int value) {
@@ -229,45 +226,68 @@ class CppMessage : public ::google::protobuf::Message /* @@protoc_insertion_poin
 
   // accessors -------------------------------------------------------
 
-  // int32 message_id = 1;
-  void clear_message_id();
-  static const int kMessageIdFieldNumber = 1;
-  ::google::protobuf::int32 message_id() const;
-  void set_message_id(::google::protobuf::int32 value);
+  // string shared_data_dir = 3;
+  void clear_shared_data_dir();
+  static const int kSharedDataDirFieldNumber = 3;
+  const ::std::string& shared_data_dir() const;
+  void set_shared_data_dir(const ::std::string& value);
+  #if LANG_CXX11
+  void set_shared_data_dir(::std::string&& value);
+  #endif
+  void set_shared_data_dir(const char* value);
+  void set_shared_data_dir(const char* value, size_t size);
+  ::std::string* mutable_shared_data_dir();
+  ::std::string* release_shared_data_dir();
+  void set_allocated_shared_data_dir(::std::string* shared_data_dir);
 
-  // .Lazysplits.Proto.CppMessage.MessageType message_type = 2;
-  void clear_message_type();
-  static const int kMessageTypeFieldNumber = 2;
-  ::Lazysplits::Proto::CppMessage_MessageType message_type() const;
-  void set_message_type(::Lazysplits::Proto::CppMessage_MessageType value);
+  // string game_name = 4;
+  void clear_game_name();
+  static const int kGameNameFieldNumber = 4;
+  const ::std::string& game_name() const;
+  void set_game_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_game_name(::std::string&& value);
+  #endif
+  void set_game_name(const char* value);
+  void set_game_name(const char* value, size_t size);
+  ::std::string* mutable_game_name();
+  ::std::string* release_game_name();
+  void set_allocated_game_name(::std::string* game_name);
 
-  // bool pipe_connected = 3;
-  void clear_pipe_connected();
-  static const int kPipeConnectedFieldNumber = 3;
-  bool pipe_connected() const;
-  void set_pipe_connected(bool value);
+  // int32 id = 1;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  ::google::protobuf::int32 id() const;
+  void set_id(::google::protobuf::int32 value);
 
-  // uint32 target_index = 4;
-  void clear_target_index();
-  static const int kTargetIndexFieldNumber = 4;
-  ::google::protobuf::uint32 target_index() const;
-  void set_target_index(::google::protobuf::uint32 value);
+  // .Lazysplits.Proto.CppMessage.MessageType type = 2;
+  void clear_type();
+  static const int kTypeFieldNumber = 2;
+  ::Lazysplits::Proto::CppMessage_MessageType type() const;
+  void set_type(::Lazysplits::Proto::CppMessage_MessageType value);
 
-  // uint64 target_timestamp = 5;
+  // uint64 target_timestamp = 6;
   void clear_target_timestamp();
-  static const int kTargetTimestampFieldNumber = 5;
+  static const int kTargetTimestampFieldNumber = 6;
   ::google::protobuf::uint64 target_timestamp() const;
   void set_target_timestamp(::google::protobuf::uint64 value);
+
+  // uint32 target_name = 5;
+  void clear_target_name();
+  static const int kTargetNameFieldNumber = 5;
+  ::google::protobuf::uint32 target_name() const;
+  void set_target_name(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:Lazysplits.Proto.CppMessage)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::int32 message_id_;
-  int message_type_;
-  bool pipe_connected_;
-  ::google::protobuf::uint32 target_index_;
+  ::google::protobuf::internal::ArenaStringPtr shared_data_dir_;
+  ::google::protobuf::internal::ArenaStringPtr game_name_;
+  ::google::protobuf::int32 id_;
+  int type_;
   ::google::protobuf::uint64 target_timestamp_;
+  ::google::protobuf::uint32 target_name_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_LzsPipeProtoCpp_2eproto::TableStruct;
 };
@@ -361,10 +381,10 @@ class CsMessage : public ::google::protobuf::Message /* @@protoc_insertion_point
   typedef CsMessage_MessageType MessageType;
   static const MessageType NONE =
     CsMessage_MessageType_NONE;
-  static const MessageType PIPE_INFO =
-    CsMessage_MessageType_PIPE_INFO;
-  static const MessageType SOURCE_CV_TARGET =
-    CsMessage_MessageType_SOURCE_CV_TARGET;
+  static const MessageType CLEAR_TARGETS =
+    CsMessage_MessageType_CLEAR_TARGETS;
+  static const MessageType NEW_TARGET =
+    CsMessage_MessageType_NEW_TARGET;
   static inline bool MessageType_IsValid(int value) {
     return CsMessage_MessageType_IsValid(value);
   }
@@ -388,38 +408,69 @@ class CsMessage : public ::google::protobuf::Message /* @@protoc_insertion_point
 
   // accessors -------------------------------------------------------
 
-  // int32 message_id = 1;
-  void clear_message_id();
-  static const int kMessageIdFieldNumber = 1;
-  ::google::protobuf::int32 message_id() const;
-  void set_message_id(::google::protobuf::int32 value);
+  // string shared_data_dir = 3;
+  void clear_shared_data_dir();
+  static const int kSharedDataDirFieldNumber = 3;
+  const ::std::string& shared_data_dir() const;
+  void set_shared_data_dir(const ::std::string& value);
+  #if LANG_CXX11
+  void set_shared_data_dir(::std::string&& value);
+  #endif
+  void set_shared_data_dir(const char* value);
+  void set_shared_data_dir(const char* value, size_t size);
+  ::std::string* mutable_shared_data_dir();
+  ::std::string* release_shared_data_dir();
+  void set_allocated_shared_data_dir(::std::string* shared_data_dir);
 
-  // .Lazysplits.Proto.CsMessage.MessageType message_type = 2;
-  void clear_message_type();
-  static const int kMessageTypeFieldNumber = 2;
-  ::Lazysplits::Proto::CsMessage_MessageType message_type() const;
-  void set_message_type(::Lazysplits::Proto::CsMessage_MessageType value);
+  // string game_name = 4;
+  void clear_game_name();
+  static const int kGameNameFieldNumber = 4;
+  const ::std::string& game_name() const;
+  void set_game_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_game_name(::std::string&& value);
+  #endif
+  void set_game_name(const char* value);
+  void set_game_name(const char* value, size_t size);
+  ::std::string* mutable_game_name();
+  ::std::string* release_game_name();
+  void set_allocated_game_name(::std::string* game_name);
 
-  // bool pipe_connected = 3;
-  void clear_pipe_connected();
-  static const int kPipeConnectedFieldNumber = 3;
-  bool pipe_connected() const;
-  void set_pipe_connected(bool value);
+  // string target_name = 5;
+  void clear_target_name();
+  static const int kTargetNameFieldNumber = 5;
+  const ::std::string& target_name() const;
+  void set_target_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_target_name(::std::string&& value);
+  #endif
+  void set_target_name(const char* value);
+  void set_target_name(const char* value, size_t size);
+  ::std::string* mutable_target_name();
+  ::std::string* release_target_name();
+  void set_allocated_target_name(::std::string* target_name);
 
-  // uint32 target_index = 4;
-  void clear_target_index();
-  static const int kTargetIndexFieldNumber = 4;
-  ::google::protobuf::uint32 target_index() const;
-  void set_target_index(::google::protobuf::uint32 value);
+  // int32 id = 1;
+  void clear_id();
+  static const int kIdFieldNumber = 1;
+  ::google::protobuf::int32 id() const;
+  void set_id(::google::protobuf::int32 value);
+
+  // .Lazysplits.Proto.CsMessage.MessageType type = 2;
+  void clear_type();
+  static const int kTypeFieldNumber = 2;
+  ::Lazysplits::Proto::CsMessage_MessageType type() const;
+  void set_type(::Lazysplits::Proto::CsMessage_MessageType value);
 
   // @@protoc_insertion_point(class_scope:Lazysplits.Proto.CsMessage)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::int32 message_id_;
-  int message_type_;
-  bool pipe_connected_;
-  ::google::protobuf::uint32 target_index_;
+  ::google::protobuf::internal::ArenaStringPtr shared_data_dir_;
+  ::google::protobuf::internal::ArenaStringPtr game_name_;
+  ::google::protobuf::internal::ArenaStringPtr target_name_;
+  ::google::protobuf::int32 id_;
+  int type_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_LzsPipeProtoCpp_2eproto::TableStruct;
 };
@@ -434,63 +485,155 @@ class CsMessage : public ::google::protobuf::Message /* @@protoc_insertion_point
 #endif  // __GNUC__
 // CppMessage
 
-// int32 message_id = 1;
-inline void CppMessage::clear_message_id() {
-  message_id_ = 0;
+// int32 id = 1;
+inline void CppMessage::clear_id() {
+  id_ = 0;
 }
-inline ::google::protobuf::int32 CppMessage::message_id() const {
-  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CppMessage.message_id)
-  return message_id_;
+inline ::google::protobuf::int32 CppMessage::id() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CppMessage.id)
+  return id_;
 }
-inline void CppMessage::set_message_id(::google::protobuf::int32 value) {
+inline void CppMessage::set_id(::google::protobuf::int32 value) {
   
-  message_id_ = value;
-  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CppMessage.message_id)
+  id_ = value;
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CppMessage.id)
 }
 
-// .Lazysplits.Proto.CppMessage.MessageType message_type = 2;
-inline void CppMessage::clear_message_type() {
-  message_type_ = 0;
+// .Lazysplits.Proto.CppMessage.MessageType type = 2;
+inline void CppMessage::clear_type() {
+  type_ = 0;
 }
-inline ::Lazysplits::Proto::CppMessage_MessageType CppMessage::message_type() const {
-  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CppMessage.message_type)
-  return static_cast< ::Lazysplits::Proto::CppMessage_MessageType >(message_type_);
+inline ::Lazysplits::Proto::CppMessage_MessageType CppMessage::type() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CppMessage.type)
+  return static_cast< ::Lazysplits::Proto::CppMessage_MessageType >(type_);
 }
-inline void CppMessage::set_message_type(::Lazysplits::Proto::CppMessage_MessageType value) {
+inline void CppMessage::set_type(::Lazysplits::Proto::CppMessage_MessageType value) {
   
-  message_type_ = value;
-  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CppMessage.message_type)
+  type_ = value;
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CppMessage.type)
 }
 
-// bool pipe_connected = 3;
-inline void CppMessage::clear_pipe_connected() {
-  pipe_connected_ = false;
+// string shared_data_dir = 3;
+inline void CppMessage::clear_shared_data_dir() {
+  shared_data_dir_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline bool CppMessage::pipe_connected() const {
-  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CppMessage.pipe_connected)
-  return pipe_connected_;
+inline const ::std::string& CppMessage::shared_data_dir() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CppMessage.shared_data_dir)
+  return shared_data_dir_.GetNoArena();
 }
-inline void CppMessage::set_pipe_connected(bool value) {
+inline void CppMessage::set_shared_data_dir(const ::std::string& value) {
   
-  pipe_connected_ = value;
-  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CppMessage.pipe_connected)
+  shared_data_dir_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CppMessage.shared_data_dir)
+}
+#if LANG_CXX11
+inline void CppMessage::set_shared_data_dir(::std::string&& value) {
+  
+  shared_data_dir_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Lazysplits.Proto.CppMessage.shared_data_dir)
+}
+#endif
+inline void CppMessage::set_shared_data_dir(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  shared_data_dir_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Lazysplits.Proto.CppMessage.shared_data_dir)
+}
+inline void CppMessage::set_shared_data_dir(const char* value, size_t size) {
+  
+  shared_data_dir_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Lazysplits.Proto.CppMessage.shared_data_dir)
+}
+inline ::std::string* CppMessage::mutable_shared_data_dir() {
+  
+  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.CppMessage.shared_data_dir)
+  return shared_data_dir_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* CppMessage::release_shared_data_dir() {
+  // @@protoc_insertion_point(field_release:Lazysplits.Proto.CppMessage.shared_data_dir)
+  
+  return shared_data_dir_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CppMessage::set_allocated_shared_data_dir(::std::string* shared_data_dir) {
+  if (shared_data_dir != NULL) {
+    
+  } else {
+    
+  }
+  shared_data_dir_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), shared_data_dir);
+  // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CppMessage.shared_data_dir)
 }
 
-// uint32 target_index = 4;
-inline void CppMessage::clear_target_index() {
-  target_index_ = 0u;
+// string game_name = 4;
+inline void CppMessage::clear_game_name() {
+  game_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::uint32 CppMessage::target_index() const {
-  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CppMessage.target_index)
-  return target_index_;
+inline const ::std::string& CppMessage::game_name() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CppMessage.game_name)
+  return game_name_.GetNoArena();
 }
-inline void CppMessage::set_target_index(::google::protobuf::uint32 value) {
+inline void CppMessage::set_game_name(const ::std::string& value) {
   
-  target_index_ = value;
-  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CppMessage.target_index)
+  game_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CppMessage.game_name)
+}
+#if LANG_CXX11
+inline void CppMessage::set_game_name(::std::string&& value) {
+  
+  game_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Lazysplits.Proto.CppMessage.game_name)
+}
+#endif
+inline void CppMessage::set_game_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  game_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Lazysplits.Proto.CppMessage.game_name)
+}
+inline void CppMessage::set_game_name(const char* value, size_t size) {
+  
+  game_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Lazysplits.Proto.CppMessage.game_name)
+}
+inline ::std::string* CppMessage::mutable_game_name() {
+  
+  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.CppMessage.game_name)
+  return game_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* CppMessage::release_game_name() {
+  // @@protoc_insertion_point(field_release:Lazysplits.Proto.CppMessage.game_name)
+  
+  return game_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CppMessage::set_allocated_game_name(::std::string* game_name) {
+  if (game_name != NULL) {
+    
+  } else {
+    
+  }
+  game_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), game_name);
+  // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CppMessage.game_name)
 }
 
-// uint64 target_timestamp = 5;
+// uint32 target_name = 5;
+inline void CppMessage::clear_target_name() {
+  target_name_ = 0u;
+}
+inline ::google::protobuf::uint32 CppMessage::target_name() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CppMessage.target_name)
+  return target_name_;
+}
+inline void CppMessage::set_target_name(::google::protobuf::uint32 value) {
+  
+  target_name_ = value;
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CppMessage.target_name)
+}
+
+// uint64 target_timestamp = 6;
 inline void CppMessage::clear_target_timestamp() {
   target_timestamp_ = GOOGLE_ULONGLONG(0);
 }
@@ -508,60 +651,191 @@ inline void CppMessage::set_target_timestamp(::google::protobuf::uint64 value) {
 
 // CsMessage
 
-// int32 message_id = 1;
-inline void CsMessage::clear_message_id() {
-  message_id_ = 0;
+// int32 id = 1;
+inline void CsMessage::clear_id() {
+  id_ = 0;
 }
-inline ::google::protobuf::int32 CsMessage::message_id() const {
-  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CsMessage.message_id)
-  return message_id_;
+inline ::google::protobuf::int32 CsMessage::id() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CsMessage.id)
+  return id_;
 }
-inline void CsMessage::set_message_id(::google::protobuf::int32 value) {
+inline void CsMessage::set_id(::google::protobuf::int32 value) {
   
-  message_id_ = value;
-  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CsMessage.message_id)
+  id_ = value;
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CsMessage.id)
 }
 
-// .Lazysplits.Proto.CsMessage.MessageType message_type = 2;
-inline void CsMessage::clear_message_type() {
-  message_type_ = 0;
+// .Lazysplits.Proto.CsMessage.MessageType type = 2;
+inline void CsMessage::clear_type() {
+  type_ = 0;
 }
-inline ::Lazysplits::Proto::CsMessage_MessageType CsMessage::message_type() const {
-  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CsMessage.message_type)
-  return static_cast< ::Lazysplits::Proto::CsMessage_MessageType >(message_type_);
+inline ::Lazysplits::Proto::CsMessage_MessageType CsMessage::type() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CsMessage.type)
+  return static_cast< ::Lazysplits::Proto::CsMessage_MessageType >(type_);
 }
-inline void CsMessage::set_message_type(::Lazysplits::Proto::CsMessage_MessageType value) {
+inline void CsMessage::set_type(::Lazysplits::Proto::CsMessage_MessageType value) {
   
-  message_type_ = value;
-  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CsMessage.message_type)
+  type_ = value;
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CsMessage.type)
 }
 
-// bool pipe_connected = 3;
-inline void CsMessage::clear_pipe_connected() {
-  pipe_connected_ = false;
+// string shared_data_dir = 3;
+inline void CsMessage::clear_shared_data_dir() {
+  shared_data_dir_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline bool CsMessage::pipe_connected() const {
-  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CsMessage.pipe_connected)
-  return pipe_connected_;
+inline const ::std::string& CsMessage::shared_data_dir() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CsMessage.shared_data_dir)
+  return shared_data_dir_.GetNoArena();
 }
-inline void CsMessage::set_pipe_connected(bool value) {
+inline void CsMessage::set_shared_data_dir(const ::std::string& value) {
   
-  pipe_connected_ = value;
-  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CsMessage.pipe_connected)
+  shared_data_dir_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CsMessage.shared_data_dir)
+}
+#if LANG_CXX11
+inline void CsMessage::set_shared_data_dir(::std::string&& value) {
+  
+  shared_data_dir_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Lazysplits.Proto.CsMessage.shared_data_dir)
+}
+#endif
+inline void CsMessage::set_shared_data_dir(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  shared_data_dir_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Lazysplits.Proto.CsMessage.shared_data_dir)
+}
+inline void CsMessage::set_shared_data_dir(const char* value, size_t size) {
+  
+  shared_data_dir_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Lazysplits.Proto.CsMessage.shared_data_dir)
+}
+inline ::std::string* CsMessage::mutable_shared_data_dir() {
+  
+  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.CsMessage.shared_data_dir)
+  return shared_data_dir_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* CsMessage::release_shared_data_dir() {
+  // @@protoc_insertion_point(field_release:Lazysplits.Proto.CsMessage.shared_data_dir)
+  
+  return shared_data_dir_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CsMessage::set_allocated_shared_data_dir(::std::string* shared_data_dir) {
+  if (shared_data_dir != NULL) {
+    
+  } else {
+    
+  }
+  shared_data_dir_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), shared_data_dir);
+  // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CsMessage.shared_data_dir)
 }
 
-// uint32 target_index = 4;
-inline void CsMessage::clear_target_index() {
-  target_index_ = 0u;
+// string game_name = 4;
+inline void CsMessage::clear_game_name() {
+  game_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::uint32 CsMessage::target_index() const {
-  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CsMessage.target_index)
-  return target_index_;
+inline const ::std::string& CsMessage::game_name() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CsMessage.game_name)
+  return game_name_.GetNoArena();
 }
-inline void CsMessage::set_target_index(::google::protobuf::uint32 value) {
+inline void CsMessage::set_game_name(const ::std::string& value) {
   
-  target_index_ = value;
-  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CsMessage.target_index)
+  game_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CsMessage.game_name)
+}
+#if LANG_CXX11
+inline void CsMessage::set_game_name(::std::string&& value) {
+  
+  game_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Lazysplits.Proto.CsMessage.game_name)
+}
+#endif
+inline void CsMessage::set_game_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  game_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Lazysplits.Proto.CsMessage.game_name)
+}
+inline void CsMessage::set_game_name(const char* value, size_t size) {
+  
+  game_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Lazysplits.Proto.CsMessage.game_name)
+}
+inline ::std::string* CsMessage::mutable_game_name() {
+  
+  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.CsMessage.game_name)
+  return game_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* CsMessage::release_game_name() {
+  // @@protoc_insertion_point(field_release:Lazysplits.Proto.CsMessage.game_name)
+  
+  return game_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CsMessage::set_allocated_game_name(::std::string* game_name) {
+  if (game_name != NULL) {
+    
+  } else {
+    
+  }
+  game_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), game_name);
+  // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CsMessage.game_name)
+}
+
+// string target_name = 5;
+inline void CsMessage::clear_target_name() {
+  target_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& CsMessage::target_name() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CsMessage.target_name)
+  return target_name_.GetNoArena();
+}
+inline void CsMessage::set_target_name(const ::std::string& value) {
+  
+  target_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CsMessage.target_name)
+}
+#if LANG_CXX11
+inline void CsMessage::set_target_name(::std::string&& value) {
+  
+  target_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Lazysplits.Proto.CsMessage.target_name)
+}
+#endif
+inline void CsMessage::set_target_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  target_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Lazysplits.Proto.CsMessage.target_name)
+}
+inline void CsMessage::set_target_name(const char* value, size_t size) {
+  
+  target_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Lazysplits.Proto.CsMessage.target_name)
+}
+inline ::std::string* CsMessage::mutable_target_name() {
+  
+  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.CsMessage.target_name)
+  return target_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* CsMessage::release_target_name() {
+  // @@protoc_insertion_point(field_release:Lazysplits.Proto.CsMessage.target_name)
+  
+  return target_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CsMessage::set_allocated_target_name(::std::string* target_name) {
+  if (target_name != NULL) {
+    
+  } else {
+    
+  }
+  target_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), target_name);
+  // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CsMessage.target_name)
 }
 
 #ifdef __GNUC__

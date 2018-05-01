@@ -79,14 +79,14 @@ namespace LiveSplit.Lazysplits.Pipe
     {
         private Task<Int32> ReadTask;
         byte[] ReadBuffer;
-        LzsMessageQueue<byte[]> ToLivesplitQueue;
+        private LazysplitsComponent LzsComponent;
     
         //NLog
         private static Logger Log = LogManager.GetCurrentClassLogger();
 
-        public PipeTaskRead( NamedPipeClientStream pipeStreamInstance, LzsMessageQueue<byte[]> toLivesplitQueue ) : base( PipeTaskType.Read, pipeStreamInstance )
+        public PipeTaskRead( NamedPipeClientStream pipeStreamInstance, LazysplitsComponent lzsComponent ) : base( PipeTaskType.Read, pipeStreamInstance )
         {
-            ToLivesplitQueue = toLivesplitQueue;
+            LzsComponent = lzsComponent;
         }
         public override bool StartTask()
         {
@@ -112,9 +112,9 @@ namespace LiveSplit.Lazysplits.Pipe
                 if( ReadTask.Result == 0 ){ Log.Debug("no bytes read from pipe (pipe broken during read?)"); }
                 else
                 {
-                    byte[] MessageBuf = new byte[ReadTask.Result];
-                    Array.Copy( ReadBuffer, MessageBuf, ReadTask.Result );
-                    ToLivesplitQueue.Enqueue( MessageBuf );
+                    byte[] SerializedProtobuf = new byte[ReadTask.Result];
+                    Array.Copy( ReadBuffer, SerializedProtobuf, ReadTask.Result );
+                    LzsComponent.MsgProtobuf(SerializedProtobuf);
                 }
             }
             else if( ReadTask.Status == TaskStatus.Canceled )

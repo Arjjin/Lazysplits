@@ -70,7 +70,7 @@ class TargetInfo_WatchInfoDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<TargetInfo_WatchInfo>
       _instance;
   const ::Lazysplits::Proto::CvData::RGB* color_;
-  ::google::protobuf::internal::ArenaStringPtr img_rel_path_;
+  ::google::protobuf::internal::ArenaStringPtr img_relative_path_;
 } _TargetInfo_WatchInfo_default_instance_;
 class TargetInfoDefaultTypeInternal {
  public:
@@ -250,7 +250,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameList_GameEntry, name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameList_GameEntry, dir_rel_path_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameList_GameEntry, relative_path_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameList, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -264,7 +264,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameInfo_TargetEntry, id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameInfo_TargetEntry, name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameInfo_TargetEntry, dir_rel_path_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameInfo_TargetEntry, relative_path_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameInfo_TargetEntry, type_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameInfo, _internal_metadata_),
@@ -290,7 +290,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo_WatchInfo, type_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo_WatchInfo, area_),
   offsetof(::Lazysplits::Proto::CvData::TargetInfo_WatchInfoDefaultTypeInternal, color_),
-  offsetof(::Lazysplits::Proto::CvData::TargetInfo_WatchInfoDefaultTypeInternal, img_rel_path_),
+  offsetof(::Lazysplits::Proto::CvData::TargetInfo_WatchInfoDefaultTypeInternal, img_relative_path_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo_WatchInfo, watch_cv_data_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo, _internal_metadata_),
@@ -351,36 +351,36 @@ void AddDescriptorsImpl() {
       "\n\027LzsCvDataProtoCpp.proto\022\027Lazysplits.Pr"
       "oto.CvData\"!\n\tUScalar2d\022\t\n\001x\030\001 \001(\r\022\t\n\001y\030"
       "\002 \001(\r\"&\n\003RGB\022\t\n\001R\030\001 \001(\r\022\t\n\001G\030\002 \001(\r\022\t\n\001B\030"
-      "\003 \001(\r\"w\n\010GameList\022:\n\005games\030\001 \003(\0132+.Lazys"
-      "plits.Proto.CvData.GameList.GameEntry\032/\n"
-      "\tGameEntry\022\014\n\004name\030\001 \001(\t\022\024\n\014dir_rel_path"
-      "\030\002 \001(\t\"\312\001\n\010GameInfo\022\014\n\004name\030\001 \001(\t\022>\n\007tar"
-      "gets\030\002 \003(\0132-.Lazysplits.Proto.CvData.Gam"
-      "eInfo.TargetEntry\032p\n\013TargetEntry\022\n\n\002id\030\001"
-      " \001(\005\022\014\n\004name\030\002 \001(\t\022\024\n\014dir_rel_path\030\003 \001(\t"
-      "\0221\n\004type\030\004 \001(\0162#.Lazysplits.Proto.CvData"
-      ".TargetType\"\234\004\n\nTargetInfo\022\n\n\002id\030\001 \001(\005\022\014"
-      "\n\004name\030\002 \001(\t\0221\n\004type\030\003 \001(\0162#.Lazysplits."
-      "Proto.CvData.TargetType\022\027\n\017split_offset_"
-      "ms\030\004 \001(\021\022>\n\007watches\030\005 \003(\0132-.Lazysplits.P"
-      "roto.CvData.TargetInfo.WatchInfo\032\347\002\n\tWat"
-      "chInfo\022\n\n\002id\030\001 \001(\r\022\r\n\005index\030\002 \001(\r\0220\n\004typ"
-      "e\030\003 \001(\0162\".Lazysplits.Proto.CvData.WatchT"
-      "ype\022E\n\004area\030\004 \001(\01327.Lazysplits.Proto.CvD"
-      "ata.TargetInfo.WatchInfo.WatchArea\022-\n\005co"
-      "lor\030\005 \001(\0132\034.Lazysplits.Proto.CvData.RGBH"
-      "\000\022\026\n\014img_rel_path\030\006 \001(\tH\000\032n\n\tWatchArea\022/"
-      "\n\003loc\030\001 \001(\0132\".Lazysplits.Proto.CvData.US"
-      "calar2d\0220\n\004size\030\002 \001(\0132\".Lazysplits.Proto"
-      ".CvData.UScalar2dB\017\n\rwatch_cv_data*l\n\nTa"
-      "rgetType\022\016\n\nTGT_UNUSED\020\000\022\r\n\tTGT_RESET\020\001\022"
-      "\r\n\tTGT_START\020\002\022\020\n\014TGT_STANDARD\020\003\022\021\n\rTGT_"
-      "GENERATOR\020\004\022\013\n\007TGT_END\020\005*C\n\tWatchType\022\023\n"
-      "\017WT_UNUSED_WATCH\020\000\022\014\n\010WT_COLOR\020\001\022\023\n\017WT_I"
-      "MAGE_STATIC\020\002b\006proto3"
+      "\003 \001(\r\"x\n\010GameList\022:\n\005games\030\001 \003(\0132+.Lazys"
+      "plits.Proto.CvData.GameList.GameEntry\0320\n"
+      "\tGameEntry\022\014\n\004name\030\001 \001(\t\022\025\n\rrelative_pat"
+      "h\030\002 \001(\t\"\313\001\n\010GameInfo\022\014\n\004name\030\001 \001(\t\022>\n\007ta"
+      "rgets\030\002 \003(\0132-.Lazysplits.Proto.CvData.Ga"
+      "meInfo.TargetEntry\032q\n\013TargetEntry\022\n\n\002id\030"
+      "\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\025\n\rrelative_path\030\003 \001"
+      "(\t\0221\n\004type\030\004 \001(\0162#.Lazysplits.Proto.CvDa"
+      "ta.TargetType\"\241\004\n\nTargetInfo\022\n\n\002id\030\001 \001(\005"
+      "\022\014\n\004name\030\002 \001(\t\0221\n\004type\030\003 \001(\0162#.Lazysplit"
+      "s.Proto.CvData.TargetType\022\027\n\017split_offse"
+      "t_ms\030\004 \001(\021\022>\n\007watches\030\005 \003(\0132-.Lazysplits"
+      ".Proto.CvData.TargetInfo.WatchInfo\032\354\002\n\tW"
+      "atchInfo\022\n\n\002id\030\001 \001(\r\022\r\n\005index\030\002 \001(\r\0220\n\004t"
+      "ype\030\003 \001(\0162\".Lazysplits.Proto.CvData.Watc"
+      "hType\022E\n\004area\030\004 \001(\01327.Lazysplits.Proto.C"
+      "vData.TargetInfo.WatchInfo.WatchArea\022-\n\005"
+      "color\030\005 \001(\0132\034.Lazysplits.Proto.CvData.RG"
+      "BH\000\022\033\n\021img_relative_path\030\006 \001(\tH\000\032n\n\tWatc"
+      "hArea\022/\n\003loc\030\001 \001(\0132\".Lazysplits.Proto.Cv"
+      "Data.UScalar2d\0220\n\004size\030\002 \001(\0132\".Lazysplit"
+      "s.Proto.CvData.UScalar2dB\017\n\rwatch_cv_dat"
+      "a*l\n\nTargetType\022\016\n\nTGT_UNUSED\020\000\022\r\n\tTGT_R"
+      "ESET\020\001\022\r\n\tTGT_START\020\002\022\020\n\014TGT_STANDARD\020\003\022"
+      "\021\n\rTGT_GENERATOR\020\004\022\013\n\007TGT_END\020\005*C\n\tWatch"
+      "Type\022\023\n\017WT_UNUSED_WATCH\020\000\022\014\n\010WT_COLOR\020\001\022"
+      "\023\n\017WT_IMAGE_STATIC\020\002b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1181);
+      descriptor, 1188);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "LzsCvDataProtoCpp.proto", &protobuf_RegisterTypes);
 }
@@ -1005,7 +1005,7 @@ void GameList_GameEntry::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int GameList_GameEntry::kNameFieldNumber;
-const int GameList_GameEntry::kDirRelPathFieldNumber;
+const int GameList_GameEntry::kRelativePathFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 GameList_GameEntry::GameList_GameEntry()
@@ -1023,16 +1023,16 @@ GameList_GameEntry::GameList_GameEntry(const GameList_GameEntry& from)
   if (from.name().size() > 0) {
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
-  dir_rel_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.dir_rel_path().size() > 0) {
-    dir_rel_path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dir_rel_path_);
+  relative_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.relative_path().size() > 0) {
+    relative_path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relative_path_);
   }
   // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.CvData.GameList.GameEntry)
 }
 
 void GameList_GameEntry::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  dir_rel_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relative_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 GameList_GameEntry::~GameList_GameEntry() {
@@ -1042,7 +1042,7 @@ GameList_GameEntry::~GameList_GameEntry() {
 
 void GameList_GameEntry::SharedDtor() {
   name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  dir_rel_path_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relative_path_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void GameList_GameEntry::SetCachedSize(int size) const {
@@ -1066,7 +1066,7 @@ void GameList_GameEntry::Clear() {
   (void) cached_has_bits;
 
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  dir_rel_path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relative_path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   _internal_metadata_.Clear();
 }
 
@@ -1096,16 +1096,16 @@ bool GameList_GameEntry::MergePartialFromCodedStream(
         break;
       }
 
-      // string dir_rel_path = 2;
+      // string relative_path = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_dir_rel_path()));
+                input, this->mutable_relative_path()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->dir_rel_path().data(), static_cast<int>(this->dir_rel_path().length()),
+            this->relative_path().data(), static_cast<int>(this->relative_path().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "Lazysplits.Proto.CvData.GameList.GameEntry.dir_rel_path"));
+            "Lazysplits.Proto.CvData.GameList.GameEntry.relative_path"));
         } else {
           goto handle_unusual;
         }
@@ -1148,14 +1148,14 @@ void GameList_GameEntry::SerializeWithCachedSizes(
       1, this->name(), output);
   }
 
-  // string dir_rel_path = 2;
-  if (this->dir_rel_path().size() > 0) {
+  // string relative_path = 2;
+  if (this->relative_path().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->dir_rel_path().data(), static_cast<int>(this->dir_rel_path().length()),
+      this->relative_path().data(), static_cast<int>(this->relative_path().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.GameList.GameEntry.dir_rel_path");
+      "Lazysplits.Proto.CvData.GameList.GameEntry.relative_path");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->dir_rel_path(), output);
+      2, this->relative_path(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -1183,15 +1183,15 @@ void GameList_GameEntry::SerializeWithCachedSizes(
         1, this->name(), target);
   }
 
-  // string dir_rel_path = 2;
-  if (this->dir_rel_path().size() > 0) {
+  // string relative_path = 2;
+  if (this->relative_path().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->dir_rel_path().data(), static_cast<int>(this->dir_rel_path().length()),
+      this->relative_path().data(), static_cast<int>(this->relative_path().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.GameList.GameEntry.dir_rel_path");
+      "Lazysplits.Proto.CvData.GameList.GameEntry.relative_path");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->dir_rel_path(), target);
+        2, this->relative_path(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -1218,11 +1218,11 @@ size_t GameList_GameEntry::ByteSizeLong() const {
         this->name());
   }
 
-  // string dir_rel_path = 2;
-  if (this->dir_rel_path().size() > 0) {
+  // string relative_path = 2;
+  if (this->relative_path().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->dir_rel_path());
+        this->relative_path());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -1256,9 +1256,9 @@ void GameList_GameEntry::MergeFrom(const GameList_GameEntry& from) {
 
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
-  if (from.dir_rel_path().size() > 0) {
+  if (from.relative_path().size() > 0) {
 
-    dir_rel_path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dir_rel_path_);
+    relative_path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relative_path_);
   }
 }
 
@@ -1288,7 +1288,7 @@ void GameList_GameEntry::InternalSwap(GameList_GameEntry* other) {
   using std::swap;
   name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  dir_rel_path_.Swap(&other->dir_rel_path_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  relative_path_.Swap(&other->relative_path_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
@@ -1535,7 +1535,7 @@ void GameInfo_TargetEntry::InitAsDefaultInstance() {
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int GameInfo_TargetEntry::kIdFieldNumber;
 const int GameInfo_TargetEntry::kNameFieldNumber;
-const int GameInfo_TargetEntry::kDirRelPathFieldNumber;
+const int GameInfo_TargetEntry::kRelativePathFieldNumber;
 const int GameInfo_TargetEntry::kTypeFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -1554,9 +1554,9 @@ GameInfo_TargetEntry::GameInfo_TargetEntry(const GameInfo_TargetEntry& from)
   if (from.name().size() > 0) {
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
-  dir_rel_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.dir_rel_path().size() > 0) {
-    dir_rel_path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dir_rel_path_);
+  relative_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.relative_path().size() > 0) {
+    relative_path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relative_path_);
   }
   ::memcpy(&id_, &from.id_,
     static_cast<size_t>(reinterpret_cast<char*>(&type_) -
@@ -1566,7 +1566,7 @@ GameInfo_TargetEntry::GameInfo_TargetEntry(const GameInfo_TargetEntry& from)
 
 void GameInfo_TargetEntry::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  dir_rel_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relative_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&type_) -
       reinterpret_cast<char*>(&id_)) + sizeof(type_));
@@ -1579,7 +1579,7 @@ GameInfo_TargetEntry::~GameInfo_TargetEntry() {
 
 void GameInfo_TargetEntry::SharedDtor() {
   name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  dir_rel_path_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relative_path_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void GameInfo_TargetEntry::SetCachedSize(int size) const {
@@ -1603,7 +1603,7 @@ void GameInfo_TargetEntry::Clear() {
   (void) cached_has_bits;
 
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  dir_rel_path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relative_path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&id_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&type_) -
       reinterpret_cast<char*>(&id_)) + sizeof(type_));
@@ -1650,16 +1650,16 @@ bool GameInfo_TargetEntry::MergePartialFromCodedStream(
         break;
       }
 
-      // string dir_rel_path = 3;
+      // string relative_path = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_dir_rel_path()));
+                input, this->mutable_relative_path()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->dir_rel_path().data(), static_cast<int>(this->dir_rel_path().length()),
+            this->relative_path().data(), static_cast<int>(this->relative_path().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "Lazysplits.Proto.CvData.GameInfo.TargetEntry.dir_rel_path"));
+            "Lazysplits.Proto.CvData.GameInfo.TargetEntry.relative_path"));
         } else {
           goto handle_unusual;
         }
@@ -1722,14 +1722,14 @@ void GameInfo_TargetEntry::SerializeWithCachedSizes(
       2, this->name(), output);
   }
 
-  // string dir_rel_path = 3;
-  if (this->dir_rel_path().size() > 0) {
+  // string relative_path = 3;
+  if (this->relative_path().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->dir_rel_path().data(), static_cast<int>(this->dir_rel_path().length()),
+      this->relative_path().data(), static_cast<int>(this->relative_path().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.GameInfo.TargetEntry.dir_rel_path");
+      "Lazysplits.Proto.CvData.GameInfo.TargetEntry.relative_path");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->dir_rel_path(), output);
+      3, this->relative_path(), output);
   }
 
   // .Lazysplits.Proto.CvData.TargetType type = 4;
@@ -1768,15 +1768,15 @@ void GameInfo_TargetEntry::SerializeWithCachedSizes(
         2, this->name(), target);
   }
 
-  // string dir_rel_path = 3;
-  if (this->dir_rel_path().size() > 0) {
+  // string relative_path = 3;
+  if (this->relative_path().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->dir_rel_path().data(), static_cast<int>(this->dir_rel_path().length()),
+      this->relative_path().data(), static_cast<int>(this->relative_path().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.GameInfo.TargetEntry.dir_rel_path");
+      "Lazysplits.Proto.CvData.GameInfo.TargetEntry.relative_path");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->dir_rel_path(), target);
+        3, this->relative_path(), target);
   }
 
   // .Lazysplits.Proto.CvData.TargetType type = 4;
@@ -1809,11 +1809,11 @@ size_t GameInfo_TargetEntry::ByteSizeLong() const {
         this->name());
   }
 
-  // string dir_rel_path = 3;
-  if (this->dir_rel_path().size() > 0) {
+  // string relative_path = 3;
+  if (this->relative_path().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->dir_rel_path());
+        this->relative_path());
   }
 
   // int32 id = 1;
@@ -1860,9 +1860,9 @@ void GameInfo_TargetEntry::MergeFrom(const GameInfo_TargetEntry& from) {
 
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
-  if (from.dir_rel_path().size() > 0) {
+  if (from.relative_path().size() > 0) {
 
-    dir_rel_path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.dir_rel_path_);
+    relative_path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relative_path_);
   }
   if (from.id() != 0) {
     set_id(from.id());
@@ -1898,7 +1898,7 @@ void GameInfo_TargetEntry::InternalSwap(GameInfo_TargetEntry* other) {
   using std::swap;
   name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  dir_rel_path_.Swap(&other->dir_rel_path_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  relative_path_.Swap(&other->relative_path_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(id_, other->id_);
   swap(type_, other->type_);
@@ -2490,7 +2490,7 @@ void TargetInfo_WatchInfo::InitAsDefaultInstance() {
       ::Lazysplits::Proto::CvData::TargetInfo_WatchInfo_WatchArea::internal_default_instance());
   ::Lazysplits::Proto::CvData::_TargetInfo_WatchInfo_default_instance_.color_ = const_cast< ::Lazysplits::Proto::CvData::RGB*>(
       ::Lazysplits::Proto::CvData::RGB::internal_default_instance());
-  ::Lazysplits::Proto::CvData::_TargetInfo_WatchInfo_default_instance_.img_rel_path_.UnsafeSetDefault(
+  ::Lazysplits::Proto::CvData::_TargetInfo_WatchInfo_default_instance_.img_relative_path_.UnsafeSetDefault(
       &::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 void TargetInfo_WatchInfo::set_allocated_color(::Lazysplits::Proto::CvData::RGB* color) {
@@ -2513,7 +2513,7 @@ const int TargetInfo_WatchInfo::kIndexFieldNumber;
 const int TargetInfo_WatchInfo::kTypeFieldNumber;
 const int TargetInfo_WatchInfo::kAreaFieldNumber;
 const int TargetInfo_WatchInfo::kColorFieldNumber;
-const int TargetInfo_WatchInfo::kImgRelPathFieldNumber;
+const int TargetInfo_WatchInfo::kImgRelativePathFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 TargetInfo_WatchInfo::TargetInfo_WatchInfo()
@@ -2541,8 +2541,8 @@ TargetInfo_WatchInfo::TargetInfo_WatchInfo(const TargetInfo_WatchInfo& from)
       mutable_color()->::Lazysplits::Proto::CvData::RGB::MergeFrom(from.color());
       break;
     }
-    case kImgRelPath: {
-      set_img_rel_path(from.img_rel_path());
+    case kImgRelativePath: {
+      set_img_relative_path(from.img_relative_path());
       break;
     }
     case WATCH_CV_DATA_NOT_SET: {
@@ -2592,8 +2592,8 @@ void TargetInfo_WatchInfo::clear_watch_cv_data() {
       delete watch_cv_data_.color_;
       break;
     }
-    case kImgRelPath: {
-      watch_cv_data_.img_rel_path_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    case kImgRelativePath: {
+      watch_cv_data_.img_relative_path_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
       break;
     }
     case WATCH_CV_DATA_NOT_SET: {
@@ -2698,16 +2698,16 @@ bool TargetInfo_WatchInfo::MergePartialFromCodedStream(
         break;
       }
 
-      // string img_rel_path = 6;
+      // string img_relative_path = 6;
       case 6: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_img_rel_path()));
+                input, this->mutable_img_relative_path()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->img_rel_path().data(), static_cast<int>(this->img_rel_path().length()),
+            this->img_relative_path().data(), static_cast<int>(this->img_relative_path().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_rel_path"));
+            "Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_relative_path"));
         } else {
           goto handle_unusual;
         }
@@ -2768,14 +2768,14 @@ void TargetInfo_WatchInfo::SerializeWithCachedSizes(
       5, this->_internal_color(), output);
   }
 
-  // string img_rel_path = 6;
-  if (has_img_rel_path()) {
+  // string img_relative_path = 6;
+  if (has_img_relative_path()) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->img_rel_path().data(), static_cast<int>(this->img_rel_path().length()),
+      this->img_relative_path().data(), static_cast<int>(this->img_relative_path().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_rel_path");
+      "Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_relative_path");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->img_rel_path(), output);
+      6, this->img_relative_path(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2822,15 +2822,15 @@ void TargetInfo_WatchInfo::SerializeWithCachedSizes(
         5, this->_internal_color(), deterministic, target);
   }
 
-  // string img_rel_path = 6;
-  if (has_img_rel_path()) {
+  // string img_relative_path = 6;
+  if (has_img_relative_path()) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->img_rel_path().data(), static_cast<int>(this->img_rel_path().length()),
+      this->img_relative_path().data(), static_cast<int>(this->img_relative_path().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_rel_path");
+      "Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_relative_path");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        6, this->img_rel_path(), target);
+        6, this->img_relative_path(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2885,11 +2885,11 @@ size_t TargetInfo_WatchInfo::ByteSizeLong() const {
           *watch_cv_data_.color_);
       break;
     }
-    // string img_rel_path = 6;
-    case kImgRelPath: {
+    // string img_relative_path = 6;
+    case kImgRelativePath: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->img_rel_path());
+          this->img_relative_path());
       break;
     }
     case WATCH_CV_DATA_NOT_SET: {
@@ -2940,8 +2940,8 @@ void TargetInfo_WatchInfo::MergeFrom(const TargetInfo_WatchInfo& from) {
       mutable_color()->::Lazysplits::Proto::CvData::RGB::MergeFrom(from.color());
       break;
     }
-    case kImgRelPath: {
-      set_img_rel_path(from.img_rel_path());
+    case kImgRelativePath: {
+      set_img_relative_path(from.img_relative_path());
       break;
     }
     case WATCH_CV_DATA_NOT_SET: {

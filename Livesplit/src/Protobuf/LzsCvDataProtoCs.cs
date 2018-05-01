@@ -26,39 +26,40 @@ namespace LiveSplit.Lazysplits.Proto {
           string.Concat(
             "ChZMenNDdkRhdGFQcm90b0NzLnByb3RvEhpMaXZlU3BsaXQuTGF6eXNwbGl0",
             "cy5Qcm90byIhCglVU2NhbGFyMmQSCQoBeBgBIAEoDRIJCgF5GAIgASgNIiYK",
-            "A1JHQhIJCgFSGAEgASgNEgkKAUcYAiABKA0SCQoBQhgDIAEoDSJ6CghHYW1l",
+            "A1JHQhIJCgFSGAEgASgNEgkKAUcYAiABKA0SCQoBQhgDIAEoDSJ7CghHYW1l",
             "TGlzdBI9CgVnYW1lcxgBIAMoCzIuLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlBy",
-            "b3RvLkdhbWVMaXN0LkdhbWVFbnRyeRovCglHYW1lRW50cnkSDAoEbmFtZRgB",
-            "IAEoCRIUCgxkaXJfcmVsX3BhdGgYAiABKAki0AEKCEdhbWVJbmZvEgwKBG5h",
-            "bWUYASABKAkSQQoHdGFyZ2V0cxgCIAMoCzIwLkxpdmVTcGxpdC5MYXp5c3Bs",
-            "aXRzLlByb3RvLkdhbWVJbmZvLlRhcmdldEVudHJ5GnMKC1RhcmdldEVudHJ5",
-            "EgoKAmlkGAEgASgFEgwKBG5hbWUYAiABKAkSFAoMZGlyX3JlbF9wYXRoGAMg",
-            "ASgJEjQKBHR5cGUYBCABKA4yJi5MaXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90",
-            "by5UYXJnZXRUeXBlIrEECgpUYXJnZXRJbmZvEgoKAmlkGAEgASgFEgwKBG5h",
-            "bWUYAiABKAkSNAoEdHlwZRgDIAEoDjImLkxpdmVTcGxpdC5MYXp5c3BsaXRz",
-            "LlByb3RvLlRhcmdldFR5cGUSFwoPc3BsaXRfb2Zmc2V0X21zGAQgASgREkEK",
-            "B3dhdGNoZXMYBSADKAsyMC5MaXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90by5U",
-            "YXJnZXRJbmZvLldhdGNoSW5mbxr2AgoJV2F0Y2hJbmZvEgoKAmlkGAEgASgN",
-            "Eg0KBWluZGV4GAIgASgNEjMKBHR5cGUYAyABKA4yJS5MaXZlU3BsaXQuTGF6",
-            "eXNwbGl0cy5Qcm90by5XYXRjaFR5cGUSSAoEYXJlYRgEIAEoCzI6LkxpdmVT",
-            "cGxpdC5MYXp5c3BsaXRzLlByb3RvLlRhcmdldEluZm8uV2F0Y2hJbmZvLldh",
-            "dGNoQXJlYRIwCgVjb2xvchgFIAEoCzIfLkxpdmVTcGxpdC5MYXp5c3BsaXRz",
-            "LlByb3RvLlJHQkgAEhYKDGltZ19yZWxfcGF0aBgGIAEoCUgAGnQKCVdhdGNo",
-            "QXJlYRIyCgNsb2MYASABKAsyJS5MaXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90",
-            "by5VU2NhbGFyMmQSMwoEc2l6ZRgCIAEoCzIlLkxpdmVTcGxpdC5MYXp5c3Bs",
-            "aXRzLlByb3RvLlVTY2FsYXIyZEIPCg13YXRjaF9jdl9kYXRhKmwKClRhcmdl",
-            "dFR5cGUSDgoKVEdUX1VOVVNFRBAAEg0KCVRHVF9SRVNFVBABEg0KCVRHVF9T",
-            "VEFSVBACEhAKDFRHVF9TVEFOREFSRBADEhEKDVRHVF9HRU5FUkFUT1IQBBIL",
-            "CgdUR1RfRU5EEAUqQwoJV2F0Y2hUeXBlEhMKD1dUX1VOVVNFRF9XQVRDSBAA",
-            "EgwKCFdUX0NPTE9SEAESEwoPV1RfSU1BR0VfU1RBVElDEAJiBnByb3RvMw=="));
+            "b3RvLkdhbWVMaXN0LkdhbWVFbnRyeRowCglHYW1lRW50cnkSDAoEbmFtZRgB",
+            "IAEoCRIVCg1yZWxhdGl2ZV9wYXRoGAIgASgJItEBCghHYW1lSW5mbxIMCgRu",
+            "YW1lGAEgASgJEkEKB3RhcmdldHMYAiADKAsyMC5MaXZlU3BsaXQuTGF6eXNw",
+            "bGl0cy5Qcm90by5HYW1lSW5mby5UYXJnZXRFbnRyeRp0CgtUYXJnZXRFbnRy",
+            "eRIKCgJpZBgBIAEoBRIMCgRuYW1lGAIgASgJEhUKDXJlbGF0aXZlX3BhdGgY",
+            "AyABKAkSNAoEdHlwZRgEIAEoDjImLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlBy",
+            "b3RvLlRhcmdldFR5cGUitgQKClRhcmdldEluZm8SCgoCaWQYASABKAUSDAoE",
+            "bmFtZRgCIAEoCRI0CgR0eXBlGAMgASgOMiYuTGl2ZVNwbGl0LkxhenlzcGxp",
+            "dHMuUHJvdG8uVGFyZ2V0VHlwZRIXCg9zcGxpdF9vZmZzZXRfbXMYBCABKBES",
+            "QQoHd2F0Y2hlcxgFIAMoCzIwLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3Rv",
+            "LlRhcmdldEluZm8uV2F0Y2hJbmZvGvsCCglXYXRjaEluZm8SCgoCaWQYASAB",
+            "KA0SDQoFaW5kZXgYAiABKA0SMwoEdHlwZRgDIAEoDjIlLkxpdmVTcGxpdC5M",
+            "YXp5c3BsaXRzLlByb3RvLldhdGNoVHlwZRJICgRhcmVhGAQgASgLMjouTGl2",
+            "ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8uVGFyZ2V0SW5mby5XYXRjaEluZm8u",
+            "V2F0Y2hBcmVhEjAKBWNvbG9yGAUgASgLMh8uTGl2ZVNwbGl0LkxhenlzcGxp",
+            "dHMuUHJvdG8uUkdCSAASGwoRaW1nX3JlbGF0aXZlX3BhdGgYBiABKAlIABp0",
+            "CglXYXRjaEFyZWESMgoDbG9jGAEgASgLMiUuTGl2ZVNwbGl0LkxhenlzcGxp",
+            "dHMuUHJvdG8uVVNjYWxhcjJkEjMKBHNpemUYAiABKAsyJS5MaXZlU3BsaXQu",
+            "TGF6eXNwbGl0cy5Qcm90by5VU2NhbGFyMmRCDwoNd2F0Y2hfY3ZfZGF0YSps",
+            "CgpUYXJnZXRUeXBlEg4KClRHVF9VTlVTRUQQABINCglUR1RfUkVTRVQQARIN",
+            "CglUR1RfU1RBUlQQAhIQCgxUR1RfU1RBTkRBUkQQAxIRCg1UR1RfR0VORVJB",
+            "VE9SEAQSCwoHVEdUX0VORBAFKkMKCVdhdGNoVHlwZRITCg9XVF9VTlVTRURf",
+            "V0FUQ0gQABIMCghXVF9DT0xPUhABEhMKD1dUX0lNQUdFX1NUQVRJQxACYgZw",
+            "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::LiveSplit.Lazysplits.Proto.TargetType), typeof(global::LiveSplit.Lazysplits.Proto.WatchType), }, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.UScalar2d), global::LiveSplit.Lazysplits.Proto.UScalar2d.Parser, new[]{ "X", "Y" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.RGB), global::LiveSplit.Lazysplits.Proto.RGB.Parser, new[]{ "R", "G", "B" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameList), global::LiveSplit.Lazysplits.Proto.GameList.Parser, new[]{ "Games" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameList.Types.GameEntry), global::LiveSplit.Lazysplits.Proto.GameList.Types.GameEntry.Parser, new[]{ "Name", "DirRelPath" }, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameInfo), global::LiveSplit.Lazysplits.Proto.GameInfo.Parser, new[]{ "Name", "Targets" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameInfo.Types.TargetEntry), global::LiveSplit.Lazysplits.Proto.GameInfo.Types.TargetEntry.Parser, new[]{ "Id", "Name", "DirRelPath", "Type" }, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.TargetInfo), global::LiveSplit.Lazysplits.Proto.TargetInfo.Parser, new[]{ "Id", "Name", "Type", "SplitOffsetMs", "Watches" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchInfo), global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchInfo.Parser, new[]{ "Id", "Index", "Type", "Area", "Color", "ImgRelPath" }, new[]{ "WatchCvData" }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchInfo.Types.WatchArea), global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchInfo.Types.WatchArea.Parser, new[]{ "Loc", "Size" }, null, null, null)})})
+            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameList), global::LiveSplit.Lazysplits.Proto.GameList.Parser, new[]{ "Games" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameList.Types.GameEntry), global::LiveSplit.Lazysplits.Proto.GameList.Types.GameEntry.Parser, new[]{ "Name", "RelativePath" }, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameInfo), global::LiveSplit.Lazysplits.Proto.GameInfo.Parser, new[]{ "Name", "Targets" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameInfo.Types.TargetEntry), global::LiveSplit.Lazysplits.Proto.GameInfo.Types.TargetEntry.Parser, new[]{ "Id", "Name", "RelativePath", "Type" }, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.TargetInfo), global::LiveSplit.Lazysplits.Proto.TargetInfo.Parser, new[]{ "Id", "Name", "Type", "SplitOffsetMs", "Watches" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchInfo), global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchInfo.Parser, new[]{ "Id", "Index", "Type", "Area", "Color", "ImgRelativePath" }, new[]{ "WatchCvData" }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchInfo.Types.WatchArea), global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchInfo.Types.WatchArea.Parser, new[]{ "Loc", "Size" }, null, null, null)})})
           }));
     }
     #endregion
@@ -574,7 +575,7 @@ namespace LiveSplit.Lazysplits.Proto {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public GameEntry(GameEntry other) : this() {
           name_ = other.name_;
-          dirRelPath_ = other.dirRelPath_;
+          relativePath_ = other.relativePath_;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
@@ -594,14 +595,14 @@ namespace LiveSplit.Lazysplits.Proto {
           }
         }
 
-        /// <summary>Field number for the "dir_rel_path" field.</summary>
-        public const int DirRelPathFieldNumber = 2;
-        private string dirRelPath_ = "";
+        /// <summary>Field number for the "relative_path" field.</summary>
+        public const int RelativePathFieldNumber = 2;
+        private string relativePath_ = "";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public string DirRelPath {
-          get { return dirRelPath_; }
+        public string RelativePath {
+          get { return relativePath_; }
           set {
-            dirRelPath_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+            relativePath_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
           }
         }
 
@@ -619,7 +620,7 @@ namespace LiveSplit.Lazysplits.Proto {
             return true;
           }
           if (Name != other.Name) return false;
-          if (DirRelPath != other.DirRelPath) return false;
+          if (RelativePath != other.RelativePath) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
@@ -627,7 +628,7 @@ namespace LiveSplit.Lazysplits.Proto {
         public override int GetHashCode() {
           int hash = 1;
           if (Name.Length != 0) hash ^= Name.GetHashCode();
-          if (DirRelPath.Length != 0) hash ^= DirRelPath.GetHashCode();
+          if (RelativePath.Length != 0) hash ^= RelativePath.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -645,9 +646,9 @@ namespace LiveSplit.Lazysplits.Proto {
             output.WriteRawTag(10);
             output.WriteString(Name);
           }
-          if (DirRelPath.Length != 0) {
+          if (RelativePath.Length != 0) {
             output.WriteRawTag(18);
-            output.WriteString(DirRelPath);
+            output.WriteString(RelativePath);
           }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
@@ -660,8 +661,8 @@ namespace LiveSplit.Lazysplits.Proto {
           if (Name.Length != 0) {
             size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
           }
-          if (DirRelPath.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(DirRelPath);
+          if (RelativePath.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(RelativePath);
           }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
@@ -677,8 +678,8 @@ namespace LiveSplit.Lazysplits.Proto {
           if (other.Name.Length != 0) {
             Name = other.Name;
           }
-          if (other.DirRelPath.Length != 0) {
-            DirRelPath = other.DirRelPath;
+          if (other.RelativePath.Length != 0) {
+            RelativePath = other.RelativePath;
           }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
@@ -696,7 +697,7 @@ namespace LiveSplit.Lazysplits.Proto {
                 break;
               }
               case 18: {
-                DirRelPath = input.ReadString();
+                RelativePath = input.ReadString();
                 break;
               }
             }
@@ -888,7 +889,7 @@ namespace LiveSplit.Lazysplits.Proto {
         public TargetEntry(TargetEntry other) : this() {
           id_ = other.id_;
           name_ = other.name_;
-          dirRelPath_ = other.dirRelPath_;
+          relativePath_ = other.relativePath_;
           type_ = other.type_;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
@@ -920,14 +921,14 @@ namespace LiveSplit.Lazysplits.Proto {
           }
         }
 
-        /// <summary>Field number for the "dir_rel_path" field.</summary>
-        public const int DirRelPathFieldNumber = 3;
-        private string dirRelPath_ = "";
+        /// <summary>Field number for the "relative_path" field.</summary>
+        public const int RelativePathFieldNumber = 3;
+        private string relativePath_ = "";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public string DirRelPath {
-          get { return dirRelPath_; }
+        public string RelativePath {
+          get { return relativePath_; }
           set {
-            dirRelPath_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+            relativePath_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
           }
         }
 
@@ -957,7 +958,7 @@ namespace LiveSplit.Lazysplits.Proto {
           }
           if (Id != other.Id) return false;
           if (Name != other.Name) return false;
-          if (DirRelPath != other.DirRelPath) return false;
+          if (RelativePath != other.RelativePath) return false;
           if (Type != other.Type) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
@@ -967,7 +968,7 @@ namespace LiveSplit.Lazysplits.Proto {
           int hash = 1;
           if (Id != 0) hash ^= Id.GetHashCode();
           if (Name.Length != 0) hash ^= Name.GetHashCode();
-          if (DirRelPath.Length != 0) hash ^= DirRelPath.GetHashCode();
+          if (RelativePath.Length != 0) hash ^= RelativePath.GetHashCode();
           if (Type != 0) hash ^= Type.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
@@ -990,9 +991,9 @@ namespace LiveSplit.Lazysplits.Proto {
             output.WriteRawTag(18);
             output.WriteString(Name);
           }
-          if (DirRelPath.Length != 0) {
+          if (RelativePath.Length != 0) {
             output.WriteRawTag(26);
-            output.WriteString(DirRelPath);
+            output.WriteString(RelativePath);
           }
           if (Type != 0) {
             output.WriteRawTag(32);
@@ -1012,8 +1013,8 @@ namespace LiveSplit.Lazysplits.Proto {
           if (Name.Length != 0) {
             size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
           }
-          if (DirRelPath.Length != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(DirRelPath);
+          if (RelativePath.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(RelativePath);
           }
           if (Type != 0) {
             size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
@@ -1035,8 +1036,8 @@ namespace LiveSplit.Lazysplits.Proto {
           if (other.Name.Length != 0) {
             Name = other.Name;
           }
-          if (other.DirRelPath.Length != 0) {
-            DirRelPath = other.DirRelPath;
+          if (other.RelativePath.Length != 0) {
+            RelativePath = other.RelativePath;
           }
           if (other.Type != 0) {
             Type = other.Type;
@@ -1061,7 +1062,7 @@ namespace LiveSplit.Lazysplits.Proto {
                 break;
               }
               case 26: {
-                DirRelPath = input.ReadString();
+                RelativePath = input.ReadString();
                 break;
               }
               case 32: {
@@ -1347,8 +1348,8 @@ namespace LiveSplit.Lazysplits.Proto {
             case WatchCvDataOneofCase.Color:
               Color = other.Color.Clone();
               break;
-            case WatchCvDataOneofCase.ImgRelPath:
-              ImgRelPath = other.ImgRelPath;
+            case WatchCvDataOneofCase.ImgRelativePath:
+              ImgRelativePath = other.ImgRelativePath;
               break;
           }
 
@@ -1415,14 +1416,14 @@ namespace LiveSplit.Lazysplits.Proto {
           }
         }
 
-        /// <summary>Field number for the "img_rel_path" field.</summary>
-        public const int ImgRelPathFieldNumber = 6;
+        /// <summary>Field number for the "img_relative_path" field.</summary>
+        public const int ImgRelativePathFieldNumber = 6;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public string ImgRelPath {
-          get { return watchCvDataCase_ == WatchCvDataOneofCase.ImgRelPath ? (string) watchCvData_ : ""; }
+        public string ImgRelativePath {
+          get { return watchCvDataCase_ == WatchCvDataOneofCase.ImgRelativePath ? (string) watchCvData_ : ""; }
           set {
             watchCvData_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-            watchCvDataCase_ = WatchCvDataOneofCase.ImgRelPath;
+            watchCvDataCase_ = WatchCvDataOneofCase.ImgRelativePath;
           }
         }
 
@@ -1431,7 +1432,7 @@ namespace LiveSplit.Lazysplits.Proto {
         public enum WatchCvDataOneofCase {
           None = 0,
           Color = 5,
-          ImgRelPath = 6,
+          ImgRelativePath = 6,
         }
         private WatchCvDataOneofCase watchCvDataCase_ = WatchCvDataOneofCase.None;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1463,7 +1464,7 @@ namespace LiveSplit.Lazysplits.Proto {
           if (Type != other.Type) return false;
           if (!object.Equals(Area, other.Area)) return false;
           if (!object.Equals(Color, other.Color)) return false;
-          if (ImgRelPath != other.ImgRelPath) return false;
+          if (ImgRelativePath != other.ImgRelativePath) return false;
           if (WatchCvDataCase != other.WatchCvDataCase) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
@@ -1476,7 +1477,7 @@ namespace LiveSplit.Lazysplits.Proto {
           if (Type != 0) hash ^= Type.GetHashCode();
           if (area_ != null) hash ^= Area.GetHashCode();
           if (watchCvDataCase_ == WatchCvDataOneofCase.Color) hash ^= Color.GetHashCode();
-          if (watchCvDataCase_ == WatchCvDataOneofCase.ImgRelPath) hash ^= ImgRelPath.GetHashCode();
+          if (watchCvDataCase_ == WatchCvDataOneofCase.ImgRelativePath) hash ^= ImgRelativePath.GetHashCode();
           hash ^= (int) watchCvDataCase_;
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
@@ -1511,9 +1512,9 @@ namespace LiveSplit.Lazysplits.Proto {
             output.WriteRawTag(42);
             output.WriteMessage(Color);
           }
-          if (watchCvDataCase_ == WatchCvDataOneofCase.ImgRelPath) {
+          if (watchCvDataCase_ == WatchCvDataOneofCase.ImgRelativePath) {
             output.WriteRawTag(50);
-            output.WriteString(ImgRelPath);
+            output.WriteString(ImgRelativePath);
           }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
@@ -1538,8 +1539,8 @@ namespace LiveSplit.Lazysplits.Proto {
           if (watchCvDataCase_ == WatchCvDataOneofCase.Color) {
             size += 1 + pb::CodedOutputStream.ComputeMessageSize(Color);
           }
-          if (watchCvDataCase_ == WatchCvDataOneofCase.ImgRelPath) {
-            size += 1 + pb::CodedOutputStream.ComputeStringSize(ImgRelPath);
+          if (watchCvDataCase_ == WatchCvDataOneofCase.ImgRelativePath) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(ImgRelativePath);
           }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
@@ -1574,8 +1575,8 @@ namespace LiveSplit.Lazysplits.Proto {
               }
               Color.MergeFrom(other.Color);
               break;
-            case WatchCvDataOneofCase.ImgRelPath:
-              ImgRelPath = other.ImgRelPath;
+            case WatchCvDataOneofCase.ImgRelativePath:
+              ImgRelativePath = other.ImgRelativePath;
               break;
           }
 
@@ -1619,7 +1620,7 @@ namespace LiveSplit.Lazysplits.Proto {
                 break;
               }
               case 50: {
-                ImgRelPath = input.ReadString();
+                ImgRelativePath = input.ReadString();
                 break;
               }
             }

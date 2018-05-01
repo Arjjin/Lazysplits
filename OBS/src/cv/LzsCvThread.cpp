@@ -6,6 +6,8 @@
 #include <obs.h>
 #include <opencv2\highgui.hpp>
 
+#include "LzsPipeProtoCpp.pb.h"
+
 namespace Lazysplits{
 
 LzsCvThread::LzsCvThread( LzsFrameBuffer* frame_buf )
@@ -131,17 +133,28 @@ void LzsCvThread::HandlePipeConnected( std::shared_ptr<CvMsg> msg ){
 }
 
 void LzsCvThread::HandleSetSharedDataPath( std::shared_ptr<CvMsg> msg ){
-	std::shared_ptr<CvSharedPathMsg> connection_msg = std::static_pointer_cast<CvSharedPathMsg>(msg);
+	std::shared_ptr<CvSharedPathMsg> shared_data_path_msg = std::static_pointer_cast<CvSharedPathMsg>(msg);
 
-	shared_data_dir_ = connection_msg->shared_data_path_;
+	shared_data_dir_ = shared_data_path_msg->shared_data_path_;
 	std::string game_list_found = SharedData::PathHasGameList(shared_data_dir_) ? "valid" : "invalid";
 
 	blog( LOG_DEBUG, "[lazysplits][%s] new shared data path is %s", thread_name_.c_str(), game_list_found.c_str() );
 }
 
 void LzsCvThread::HandleProtobuf( std::shared_ptr<CvMsg> msg ){
-	std::shared_ptr<CvPipeProtobufMsg> connection_msg = std::static_pointer_cast<CvPipeProtobufMsg>(msg);
+	std::shared_ptr<CvPipeProtobufMsg> protobuf_msg = std::static_pointer_cast<CvPipeProtobufMsg>(msg);
 
+	Proto::CsMessage CsMsg;
+	if( CsMsg.ParseFromString(protobuf_msg->serialized_protobuf_) ){
+		switch( CsMsg.type() ){
+			case CsMsg.CLEAR_TARGETS : //Proto::CsMessage_MessageType::CsMessage_MessageType_CLEAR_TARGETS
+				blog( LOG_DEBUG, "[lazysplits][%s] clear targets", thread_name_.c_str() );
+			break;
+			case CsMsg.NEW_TARGET : //Proto::CsMessage_MessageType::CsMessage_MessageType_CLEAR_TARGETS
+				blog( LOG_DEBUG, "[lazysplits][%s] new target for %s : %s", thread_name_.c_str(), CsMsg.game_name().c_str(), CsMsg.target_name().c_str() );
+			break;
+		}
+	}
 }
 
 } //namespace Lazysplits

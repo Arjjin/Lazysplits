@@ -13,8 +13,7 @@ class LzsObservable{
 		LzsObservable( const std::string& subject_name );
 		void AttachObserver( LzsObserver* observer );
 		void DetachObserver( LzsObserver* observer );
-		void NotifyAll();
-		void NotifyAll( std::string message );
+		void NotifyAll( std::string message = "" );
 	private :
 		const std::string subject_name_;
 		std::vector<LzsObserver*> observer_list_;

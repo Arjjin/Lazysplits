@@ -1,10 +1,11 @@
-#include "LzsPipeTask.h"
+#include "LzsPipeTask.h" 
 
 #include <algorithm>
 
 #include "obs.h"
 
 namespace Lazysplits{
+
 
 LzsPipeTaskManager::LzsPipeTaskManager( std::string owning_thread_name, HANDLE pipe_handle, LZS_PIPE_STATE& pipe_server_state )
 	:pipe_server_state_(pipe_server_state)
@@ -36,8 +37,8 @@ void LzsPipeTaskManager::AddConnectTask(){
 	task_list_.push_back(connect_task);
 }
 
-void LzsPipeTaskManager::AddReadTask( int read_buf_size, LzsMsgQueue<std::string>* read_queue ){
-	std::shared_ptr<LzsPipeTaskRead> read_task = std::make_shared<LzsPipeTaskRead>( owning_thread_name_, pipe_handle_, pipe_server_state_, read_buf_size, read_queue );
+void LzsPipeTaskManager::AddReadTask( int read_buf_size, LzsCvThread* cv_thread ){
+	std::shared_ptr<LzsPipeTaskRead> read_task = std::make_shared<LzsPipeTaskRead>( owning_thread_name_, pipe_handle_, pipe_server_state_, read_buf_size, cv_thread );
 	task_list_.push_back(read_task);
 }
 

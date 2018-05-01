@@ -3,33 +3,32 @@ syntax = "proto3";
 package LiveSplit.Lazysplits.Proto;
 
 message CppMessage {
-	int32 message_id = 1;
-	MessageType message_type = 2;
+	int32 id = 1;
+	MessageType type = 2;
 
-	bool pipe_connected = 3;
-
-	uint32 target_index = 4;
-	uint64 target_timestamp = 5;
+	string shared_data_dir = 3;
+	string game_name = 4;
+	uint32 target_name = 5;
+	uint64 target_timestamp = 6;
 
 	enum MessageType{
 		NONE = 0;
-		PIPE_INFO = 1;
-		REQUEST_CV_TARGET = 2;
-		TARGET_FOUND = 3;
+		REQUEST_RESYNC = 1;
+		TARGET_FOUND = 2;
 	}
 }
 
 message CsMessage {
-	int32 message_id = 1;
-	MessageType message_type = 2;
+	int32 id = 1;
+	MessageType type = 2;
 
-	bool pipe_connected = 3;
-
-	uint32 target_index = 4;
+	string shared_data_dir = 3;
+	string game_name = 4;
+	string target_name = 5;
 
 	enum MessageType{
 		NONE = 0;
-		PIPE_INFO = 1;
-		SOURCE_CV_TARGET = 2;
+		CLEAR_TARGETS = 1;
+		NEW_TARGET = 2;
 	}
 }

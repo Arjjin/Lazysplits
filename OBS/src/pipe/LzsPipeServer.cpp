@@ -44,7 +44,7 @@ void* LzsPipeServer::ThreadFunc(){
 			break;
 			case PIPE_CONNECTED :
 				//allow only one read task at a time
-				if( !pipe_task_manager_->IsTaskInList(TASK_TYPE_READ) ){ pipe_task_manager_->AddReadTask( pipe_params_.in_buffer_size, &msg_queue_ ); }
+				if( !pipe_task_manager_->IsTaskInList(TASK_TYPE_READ) ){ pipe_task_manager_->AddReadTask( pipe_params_.in_buffer_size, cv_thread_ ); }
 				//if our cv_to_pipe queue has messages for us to write, do so
 				CheckWriteQueue();
 

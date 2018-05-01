@@ -4,10 +4,11 @@ using System.Linq;
 
 namespace LiveSplit.Lazysplits
 {
-    abstract class LzsObservable
+    public abstract class LzsObservable
     {
-        public LzsObservable()
+        public LzsObservable( string subjectName )
         {
+            SubjectName = subjectName;
             ObserverList = new List<WeakReference>();
         }
         public void AttachObserver( ILzsObserver observer )
@@ -25,7 +26,7 @@ namespace LiveSplit.Lazysplits
                 }
             }
         }
-        public void NotifyAll()
+        public void NotifyAll( string message = "" )
         {
             foreach( WeakReference observer in ObserverList )
             {
@@ -36,16 +37,17 @@ namespace LiveSplit.Lazysplits
                 }
                 else
                 {
-                    Observer.OnSubjectNotify();
+                    Observer.OnSubjectNotify( SubjectName, message );
                 }
             }
         }
 
+        private string SubjectName;
         private List<WeakReference> ObserverList;
     }
 
-    interface ILzsObserver
+    public interface ILzsObserver
     {
-        void OnSubjectNotify();
+        void OnSubjectNotify( string subjectName, string message );
     }
 } //namespace LiveSplit.Lazysplits

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Threading;
 
 using NLog;
-using NLog.Config;
-using NLog.Targets;
+
+using Google.Protobuf;
 
 using LiveSplit.Model;
 using LiveSplit.UI;
@@ -14,6 +15,7 @@ using LiveSplit.UI.Components;
 
 using LiveSplit.Lazysplits.Pipe;
 using LiveSplit.Lazysplits.Proto;
+using LiveSplit.Lazysplits.SharedData;
 
 namespace LiveSplit.Lazysplits
 {
@@ -30,8 +32,10 @@ namespace LiveSplit.Lazysplits
 
         //pipe stuff
         private LzsPipeClient PipeClient;
-        private LzsMessageQueue<byte[]> LsToPipeQueue;
-        private LzsMessageQueue<byte[]> PipeToLsQueue;
+        private bool bPipeConnected;
+        private LzsMessageQueue<LsMsg> MsgQueue;
+
+        private LzsSharedDataManager SharedDataManager;
 
         public float VerticalHeight { get; set; }
         public float MinimumHeight { get; set; }
@@ -45,25 +49,27 @@ namespace LiveSplit.Lazysplits
 
         public LazysplitsComponent(LiveSplitState state)
         {
-            //InitNLog();
-            
             Settings = new LazysplitsComponentSettings();
             State = state;
-            Timer = new LzsTimerModel { CurrentState = state };
-            
-            ContextMenuControls = new Dictionary<string, Action>();
-            ContextMenuControls.Add( "Lazysplits : Start pipe", StartPipeClient );
-            
-            LsToPipeQueue = new LzsMessageQueue<byte[]>();
-            PipeToLsQueue = new LzsMessageQueue<byte[]>();
-            PipeToLsQueue.AttachObserver(this);
-            PipeClient = new LzsPipeClient( "Pipe client thread", "lazysplits_pipe", LsToPipeQueue, PipeToLsQueue );
-            //state.Run.PropertyChanged +=  ;
-            //state.RunManuallyModified +=  ;
+            Timer = new LzsTimerModel();
+            Timer.CurrentState = State;
+
+            ContextMenuControls = (IDictionary<string, Action>) new Dictionary<string, Action>();
+            ContextMenuControls.Add("Lazysplits : Start pipe", new Action(this.StartPipeClient));
+
+            PipeClient = new LzsPipeClient( "Pipe client thread", "lazysplits_pipe", this );
+            bPipeConnected = false;
+            MsgQueue = new LzsMessageQueue<LsMsg>("LazysplitsComponent message queue");
+            MsgQueue.AttachObserver(this);
+
+            SharedDataManager = new LzsSharedDataManager(State.Run);
+            SharedDataManager.AttachObserver(this);
+
             Settings.SharedDataRootDirChanged += OnRootDirChanged;
-            
-            VerticalHeight = 10;
-            HorizontalWidth = 10;
+            State.RunManuallyModified += OnRunChanged;
+
+            VerticalHeight = 10f;
+            HorizontalWidth = 10f;
         }
 
         public Control GetSettingsControl(LayoutMode mode)
@@ -104,6 +110,22 @@ namespace LiveSplit.Lazysplits
             DrawBase(g, state, width, VerticalHeight, LayoutMode.Vertical);
         }
 
+        public void OnSubjectNotify( string subjectName, string message )
+        {
+            switch(subjectName)
+            {
+                case "LazysplitsComponent message queue":
+                    CheckMsgQueue();
+                break;
+                case "Shared data manager":
+                    if( message == "Splits changed" && bPipeConnected )
+                    {
+                        ResendTargetData();
+                    }
+                break;
+            }
+        }
+
         /* pipe methods */
 
         public void StartPipeClient()
@@ -136,41 +158,87 @@ namespace LiveSplit.Lazysplits
             }
         }
 
-        public void OnSubjectNotify()
+        /* message queue stuff */
+
+        public void MsgPipeStatus(bool connected)
         {
-            CheckReadQueue();
+            MsgQueue.Enqueue( new LsPipeStatusMsg(connected) );
         }
 
-        private void CheckReadQueue()
+        public void MsgProtobuf(byte[] serializedProtobuf)
         {
-            while( !PipeToLsQueue.IsEmpty() )
+            MsgQueue.Enqueue( new LsProtobufMsg(serializedProtobuf) );
+        }
+
+        private void CheckMsgQueue()
+        {
+            while ( !MsgQueue.IsEmpty() )
             {
-                byte[] SerializedMessage;
-                if( PipeToLsQueue.TryDequeue( out SerializedMessage ) )
+                LsMsg Msg;
+                if( MsgQueue.TryDequeue( out Msg ) )
                 {
-                    CppMessage CvMessage;
-                    try
+                    if( Msg.Type == LsMsgType.PipeStatus )
                     {
-                        CvMessage = CppMessage.Parser.ParseFrom(SerializedMessage);
+                        LsPipeStatusMsg PipeStatusMsg = (LsPipeStatusMsg)Msg;
+                        if( bPipeConnected = PipeStatusMsg.Connected == true )
+                        {
+                            ResendTargetData();
+                        }
+
+                        Log.Debug("Pipe "+ (bPipeConnected ? "Connected" : "Disconnected") );
                     }
-                    catch( Google.Protobuf.InvalidProtocolBufferException e )
+                    else if ( Msg.Type == LsMsgType.Protobuf )
                     {
-                        Log.Warn("Error deserializing protobuf : "+e.Message);
-                        return;
+                        LsProtobufMsg ProtobufMsg = (LsProtobufMsg) Msg;
+                        CppMessage ObsMsg;
+                        try
+                        {
+                            ObsMsg = CppMessage.Parser.ParseFrom(ProtobufMsg.SerializedProtobuf);
+                            Log.Debug("Deserialized message - id : "+ObsMsg.Id + ", type : "+ObsMsg.Type.ToString());
+                        }
+                        catch (InvalidProtocolBufferException ex)
+                        {
+                            Log.Warn("Error deserializing protobuf : " + ex.Message);
+                        }
                     }
-                    Log.Debug("Deserialized message - id : "+CvMessage.MessageId+", type : "+CvMessage.MessageType.ToString() );
                 }
                 else
                 {
-                    System.Threading.Thread.Sleep(50);
+                    Log.Warn("failed to dequeue message, waiting 50ms");
+                    Thread.Sleep(50);
+                }
+            }
+        }
+        
+        /* shared data stuff */
+
+        private void ResendTargetData()
+        {
+            PipeClient.MsgSerializedProtobuf( LzsProtoHelper.ClearTargetMsg() );
+            if( SharedDataManager.CurrentGame.SplitsFile.bAvailable )
+            {
+                List<string> TargetNames = SharedDataManager.CurrentGame.SplitsFile.GetGlobalTargets();
+
+                foreach( string TargetName in TargetNames )
+                {
+                    byte[] SerializedMsg = LzsProtoHelper.NewTargetMsg( Settings.SharedDataRootDir, SharedDataManager.CurrentGame.GameInfo.Name, TargetName );
+                    PipeClient.MsgSerializedProtobuf(SerializedMsg);
                 }
             }
         }
 
-        //misc
+        //event handlers
         public void OnRootDirChanged( object sender, EventArgs e )
         {
-            ResetPipeClient();
+            if ( SharedDataManager.SetRootDir(Settings.SharedDataRootDir) )
+            {
+                ResetPipeClient();
+            }
+        }
+
+        public void OnRunChanged(object sender, EventArgs e)
+        {
+            SharedDataManager.RunChanged(State.Run);
         }
 
         //IDisposable

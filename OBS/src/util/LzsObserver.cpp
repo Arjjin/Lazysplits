@@ -26,8 +26,6 @@ void LzsObservable::DetachObserver( LzsObserver* observer ){
 	}
 }
 
-void LzsObservable::NotifyAll(){ NotifyAll(""); }
-
 void LzsObservable::NotifyAll( std::string message ){
 	for( auto observer_it = observer_list_.begin(); observer_it != observer_list_.end(); ++observer_it ){
 		(*observer_it)->OnSubjectNotify( subject_name_, message );

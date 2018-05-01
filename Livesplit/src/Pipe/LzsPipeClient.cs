@@ -14,19 +14,19 @@ namespace LiveSplit.Lazysplits.Pipe
         private string PipeName;
         private NamedPipeClientStream PipeStream;
         private PipeTaskManager TaskManager;
-        private LzsMessageQueue<byte[]> FromLivesplitQueue;
-        private LzsMessageQueue<byte[]> ToLivesplitQueue;
+        private LzsMessageQueue<byte[]> MsgQueue;
+        private LazysplitsComponent LzsComponent;
     
         //NLog
         private static Logger Log = LogManager.GetCurrentClassLogger();
 
-        public LzsPipeClient( string threadName, string pipeName, LzsMessageQueue<byte[]> fromLivesplitQueue, LzsMessageQueue<byte[]> toLivesplitQueue ) : base(threadName)
+        public LzsPipeClient( string threadName, string pipeName, LazysplitsComponent lzsComponent ) : base(threadName)
         {
             PipeName = pipeName;
-            FromLivesplitQueue = fromLivesplitQueue;
-            ToLivesplitQueue = toLivesplitQueue;
-
+            LzsComponent = lzsComponent;
+            MsgQueue = new LzsMessageQueue<byte[]>("PipeClient message queue");
         }
+
         protected override void ThreadFuncInit()
         {
             base.ThreadFuncInit();
@@ -49,8 +49,8 @@ namespace LiveSplit.Lazysplits.Pipe
             }
 
             TaskManager = new PipeTaskManager( ref PipeStream );
-            //attach self as observer to read queue, so we can wake up to parse messages that get added
-            FromLivesplitQueue.AttachObserver(this);
+            //attach self as observer to message queue, so we can wake up to parse messages that get added
+            MsgQueue.AttachObserver(this);
 
             Log.Info("Pipe created");
 
@@ -59,6 +59,7 @@ namespace LiveSplit.Lazysplits.Pipe
         {
             ThreadFuncInit();
             
+            bool bConnectionStateLastLoop = false;
             while( ThreadFuncShouldLoop() )
             {
                 if( !PipeStream.IsConnected && !TaskManager.IsTaskInList( PipeTaskType.Connect ) )
@@ -68,12 +69,12 @@ namespace LiveSplit.Lazysplits.Pipe
                 else if(PipeStream.IsConnected)
                 {
                     //process messages from queue
-                    if( !FromLivesplitQueue.IsEmpty() )
+                    if( !MsgQueue.IsEmpty() )
                     {
-                        while( FromLivesplitQueue.Count() > 0 )
+                        while( MsgQueue.Count() > 0 )
                         {
                             byte[] serialized_protobuf;
-                            if( FromLivesplitQueue.TryDequeue( out serialized_protobuf ) )
+                            if( MsgQueue.TryDequeue( out serialized_protobuf ) )
                             {
                                 TaskManager.AddWriteTask( PipeStream, serialized_protobuf );
                             }
@@ -84,24 +85,36 @@ namespace LiveSplit.Lazysplits.Pipe
                         }
                     }
                     if( PipeStream.ReadMode != PipeTransmissionMode.Message ){ PipeStream.ReadMode = PipeTransmissionMode.Message; }
-                    if( !TaskManager.IsTaskInList( PipeTaskType.Read ) ) { TaskManager.AddReadTask( PipeStream, ToLivesplitQueue ); }
+                    if( !TaskManager.IsTaskInList( PipeTaskType.Read ) ) { TaskManager.AddReadTask( PipeStream, LzsComponent ); }
                 }
 
                 //wait on tasks
                 TaskManager.WaitOnTasks();
+                
+                //if our connection status has just changed, let our livesplits component know
+                if( PipeStream.IsConnected != bConnectionStateLastLoop )
+                {
+                    LzsComponent.MsgPipeStatus(PipeStream.IsConnected);
+                }
+                bConnectionStateLastLoop = PipeStream.IsConnected;
             }
 
             ThreadFuncCleanup();
         }
         protected override void ThreadFuncCleanup()
         {
+            if (PipeStream.IsConnected)
+            {
+                LzsComponent.MsgPipeStatus(false);
+            }
+
             TaskManager.Dispose();
-            //PipeStream.Close();
             PipeStream.Dispose();
             Log.Info("Pipe Closed");
 
             base.ThreadFuncCleanup();
         }
+
         public override void ThreadTerminate()
         {
             Log.Debug("Pipe client thread terminating");
@@ -109,10 +122,16 @@ namespace LiveSplit.Lazysplits.Pipe
 
             base.ThreadTerminate();
         }
-        public void OnSubjectNotify()
+
+        public void OnSubjectNotify( string subjectName, string message )
         {
             //if our pipe is connected and waiting on tasks, wake it up to write new messages from queue
             if( PipeStream.IsConnected && TaskManager.IsWaiting() ){ TaskManager.CancelWait(); }
+        }
+
+        public void MsgSerializedProtobuf( byte[] serializedProtobuf )
+        {
+            MsgQueue.Enqueue(serializedProtobuf);
         }
     }
 } //namespace LiveSplit.Lazysplits.Pipe

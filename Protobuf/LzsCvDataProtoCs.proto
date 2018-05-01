@@ -28,7 +28,7 @@ message RGB{
 message GameList{
 	message GameEntry{
 		string name = 1;
-		string dir_rel_path = 2;
+		string relative_path = 2;
 	}
 
 	repeated GameEntry games = 1;
@@ -38,7 +38,7 @@ message GameInfo{
 	message TargetEntry{
 		int32 id = 1;
 		string name = 2;
-		string dir_rel_path = 3;
+		string relative_path = 3;
 		TargetType type = 4;
 	}
 
@@ -60,7 +60,7 @@ message TargetInfo{
 
 		oneof watch_cv_data{
 			RGB color = 5;
-			string img_rel_path = 6;
+			string img_relative_path = 6;
 		}
 	}
 

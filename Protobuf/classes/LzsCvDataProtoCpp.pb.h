@@ -473,26 +473,26 @@ class GameList_GameEntry : public ::google::protobuf::Message /* @@protoc_insert
   ::std::string* release_name();
   void set_allocated_name(::std::string* name);
 
-  // string dir_rel_path = 2;
-  void clear_dir_rel_path();
-  static const int kDirRelPathFieldNumber = 2;
-  const ::std::string& dir_rel_path() const;
-  void set_dir_rel_path(const ::std::string& value);
+  // string relative_path = 2;
+  void clear_relative_path();
+  static const int kRelativePathFieldNumber = 2;
+  const ::std::string& relative_path() const;
+  void set_relative_path(const ::std::string& value);
   #if LANG_CXX11
-  void set_dir_rel_path(::std::string&& value);
+  void set_relative_path(::std::string&& value);
   #endif
-  void set_dir_rel_path(const char* value);
-  void set_dir_rel_path(const char* value, size_t size);
-  ::std::string* mutable_dir_rel_path();
-  ::std::string* release_dir_rel_path();
-  void set_allocated_dir_rel_path(::std::string* dir_rel_path);
+  void set_relative_path(const char* value);
+  void set_relative_path(const char* value, size_t size);
+  ::std::string* mutable_relative_path();
+  ::std::string* release_relative_path();
+  void set_allocated_relative_path(::std::string* relative_path);
 
   // @@protoc_insertion_point(class_scope:Lazysplits.Proto.CvData.GameList.GameEntry)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr name_;
-  ::google::protobuf::internal::ArenaStringPtr dir_rel_path_;
+  ::google::protobuf::internal::ArenaStringPtr relative_path_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_LzsCvDataProtoCpp_2eproto::TableStruct;
 };
@@ -710,19 +710,19 @@ class GameInfo_TargetEntry : public ::google::protobuf::Message /* @@protoc_inse
   ::std::string* release_name();
   void set_allocated_name(::std::string* name);
 
-  // string dir_rel_path = 3;
-  void clear_dir_rel_path();
-  static const int kDirRelPathFieldNumber = 3;
-  const ::std::string& dir_rel_path() const;
-  void set_dir_rel_path(const ::std::string& value);
+  // string relative_path = 3;
+  void clear_relative_path();
+  static const int kRelativePathFieldNumber = 3;
+  const ::std::string& relative_path() const;
+  void set_relative_path(const ::std::string& value);
   #if LANG_CXX11
-  void set_dir_rel_path(::std::string&& value);
+  void set_relative_path(::std::string&& value);
   #endif
-  void set_dir_rel_path(const char* value);
-  void set_dir_rel_path(const char* value, size_t size);
-  ::std::string* mutable_dir_rel_path();
-  ::std::string* release_dir_rel_path();
-  void set_allocated_dir_rel_path(::std::string* dir_rel_path);
+  void set_relative_path(const char* value);
+  void set_relative_path(const char* value, size_t size);
+  ::std::string* mutable_relative_path();
+  ::std::string* release_relative_path();
+  void set_allocated_relative_path(::std::string* relative_path);
 
   // int32 id = 1;
   void clear_id();
@@ -741,7 +741,7 @@ class GameInfo_TargetEntry : public ::google::protobuf::Message /* @@protoc_inse
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr name_;
-  ::google::protobuf::internal::ArenaStringPtr dir_rel_path_;
+  ::google::protobuf::internal::ArenaStringPtr relative_path_;
   ::google::protobuf::int32 id_;
   int type_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
@@ -1028,7 +1028,7 @@ class TargetInfo_WatchInfo : public ::google::protobuf::Message /* @@protoc_inse
 
   enum WatchCvDataCase {
     kColor = 5,
-    kImgRelPath = 6,
+    kImgRelativePath = 6,
     WATCH_CV_DATA_NOT_SET = 0,
   };
 
@@ -1134,29 +1134,29 @@ class TargetInfo_WatchInfo : public ::google::protobuf::Message /* @@protoc_inse
   ::Lazysplits::Proto::CvData::RGB* mutable_color();
   void set_allocated_color(::Lazysplits::Proto::CvData::RGB* color);
 
-  // string img_rel_path = 6;
+  // string img_relative_path = 6;
   private:
-  bool has_img_rel_path() const;
+  bool has_img_relative_path() const;
   public:
-  void clear_img_rel_path();
-  static const int kImgRelPathFieldNumber = 6;
-  const ::std::string& img_rel_path() const;
-  void set_img_rel_path(const ::std::string& value);
+  void clear_img_relative_path();
+  static const int kImgRelativePathFieldNumber = 6;
+  const ::std::string& img_relative_path() const;
+  void set_img_relative_path(const ::std::string& value);
   #if LANG_CXX11
-  void set_img_rel_path(::std::string&& value);
+  void set_img_relative_path(::std::string&& value);
   #endif
-  void set_img_rel_path(const char* value);
-  void set_img_rel_path(const char* value, size_t size);
-  ::std::string* mutable_img_rel_path();
-  ::std::string* release_img_rel_path();
-  void set_allocated_img_rel_path(::std::string* img_rel_path);
+  void set_img_relative_path(const char* value);
+  void set_img_relative_path(const char* value, size_t size);
+  ::std::string* mutable_img_relative_path();
+  ::std::string* release_img_relative_path();
+  void set_allocated_img_relative_path(::std::string* img_relative_path);
 
   void clear_watch_cv_data();
   WatchCvDataCase watch_cv_data_case() const;
   // @@protoc_insertion_point(class_scope:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
  private:
   void set_has_color();
-  void set_has_img_rel_path();
+  void set_has_img_relative_path();
 
   inline bool has_watch_cv_data() const;
   inline void clear_has_watch_cv_data();
@@ -1169,7 +1169,7 @@ class TargetInfo_WatchInfo : public ::google::protobuf::Message /* @@protoc_inse
   union WatchCvDataUnion {
     WatchCvDataUnion() {}
     ::Lazysplits::Proto::CvData::RGB* color_;
-    ::google::protobuf::internal::ArenaStringPtr img_rel_path_;
+    ::google::protobuf::internal::ArenaStringPtr img_relative_path_;
   } watch_cv_data_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
@@ -1465,57 +1465,57 @@ inline void GameList_GameEntry::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CvData.GameList.GameEntry.name)
 }
 
-// string dir_rel_path = 2;
-inline void GameList_GameEntry::clear_dir_rel_path() {
-  dir_rel_path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// string relative_path = 2;
+inline void GameList_GameEntry::clear_relative_path() {
+  relative_path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& GameList_GameEntry::dir_rel_path() const {
-  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CvData.GameList.GameEntry.dir_rel_path)
-  return dir_rel_path_.GetNoArena();
+inline const ::std::string& GameList_GameEntry::relative_path() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CvData.GameList.GameEntry.relative_path)
+  return relative_path_.GetNoArena();
 }
-inline void GameList_GameEntry::set_dir_rel_path(const ::std::string& value) {
+inline void GameList_GameEntry::set_relative_path(const ::std::string& value) {
   
-  dir_rel_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CvData.GameList.GameEntry.dir_rel_path)
+  relative_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CvData.GameList.GameEntry.relative_path)
 }
 #if LANG_CXX11
-inline void GameList_GameEntry::set_dir_rel_path(::std::string&& value) {
+inline void GameList_GameEntry::set_relative_path(::std::string&& value) {
   
-  dir_rel_path_.SetNoArena(
+  relative_path_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Lazysplits.Proto.CvData.GameList.GameEntry.dir_rel_path)
+  // @@protoc_insertion_point(field_set_rvalue:Lazysplits.Proto.CvData.GameList.GameEntry.relative_path)
 }
 #endif
-inline void GameList_GameEntry::set_dir_rel_path(const char* value) {
+inline void GameList_GameEntry::set_relative_path(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
-  dir_rel_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Lazysplits.Proto.CvData.GameList.GameEntry.dir_rel_path)
+  relative_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Lazysplits.Proto.CvData.GameList.GameEntry.relative_path)
 }
-inline void GameList_GameEntry::set_dir_rel_path(const char* value, size_t size) {
+inline void GameList_GameEntry::set_relative_path(const char* value, size_t size) {
   
-  dir_rel_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  relative_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Lazysplits.Proto.CvData.GameList.GameEntry.dir_rel_path)
+  // @@protoc_insertion_point(field_set_pointer:Lazysplits.Proto.CvData.GameList.GameEntry.relative_path)
 }
-inline ::std::string* GameList_GameEntry::mutable_dir_rel_path() {
+inline ::std::string* GameList_GameEntry::mutable_relative_path() {
   
-  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.CvData.GameList.GameEntry.dir_rel_path)
-  return dir_rel_path_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.CvData.GameList.GameEntry.relative_path)
+  return relative_path_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* GameList_GameEntry::release_dir_rel_path() {
-  // @@protoc_insertion_point(field_release:Lazysplits.Proto.CvData.GameList.GameEntry.dir_rel_path)
+inline ::std::string* GameList_GameEntry::release_relative_path() {
+  // @@protoc_insertion_point(field_release:Lazysplits.Proto.CvData.GameList.GameEntry.relative_path)
   
-  return dir_rel_path_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return relative_path_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void GameList_GameEntry::set_allocated_dir_rel_path(::std::string* dir_rel_path) {
-  if (dir_rel_path != NULL) {
+inline void GameList_GameEntry::set_allocated_relative_path(::std::string* relative_path) {
+  if (relative_path != NULL) {
     
   } else {
     
   }
-  dir_rel_path_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), dir_rel_path);
-  // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CvData.GameList.GameEntry.dir_rel_path)
+  relative_path_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), relative_path);
+  // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CvData.GameList.GameEntry.relative_path)
 }
 
 // -------------------------------------------------------------------
@@ -1623,57 +1623,57 @@ inline void GameInfo_TargetEntry::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CvData.GameInfo.TargetEntry.name)
 }
 
-// string dir_rel_path = 3;
-inline void GameInfo_TargetEntry::clear_dir_rel_path() {
-  dir_rel_path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// string relative_path = 3;
+inline void GameInfo_TargetEntry::clear_relative_path() {
+  relative_path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& GameInfo_TargetEntry::dir_rel_path() const {
-  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CvData.GameInfo.TargetEntry.dir_rel_path)
-  return dir_rel_path_.GetNoArena();
+inline const ::std::string& GameInfo_TargetEntry::relative_path() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CvData.GameInfo.TargetEntry.relative_path)
+  return relative_path_.GetNoArena();
 }
-inline void GameInfo_TargetEntry::set_dir_rel_path(const ::std::string& value) {
+inline void GameInfo_TargetEntry::set_relative_path(const ::std::string& value) {
   
-  dir_rel_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CvData.GameInfo.TargetEntry.dir_rel_path)
+  relative_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CvData.GameInfo.TargetEntry.relative_path)
 }
 #if LANG_CXX11
-inline void GameInfo_TargetEntry::set_dir_rel_path(::std::string&& value) {
+inline void GameInfo_TargetEntry::set_relative_path(::std::string&& value) {
   
-  dir_rel_path_.SetNoArena(
+  relative_path_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Lazysplits.Proto.CvData.GameInfo.TargetEntry.dir_rel_path)
+  // @@protoc_insertion_point(field_set_rvalue:Lazysplits.Proto.CvData.GameInfo.TargetEntry.relative_path)
 }
 #endif
-inline void GameInfo_TargetEntry::set_dir_rel_path(const char* value) {
+inline void GameInfo_TargetEntry::set_relative_path(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
-  dir_rel_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Lazysplits.Proto.CvData.GameInfo.TargetEntry.dir_rel_path)
+  relative_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Lazysplits.Proto.CvData.GameInfo.TargetEntry.relative_path)
 }
-inline void GameInfo_TargetEntry::set_dir_rel_path(const char* value, size_t size) {
+inline void GameInfo_TargetEntry::set_relative_path(const char* value, size_t size) {
   
-  dir_rel_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  relative_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Lazysplits.Proto.CvData.GameInfo.TargetEntry.dir_rel_path)
+  // @@protoc_insertion_point(field_set_pointer:Lazysplits.Proto.CvData.GameInfo.TargetEntry.relative_path)
 }
-inline ::std::string* GameInfo_TargetEntry::mutable_dir_rel_path() {
+inline ::std::string* GameInfo_TargetEntry::mutable_relative_path() {
   
-  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.CvData.GameInfo.TargetEntry.dir_rel_path)
-  return dir_rel_path_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.CvData.GameInfo.TargetEntry.relative_path)
+  return relative_path_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* GameInfo_TargetEntry::release_dir_rel_path() {
-  // @@protoc_insertion_point(field_release:Lazysplits.Proto.CvData.GameInfo.TargetEntry.dir_rel_path)
+inline ::std::string* GameInfo_TargetEntry::release_relative_path() {
+  // @@protoc_insertion_point(field_release:Lazysplits.Proto.CvData.GameInfo.TargetEntry.relative_path)
   
-  return dir_rel_path_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return relative_path_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void GameInfo_TargetEntry::set_allocated_dir_rel_path(::std::string* dir_rel_path) {
-  if (dir_rel_path != NULL) {
+inline void GameInfo_TargetEntry::set_allocated_relative_path(::std::string* relative_path) {
+  if (relative_path != NULL) {
     
   } else {
     
   }
-  dir_rel_path_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), dir_rel_path);
-  // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CvData.GameInfo.TargetEntry.dir_rel_path)
+  relative_path_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), relative_path);
+  // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CvData.GameInfo.TargetEntry.relative_path)
 }
 
 // .Lazysplits.Proto.CvData.TargetType type = 4;
@@ -2033,97 +2033,97 @@ inline ::Lazysplits::Proto::CvData::RGB* TargetInfo_WatchInfo::mutable_color() {
   return watch_cv_data_.color_;
 }
 
-// string img_rel_path = 6;
-inline bool TargetInfo_WatchInfo::has_img_rel_path() const {
-  return watch_cv_data_case() == kImgRelPath;
+// string img_relative_path = 6;
+inline bool TargetInfo_WatchInfo::has_img_relative_path() const {
+  return watch_cv_data_case() == kImgRelativePath;
 }
-inline void TargetInfo_WatchInfo::set_has_img_rel_path() {
-  _oneof_case_[0] = kImgRelPath;
+inline void TargetInfo_WatchInfo::set_has_img_relative_path() {
+  _oneof_case_[0] = kImgRelativePath;
 }
-inline void TargetInfo_WatchInfo::clear_img_rel_path() {
-  if (has_img_rel_path()) {
-    watch_cv_data_.img_rel_path_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void TargetInfo_WatchInfo::clear_img_relative_path() {
+  if (has_img_relative_path()) {
+    watch_cv_data_.img_relative_path_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     clear_has_watch_cv_data();
   }
 }
-inline const ::std::string& TargetInfo_WatchInfo::img_rel_path() const {
-  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_rel_path)
-  if (has_img_rel_path()) {
-    return watch_cv_data_.img_rel_path_.GetNoArena();
+inline const ::std::string& TargetInfo_WatchInfo::img_relative_path() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_relative_path)
+  if (has_img_relative_path()) {
+    return watch_cv_data_.img_relative_path_.GetNoArena();
   }
   return *&::google::protobuf::internal::GetEmptyStringAlreadyInited();
 }
-inline void TargetInfo_WatchInfo::set_img_rel_path(const ::std::string& value) {
-  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_rel_path)
-  if (!has_img_rel_path()) {
+inline void TargetInfo_WatchInfo::set_img_relative_path(const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_relative_path)
+  if (!has_img_relative_path()) {
     clear_watch_cv_data();
-    set_has_img_rel_path();
-    watch_cv_data_.img_rel_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    set_has_img_relative_path();
+    watch_cv_data_.img_relative_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  watch_cv_data_.img_rel_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_rel_path)
+  watch_cv_data_.img_relative_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_relative_path)
 }
 #if LANG_CXX11
-inline void TargetInfo_WatchInfo::set_img_rel_path(::std::string&& value) {
-  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_rel_path)
-  if (!has_img_rel_path()) {
+inline void TargetInfo_WatchInfo::set_img_relative_path(::std::string&& value) {
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_relative_path)
+  if (!has_img_relative_path()) {
     clear_watch_cv_data();
-    set_has_img_rel_path();
-    watch_cv_data_.img_rel_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    set_has_img_relative_path();
+    watch_cv_data_.img_relative_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  watch_cv_data_.img_rel_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_rel_path)
+  watch_cv_data_.img_relative_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_relative_path)
 }
 #endif
-inline void TargetInfo_WatchInfo::set_img_rel_path(const char* value) {
+inline void TargetInfo_WatchInfo::set_img_relative_path(const char* value) {
   GOOGLE_DCHECK(value != NULL);
-  if (!has_img_rel_path()) {
+  if (!has_img_relative_path()) {
     clear_watch_cv_data();
-    set_has_img_rel_path();
-    watch_cv_data_.img_rel_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    set_has_img_relative_path();
+    watch_cv_data_.img_relative_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  watch_cv_data_.img_rel_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  watch_cv_data_.img_relative_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_rel_path)
+  // @@protoc_insertion_point(field_set_char:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_relative_path)
 }
-inline void TargetInfo_WatchInfo::set_img_rel_path(const char* value, size_t size) {
-  if (!has_img_rel_path()) {
+inline void TargetInfo_WatchInfo::set_img_relative_path(const char* value, size_t size) {
+  if (!has_img_relative_path()) {
     clear_watch_cv_data();
-    set_has_img_rel_path();
-    watch_cv_data_.img_rel_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    set_has_img_relative_path();
+    watch_cv_data_.img_relative_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  watch_cv_data_.img_rel_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(
+  watch_cv_data_.img_relative_path_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(
       reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_rel_path)
+  // @@protoc_insertion_point(field_set_pointer:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_relative_path)
 }
-inline ::std::string* TargetInfo_WatchInfo::mutable_img_rel_path() {
-  if (!has_img_rel_path()) {
+inline ::std::string* TargetInfo_WatchInfo::mutable_img_relative_path() {
+  if (!has_img_relative_path()) {
     clear_watch_cv_data();
-    set_has_img_rel_path();
-    watch_cv_data_.img_rel_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    set_has_img_relative_path();
+    watch_cv_data_.img_relative_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_rel_path)
-  return watch_cv_data_.img_rel_path_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_relative_path)
+  return watch_cv_data_.img_relative_path_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* TargetInfo_WatchInfo::release_img_rel_path() {
-  // @@protoc_insertion_point(field_release:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_rel_path)
-  if (has_img_rel_path()) {
+inline ::std::string* TargetInfo_WatchInfo::release_img_relative_path() {
+  // @@protoc_insertion_point(field_release:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_relative_path)
+  if (has_img_relative_path()) {
     clear_has_watch_cv_data();
-    return watch_cv_data_.img_rel_path_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return watch_cv_data_.img_relative_path_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   } else {
     return NULL;
   }
 }
-inline void TargetInfo_WatchInfo::set_allocated_img_rel_path(::std::string* img_rel_path) {
-  if (!has_img_rel_path()) {
-    watch_cv_data_.img_rel_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void TargetInfo_WatchInfo::set_allocated_img_relative_path(::std::string* img_relative_path) {
+  if (!has_img_relative_path()) {
+    watch_cv_data_.img_relative_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
   clear_watch_cv_data();
-  if (img_rel_path != NULL) {
-    set_has_img_rel_path();
-    watch_cv_data_.img_rel_path_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), img_rel_path);
+  if (img_relative_path != NULL) {
+    set_has_img_relative_path();
+    watch_cv_data_.img_relative_path_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), img_relative_path);
   }
-  // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_rel_path)
+  // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_relative_path)
 }
 
 inline bool TargetInfo_WatchInfo::has_watch_cv_data() const {

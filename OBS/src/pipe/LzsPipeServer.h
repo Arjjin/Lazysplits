@@ -1,12 +1,13 @@
 #pragma once
 
+#include "LzsPipeTask.h"
 #include "util\LzsThread.h"
-#include "cv\LzsCvThread.h"
 #include "util\LzsObserver.h"
 #include "LzsPipeConstants.h"
-#include "LzsPipeTask.h"
 #include "LzsMessageQueue.h"
+#include "cv\LzsCvThread.h"
 
+#include <memory>
 #include <Windows.h>
 
 namespace Lazysplits{
