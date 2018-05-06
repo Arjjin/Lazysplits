@@ -1,6 +1,6 @@
 #include "LzsSourceData.h"
 
-#include "util\LzsSharedData.h"
+#include "SharedData\LzsSharedData.h"
 
 namespace Lazysplits{
 
@@ -41,6 +41,7 @@ void LzsSourceData::InitProps( obs_source_t* context ){
 
 void LzsSourceData::OnSourceCreate( obs_data_t* source_settings, obs_source_t* context ){
 	properties_.UpdateProperties(source_settings);
+	cv_thread_.MsgSetSharedDataPath(prop_shared_data_dir);
 }
 
 obs_properties_t* LzsSourceData::GetSourceProps(){

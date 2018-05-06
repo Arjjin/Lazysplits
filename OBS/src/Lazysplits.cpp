@@ -35,7 +35,7 @@ static void lzs_source_render_video(void *data, gs_effect_t *effect){
 static struct obs_source_frame* lzs_source_filter_video( void* data, struct obs_source_frame* frame){
 	LzsSourceData* source_data = static_cast<LzsSourceData*>(data);
 
-	if( source_data->cv_thread_.IsCvActive() ){ source_data->frame_buffer_.PushFrame(frame); }
+	if( source_data->cv_thread_.IsTargets() ){ source_data->frame_buffer_.PushFrame(frame); }
 
 	return frame;
 }

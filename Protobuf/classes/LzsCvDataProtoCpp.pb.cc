@@ -22,24 +22,23 @@
 namespace protobuf_LzsCvDataProtoCpp_2eproto {
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_GameInfo_TargetEntry;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_GameList_GameEntry;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_RGB;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_RGBColor;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_TargetInfo_WatchEntry;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_UScalar2d;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_TargetInfo_WatchInfo_WatchArea;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_TargetInfo_WatchInfo;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_WatchInfo_WatchArea;
 }  // namespace protobuf_LzsCvDataProtoCpp_2eproto
 namespace Lazysplits {
 namespace Proto {
-namespace CvData {
 class UScalar2dDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<UScalar2d>
       _instance;
 } _UScalar2d_default_instance_;
-class RGBDefaultTypeInternal {
+class RGBColorDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<RGB>
+  ::google::protobuf::internal::ExplicitlyConstructed<RGBColor>
       _instance;
-} _RGB_default_instance_;
+} _RGBColor_default_instance_;
 class GameList_GameEntryDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<GameList_GameEntry>
@@ -60,24 +59,26 @@ class GameInfoDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<GameInfo>
       _instance;
 } _GameInfo_default_instance_;
-class TargetInfo_WatchInfo_WatchAreaDefaultTypeInternal {
+class TargetInfo_WatchEntryDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TargetInfo_WatchInfo_WatchArea>
+  ::google::protobuf::internal::ExplicitlyConstructed<TargetInfo_WatchEntry>
       _instance;
-} _TargetInfo_WatchInfo_WatchArea_default_instance_;
-class TargetInfo_WatchInfoDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<TargetInfo_WatchInfo>
-      _instance;
-  const ::Lazysplits::Proto::CvData::RGB* color_;
-  ::google::protobuf::internal::ArenaStringPtr img_relative_path_;
-} _TargetInfo_WatchInfo_default_instance_;
+} _TargetInfo_WatchEntry_default_instance_;
 class TargetInfoDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<TargetInfo>
       _instance;
 } _TargetInfo_default_instance_;
-}  // namespace CvData
+class WatchInfo_WatchAreaDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<WatchInfo_WatchArea>
+      _instance;
+} _WatchInfo_WatchArea_default_instance_;
+class WatchInfoDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<WatchInfo>
+      _instance;
+} _WatchInfo_default_instance_;
 }  // namespace Proto
 }  // namespace Lazysplits
 namespace protobuf_LzsCvDataProtoCpp_2eproto {
@@ -85,39 +86,39 @@ static void InitDefaultsUScalar2d() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::Lazysplits::Proto::CvData::_UScalar2d_default_instance_;
-    new (ptr) ::Lazysplits::Proto::CvData::UScalar2d();
+    void* ptr = &::Lazysplits::Proto::_UScalar2d_default_instance_;
+    new (ptr) ::Lazysplits::Proto::UScalar2d();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::Lazysplits::Proto::CvData::UScalar2d::InitAsDefaultInstance();
+  ::Lazysplits::Proto::UScalar2d::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<0> scc_info_UScalar2d =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsUScalar2d}, {}};
 
-static void InitDefaultsRGB() {
+static void InitDefaultsRGBColor() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::Lazysplits::Proto::CvData::_RGB_default_instance_;
-    new (ptr) ::Lazysplits::Proto::CvData::RGB();
+    void* ptr = &::Lazysplits::Proto::_RGBColor_default_instance_;
+    new (ptr) ::Lazysplits::Proto::RGBColor();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::Lazysplits::Proto::CvData::RGB::InitAsDefaultInstance();
+  ::Lazysplits::Proto::RGBColor::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_RGB =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsRGB}, {}};
+::google::protobuf::internal::SCCInfo<0> scc_info_RGBColor =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsRGBColor}, {}};
 
 static void InitDefaultsGameList_GameEntry() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::Lazysplits::Proto::CvData::_GameList_GameEntry_default_instance_;
-    new (ptr) ::Lazysplits::Proto::CvData::GameList_GameEntry();
+    void* ptr = &::Lazysplits::Proto::_GameList_GameEntry_default_instance_;
+    new (ptr) ::Lazysplits::Proto::GameList_GameEntry();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::Lazysplits::Proto::CvData::GameList_GameEntry::InitAsDefaultInstance();
+  ::Lazysplits::Proto::GameList_GameEntry::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<0> scc_info_GameList_GameEntry =
@@ -127,11 +128,11 @@ static void InitDefaultsGameList() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::Lazysplits::Proto::CvData::_GameList_default_instance_;
-    new (ptr) ::Lazysplits::Proto::CvData::GameList();
+    void* ptr = &::Lazysplits::Proto::_GameList_default_instance_;
+    new (ptr) ::Lazysplits::Proto::GameList();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::Lazysplits::Proto::CvData::GameList::InitAsDefaultInstance();
+  ::Lazysplits::Proto::GameList::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_GameList =
@@ -142,11 +143,11 @@ static void InitDefaultsGameInfo_TargetEntry() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::Lazysplits::Proto::CvData::_GameInfo_TargetEntry_default_instance_;
-    new (ptr) ::Lazysplits::Proto::CvData::GameInfo_TargetEntry();
+    void* ptr = &::Lazysplits::Proto::_GameInfo_TargetEntry_default_instance_;
+    new (ptr) ::Lazysplits::Proto::GameInfo_TargetEntry();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::Lazysplits::Proto::CvData::GameInfo_TargetEntry::InitAsDefaultInstance();
+  ::Lazysplits::Proto::GameInfo_TargetEntry::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<0> scc_info_GameInfo_TargetEntry =
@@ -156,175 +157,197 @@ static void InitDefaultsGameInfo() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::Lazysplits::Proto::CvData::_GameInfo_default_instance_;
-    new (ptr) ::Lazysplits::Proto::CvData::GameInfo();
+    void* ptr = &::Lazysplits::Proto::_GameInfo_default_instance_;
+    new (ptr) ::Lazysplits::Proto::GameInfo();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::Lazysplits::Proto::CvData::GameInfo::InitAsDefaultInstance();
+  ::Lazysplits::Proto::GameInfo::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_GameInfo =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsGameInfo}, {
       &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_GameInfo_TargetEntry.base,}};
 
-static void InitDefaultsTargetInfo_WatchInfo_WatchArea() {
+static void InitDefaultsTargetInfo_WatchEntry() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::Lazysplits::Proto::CvData::_TargetInfo_WatchInfo_WatchArea_default_instance_;
-    new (ptr) ::Lazysplits::Proto::CvData::TargetInfo_WatchInfo_WatchArea();
+    void* ptr = &::Lazysplits::Proto::_TargetInfo_WatchEntry_default_instance_;
+    new (ptr) ::Lazysplits::Proto::TargetInfo_WatchEntry();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::Lazysplits::Proto::CvData::TargetInfo_WatchInfo_WatchArea::InitAsDefaultInstance();
+  ::Lazysplits::Proto::TargetInfo_WatchEntry::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_TargetInfo_WatchInfo_WatchArea =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsTargetInfo_WatchInfo_WatchArea}, {
-      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_UScalar2d.base,}};
-
-static void InitDefaultsTargetInfo_WatchInfo() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::Lazysplits::Proto::CvData::_TargetInfo_WatchInfo_default_instance_;
-    new (ptr) ::Lazysplits::Proto::CvData::TargetInfo_WatchInfo();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::Lazysplits::Proto::CvData::TargetInfo_WatchInfo::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<2> scc_info_TargetInfo_WatchInfo =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsTargetInfo_WatchInfo}, {
-      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_TargetInfo_WatchInfo_WatchArea.base,
-      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_RGB.base,}};
+::google::protobuf::internal::SCCInfo<0> scc_info_TargetInfo_WatchEntry =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTargetInfo_WatchEntry}, {}};
 
 static void InitDefaultsTargetInfo() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::Lazysplits::Proto::CvData::_TargetInfo_default_instance_;
-    new (ptr) ::Lazysplits::Proto::CvData::TargetInfo();
+    void* ptr = &::Lazysplits::Proto::_TargetInfo_default_instance_;
+    new (ptr) ::Lazysplits::Proto::TargetInfo();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::Lazysplits::Proto::CvData::TargetInfo::InitAsDefaultInstance();
+  ::Lazysplits::Proto::TargetInfo::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_TargetInfo =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsTargetInfo}, {
-      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_TargetInfo_WatchInfo.base,}};
+      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_TargetInfo_WatchEntry.base,}};
+
+static void InitDefaultsWatchInfo_WatchArea() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::Lazysplits::Proto::_WatchInfo_WatchArea_default_instance_;
+    new (ptr) ::Lazysplits::Proto::WatchInfo_WatchArea();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::Lazysplits::Proto::WatchInfo_WatchArea::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<1> scc_info_WatchInfo_WatchArea =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsWatchInfo_WatchArea}, {
+      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_UScalar2d.base,}};
+
+static void InitDefaultsWatchInfo() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::Lazysplits::Proto::_WatchInfo_default_instance_;
+    new (ptr) ::Lazysplits::Proto::WatchInfo();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::Lazysplits::Proto::WatchInfo::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<3> scc_info_WatchInfo =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 3, InitDefaultsWatchInfo}, {
+      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_UScalar2d.base,
+      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_WatchInfo_WatchArea.base,
+      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_RGBColor.base,}};
 
 void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_UScalar2d.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_RGB.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_RGBColor.base);
   ::google::protobuf::internal::InitSCC(&scc_info_GameList_GameEntry.base);
   ::google::protobuf::internal::InitSCC(&scc_info_GameList.base);
   ::google::protobuf::internal::InitSCC(&scc_info_GameInfo_TargetEntry.base);
   ::google::protobuf::internal::InitSCC(&scc_info_GameInfo.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TargetInfo_WatchInfo_WatchArea.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_TargetInfo_WatchInfo.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_TargetInfo_WatchEntry.base);
   ::google::protobuf::internal::InitSCC(&scc_info_TargetInfo.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_WatchInfo_WatchArea.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_WatchInfo.base);
 }
 
-::google::protobuf::Metadata file_level_metadata[9];
+::google::protobuf::Metadata file_level_metadata[10];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[2];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::UScalar2d, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::UScalar2d, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::UScalar2d, x_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::UScalar2d, y_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::UScalar2d, x_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::UScalar2d, y_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::RGB, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::RGBColor, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::RGB, r_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::RGB, g_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::RGB, b_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::RGBColor, r_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::RGBColor, g_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::RGBColor, b_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameList_GameEntry, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::GameList_GameEntry, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameList_GameEntry, name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameList_GameEntry, relative_path_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::GameList_GameEntry, name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::GameList_GameEntry, relative_path_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameList, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::GameList, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameList, games_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::GameList, games_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameInfo_TargetEntry, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::GameInfo_TargetEntry, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameInfo_TargetEntry, id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameInfo_TargetEntry, name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameInfo_TargetEntry, relative_path_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameInfo_TargetEntry, type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::GameInfo_TargetEntry, name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::GameInfo_TargetEntry, relative_path_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameInfo, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::GameInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameInfo, name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::GameInfo, targets_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::GameInfo, name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::GameInfo, targets_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo_WatchInfo_WatchArea, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo_WatchEntry, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo_WatchInfo_WatchArea, loc_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo_WatchInfo_WatchArea, size_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo_WatchEntry, name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo_WatchEntry, relative_path_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo_WatchEntry, index_),
   ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo_WatchInfo, _internal_metadata_),
-  ~0u,  // no _extensions_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo_WatchInfo, _oneof_case_[0]),
-  ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo_WatchInfo, id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo_WatchInfo, index_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo_WatchInfo, type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo_WatchInfo, area_),
-  offsetof(::Lazysplits::Proto::CvData::TargetInfo_WatchInfoDefaultTypeInternal, color_),
-  offsetof(::Lazysplits::Proto::CvData::TargetInfo_WatchInfoDefaultTypeInternal, img_relative_path_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo_WatchInfo, watch_cv_data_),
-  ~0u,  // no _has_bits_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo, id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo, name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo, type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo, split_offset_ms_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CvData::TargetInfo, watches_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo, name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo, type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo, split_offset_ms_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo, watches_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::WatchInfo_WatchArea, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::WatchInfo_WatchArea, loc_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::WatchInfo_WatchArea, size_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::WatchInfo, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::WatchInfo, name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::WatchInfo, type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::WatchInfo, base_dimensions_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::WatchInfo, area_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::WatchInfo, color_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::WatchInfo, img_relative_path_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::Lazysplits::Proto::CvData::UScalar2d)},
-  { 7, -1, sizeof(::Lazysplits::Proto::CvData::RGB)},
-  { 15, -1, sizeof(::Lazysplits::Proto::CvData::GameList_GameEntry)},
-  { 22, -1, sizeof(::Lazysplits::Proto::CvData::GameList)},
-  { 28, -1, sizeof(::Lazysplits::Proto::CvData::GameInfo_TargetEntry)},
-  { 37, -1, sizeof(::Lazysplits::Proto::CvData::GameInfo)},
-  { 44, -1, sizeof(::Lazysplits::Proto::CvData::TargetInfo_WatchInfo_WatchArea)},
-  { 51, -1, sizeof(::Lazysplits::Proto::CvData::TargetInfo_WatchInfo)},
-  { 63, -1, sizeof(::Lazysplits::Proto::CvData::TargetInfo)},
+  { 0, -1, sizeof(::Lazysplits::Proto::UScalar2d)},
+  { 7, -1, sizeof(::Lazysplits::Proto::RGBColor)},
+  { 15, -1, sizeof(::Lazysplits::Proto::GameList_GameEntry)},
+  { 22, -1, sizeof(::Lazysplits::Proto::GameList)},
+  { 28, -1, sizeof(::Lazysplits::Proto::GameInfo_TargetEntry)},
+  { 35, -1, sizeof(::Lazysplits::Proto::GameInfo)},
+  { 42, -1, sizeof(::Lazysplits::Proto::TargetInfo_WatchEntry)},
+  { 50, -1, sizeof(::Lazysplits::Proto::TargetInfo)},
+  { 59, -1, sizeof(::Lazysplits::Proto::WatchInfo_WatchArea)},
+  { 66, -1, sizeof(::Lazysplits::Proto::WatchInfo)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::CvData::_UScalar2d_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::CvData::_RGB_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::CvData::_GameList_GameEntry_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::CvData::_GameList_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::CvData::_GameInfo_TargetEntry_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::CvData::_GameInfo_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::CvData::_TargetInfo_WatchInfo_WatchArea_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::CvData::_TargetInfo_WatchInfo_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::CvData::_TargetInfo_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_UScalar2d_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_RGBColor_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_GameList_GameEntry_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_GameList_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_GameInfo_TargetEntry_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_GameInfo_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_TargetInfo_WatchEntry_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_TargetInfo_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_WatchInfo_WatchArea_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_WatchInfo_default_instance_),
 };
 
 void protobuf_AssignDescriptors() {
@@ -342,45 +365,43 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 9);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 10);
 }
 
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\027LzsCvDataProtoCpp.proto\022\027Lazysplits.Pr"
-      "oto.CvData\"!\n\tUScalar2d\022\t\n\001x\030\001 \001(\r\022\t\n\001y\030"
-      "\002 \001(\r\"&\n\003RGB\022\t\n\001R\030\001 \001(\r\022\t\n\001G\030\002 \001(\r\022\t\n\001B\030"
-      "\003 \001(\r\"x\n\010GameList\022:\n\005games\030\001 \003(\0132+.Lazys"
-      "plits.Proto.CvData.GameList.GameEntry\0320\n"
-      "\tGameEntry\022\014\n\004name\030\001 \001(\t\022\025\n\rrelative_pat"
-      "h\030\002 \001(\t\"\313\001\n\010GameInfo\022\014\n\004name\030\001 \001(\t\022>\n\007ta"
-      "rgets\030\002 \003(\0132-.Lazysplits.Proto.CvData.Ga"
-      "meInfo.TargetEntry\032q\n\013TargetEntry\022\n\n\002id\030"
-      "\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\025\n\rrelative_path\030\003 \001"
-      "(\t\0221\n\004type\030\004 \001(\0162#.Lazysplits.Proto.CvDa"
-      "ta.TargetType\"\241\004\n\nTargetInfo\022\n\n\002id\030\001 \001(\005"
-      "\022\014\n\004name\030\002 \001(\t\0221\n\004type\030\003 \001(\0162#.Lazysplit"
-      "s.Proto.CvData.TargetType\022\027\n\017split_offse"
-      "t_ms\030\004 \001(\021\022>\n\007watches\030\005 \003(\0132-.Lazysplits"
-      ".Proto.CvData.TargetInfo.WatchInfo\032\354\002\n\tW"
-      "atchInfo\022\n\n\002id\030\001 \001(\r\022\r\n\005index\030\002 \001(\r\0220\n\004t"
-      "ype\030\003 \001(\0162\".Lazysplits.Proto.CvData.Watc"
-      "hType\022E\n\004area\030\004 \001(\01327.Lazysplits.Proto.C"
-      "vData.TargetInfo.WatchInfo.WatchArea\022-\n\005"
-      "color\030\005 \001(\0132\034.Lazysplits.Proto.CvData.RG"
-      "BH\000\022\033\n\021img_relative_path\030\006 \001(\tH\000\032n\n\tWatc"
-      "hArea\022/\n\003loc\030\001 \001(\0132\".Lazysplits.Proto.Cv"
-      "Data.UScalar2d\0220\n\004size\030\002 \001(\0132\".Lazysplit"
-      "s.Proto.CvData.UScalar2dB\017\n\rwatch_cv_dat"
-      "a*l\n\nTargetType\022\016\n\nTGT_UNUSED\020\000\022\r\n\tTGT_R"
-      "ESET\020\001\022\r\n\tTGT_START\020\002\022\020\n\014TGT_STANDARD\020\003\022"
-      "\021\n\rTGT_GENERATOR\020\004\022\013\n\007TGT_END\020\005*C\n\tWatch"
-      "Type\022\023\n\017WT_UNUSED_WATCH\020\000\022\014\n\010WT_COLOR\020\001\022"
-      "\023\n\017WT_IMAGE_STATIC\020\002b\006proto3"
+      "\n\027LzsCvDataProtoCpp.proto\022\020Lazysplits.Pr"
+      "oto\"!\n\tUScalar2d\022\t\n\001x\030\001 \001(\r\022\t\n\001y\030\002 \001(\r\"+"
+      "\n\010RGBColor\022\t\n\001R\030\001 \001(\r\022\t\n\001G\030\002 \001(\r\022\t\n\001B\030\003 "
+      "\001(\r\"q\n\010GameList\0223\n\005games\030\001 \003(\0132$.Lazyspl"
+      "its.Proto.GameList.GameEntry\0320\n\tGameEntr"
+      "y\022\014\n\004name\030\001 \001(\t\022\025\n\rrelative_path\030\002 \001(\t\"\205"
+      "\001\n\010GameInfo\022\014\n\004name\030\001 \001(\t\0227\n\007targets\030\002 \003"
+      "(\0132&.Lazysplits.Proto.GameInfo.TargetEnt"
+      "ry\0322\n\013TargetEntry\022\014\n\004name\030\001 \001(\t\022\025\n\rrelat"
+      "ive_path\030\002 \001(\t\"\333\001\n\nTargetInfo\022\014\n\004name\030\001 "
+      "\001(\t\022*\n\004type\030\002 \001(\0162\034.Lazysplits.Proto.Tar"
+      "getType\022\027\n\017split_offset_ms\030\003 \001(\021\0228\n\007watc"
+      "hes\030\004 \003(\0132\'.Lazysplits.Proto.TargetInfo."
+      "WatchEntry\032@\n\nWatchEntry\022\014\n\004name\030\001 \001(\t\022\025"
+      "\n\rrelative_path\030\002 \001(\t\022\r\n\005index\030\003 \001(\r\"\327\002\n"
+      "\tWatchInfo\022\014\n\004name\030\001 \001(\t\022)\n\004type\030\002 \001(\0162\033"
+      ".Lazysplits.Proto.WatchType\0224\n\017base_dime"
+      "nsions\030\003 \001(\0132\033.Lazysplits.Proto.UScalar2"
+      "d\0223\n\004area\030\004 \001(\0132%.Lazysplits.Proto.Watch"
+      "Info.WatchArea\022)\n\005color\030\005 \001(\0132\032.Lazyspli"
+      "ts.Proto.RGBColor\022\031\n\021img_relative_path\030\006"
+      " \001(\t\032`\n\tWatchArea\022(\n\003loc\030\001 \001(\0132\033.Lazyspl"
+      "its.Proto.UScalar2d\022)\n\004size\030\002 \001(\0132\033.Lazy"
+      "splits.Proto.UScalar2d*Y\n\nTargetType\022\016\n\n"
+      "TGT_UNUSED\020\000\022\r\n\tTGT_RESET\020\001\022\r\n\tTGT_START"
+      "\020\002\022\020\n\014TGT_STANDARD\020\003\022\013\n\007TGT_END\020\004*J\n\tWat"
+      "chType\022\r\n\tWT_UNUSED\020\000\022\014\n\010WT_COLOR\020\001\022\023\n\017W"
+      "T_IMAGE_STATIC\020\002\022\013\n\007WT_TEXT\020\003b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1188);
+      descriptor, 1117);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "LzsCvDataProtoCpp.proto", &protobuf_RegisterTypes);
 }
@@ -398,7 +419,6 @@ struct StaticDescriptorInitializer {
 }  // namespace protobuf_LzsCvDataProtoCpp_2eproto
 namespace Lazysplits {
 namespace Proto {
-namespace CvData {
 const ::google::protobuf::EnumDescriptor* TargetType_descriptor() {
   protobuf_LzsCvDataProtoCpp_2eproto::protobuf_AssignDescriptorsOnce();
   return protobuf_LzsCvDataProtoCpp_2eproto::file_level_enum_descriptors[0];
@@ -410,7 +430,6 @@ bool TargetType_IsValid(int value) {
     case 2:
     case 3:
     case 4:
-    case 5:
       return true;
     default:
       return false;
@@ -426,6 +445,7 @@ bool WatchType_IsValid(int value) {
     case 0:
     case 1:
     case 2:
+    case 3:
       return true;
     default:
       return false;
@@ -447,7 +467,7 @@ UScalar2d::UScalar2d()
   ::google::protobuf::internal::InitSCC(
       &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_UScalar2d.base);
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Lazysplits.Proto.CvData.UScalar2d)
+  // @@protoc_insertion_point(constructor:Lazysplits.Proto.UScalar2d)
 }
 UScalar2d::UScalar2d(const UScalar2d& from)
   : ::google::protobuf::Message(),
@@ -456,7 +476,7 @@ UScalar2d::UScalar2d(const UScalar2d& from)
   ::memcpy(&x_, &from.x_,
     static_cast<size_t>(reinterpret_cast<char*>(&y_) -
     reinterpret_cast<char*>(&x_)) + sizeof(y_));
-  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.CvData.UScalar2d)
+  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.UScalar2d)
 }
 
 void UScalar2d::SharedCtor() {
@@ -466,7 +486,7 @@ void UScalar2d::SharedCtor() {
 }
 
 UScalar2d::~UScalar2d() {
-  // @@protoc_insertion_point(destructor:Lazysplits.Proto.CvData.UScalar2d)
+  // @@protoc_insertion_point(destructor:Lazysplits.Proto.UScalar2d)
   SharedDtor();
 }
 
@@ -488,7 +508,7 @@ const UScalar2d& UScalar2d::default_instance() {
 
 
 void UScalar2d::Clear() {
-// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.CvData.UScalar2d)
+// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.UScalar2d)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -503,7 +523,7 @@ bool UScalar2d::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.CvData.UScalar2d)
+  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.UScalar2d)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -549,17 +569,17 @@ bool UScalar2d::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.CvData.UScalar2d)
+  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.UScalar2d)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.CvData.UScalar2d)
+  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.UScalar2d)
   return false;
 #undef DO_
 }
 
 void UScalar2d::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.CvData.UScalar2d)
+  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.UScalar2d)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -577,13 +597,13 @@ void UScalar2d::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.CvData.UScalar2d)
+  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.UScalar2d)
 }
 
 ::google::protobuf::uint8* UScalar2d::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.CvData.UScalar2d)
+  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.UScalar2d)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -601,12 +621,12 @@ void UScalar2d::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.CvData.UScalar2d)
+  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.UScalar2d)
   return target;
 }
 
 size_t UScalar2d::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.CvData.UScalar2d)
+// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.UScalar2d)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -634,22 +654,22 @@ size_t UScalar2d::ByteSizeLong() const {
 }
 
 void UScalar2d::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.CvData.UScalar2d)
+// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.UScalar2d)
   GOOGLE_DCHECK_NE(&from, this);
   const UScalar2d* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const UScalar2d>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.CvData.UScalar2d)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.UScalar2d)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.CvData.UScalar2d)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.UScalar2d)
     MergeFrom(*source);
   }
 }
 
 void UScalar2d::MergeFrom(const UScalar2d& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.CvData.UScalar2d)
+// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.UScalar2d)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -664,14 +684,14 @@ void UScalar2d::MergeFrom(const UScalar2d& from) {
 }
 
 void UScalar2d::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.CvData.UScalar2d)
+// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.UScalar2d)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void UScalar2d::CopyFrom(const UScalar2d& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.CvData.UScalar2d)
+// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.UScalar2d)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -700,61 +720,61 @@ void UScalar2d::InternalSwap(UScalar2d* other) {
 
 // ===================================================================
 
-void RGB::InitAsDefaultInstance() {
+void RGBColor::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int RGB::kRFieldNumber;
-const int RGB::kGFieldNumber;
-const int RGB::kBFieldNumber;
+const int RGBColor::kRFieldNumber;
+const int RGBColor::kGFieldNumber;
+const int RGBColor::kBFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-RGB::RGB()
+RGBColor::RGBColor()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   ::google::protobuf::internal::InitSCC(
-      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_RGB.base);
+      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_RGBColor.base);
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Lazysplits.Proto.CvData.RGB)
+  // @@protoc_insertion_point(constructor:Lazysplits.Proto.RGBColor)
 }
-RGB::RGB(const RGB& from)
+RGBColor::RGBColor(const RGBColor& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&r_, &from.r_,
     static_cast<size_t>(reinterpret_cast<char*>(&b_) -
     reinterpret_cast<char*>(&r_)) + sizeof(b_));
-  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.CvData.RGB)
+  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.RGBColor)
 }
 
-void RGB::SharedCtor() {
+void RGBColor::SharedCtor() {
   ::memset(&r_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&b_) -
       reinterpret_cast<char*>(&r_)) + sizeof(b_));
 }
 
-RGB::~RGB() {
-  // @@protoc_insertion_point(destructor:Lazysplits.Proto.CvData.RGB)
+RGBColor::~RGBColor() {
+  // @@protoc_insertion_point(destructor:Lazysplits.Proto.RGBColor)
   SharedDtor();
 }
 
-void RGB::SharedDtor() {
+void RGBColor::SharedDtor() {
 }
 
-void RGB::SetCachedSize(int size) const {
+void RGBColor::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* RGB::descriptor() {
+const ::google::protobuf::Descriptor* RGBColor::descriptor() {
   ::protobuf_LzsCvDataProtoCpp_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_LzsCvDataProtoCpp_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
 }
 
-const RGB& RGB::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_LzsCvDataProtoCpp_2eproto::scc_info_RGB.base);
+const RGBColor& RGBColor::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_LzsCvDataProtoCpp_2eproto::scc_info_RGBColor.base);
   return *internal_default_instance();
 }
 
 
-void RGB::Clear() {
-// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.CvData.RGB)
+void RGBColor::Clear() {
+// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.RGBColor)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -765,11 +785,11 @@ void RGB::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool RGB::MergePartialFromCodedStream(
+bool RGBColor::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.CvData.RGB)
+  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.RGBColor)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -829,17 +849,17 @@ bool RGB::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.CvData.RGB)
+  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.RGBColor)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.CvData.RGB)
+  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.RGBColor)
   return false;
 #undef DO_
 }
 
-void RGB::SerializeWithCachedSizes(
+void RGBColor::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.CvData.RGB)
+  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.RGBColor)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -862,13 +882,13 @@ void RGB::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.CvData.RGB)
+  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.RGBColor)
 }
 
-::google::protobuf::uint8* RGB::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* RGBColor::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.CvData.RGB)
+  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.RGBColor)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -891,12 +911,12 @@ void RGB::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.CvData.RGB)
+  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.RGBColor)
   return target;
 }
 
-size_t RGB::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.CvData.RGB)
+size_t RGBColor::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.RGBColor)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -930,23 +950,23 @@ size_t RGB::ByteSizeLong() const {
   return total_size;
 }
 
-void RGB::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.CvData.RGB)
+void RGBColor::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.RGBColor)
   GOOGLE_DCHECK_NE(&from, this);
-  const RGB* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const RGB>(
+  const RGBColor* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const RGBColor>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.CvData.RGB)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.RGBColor)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.CvData.RGB)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.RGBColor)
     MergeFrom(*source);
   }
 }
 
-void RGB::MergeFrom(const RGB& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.CvData.RGB)
+void RGBColor::MergeFrom(const RGBColor& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.RGBColor)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -963,29 +983,29 @@ void RGB::MergeFrom(const RGB& from) {
   }
 }
 
-void RGB::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.CvData.RGB)
+void RGBColor::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.RGBColor)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void RGB::CopyFrom(const RGB& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.CvData.RGB)
+void RGBColor::CopyFrom(const RGBColor& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.RGBColor)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool RGB::IsInitialized() const {
+bool RGBColor::IsInitialized() const {
   return true;
 }
 
-void RGB::Swap(RGB* other) {
+void RGBColor::Swap(RGBColor* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void RGB::InternalSwap(RGB* other) {
+void RGBColor::InternalSwap(RGBColor* other) {
   using std::swap;
   swap(r_, other->r_);
   swap(g_, other->g_);
@@ -993,7 +1013,7 @@ void RGB::InternalSwap(RGB* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata RGB::GetMetadata() const {
+::google::protobuf::Metadata RGBColor::GetMetadata() const {
   protobuf_LzsCvDataProtoCpp_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_LzsCvDataProtoCpp_2eproto::file_level_metadata[kIndexInFileMessages];
 }
@@ -1013,7 +1033,7 @@ GameList_GameEntry::GameList_GameEntry()
   ::google::protobuf::internal::InitSCC(
       &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_GameList_GameEntry.base);
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Lazysplits.Proto.CvData.GameList.GameEntry)
+  // @@protoc_insertion_point(constructor:Lazysplits.Proto.GameList.GameEntry)
 }
 GameList_GameEntry::GameList_GameEntry(const GameList_GameEntry& from)
   : ::google::protobuf::Message(),
@@ -1027,7 +1047,7 @@ GameList_GameEntry::GameList_GameEntry(const GameList_GameEntry& from)
   if (from.relative_path().size() > 0) {
     relative_path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relative_path_);
   }
-  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.CvData.GameList.GameEntry)
+  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.GameList.GameEntry)
 }
 
 void GameList_GameEntry::SharedCtor() {
@@ -1036,7 +1056,7 @@ void GameList_GameEntry::SharedCtor() {
 }
 
 GameList_GameEntry::~GameList_GameEntry() {
-  // @@protoc_insertion_point(destructor:Lazysplits.Proto.CvData.GameList.GameEntry)
+  // @@protoc_insertion_point(destructor:Lazysplits.Proto.GameList.GameEntry)
   SharedDtor();
 }
 
@@ -1060,7 +1080,7 @@ const GameList_GameEntry& GameList_GameEntry::default_instance() {
 
 
 void GameList_GameEntry::Clear() {
-// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.CvData.GameList.GameEntry)
+// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.GameList.GameEntry)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1074,7 +1094,7 @@ bool GameList_GameEntry::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.CvData.GameList.GameEntry)
+  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.GameList.GameEntry)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -1089,7 +1109,7 @@ bool GameList_GameEntry::MergePartialFromCodedStream(
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->name().data(), static_cast<int>(this->name().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "Lazysplits.Proto.CvData.GameList.GameEntry.name"));
+            "Lazysplits.Proto.GameList.GameEntry.name"));
         } else {
           goto handle_unusual;
         }
@@ -1105,7 +1125,7 @@ bool GameList_GameEntry::MergePartialFromCodedStream(
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->relative_path().data(), static_cast<int>(this->relative_path().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "Lazysplits.Proto.CvData.GameList.GameEntry.relative_path"));
+            "Lazysplits.Proto.GameList.GameEntry.relative_path"));
         } else {
           goto handle_unusual;
         }
@@ -1124,17 +1144,17 @@ bool GameList_GameEntry::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.CvData.GameList.GameEntry)
+  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.GameList.GameEntry)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.CvData.GameList.GameEntry)
+  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.GameList.GameEntry)
   return false;
 #undef DO_
 }
 
 void GameList_GameEntry::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.CvData.GameList.GameEntry)
+  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.GameList.GameEntry)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1143,7 +1163,7 @@ void GameList_GameEntry::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->name().data(), static_cast<int>(this->name().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.GameList.GameEntry.name");
+      "Lazysplits.Proto.GameList.GameEntry.name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       1, this->name(), output);
   }
@@ -1153,7 +1173,7 @@ void GameList_GameEntry::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->relative_path().data(), static_cast<int>(this->relative_path().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.GameList.GameEntry.relative_path");
+      "Lazysplits.Proto.GameList.GameEntry.relative_path");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       2, this->relative_path(), output);
   }
@@ -1162,13 +1182,13 @@ void GameList_GameEntry::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.CvData.GameList.GameEntry)
+  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.GameList.GameEntry)
 }
 
 ::google::protobuf::uint8* GameList_GameEntry::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.CvData.GameList.GameEntry)
+  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.GameList.GameEntry)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1177,7 +1197,7 @@ void GameList_GameEntry::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->name().data(), static_cast<int>(this->name().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.GameList.GameEntry.name");
+      "Lazysplits.Proto.GameList.GameEntry.name");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->name(), target);
@@ -1188,7 +1208,7 @@ void GameList_GameEntry::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->relative_path().data(), static_cast<int>(this->relative_path().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.GameList.GameEntry.relative_path");
+      "Lazysplits.Proto.GameList.GameEntry.relative_path");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->relative_path(), target);
@@ -1198,12 +1218,12 @@ void GameList_GameEntry::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.CvData.GameList.GameEntry)
+  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.GameList.GameEntry)
   return target;
 }
 
 size_t GameList_GameEntry::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.CvData.GameList.GameEntry)
+// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.GameList.GameEntry)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -1231,22 +1251,22 @@ size_t GameList_GameEntry::ByteSizeLong() const {
 }
 
 void GameList_GameEntry::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.CvData.GameList.GameEntry)
+// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.GameList.GameEntry)
   GOOGLE_DCHECK_NE(&from, this);
   const GameList_GameEntry* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const GameList_GameEntry>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.CvData.GameList.GameEntry)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.GameList.GameEntry)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.CvData.GameList.GameEntry)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.GameList.GameEntry)
     MergeFrom(*source);
   }
 }
 
 void GameList_GameEntry::MergeFrom(const GameList_GameEntry& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.CvData.GameList.GameEntry)
+// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.GameList.GameEntry)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -1263,14 +1283,14 @@ void GameList_GameEntry::MergeFrom(const GameList_GameEntry& from) {
 }
 
 void GameList_GameEntry::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.CvData.GameList.GameEntry)
+// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.GameList.GameEntry)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void GameList_GameEntry::CopyFrom(const GameList_GameEntry& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.CvData.GameList.GameEntry)
+// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.GameList.GameEntry)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -1312,21 +1332,21 @@ GameList::GameList()
   ::google::protobuf::internal::InitSCC(
       &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_GameList.base);
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Lazysplits.Proto.CvData.GameList)
+  // @@protoc_insertion_point(constructor:Lazysplits.Proto.GameList)
 }
 GameList::GameList(const GameList& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       games_(from.games_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.CvData.GameList)
+  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.GameList)
 }
 
 void GameList::SharedCtor() {
 }
 
 GameList::~GameList() {
-  // @@protoc_insertion_point(destructor:Lazysplits.Proto.CvData.GameList)
+  // @@protoc_insertion_point(destructor:Lazysplits.Proto.GameList)
   SharedDtor();
 }
 
@@ -1348,7 +1368,7 @@ const GameList& GameList::default_instance() {
 
 
 void GameList::Clear() {
-// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.CvData.GameList)
+// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.GameList)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1361,13 +1381,13 @@ bool GameList::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.CvData.GameList)
+  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.GameList)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .Lazysplits.Proto.CvData.GameList.GameEntry games = 1;
+      // repeated .Lazysplits.Proto.GameList.GameEntry games = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
@@ -1391,21 +1411,21 @@ bool GameList::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.CvData.GameList)
+  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.GameList)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.CvData.GameList)
+  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.GameList)
   return false;
 #undef DO_
 }
 
 void GameList::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.CvData.GameList)
+  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.GameList)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .Lazysplits.Proto.CvData.GameList.GameEntry games = 1;
+  // repeated .Lazysplits.Proto.GameList.GameEntry games = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->games_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -1418,17 +1438,17 @@ void GameList::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.CvData.GameList)
+  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.GameList)
 }
 
 ::google::protobuf::uint8* GameList::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.CvData.GameList)
+  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.GameList)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .Lazysplits.Proto.CvData.GameList.GameEntry games = 1;
+  // repeated .Lazysplits.Proto.GameList.GameEntry games = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->games_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
@@ -1440,12 +1460,12 @@ void GameList::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.CvData.GameList)
+  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.GameList)
   return target;
 }
 
 size_t GameList::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.CvData.GameList)
+// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.GameList)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -1453,7 +1473,7 @@ size_t GameList::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // repeated .Lazysplits.Proto.CvData.GameList.GameEntry games = 1;
+  // repeated .Lazysplits.Proto.GameList.GameEntry games = 1;
   {
     unsigned int count = static_cast<unsigned int>(this->games_size());
     total_size += 1UL * count;
@@ -1470,22 +1490,22 @@ size_t GameList::ByteSizeLong() const {
 }
 
 void GameList::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.CvData.GameList)
+// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.GameList)
   GOOGLE_DCHECK_NE(&from, this);
   const GameList* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const GameList>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.CvData.GameList)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.GameList)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.CvData.GameList)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.GameList)
     MergeFrom(*source);
   }
 }
 
 void GameList::MergeFrom(const GameList& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.CvData.GameList)
+// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.GameList)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -1495,14 +1515,14 @@ void GameList::MergeFrom(const GameList& from) {
 }
 
 void GameList::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.CvData.GameList)
+// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.GameList)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void GameList::CopyFrom(const GameList& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.CvData.GameList)
+// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.GameList)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -1533,10 +1553,8 @@ void GameList::InternalSwap(GameList* other) {
 void GameInfo_TargetEntry::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int GameInfo_TargetEntry::kIdFieldNumber;
 const int GameInfo_TargetEntry::kNameFieldNumber;
 const int GameInfo_TargetEntry::kRelativePathFieldNumber;
-const int GameInfo_TargetEntry::kTypeFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 GameInfo_TargetEntry::GameInfo_TargetEntry()
@@ -1544,7 +1562,7 @@ GameInfo_TargetEntry::GameInfo_TargetEntry()
   ::google::protobuf::internal::InitSCC(
       &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_GameInfo_TargetEntry.base);
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Lazysplits.Proto.CvData.GameInfo.TargetEntry)
+  // @@protoc_insertion_point(constructor:Lazysplits.Proto.GameInfo.TargetEntry)
 }
 GameInfo_TargetEntry::GameInfo_TargetEntry(const GameInfo_TargetEntry& from)
   : ::google::protobuf::Message(),
@@ -1558,22 +1576,16 @@ GameInfo_TargetEntry::GameInfo_TargetEntry(const GameInfo_TargetEntry& from)
   if (from.relative_path().size() > 0) {
     relative_path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relative_path_);
   }
-  ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&type_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(type_));
-  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.CvData.GameInfo.TargetEntry)
+  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.GameInfo.TargetEntry)
 }
 
 void GameInfo_TargetEntry::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   relative_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&type_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(type_));
 }
 
 GameInfo_TargetEntry::~GameInfo_TargetEntry() {
-  // @@protoc_insertion_point(destructor:Lazysplits.Proto.CvData.GameInfo.TargetEntry)
+  // @@protoc_insertion_point(destructor:Lazysplits.Proto.GameInfo.TargetEntry)
   SharedDtor();
 }
 
@@ -1597,16 +1609,13 @@ const GameInfo_TargetEntry& GameInfo_TargetEntry::default_instance() {
 
 
 void GameInfo_TargetEntry::Clear() {
-// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.CvData.GameInfo.TargetEntry)
+// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.GameInfo.TargetEntry)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   relative_path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&type_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(type_));
   _internal_metadata_.Clear();
 }
 
@@ -1614,67 +1623,38 @@ bool GameInfo_TargetEntry::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.CvData.GameInfo.TargetEntry)
+  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.GameInfo.TargetEntry)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 id = 1;
+      // string name = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &id_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string name = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_name()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->name().data(), static_cast<int>(this->name().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "Lazysplits.Proto.CvData.GameInfo.TargetEntry.name"));
+            "Lazysplits.Proto.GameInfo.TargetEntry.name"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // string relative_path = 3;
-      case 3: {
+      // string relative_path = 2;
+      case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_relative_path()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->relative_path().data(), static_cast<int>(this->relative_path().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "Lazysplits.Proto.CvData.GameInfo.TargetEntry.relative_path"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .Lazysplits.Proto.CvData.TargetType type = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_type(static_cast< ::Lazysplits::Proto::CvData::TargetType >(value));
+            "Lazysplits.Proto.GameInfo.TargetEntry.relative_path"));
         } else {
           goto handle_unusual;
         }
@@ -1693,108 +1673,86 @@ bool GameInfo_TargetEntry::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.CvData.GameInfo.TargetEntry)
+  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.GameInfo.TargetEntry)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.CvData.GameInfo.TargetEntry)
+  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.GameInfo.TargetEntry)
   return false;
 #undef DO_
 }
 
 void GameInfo_TargetEntry::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.CvData.GameInfo.TargetEntry)
+  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.GameInfo.TargetEntry)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 id = 1;
-  if (this->id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->id(), output);
-  }
-
-  // string name = 2;
+  // string name = 1;
   if (this->name().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->name().data(), static_cast<int>(this->name().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.GameInfo.TargetEntry.name");
+      "Lazysplits.Proto.GameInfo.TargetEntry.name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->name(), output);
+      1, this->name(), output);
   }
 
-  // string relative_path = 3;
+  // string relative_path = 2;
   if (this->relative_path().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->relative_path().data(), static_cast<int>(this->relative_path().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.GameInfo.TargetEntry.relative_path");
+      "Lazysplits.Proto.GameInfo.TargetEntry.relative_path");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->relative_path(), output);
-  }
-
-  // .Lazysplits.Proto.CvData.TargetType type = 4;
-  if (this->type() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      4, this->type(), output);
+      2, this->relative_path(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.CvData.GameInfo.TargetEntry)
+  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.GameInfo.TargetEntry)
 }
 
 ::google::protobuf::uint8* GameInfo_TargetEntry::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.CvData.GameInfo.TargetEntry)
+  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.GameInfo.TargetEntry)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 id = 1;
-  if (this->id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->id(), target);
-  }
-
-  // string name = 2;
+  // string name = 1;
   if (this->name().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->name().data(), static_cast<int>(this->name().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.GameInfo.TargetEntry.name");
+      "Lazysplits.Proto.GameInfo.TargetEntry.name");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->name(), target);
+        1, this->name(), target);
   }
 
-  // string relative_path = 3;
+  // string relative_path = 2;
   if (this->relative_path().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->relative_path().data(), static_cast<int>(this->relative_path().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.GameInfo.TargetEntry.relative_path");
+      "Lazysplits.Proto.GameInfo.TargetEntry.relative_path");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->relative_path(), target);
-  }
-
-  // .Lazysplits.Proto.CvData.TargetType type = 4;
-  if (this->type() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      4, this->type(), target);
+        2, this->relative_path(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.CvData.GameInfo.TargetEntry)
+  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.GameInfo.TargetEntry)
   return target;
 }
 
 size_t GameInfo_TargetEntry::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.CvData.GameInfo.TargetEntry)
+// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.GameInfo.TargetEntry)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -1802,31 +1760,18 @@ size_t GameInfo_TargetEntry::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // string name = 2;
+  // string name = 1;
   if (this->name().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->name());
   }
 
-  // string relative_path = 3;
+  // string relative_path = 2;
   if (this->relative_path().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->relative_path());
-  }
-
-  // int32 id = 1;
-  if (this->id() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->id());
-  }
-
-  // .Lazysplits.Proto.CvData.TargetType type = 4;
-  if (this->type() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -1835,22 +1780,22 @@ size_t GameInfo_TargetEntry::ByteSizeLong() const {
 }
 
 void GameInfo_TargetEntry::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.CvData.GameInfo.TargetEntry)
+// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.GameInfo.TargetEntry)
   GOOGLE_DCHECK_NE(&from, this);
   const GameInfo_TargetEntry* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const GameInfo_TargetEntry>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.CvData.GameInfo.TargetEntry)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.GameInfo.TargetEntry)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.CvData.GameInfo.TargetEntry)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.GameInfo.TargetEntry)
     MergeFrom(*source);
   }
 }
 
 void GameInfo_TargetEntry::MergeFrom(const GameInfo_TargetEntry& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.CvData.GameInfo.TargetEntry)
+// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.GameInfo.TargetEntry)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -1864,23 +1809,17 @@ void GameInfo_TargetEntry::MergeFrom(const GameInfo_TargetEntry& from) {
 
     relative_path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relative_path_);
   }
-  if (from.id() != 0) {
-    set_id(from.id());
-  }
-  if (from.type() != 0) {
-    set_type(from.type());
-  }
 }
 
 void GameInfo_TargetEntry::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.CvData.GameInfo.TargetEntry)
+// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.GameInfo.TargetEntry)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void GameInfo_TargetEntry::CopyFrom(const GameInfo_TargetEntry& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.CvData.GameInfo.TargetEntry)
+// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.GameInfo.TargetEntry)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -1900,8 +1839,6 @@ void GameInfo_TargetEntry::InternalSwap(GameInfo_TargetEntry* other) {
     GetArenaNoVirtual());
   relative_path_.Swap(&other->relative_path_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  swap(id_, other->id_);
-  swap(type_, other->type_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
@@ -1925,7 +1862,7 @@ GameInfo::GameInfo()
   ::google::protobuf::internal::InitSCC(
       &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_GameInfo.base);
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Lazysplits.Proto.CvData.GameInfo)
+  // @@protoc_insertion_point(constructor:Lazysplits.Proto.GameInfo)
 }
 GameInfo::GameInfo(const GameInfo& from)
   : ::google::protobuf::Message(),
@@ -1936,7 +1873,7 @@ GameInfo::GameInfo(const GameInfo& from)
   if (from.name().size() > 0) {
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
-  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.CvData.GameInfo)
+  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.GameInfo)
 }
 
 void GameInfo::SharedCtor() {
@@ -1944,7 +1881,7 @@ void GameInfo::SharedCtor() {
 }
 
 GameInfo::~GameInfo() {
-  // @@protoc_insertion_point(destructor:Lazysplits.Proto.CvData.GameInfo)
+  // @@protoc_insertion_point(destructor:Lazysplits.Proto.GameInfo)
   SharedDtor();
 }
 
@@ -1967,7 +1904,7 @@ const GameInfo& GameInfo::default_instance() {
 
 
 void GameInfo::Clear() {
-// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.CvData.GameInfo)
+// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.GameInfo)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1981,7 +1918,7 @@ bool GameInfo::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.CvData.GameInfo)
+  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.GameInfo)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -1996,14 +1933,14 @@ bool GameInfo::MergePartialFromCodedStream(
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->name().data(), static_cast<int>(this->name().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "Lazysplits.Proto.CvData.GameInfo.name"));
+            "Lazysplits.Proto.GameInfo.name"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // repeated .Lazysplits.Proto.CvData.GameInfo.TargetEntry targets = 2;
+      // repeated .Lazysplits.Proto.GameInfo.TargetEntry targets = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
@@ -2027,17 +1964,17 @@ bool GameInfo::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.CvData.GameInfo)
+  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.GameInfo)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.CvData.GameInfo)
+  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.GameInfo)
   return false;
 #undef DO_
 }
 
 void GameInfo::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.CvData.GameInfo)
+  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.GameInfo)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2046,12 +1983,12 @@ void GameInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->name().data(), static_cast<int>(this->name().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.GameInfo.name");
+      "Lazysplits.Proto.GameInfo.name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       1, this->name(), output);
   }
 
-  // repeated .Lazysplits.Proto.CvData.GameInfo.TargetEntry targets = 2;
+  // repeated .Lazysplits.Proto.GameInfo.TargetEntry targets = 2;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->targets_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -2064,13 +2001,13 @@ void GameInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.CvData.GameInfo)
+  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.GameInfo)
 }
 
 ::google::protobuf::uint8* GameInfo::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.CvData.GameInfo)
+  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.GameInfo)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2079,13 +2016,13 @@ void GameInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->name().data(), static_cast<int>(this->name().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.GameInfo.name");
+      "Lazysplits.Proto.GameInfo.name");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->name(), target);
   }
 
-  // repeated .Lazysplits.Proto.CvData.GameInfo.TargetEntry targets = 2;
+  // repeated .Lazysplits.Proto.GameInfo.TargetEntry targets = 2;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->targets_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
@@ -2097,12 +2034,12 @@ void GameInfo::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.CvData.GameInfo)
+  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.GameInfo)
   return target;
 }
 
 size_t GameInfo::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.CvData.GameInfo)
+// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.GameInfo)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2110,7 +2047,7 @@ size_t GameInfo::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // repeated .Lazysplits.Proto.CvData.GameInfo.TargetEntry targets = 2;
+  // repeated .Lazysplits.Proto.GameInfo.TargetEntry targets = 2;
   {
     unsigned int count = static_cast<unsigned int>(this->targets_size());
     total_size += 1UL * count;
@@ -2134,22 +2071,22 @@ size_t GameInfo::ByteSizeLong() const {
 }
 
 void GameInfo::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.CvData.GameInfo)
+// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.GameInfo)
   GOOGLE_DCHECK_NE(&from, this);
   const GameInfo* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const GameInfo>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.CvData.GameInfo)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.GameInfo)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.CvData.GameInfo)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.GameInfo)
     MergeFrom(*source);
   }
 }
 
 void GameInfo::MergeFrom(const GameInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.CvData.GameInfo)
+// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.GameInfo)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -2163,14 +2100,14 @@ void GameInfo::MergeFrom(const GameInfo& from) {
 }
 
 void GameInfo::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.CvData.GameInfo)
+// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.GameInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void GameInfo::CopyFrom(const GameInfo& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.CvData.GameInfo)
+// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.GameInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -2200,73 +2137,782 @@ void GameInfo::InternalSwap(GameInfo* other) {
 
 // ===================================================================
 
-void TargetInfo_WatchInfo_WatchArea::InitAsDefaultInstance() {
-  ::Lazysplits::Proto::CvData::_TargetInfo_WatchInfo_WatchArea_default_instance_._instance.get_mutable()->loc_ = const_cast< ::Lazysplits::Proto::CvData::UScalar2d*>(
-      ::Lazysplits::Proto::CvData::UScalar2d::internal_default_instance());
-  ::Lazysplits::Proto::CvData::_TargetInfo_WatchInfo_WatchArea_default_instance_._instance.get_mutable()->size_ = const_cast< ::Lazysplits::Proto::CvData::UScalar2d*>(
-      ::Lazysplits::Proto::CvData::UScalar2d::internal_default_instance());
+void TargetInfo_WatchEntry::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TargetInfo_WatchInfo_WatchArea::kLocFieldNumber;
-const int TargetInfo_WatchInfo_WatchArea::kSizeFieldNumber;
+const int TargetInfo_WatchEntry::kNameFieldNumber;
+const int TargetInfo_WatchEntry::kRelativePathFieldNumber;
+const int TargetInfo_WatchEntry::kIndexFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-TargetInfo_WatchInfo_WatchArea::TargetInfo_WatchInfo_WatchArea()
+TargetInfo_WatchEntry::TargetInfo_WatchEntry()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   ::google::protobuf::internal::InitSCC(
-      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_TargetInfo_WatchInfo_WatchArea.base);
+      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_TargetInfo_WatchEntry.base);
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea)
+  // @@protoc_insertion_point(constructor:Lazysplits.Proto.TargetInfo.WatchEntry)
 }
-TargetInfo_WatchInfo_WatchArea::TargetInfo_WatchInfo_WatchArea(const TargetInfo_WatchInfo_WatchArea& from)
+TargetInfo_WatchEntry::TargetInfo_WatchEntry(const TargetInfo_WatchEntry& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.name().size() > 0) {
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
+  relative_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.relative_path().size() > 0) {
+    relative_path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relative_path_);
+  }
+  index_ = from.index_;
+  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.TargetInfo.WatchEntry)
+}
+
+void TargetInfo_WatchEntry::SharedCtor() {
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relative_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  index_ = 0u;
+}
+
+TargetInfo_WatchEntry::~TargetInfo_WatchEntry() {
+  // @@protoc_insertion_point(destructor:Lazysplits.Proto.TargetInfo.WatchEntry)
+  SharedDtor();
+}
+
+void TargetInfo_WatchEntry::SharedDtor() {
+  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relative_path_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void TargetInfo_WatchEntry::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ::google::protobuf::Descriptor* TargetInfo_WatchEntry::descriptor() {
+  ::protobuf_LzsCvDataProtoCpp_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_LzsCvDataProtoCpp_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const TargetInfo_WatchEntry& TargetInfo_WatchEntry::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_LzsCvDataProtoCpp_2eproto::scc_info_TargetInfo_WatchEntry.base);
+  return *internal_default_instance();
+}
+
+
+void TargetInfo_WatchEntry::Clear() {
+// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.TargetInfo.WatchEntry)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  relative_path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  index_ = 0u;
+  _internal_metadata_.Clear();
+}
+
+bool TargetInfo_WatchEntry::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.TargetInfo.WatchEntry)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string name = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->name().data(), static_cast<int>(this->name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "Lazysplits.Proto.TargetInfo.WatchEntry.name"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string relative_path = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_relative_path()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->relative_path().data(), static_cast<int>(this->relative_path().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "Lazysplits.Proto.TargetInfo.WatchEntry.relative_path"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 index = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &index_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.TargetInfo.WatchEntry)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.TargetInfo.WatchEntry)
+  return false;
+#undef DO_
+}
+
+void TargetInfo_WatchEntry::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.TargetInfo.WatchEntry)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), static_cast<int>(this->name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.TargetInfo.WatchEntry.name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->name(), output);
+  }
+
+  // string relative_path = 2;
+  if (this->relative_path().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->relative_path().data(), static_cast<int>(this->relative_path().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.TargetInfo.WatchEntry.relative_path");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->relative_path(), output);
+  }
+
+  // uint32 index = 3;
+  if (this->index() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->index(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.TargetInfo.WatchEntry)
+}
+
+::google::protobuf::uint8* TargetInfo_WatchEntry::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.TargetInfo.WatchEntry)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), static_cast<int>(this->name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.TargetInfo.WatchEntry.name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->name(), target);
+  }
+
+  // string relative_path = 2;
+  if (this->relative_path().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->relative_path().data(), static_cast<int>(this->relative_path().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.TargetInfo.WatchEntry.relative_path");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->relative_path(), target);
+  }
+
+  // uint32 index = 3;
+  if (this->index() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->index(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.TargetInfo.WatchEntry)
+  return target;
+}
+
+size_t TargetInfo_WatchEntry::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.TargetInfo.WatchEntry)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // string name = 1;
+  if (this->name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->name());
+  }
+
+  // string relative_path = 2;
+  if (this->relative_path().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->relative_path());
+  }
+
+  // uint32 index = 3;
+  if (this->index() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->index());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void TargetInfo_WatchEntry::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.TargetInfo.WatchEntry)
+  GOOGLE_DCHECK_NE(&from, this);
+  const TargetInfo_WatchEntry* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const TargetInfo_WatchEntry>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.TargetInfo.WatchEntry)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.TargetInfo.WatchEntry)
+    MergeFrom(*source);
+  }
+}
+
+void TargetInfo_WatchEntry::MergeFrom(const TargetInfo_WatchEntry& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.TargetInfo.WatchEntry)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.name().size() > 0) {
+
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
+  if (from.relative_path().size() > 0) {
+
+    relative_path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relative_path_);
+  }
+  if (from.index() != 0) {
+    set_index(from.index());
+  }
+}
+
+void TargetInfo_WatchEntry::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.TargetInfo.WatchEntry)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void TargetInfo_WatchEntry::CopyFrom(const TargetInfo_WatchEntry& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.TargetInfo.WatchEntry)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TargetInfo_WatchEntry::IsInitialized() const {
+  return true;
+}
+
+void TargetInfo_WatchEntry::Swap(TargetInfo_WatchEntry* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void TargetInfo_WatchEntry::InternalSwap(TargetInfo_WatchEntry* other) {
+  using std::swap;
+  name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  relative_path_.Swap(&other->relative_path_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(index_, other->index_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::google::protobuf::Metadata TargetInfo_WatchEntry::GetMetadata() const {
+  protobuf_LzsCvDataProtoCpp_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_LzsCvDataProtoCpp_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void TargetInfo::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int TargetInfo::kNameFieldNumber;
+const int TargetInfo::kTypeFieldNumber;
+const int TargetInfo::kSplitOffsetMsFieldNumber;
+const int TargetInfo::kWatchesFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+TargetInfo::TargetInfo()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_TargetInfo.base);
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:Lazysplits.Proto.TargetInfo)
+}
+TargetInfo::TargetInfo(const TargetInfo& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      watches_(from.watches_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.name().size() > 0) {
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
+  ::memcpy(&type_, &from.type_,
+    static_cast<size_t>(reinterpret_cast<char*>(&split_offset_ms_) -
+    reinterpret_cast<char*>(&type_)) + sizeof(split_offset_ms_));
+  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.TargetInfo)
+}
+
+void TargetInfo::SharedCtor() {
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&type_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&split_offset_ms_) -
+      reinterpret_cast<char*>(&type_)) + sizeof(split_offset_ms_));
+}
+
+TargetInfo::~TargetInfo() {
+  // @@protoc_insertion_point(destructor:Lazysplits.Proto.TargetInfo)
+  SharedDtor();
+}
+
+void TargetInfo::SharedDtor() {
+  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void TargetInfo::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ::google::protobuf::Descriptor* TargetInfo::descriptor() {
+  ::protobuf_LzsCvDataProtoCpp_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_LzsCvDataProtoCpp_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const TargetInfo& TargetInfo::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_LzsCvDataProtoCpp_2eproto::scc_info_TargetInfo.base);
+  return *internal_default_instance();
+}
+
+
+void TargetInfo::Clear() {
+// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.TargetInfo)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  watches_.Clear();
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&type_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&split_offset_ms_) -
+      reinterpret_cast<char*>(&type_)) + sizeof(split_offset_ms_));
+  _internal_metadata_.Clear();
+}
+
+bool TargetInfo::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.TargetInfo)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string name = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->name().data(), static_cast<int>(this->name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "Lazysplits.Proto.TargetInfo.name"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .Lazysplits.Proto.TargetType type = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_type(static_cast< ::Lazysplits::Proto::TargetType >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // sint32 split_offset_ms = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                 input, &split_offset_ms_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // repeated .Lazysplits.Proto.TargetInfo.WatchEntry watches = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+                input, add_watches()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.TargetInfo)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.TargetInfo)
+  return false;
+#undef DO_
+}
+
+void TargetInfo::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.TargetInfo)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), static_cast<int>(this->name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.TargetInfo.name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->name(), output);
+  }
+
+  // .Lazysplits.Proto.TargetType type = 2;
+  if (this->type() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      2, this->type(), output);
+  }
+
+  // sint32 split_offset_ms = 3;
+  if (this->split_offset_ms() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(3, this->split_offset_ms(), output);
+  }
+
+  // repeated .Lazysplits.Proto.TargetInfo.WatchEntry watches = 4;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->watches_size()); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4,
+      this->watches(static_cast<int>(i)),
+      output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.TargetInfo)
+}
+
+::google::protobuf::uint8* TargetInfo::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.TargetInfo)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), static_cast<int>(this->name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.TargetInfo.name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->name(), target);
+  }
+
+  // .Lazysplits.Proto.TargetType type = 2;
+  if (this->type() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      2, this->type(), target);
+  }
+
+  // sint32 split_offset_ms = 3;
+  if (this->split_offset_ms() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(3, this->split_offset_ms(), target);
+  }
+
+  // repeated .Lazysplits.Proto.TargetInfo.WatchEntry watches = 4;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->watches_size()); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        4, this->watches(static_cast<int>(i)), deterministic, target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.TargetInfo)
+  return target;
+}
+
+size_t TargetInfo::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.TargetInfo)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // repeated .Lazysplits.Proto.TargetInfo.WatchEntry watches = 4;
+  {
+    unsigned int count = static_cast<unsigned int>(this->watches_size());
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          this->watches(static_cast<int>(i)));
+    }
+  }
+
+  // string name = 1;
+  if (this->name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->name());
+  }
+
+  // .Lazysplits.Proto.TargetType type = 2;
+  if (this->type() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+  }
+
+  // sint32 split_offset_ms = 3;
+  if (this->split_offset_ms() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        this->split_offset_ms());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void TargetInfo::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.TargetInfo)
+  GOOGLE_DCHECK_NE(&from, this);
+  const TargetInfo* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const TargetInfo>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.TargetInfo)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.TargetInfo)
+    MergeFrom(*source);
+  }
+}
+
+void TargetInfo::MergeFrom(const TargetInfo& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.TargetInfo)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  watches_.MergeFrom(from.watches_);
+  if (from.name().size() > 0) {
+
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
+  if (from.type() != 0) {
+    set_type(from.type());
+  }
+  if (from.split_offset_ms() != 0) {
+    set_split_offset_ms(from.split_offset_ms());
+  }
+}
+
+void TargetInfo::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.TargetInfo)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void TargetInfo::CopyFrom(const TargetInfo& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.TargetInfo)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TargetInfo::IsInitialized() const {
+  return true;
+}
+
+void TargetInfo::Swap(TargetInfo* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void TargetInfo::InternalSwap(TargetInfo* other) {
+  using std::swap;
+  CastToBase(&watches_)->InternalSwap(CastToBase(&other->watches_));
+  name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(type_, other->type_);
+  swap(split_offset_ms_, other->split_offset_ms_);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::google::protobuf::Metadata TargetInfo::GetMetadata() const {
+  protobuf_LzsCvDataProtoCpp_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_LzsCvDataProtoCpp_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void WatchInfo_WatchArea::InitAsDefaultInstance() {
+  ::Lazysplits::Proto::_WatchInfo_WatchArea_default_instance_._instance.get_mutable()->loc_ = const_cast< ::Lazysplits::Proto::UScalar2d*>(
+      ::Lazysplits::Proto::UScalar2d::internal_default_instance());
+  ::Lazysplits::Proto::_WatchInfo_WatchArea_default_instance_._instance.get_mutable()->size_ = const_cast< ::Lazysplits::Proto::UScalar2d*>(
+      ::Lazysplits::Proto::UScalar2d::internal_default_instance());
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int WatchInfo_WatchArea::kLocFieldNumber;
+const int WatchInfo_WatchArea::kSizeFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+WatchInfo_WatchArea::WatchInfo_WatchArea()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_WatchInfo_WatchArea.base);
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:Lazysplits.Proto.WatchInfo.WatchArea)
+}
+WatchInfo_WatchArea::WatchInfo_WatchArea(const WatchInfo_WatchArea& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.has_loc()) {
-    loc_ = new ::Lazysplits::Proto::CvData::UScalar2d(*from.loc_);
+    loc_ = new ::Lazysplits::Proto::UScalar2d(*from.loc_);
   } else {
     loc_ = NULL;
   }
   if (from.has_size()) {
-    size_ = new ::Lazysplits::Proto::CvData::UScalar2d(*from.size_);
+    size_ = new ::Lazysplits::Proto::UScalar2d(*from.size_);
   } else {
     size_ = NULL;
   }
-  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea)
+  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.WatchInfo.WatchArea)
 }
 
-void TargetInfo_WatchInfo_WatchArea::SharedCtor() {
+void WatchInfo_WatchArea::SharedCtor() {
   ::memset(&loc_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&size_) -
       reinterpret_cast<char*>(&loc_)) + sizeof(size_));
 }
 
-TargetInfo_WatchInfo_WatchArea::~TargetInfo_WatchInfo_WatchArea() {
-  // @@protoc_insertion_point(destructor:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea)
+WatchInfo_WatchArea::~WatchInfo_WatchArea() {
+  // @@protoc_insertion_point(destructor:Lazysplits.Proto.WatchInfo.WatchArea)
   SharedDtor();
 }
 
-void TargetInfo_WatchInfo_WatchArea::SharedDtor() {
+void WatchInfo_WatchArea::SharedDtor() {
   if (this != internal_default_instance()) delete loc_;
   if (this != internal_default_instance()) delete size_;
 }
 
-void TargetInfo_WatchInfo_WatchArea::SetCachedSize(int size) const {
+void WatchInfo_WatchArea::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* TargetInfo_WatchInfo_WatchArea::descriptor() {
+const ::google::protobuf::Descriptor* WatchInfo_WatchArea::descriptor() {
   ::protobuf_LzsCvDataProtoCpp_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_LzsCvDataProtoCpp_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
 }
 
-const TargetInfo_WatchInfo_WatchArea& TargetInfo_WatchInfo_WatchArea::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_LzsCvDataProtoCpp_2eproto::scc_info_TargetInfo_WatchInfo_WatchArea.base);
+const WatchInfo_WatchArea& WatchInfo_WatchArea::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_LzsCvDataProtoCpp_2eproto::scc_info_WatchInfo_WatchArea.base);
   return *internal_default_instance();
 }
 
 
-void TargetInfo_WatchInfo_WatchArea::Clear() {
-// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea)
+void WatchInfo_WatchArea::Clear() {
+// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.WatchInfo.WatchArea)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2282,17 +2928,17 @@ void TargetInfo_WatchInfo_WatchArea::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool TargetInfo_WatchInfo_WatchArea::MergePartialFromCodedStream(
+bool WatchInfo_WatchArea::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea)
+  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.WatchInfo.WatchArea)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // .Lazysplits.Proto.CvData.UScalar2d loc = 1;
+      // .Lazysplits.Proto.UScalar2d loc = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
@@ -2304,7 +2950,7 @@ bool TargetInfo_WatchInfo_WatchArea::MergePartialFromCodedStream(
         break;
       }
 
-      // .Lazysplits.Proto.CvData.UScalar2d size = 2;
+      // .Lazysplits.Proto.UScalar2d size = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
@@ -2328,27 +2974,27 @@ bool TargetInfo_WatchInfo_WatchArea::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea)
+  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.WatchInfo.WatchArea)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea)
+  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.WatchInfo.WatchArea)
   return false;
 #undef DO_
 }
 
-void TargetInfo_WatchInfo_WatchArea::SerializeWithCachedSizes(
+void WatchInfo_WatchArea::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea)
+  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.WatchInfo.WatchArea)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .Lazysplits.Proto.CvData.UScalar2d loc = 1;
+  // .Lazysplits.Proto.UScalar2d loc = 1;
   if (this->has_loc()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->_internal_loc(), output);
   }
 
-  // .Lazysplits.Proto.CvData.UScalar2d size = 2;
+  // .Lazysplits.Proto.UScalar2d size = 2;
   if (this->has_size()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->_internal_size(), output);
@@ -2358,24 +3004,24 @@ void TargetInfo_WatchInfo_WatchArea::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea)
+  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.WatchInfo.WatchArea)
 }
 
-::google::protobuf::uint8* TargetInfo_WatchInfo_WatchArea::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* WatchInfo_WatchArea::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea)
+  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.WatchInfo.WatchArea)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .Lazysplits.Proto.CvData.UScalar2d loc = 1;
+  // .Lazysplits.Proto.UScalar2d loc = 1;
   if (this->has_loc()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
         1, this->_internal_loc(), deterministic, target);
   }
 
-  // .Lazysplits.Proto.CvData.UScalar2d size = 2;
+  // .Lazysplits.Proto.UScalar2d size = 2;
   if (this->has_size()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
@@ -2386,12 +3032,12 @@ void TargetInfo_WatchInfo_WatchArea::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea)
+  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.WatchInfo.WatchArea)
   return target;
 }
 
-size_t TargetInfo_WatchInfo_WatchArea::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea)
+size_t WatchInfo_WatchArea::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.WatchInfo.WatchArea)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2399,14 +3045,14 @@ size_t TargetInfo_WatchInfo_WatchArea::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // .Lazysplits.Proto.CvData.UScalar2d loc = 1;
+  // .Lazysplits.Proto.UScalar2d loc = 1;
   if (this->has_loc()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
         *loc_);
   }
 
-  // .Lazysplits.Proto.CvData.UScalar2d size = 2;
+  // .Lazysplits.Proto.UScalar2d size = 2;
   if (this->has_size()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::MessageSize(
@@ -2418,66 +3064,66 @@ size_t TargetInfo_WatchInfo_WatchArea::ByteSizeLong() const {
   return total_size;
 }
 
-void TargetInfo_WatchInfo_WatchArea::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea)
+void WatchInfo_WatchArea::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.WatchInfo.WatchArea)
   GOOGLE_DCHECK_NE(&from, this);
-  const TargetInfo_WatchInfo_WatchArea* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TargetInfo_WatchInfo_WatchArea>(
+  const WatchInfo_WatchArea* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const WatchInfo_WatchArea>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.WatchInfo.WatchArea)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.WatchInfo.WatchArea)
     MergeFrom(*source);
   }
 }
 
-void TargetInfo_WatchInfo_WatchArea::MergeFrom(const TargetInfo_WatchInfo_WatchArea& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea)
+void WatchInfo_WatchArea::MergeFrom(const WatchInfo_WatchArea& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.WatchInfo.WatchArea)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (from.has_loc()) {
-    mutable_loc()->::Lazysplits::Proto::CvData::UScalar2d::MergeFrom(from.loc());
+    mutable_loc()->::Lazysplits::Proto::UScalar2d::MergeFrom(from.loc());
   }
   if (from.has_size()) {
-    mutable_size()->::Lazysplits::Proto::CvData::UScalar2d::MergeFrom(from.size());
+    mutable_size()->::Lazysplits::Proto::UScalar2d::MergeFrom(from.size());
   }
 }
 
-void TargetInfo_WatchInfo_WatchArea::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea)
+void WatchInfo_WatchArea::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.WatchInfo.WatchArea)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void TargetInfo_WatchInfo_WatchArea::CopyFrom(const TargetInfo_WatchInfo_WatchArea& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea)
+void WatchInfo_WatchArea::CopyFrom(const WatchInfo_WatchArea& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.WatchInfo.WatchArea)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool TargetInfo_WatchInfo_WatchArea::IsInitialized() const {
+bool WatchInfo_WatchArea::IsInitialized() const {
   return true;
 }
 
-void TargetInfo_WatchInfo_WatchArea::Swap(TargetInfo_WatchInfo_WatchArea* other) {
+void WatchInfo_WatchArea::Swap(WatchInfo_WatchArea* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void TargetInfo_WatchInfo_WatchArea::InternalSwap(TargetInfo_WatchInfo_WatchArea* other) {
+void WatchInfo_WatchArea::InternalSwap(WatchInfo_WatchArea* other) {
   using std::swap;
   swap(loc_, other->loc_);
   swap(size_, other->size_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata TargetInfo_WatchInfo_WatchArea::GetMetadata() const {
+::google::protobuf::Metadata WatchInfo_WatchArea::GetMetadata() const {
   protobuf_LzsCvDataProtoCpp_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_LzsCvDataProtoCpp_2eproto::file_level_metadata[kIndexInFileMessages];
 }
@@ -2485,196 +3131,174 @@ void TargetInfo_WatchInfo_WatchArea::InternalSwap(TargetInfo_WatchInfo_WatchArea
 
 // ===================================================================
 
-void TargetInfo_WatchInfo::InitAsDefaultInstance() {
-  ::Lazysplits::Proto::CvData::_TargetInfo_WatchInfo_default_instance_._instance.get_mutable()->area_ = const_cast< ::Lazysplits::Proto::CvData::TargetInfo_WatchInfo_WatchArea*>(
-      ::Lazysplits::Proto::CvData::TargetInfo_WatchInfo_WatchArea::internal_default_instance());
-  ::Lazysplits::Proto::CvData::_TargetInfo_WatchInfo_default_instance_.color_ = const_cast< ::Lazysplits::Proto::CvData::RGB*>(
-      ::Lazysplits::Proto::CvData::RGB::internal_default_instance());
-  ::Lazysplits::Proto::CvData::_TargetInfo_WatchInfo_default_instance_.img_relative_path_.UnsafeSetDefault(
-      &::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-void TargetInfo_WatchInfo::set_allocated_color(::Lazysplits::Proto::CvData::RGB* color) {
-  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
-  clear_watch_cv_data();
-  if (color) {
-    ::google::protobuf::Arena* submessage_arena = NULL;
-    if (message_arena != submessage_arena) {
-      color = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, color, submessage_arena);
-    }
-    set_has_color();
-    watch_cv_data_.color_ = color;
-  }
-  // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CvData.TargetInfo.WatchInfo.color)
+void WatchInfo::InitAsDefaultInstance() {
+  ::Lazysplits::Proto::_WatchInfo_default_instance_._instance.get_mutable()->base_dimensions_ = const_cast< ::Lazysplits::Proto::UScalar2d*>(
+      ::Lazysplits::Proto::UScalar2d::internal_default_instance());
+  ::Lazysplits::Proto::_WatchInfo_default_instance_._instance.get_mutable()->area_ = const_cast< ::Lazysplits::Proto::WatchInfo_WatchArea*>(
+      ::Lazysplits::Proto::WatchInfo_WatchArea::internal_default_instance());
+  ::Lazysplits::Proto::_WatchInfo_default_instance_._instance.get_mutable()->color_ = const_cast< ::Lazysplits::Proto::RGBColor*>(
+      ::Lazysplits::Proto::RGBColor::internal_default_instance());
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TargetInfo_WatchInfo::kIdFieldNumber;
-const int TargetInfo_WatchInfo::kIndexFieldNumber;
-const int TargetInfo_WatchInfo::kTypeFieldNumber;
-const int TargetInfo_WatchInfo::kAreaFieldNumber;
-const int TargetInfo_WatchInfo::kColorFieldNumber;
-const int TargetInfo_WatchInfo::kImgRelativePathFieldNumber;
+const int WatchInfo::kNameFieldNumber;
+const int WatchInfo::kTypeFieldNumber;
+const int WatchInfo::kBaseDimensionsFieldNumber;
+const int WatchInfo::kAreaFieldNumber;
+const int WatchInfo::kColorFieldNumber;
+const int WatchInfo::kImgRelativePathFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-TargetInfo_WatchInfo::TargetInfo_WatchInfo()
+WatchInfo::WatchInfo()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   ::google::protobuf::internal::InitSCC(
-      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_TargetInfo_WatchInfo.base);
+      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_WatchInfo.base);
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
+  // @@protoc_insertion_point(constructor:Lazysplits.Proto.WatchInfo)
 }
-TargetInfo_WatchInfo::TargetInfo_WatchInfo(const TargetInfo_WatchInfo& from)
+WatchInfo::WatchInfo(const WatchInfo& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.name().size() > 0) {
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
+  img_relative_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.img_relative_path().size() > 0) {
+    img_relative_path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.img_relative_path_);
+  }
+  if (from.has_base_dimensions()) {
+    base_dimensions_ = new ::Lazysplits::Proto::UScalar2d(*from.base_dimensions_);
+  } else {
+    base_dimensions_ = NULL;
+  }
   if (from.has_area()) {
-    area_ = new ::Lazysplits::Proto::CvData::TargetInfo_WatchInfo_WatchArea(*from.area_);
+    area_ = new ::Lazysplits::Proto::WatchInfo_WatchArea(*from.area_);
   } else {
     area_ = NULL;
   }
-  ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&type_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(type_));
-  clear_has_watch_cv_data();
-  switch (from.watch_cv_data_case()) {
-    case kColor: {
-      mutable_color()->::Lazysplits::Proto::CvData::RGB::MergeFrom(from.color());
-      break;
-    }
-    case kImgRelativePath: {
-      set_img_relative_path(from.img_relative_path());
-      break;
-    }
-    case WATCH_CV_DATA_NOT_SET: {
-      break;
-    }
+  if (from.has_color()) {
+    color_ = new ::Lazysplits::Proto::RGBColor(*from.color_);
+  } else {
+    color_ = NULL;
   }
-  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
+  type_ = from.type_;
+  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.WatchInfo)
 }
 
-void TargetInfo_WatchInfo::SharedCtor() {
-  ::memset(&area_, 0, static_cast<size_t>(
+void WatchInfo::SharedCtor() {
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  img_relative_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ::memset(&base_dimensions_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&type_) -
-      reinterpret_cast<char*>(&area_)) + sizeof(type_));
-  clear_has_watch_cv_data();
+      reinterpret_cast<char*>(&base_dimensions_)) + sizeof(type_));
 }
 
-TargetInfo_WatchInfo::~TargetInfo_WatchInfo() {
-  // @@protoc_insertion_point(destructor:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
+WatchInfo::~WatchInfo() {
+  // @@protoc_insertion_point(destructor:Lazysplits.Proto.WatchInfo)
   SharedDtor();
 }
 
-void TargetInfo_WatchInfo::SharedDtor() {
+void WatchInfo::SharedDtor() {
+  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  img_relative_path_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete base_dimensions_;
   if (this != internal_default_instance()) delete area_;
-  if (has_watch_cv_data()) {
-    clear_watch_cv_data();
-  }
+  if (this != internal_default_instance()) delete color_;
 }
 
-void TargetInfo_WatchInfo::SetCachedSize(int size) const {
+void WatchInfo::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* TargetInfo_WatchInfo::descriptor() {
+const ::google::protobuf::Descriptor* WatchInfo::descriptor() {
   ::protobuf_LzsCvDataProtoCpp_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_LzsCvDataProtoCpp_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
 }
 
-const TargetInfo_WatchInfo& TargetInfo_WatchInfo::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_LzsCvDataProtoCpp_2eproto::scc_info_TargetInfo_WatchInfo.base);
+const WatchInfo& WatchInfo::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_LzsCvDataProtoCpp_2eproto::scc_info_WatchInfo.base);
   return *internal_default_instance();
 }
 
 
-void TargetInfo_WatchInfo::clear_watch_cv_data() {
-// @@protoc_insertion_point(one_of_clear_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
-  switch (watch_cv_data_case()) {
-    case kColor: {
-      delete watch_cv_data_.color_;
-      break;
-    }
-    case kImgRelativePath: {
-      watch_cv_data_.img_relative_path_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-      break;
-    }
-    case WATCH_CV_DATA_NOT_SET: {
-      break;
-    }
-  }
-  _oneof_case_[0] = WATCH_CV_DATA_NOT_SET;
-}
-
-
-void TargetInfo_WatchInfo::Clear() {
-// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
+void WatchInfo::Clear() {
+// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.WatchInfo)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  img_relative_path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (GetArenaNoVirtual() == NULL && base_dimensions_ != NULL) {
+    delete base_dimensions_;
+  }
+  base_dimensions_ = NULL;
   if (GetArenaNoVirtual() == NULL && area_ != NULL) {
     delete area_;
   }
   area_ = NULL;
-  ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&type_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(type_));
-  clear_watch_cv_data();
+  if (GetArenaNoVirtual() == NULL && color_ != NULL) {
+    delete color_;
+  }
+  color_ = NULL;
+  type_ = 0;
   _internal_metadata_.Clear();
 }
 
-bool TargetInfo_WatchInfo::MergePartialFromCodedStream(
+bool WatchInfo::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
+  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.WatchInfo)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint32 id = 1;
+      // string name = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &id_)));
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->name().data(), static_cast<int>(this->name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "Lazysplits.Proto.WatchInfo.name"));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // uint32 index = 2;
+      // .Lazysplits.Proto.WatchType type = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &index_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .Lazysplits.Proto.CvData.WatchType type = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
           int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          set_type(static_cast< ::Lazysplits::Proto::CvData::WatchType >(value));
+          set_type(static_cast< ::Lazysplits::Proto::WatchType >(value));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // .Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea area = 4;
+      // .Lazysplits.Proto.UScalar2d base_dimensions = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+               input, mutable_base_dimensions()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .Lazysplits.Proto.WatchInfo.WatchArea area = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
@@ -2686,7 +3310,7 @@ bool TargetInfo_WatchInfo::MergePartialFromCodedStream(
         break;
       }
 
-      // .Lazysplits.Proto.CvData.RGB color = 5;
+      // .Lazysplits.Proto.RGBColor color = 5;
       case 5: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
@@ -2707,7 +3331,7 @@ bool TargetInfo_WatchInfo::MergePartialFromCodedStream(
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
             this->img_relative_path().data(), static_cast<int>(this->img_relative_path().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_relative_path"));
+            "Lazysplits.Proto.WatchInfo.img_relative_path"));
         } else {
           goto handle_unusual;
         }
@@ -2726,54 +3350,60 @@ bool TargetInfo_WatchInfo::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
+  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.WatchInfo)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
+  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.WatchInfo)
   return false;
 #undef DO_
 }
 
-void TargetInfo_WatchInfo::SerializeWithCachedSizes(
+void WatchInfo::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
+  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.WatchInfo)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
+  // string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), static_cast<int>(this->name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.WatchInfo.name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->name(), output);
   }
 
-  // uint32 index = 2;
-  if (this->index() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->index(), output);
-  }
-
-  // .Lazysplits.Proto.CvData.WatchType type = 3;
+  // .Lazysplits.Proto.WatchType type = 2;
   if (this->type() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      3, this->type(), output);
+      2, this->type(), output);
   }
 
-  // .Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea area = 4;
+  // .Lazysplits.Proto.UScalar2d base_dimensions = 3;
+  if (this->has_base_dimensions()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->_internal_base_dimensions(), output);
+  }
+
+  // .Lazysplits.Proto.WatchInfo.WatchArea area = 4;
   if (this->has_area()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       4, this->_internal_area(), output);
   }
 
-  // .Lazysplits.Proto.CvData.RGB color = 5;
-  if (has_color()) {
+  // .Lazysplits.Proto.RGBColor color = 5;
+  if (this->has_color()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       5, this->_internal_color(), output);
   }
 
   // string img_relative_path = 6;
-  if (has_img_relative_path()) {
+  if (this->img_relative_path().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->img_relative_path().data(), static_cast<int>(this->img_relative_path().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_relative_path");
+      "Lazysplits.Proto.WatchInfo.img_relative_path");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       6, this->img_relative_path(), output);
   }
@@ -2782,52 +3412,60 @@ void TargetInfo_WatchInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
-  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
+  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.WatchInfo)
 }
 
-::google::protobuf::uint8* TargetInfo_WatchInfo::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* WatchInfo::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
+  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.WatchInfo)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+  // string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), static_cast<int>(this->name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.WatchInfo.name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->name(), target);
   }
 
-  // uint32 index = 2;
-  if (this->index() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->index(), target);
-  }
-
-  // .Lazysplits.Proto.CvData.WatchType type = 3;
+  // .Lazysplits.Proto.WatchType type = 2;
   if (this->type() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      3, this->type(), target);
+      2, this->type(), target);
   }
 
-  // .Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea area = 4;
+  // .Lazysplits.Proto.UScalar2d base_dimensions = 3;
+  if (this->has_base_dimensions()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        3, this->_internal_base_dimensions(), deterministic, target);
+  }
+
+  // .Lazysplits.Proto.WatchInfo.WatchArea area = 4;
   if (this->has_area()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
         4, this->_internal_area(), deterministic, target);
   }
 
-  // .Lazysplits.Proto.CvData.RGB color = 5;
-  if (has_color()) {
+  // .Lazysplits.Proto.RGBColor color = 5;
+  if (this->has_color()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
         5, this->_internal_color(), deterministic, target);
   }
 
   // string img_relative_path = 6;
-  if (has_img_relative_path()) {
+  if (this->img_relative_path().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->img_relative_path().data(), static_cast<int>(this->img_relative_path().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.TargetInfo.WatchInfo.img_relative_path");
+      "Lazysplits.Proto.WatchInfo.img_relative_path");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         6, this->img_relative_path(), target);
@@ -2837,12 +3475,12 @@ void TargetInfo_WatchInfo::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
+  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.WatchInfo)
   return target;
 }
 
-size_t TargetInfo_WatchInfo::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
+size_t WatchInfo::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.WatchInfo)
   size_t total_size = 0;
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -2850,467 +3488,45 @@ size_t TargetInfo_WatchInfo::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // .Lazysplits.Proto.CvData.TargetInfo.WatchInfo.WatchArea area = 4;
-  if (this->has_area()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSize(
-        *area_);
-  }
-
-  // uint32 id = 1;
-  if (this->id() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->id());
-  }
-
-  // uint32 index = 2;
-  if (this->index() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->index());
-  }
-
-  // .Lazysplits.Proto.CvData.WatchType type = 3;
-  if (this->type() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
-  }
-
-  switch (watch_cv_data_case()) {
-    // .Lazysplits.Proto.CvData.RGB color = 5;
-    case kColor: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *watch_cv_data_.color_);
-      break;
-    }
-    // string img_relative_path = 6;
-    case kImgRelativePath: {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->img_relative_path());
-      break;
-    }
-    case WATCH_CV_DATA_NOT_SET: {
-      break;
-    }
-  }
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void TargetInfo_WatchInfo::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
-  GOOGLE_DCHECK_NE(&from, this);
-  const TargetInfo_WatchInfo* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TargetInfo_WatchInfo>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
-    MergeFrom(*source);
-  }
-}
-
-void TargetInfo_WatchInfo::MergeFrom(const TargetInfo_WatchInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from.has_area()) {
-    mutable_area()->::Lazysplits::Proto::CvData::TargetInfo_WatchInfo_WatchArea::MergeFrom(from.area());
-  }
-  if (from.id() != 0) {
-    set_id(from.id());
-  }
-  if (from.index() != 0) {
-    set_index(from.index());
-  }
-  if (from.type() != 0) {
-    set_type(from.type());
-  }
-  switch (from.watch_cv_data_case()) {
-    case kColor: {
-      mutable_color()->::Lazysplits::Proto::CvData::RGB::MergeFrom(from.color());
-      break;
-    }
-    case kImgRelativePath: {
-      set_img_relative_path(from.img_relative_path());
-      break;
-    }
-    case WATCH_CV_DATA_NOT_SET: {
-      break;
-    }
-  }
-}
-
-void TargetInfo_WatchInfo::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void TargetInfo_WatchInfo::CopyFrom(const TargetInfo_WatchInfo& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.CvData.TargetInfo.WatchInfo)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool TargetInfo_WatchInfo::IsInitialized() const {
-  return true;
-}
-
-void TargetInfo_WatchInfo::Swap(TargetInfo_WatchInfo* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void TargetInfo_WatchInfo::InternalSwap(TargetInfo_WatchInfo* other) {
-  using std::swap;
-  swap(area_, other->area_);
-  swap(id_, other->id_);
-  swap(index_, other->index_);
-  swap(type_, other->type_);
-  swap(watch_cv_data_, other->watch_cv_data_);
-  swap(_oneof_case_[0], other->_oneof_case_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-}
-
-::google::protobuf::Metadata TargetInfo_WatchInfo::GetMetadata() const {
-  protobuf_LzsCvDataProtoCpp_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_LzsCvDataProtoCpp_2eproto::file_level_metadata[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
-void TargetInfo::InitAsDefaultInstance() {
-}
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TargetInfo::kIdFieldNumber;
-const int TargetInfo::kNameFieldNumber;
-const int TargetInfo::kTypeFieldNumber;
-const int TargetInfo::kSplitOffsetMsFieldNumber;
-const int TargetInfo::kWatchesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-TargetInfo::TargetInfo()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_TargetInfo.base);
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:Lazysplits.Proto.CvData.TargetInfo)
-}
-TargetInfo::TargetInfo(const TargetInfo& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(NULL),
-      watches_(from.watches_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.name().size() > 0) {
-    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
-  }
-  ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&split_offset_ms_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(split_offset_ms_));
-  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.CvData.TargetInfo)
-}
-
-void TargetInfo::SharedCtor() {
-  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&split_offset_ms_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(split_offset_ms_));
-}
-
-TargetInfo::~TargetInfo() {
-  // @@protoc_insertion_point(destructor:Lazysplits.Proto.CvData.TargetInfo)
-  SharedDtor();
-}
-
-void TargetInfo::SharedDtor() {
-  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-
-void TargetInfo::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const ::google::protobuf::Descriptor* TargetInfo::descriptor() {
-  ::protobuf_LzsCvDataProtoCpp_2eproto::protobuf_AssignDescriptorsOnce();
-  return ::protobuf_LzsCvDataProtoCpp_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
-}
-
-const TargetInfo& TargetInfo::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_LzsCvDataProtoCpp_2eproto::scc_info_TargetInfo.base);
-  return *internal_default_instance();
-}
-
-
-void TargetInfo::Clear() {
-// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.CvData.TargetInfo)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  watches_.Clear();
-  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&split_offset_ms_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(split_offset_ms_));
-  _internal_metadata_.Clear();
-}
-
-bool TargetInfo::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.CvData.TargetInfo)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // int32 id = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &id_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string name = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_name()));
-          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->name().data(), static_cast<int>(this->name().length()),
-            ::google::protobuf::internal::WireFormatLite::PARSE,
-            "Lazysplits.Proto.CvData.TargetInfo.name"));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // .Lazysplits.Proto.CvData.TargetType type = 3;
-      case 3: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
-          int value;
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          set_type(static_cast< ::Lazysplits::Proto::CvData::TargetType >(value));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // sint32 split_offset_ms = 4;
-      case 4: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
-                 input, &split_offset_ms_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // repeated .Lazysplits.Proto.CvData.TargetInfo.WatchInfo watches = 5;
-      case 5: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_watches()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.CvData.TargetInfo)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.CvData.TargetInfo)
-  return false;
-#undef DO_
-}
-
-void TargetInfo::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.CvData.TargetInfo)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // int32 id = 1;
-  if (this->id() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->id(), output);
-  }
-
-  // string name = 2;
-  if (this->name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.TargetInfo.name");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->name(), output);
-  }
-
-  // .Lazysplits.Proto.CvData.TargetType type = 3;
-  if (this->type() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      3, this->type(), output);
-  }
-
-  // sint32 split_offset_ms = 4;
-  if (this->split_offset_ms() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(4, this->split_offset_ms(), output);
-  }
-
-  // repeated .Lazysplits.Proto.CvData.TargetInfo.WatchInfo watches = 5;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->watches_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5,
-      this->watches(static_cast<int>(i)),
-      output);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
-  }
-  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.CvData.TargetInfo)
-}
-
-::google::protobuf::uint8* TargetInfo::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.CvData.TargetInfo)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // int32 id = 1;
-  if (this->id() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->id(), target);
-  }
-
-  // string name = 2;
-  if (this->name().size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->name().data(), static_cast<int>(this->name().length()),
-      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "Lazysplits.Proto.CvData.TargetInfo.name");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->name(), target);
-  }
-
-  // .Lazysplits.Proto.CvData.TargetType type = 3;
-  if (this->type() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      3, this->type(), target);
-  }
-
-  // sint32 split_offset_ms = 4;
-  if (this->split_offset_ms() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(4, this->split_offset_ms(), target);
-  }
-
-  // repeated .Lazysplits.Proto.CvData.TargetInfo.WatchInfo watches = 5;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->watches_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        5, this->watches(static_cast<int>(i)), deterministic, target);
-  }
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.CvData.TargetInfo)
-  return target;
-}
-
-size_t TargetInfo::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.CvData.TargetInfo)
-  size_t total_size = 0;
-
-  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
-  }
-  // repeated .Lazysplits.Proto.CvData.TargetInfo.WatchInfo watches = 5;
-  {
-    unsigned int count = static_cast<unsigned int>(this->watches_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->watches(static_cast<int>(i)));
-    }
-  }
-
-  // string name = 2;
+  // string name = 1;
   if (this->name().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->name());
   }
 
-  // int32 id = 1;
-  if (this->id() != 0) {
+  // string img_relative_path = 6;
+  if (this->img_relative_path().size() > 0) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->id());
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->img_relative_path());
   }
 
-  // .Lazysplits.Proto.CvData.TargetType type = 3;
+  // .Lazysplits.Proto.UScalar2d base_dimensions = 3;
+  if (this->has_base_dimensions()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *base_dimensions_);
+  }
+
+  // .Lazysplits.Proto.WatchInfo.WatchArea area = 4;
+  if (this->has_area()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *area_);
+  }
+
+  // .Lazysplits.Proto.RGBColor color = 5;
+  if (this->has_color()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *color_);
+  }
+
+  // .Lazysplits.Proto.WatchType type = 2;
   if (this->type() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
-  }
-
-  // sint32 split_offset_ms = 4;
-  if (this->split_offset_ms() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::SInt32Size(
-        this->split_offset_ms());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -3318,115 +3534,125 @@ size_t TargetInfo::ByteSizeLong() const {
   return total_size;
 }
 
-void TargetInfo::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.CvData.TargetInfo)
+void WatchInfo::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.WatchInfo)
   GOOGLE_DCHECK_NE(&from, this);
-  const TargetInfo* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const TargetInfo>(
+  const WatchInfo* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const WatchInfo>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.CvData.TargetInfo)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.WatchInfo)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.CvData.TargetInfo)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.WatchInfo)
     MergeFrom(*source);
   }
 }
 
-void TargetInfo::MergeFrom(const TargetInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.CvData.TargetInfo)
+void WatchInfo::MergeFrom(const WatchInfo& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.WatchInfo)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  watches_.MergeFrom(from.watches_);
   if (from.name().size() > 0) {
 
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
-  if (from.id() != 0) {
-    set_id(from.id());
+  if (from.img_relative_path().size() > 0) {
+
+    img_relative_path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.img_relative_path_);
+  }
+  if (from.has_base_dimensions()) {
+    mutable_base_dimensions()->::Lazysplits::Proto::UScalar2d::MergeFrom(from.base_dimensions());
+  }
+  if (from.has_area()) {
+    mutable_area()->::Lazysplits::Proto::WatchInfo_WatchArea::MergeFrom(from.area());
+  }
+  if (from.has_color()) {
+    mutable_color()->::Lazysplits::Proto::RGBColor::MergeFrom(from.color());
   }
   if (from.type() != 0) {
     set_type(from.type());
   }
-  if (from.split_offset_ms() != 0) {
-    set_split_offset_ms(from.split_offset_ms());
-  }
 }
 
-void TargetInfo::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.CvData.TargetInfo)
+void WatchInfo::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.WatchInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void TargetInfo::CopyFrom(const TargetInfo& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.CvData.TargetInfo)
+void WatchInfo::CopyFrom(const WatchInfo& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.WatchInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool TargetInfo::IsInitialized() const {
+bool WatchInfo::IsInitialized() const {
   return true;
 }
 
-void TargetInfo::Swap(TargetInfo* other) {
+void WatchInfo::Swap(WatchInfo* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void TargetInfo::InternalSwap(TargetInfo* other) {
+void WatchInfo::InternalSwap(WatchInfo* other) {
   using std::swap;
-  CastToBase(&watches_)->InternalSwap(CastToBase(&other->watches_));
   name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  swap(id_, other->id_);
+  img_relative_path_.Swap(&other->img_relative_path_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(base_dimensions_, other->base_dimensions_);
+  swap(area_, other->area_);
+  swap(color_, other->color_);
   swap(type_, other->type_);
-  swap(split_offset_ms_, other->split_offset_ms_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata TargetInfo::GetMetadata() const {
+::google::protobuf::Metadata WatchInfo::GetMetadata() const {
   protobuf_LzsCvDataProtoCpp_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_LzsCvDataProtoCpp_2eproto::file_level_metadata[kIndexInFileMessages];
 }
 
 
 // @@protoc_insertion_point(namespace_scope)
-}  // namespace CvData
 }  // namespace Proto
 }  // namespace Lazysplits
 namespace google {
 namespace protobuf {
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::CvData::UScalar2d* Arena::CreateMaybeMessage< ::Lazysplits::Proto::CvData::UScalar2d >(Arena* arena) {
-  return Arena::CreateInternal< ::Lazysplits::Proto::CvData::UScalar2d >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::UScalar2d* Arena::CreateMaybeMessage< ::Lazysplits::Proto::UScalar2d >(Arena* arena) {
+  return Arena::CreateInternal< ::Lazysplits::Proto::UScalar2d >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::CvData::RGB* Arena::CreateMaybeMessage< ::Lazysplits::Proto::CvData::RGB >(Arena* arena) {
-  return Arena::CreateInternal< ::Lazysplits::Proto::CvData::RGB >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::RGBColor* Arena::CreateMaybeMessage< ::Lazysplits::Proto::RGBColor >(Arena* arena) {
+  return Arena::CreateInternal< ::Lazysplits::Proto::RGBColor >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::CvData::GameList_GameEntry* Arena::CreateMaybeMessage< ::Lazysplits::Proto::CvData::GameList_GameEntry >(Arena* arena) {
-  return Arena::CreateInternal< ::Lazysplits::Proto::CvData::GameList_GameEntry >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::GameList_GameEntry* Arena::CreateMaybeMessage< ::Lazysplits::Proto::GameList_GameEntry >(Arena* arena) {
+  return Arena::CreateInternal< ::Lazysplits::Proto::GameList_GameEntry >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::CvData::GameList* Arena::CreateMaybeMessage< ::Lazysplits::Proto::CvData::GameList >(Arena* arena) {
-  return Arena::CreateInternal< ::Lazysplits::Proto::CvData::GameList >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::GameList* Arena::CreateMaybeMessage< ::Lazysplits::Proto::GameList >(Arena* arena) {
+  return Arena::CreateInternal< ::Lazysplits::Proto::GameList >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::CvData::GameInfo_TargetEntry* Arena::CreateMaybeMessage< ::Lazysplits::Proto::CvData::GameInfo_TargetEntry >(Arena* arena) {
-  return Arena::CreateInternal< ::Lazysplits::Proto::CvData::GameInfo_TargetEntry >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::GameInfo_TargetEntry* Arena::CreateMaybeMessage< ::Lazysplits::Proto::GameInfo_TargetEntry >(Arena* arena) {
+  return Arena::CreateInternal< ::Lazysplits::Proto::GameInfo_TargetEntry >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::CvData::GameInfo* Arena::CreateMaybeMessage< ::Lazysplits::Proto::CvData::GameInfo >(Arena* arena) {
-  return Arena::CreateInternal< ::Lazysplits::Proto::CvData::GameInfo >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::GameInfo* Arena::CreateMaybeMessage< ::Lazysplits::Proto::GameInfo >(Arena* arena) {
+  return Arena::CreateInternal< ::Lazysplits::Proto::GameInfo >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::CvData::TargetInfo_WatchInfo_WatchArea* Arena::CreateMaybeMessage< ::Lazysplits::Proto::CvData::TargetInfo_WatchInfo_WatchArea >(Arena* arena) {
-  return Arena::CreateInternal< ::Lazysplits::Proto::CvData::TargetInfo_WatchInfo_WatchArea >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::TargetInfo_WatchEntry* Arena::CreateMaybeMessage< ::Lazysplits::Proto::TargetInfo_WatchEntry >(Arena* arena) {
+  return Arena::CreateInternal< ::Lazysplits::Proto::TargetInfo_WatchEntry >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::CvData::TargetInfo_WatchInfo* Arena::CreateMaybeMessage< ::Lazysplits::Proto::CvData::TargetInfo_WatchInfo >(Arena* arena) {
-  return Arena::CreateInternal< ::Lazysplits::Proto::CvData::TargetInfo_WatchInfo >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::TargetInfo* Arena::CreateMaybeMessage< ::Lazysplits::Proto::TargetInfo >(Arena* arena) {
+  return Arena::CreateInternal< ::Lazysplits::Proto::TargetInfo >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::CvData::TargetInfo* Arena::CreateMaybeMessage< ::Lazysplits::Proto::CvData::TargetInfo >(Arena* arena) {
-  return Arena::CreateInternal< ::Lazysplits::Proto::CvData::TargetInfo >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::WatchInfo_WatchArea* Arena::CreateMaybeMessage< ::Lazysplits::Proto::WatchInfo_WatchArea >(Arena* arena) {
+  return Arena::CreateInternal< ::Lazysplits::Proto::WatchInfo_WatchArea >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::WatchInfo* Arena::CreateMaybeMessage< ::Lazysplits::Proto::WatchInfo >(Arena* arena) {
+  return Arena::CreateInternal< ::Lazysplits::Proto::WatchInfo >(arena);
 }
 }  // namespace protobuf
 }  // namespace google

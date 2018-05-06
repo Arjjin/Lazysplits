@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Protobuf\classes\LzsCvDataProtoCpp.pb.h" />
     <ClInclude Include="..\Protobuf\classes\LzsPipeProtoCpp.pb.h" />
     <ClInclude Include="src\cv\LzsCvThread.h" />
     <ClInclude Include="src\LzsObsProps.h" />
@@ -28,14 +29,15 @@
     <ClInclude Include="src\pipe\LzsPipeConstants.h" />
     <ClInclude Include="src\pipe\LzsPipeServer.h" />
     <ClInclude Include="src\pipe\LzsPipeTask.h" />
+    <ClInclude Include="src\SharedData\LzsSharedData.h" />
     <ClInclude Include="src\util\LzsFrameBuffer.h" />
     <ClInclude Include="src\util\LzsImgProc.h" />
     <ClInclude Include="src\util\LzsObserver.h" />
     <ClInclude Include="src\util\LzsProtoHelper.h" />
-    <ClInclude Include="src\util\LzsSharedData.h" />
     <ClInclude Include="src\util\LzsThread.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Protobuf\classes\LzsCvDataProtoCpp.pb.cc" />
     <ClCompile Include="..\Protobuf\classes\LzsPipeProtoCpp.pb.cc" />
     <ClCompile Include="src\cv\LzsCvThread.cpp" />
     <ClCompile Include="src\Lazysplits.cpp" />
@@ -48,11 +50,15 @@
     <ClCompile Include="src\pipe\LzsPipeTaskManager.cpp" />
     <ClCompile Include="src\pipe\LzsPipeTaskRead.cpp" />
     <ClCompile Include="src\pipe\LzsPipeTaskWrite.cpp" />
+    <ClCompile Include="src\SharedData\LzsSharedDataCurrentGame.cpp" />
+    <ClCompile Include="src\SharedData\LzsSharedDataGameList.cpp" />
+    <ClCompile Include="src\SharedData\LzsSharedDataManager.cpp" />
+    <ClCompile Include="src\SharedData\LzsTarget.cpp" />
+    <ClCompile Include="src\SharedData\LzsWatch.cpp" />
     <ClCompile Include="src\util\LzsFrameBuffer.cpp" />
     <ClCompile Include="src\util\LzsImgProc.cpp" />
     <ClCompile Include="src\util\LzsObserver.cpp" />
     <ClCompile Include="src\util\LzsProtoHelper.cpp" />
-    <ClCompile Include="src\util\LzsSharedData.cpp" />
     <ClCompile Include="src\util\LzsThread.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

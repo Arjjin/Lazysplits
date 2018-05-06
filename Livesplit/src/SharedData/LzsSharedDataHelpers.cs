@@ -14,7 +14,7 @@ namespace LiveSplit.Lazysplits.SharedData
     public class LzsGameList
     {
         //internal protobuf type
-        public GameList GameList { get; private set; }
+        private GameList GameList { get; set; }
         
         //NLog
         private static Logger Log = LogManager.GetCurrentClassLogger();

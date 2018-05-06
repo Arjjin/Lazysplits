@@ -55,7 +55,7 @@ namespace LiveSplit.Lazysplits
             Timer.CurrentState = State;
 
             ContextMenuControls = (IDictionary<string, Action>) new Dictionary<string, Action>();
-            ContextMenuControls.Add("Lazysplits : Start pipe", new Action(this.StartPipeClient));
+            //ContextMenuControls.Add("Lazysplits : Start pipe", new Action(this.StartPipeClient));
 
             PipeClient = new LzsPipeClient( "Pipe client thread", "lazysplits_pipe", this );
             bPipeConnected = false;
@@ -67,6 +67,9 @@ namespace LiveSplit.Lazysplits
 
             Settings.SharedDataRootDirChanged += OnRootDirChanged;
             State.RunManuallyModified += OnRunChanged;
+
+            PipeClient.ThreadCreate();
+            //if( SharedDataManager.CurrentGame.bAvailable ){ SharedDataManager.}
 
             VerticalHeight = 10f;
             HorizontalWidth = 10f;
@@ -120,7 +123,7 @@ namespace LiveSplit.Lazysplits
                 case "Shared data manager":
                     if( message == "Splits changed" && bPipeConnected )
                     {
-                        ResendTargetData();
+                        SendTargetData();
                     }
                 break;
             }
@@ -182,7 +185,7 @@ namespace LiveSplit.Lazysplits
                         LsPipeStatusMsg PipeStatusMsg = (LsPipeStatusMsg)Msg;
                         if( bPipeConnected = PipeStatusMsg.Connected == true )
                         {
-                            ResendTargetData();
+                            SendTargetData();
                         }
 
                         Log.Debug("Pipe "+ (bPipeConnected ? "Connected" : "Disconnected") );
@@ -212,7 +215,7 @@ namespace LiveSplit.Lazysplits
         
         /* shared data stuff */
 
-        private void ResendTargetData()
+        private void SendTargetData()
         {
             PipeClient.MsgSerializedProtobuf( LzsProtoHelper.ClearTargetMsg() );
             if( SharedDataManager.CurrentGame.SplitsFile.bAvailable )
@@ -232,7 +235,7 @@ namespace LiveSplit.Lazysplits
         {
             if ( SharedDataManager.SetRootDir(Settings.SharedDataRootDir) )
             {
-                ResetPipeClient();
+                //?
             }
         }
 

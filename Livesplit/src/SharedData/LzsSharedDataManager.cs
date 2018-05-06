@@ -25,6 +25,8 @@ namespace LiveSplit.Lazysplits.SharedData
             CurrentRun = currentRun;
             GameList = new LzsGameList();
             CurrentGame = new LzsCurrentGame();
+
+            if( currentRun.FilePath != String.Empty ){ CurrentGame.NewSplitsFile(currentRun.FilePath); }
         }
 
         public bool SetRootDir( string path )
@@ -33,6 +35,11 @@ namespace LiveSplit.Lazysplits.SharedData
             {
                 RootDir = path;
                 GameList.ParseFromDir(RootDir);
+                if( GameList.GameExists(CurrentRun.GameName) )
+                {
+                    string GamePath = RootDir+GameList.GetGameDir(CurrentRun.GameName);
+                    CurrentGame.ParseFromDir(GamePath);
+                }
 
                 return true;
             }
@@ -52,11 +59,12 @@ namespace LiveSplit.Lazysplits.SharedData
                     CurrentGame.ParseFromDir(GamePath);
                     CurrentGame.NewSplitsFile(CurrentRun.FilePath);
 
-                    if( CurrentGame.SplitsFile.bAvailable ){ NotifyAll("Splits changed"); }
+                    NotifyAll("Splits changed");
                 }
                 else if(CurrentGame.bAvailable)
                 {
                     CurrentGame.SetUnavailable();
+                    NotifyAll("Splits changed");
                 }
             }
             //if game is the same, check if splits file changed
@@ -64,7 +72,8 @@ namespace LiveSplit.Lazysplits.SharedData
             {
                 CurrentGame.NewSplitsFile(CurrentRun.FilePath);
 
-                if ( CurrentGame.SplitsFile.bAvailable ){ NotifyAll("Splits changed"); }
+                //if ( CurrentGame.SplitsFile.bAvailable ){ NotifyAll("Splits changed"); }
+                NotifyAll("Splits changed");
             }
         }
 

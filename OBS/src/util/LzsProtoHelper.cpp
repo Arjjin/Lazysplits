@@ -1,7 +1,29 @@
 #include "LzsProtoHelper.h"
 
+#include <google\protobuf\util\json_util.h>
+
+#include <fstream>
+#include <sstream>
+#include <filesystem>
+#include <obs.h>
+
+namespace filesys = std::experimental::filesystem;
+
 namespace Lazysplits{
 namespace Proto{
+
+bool JsonFileToProto( const std::string& file_path, google::protobuf::Message* protobuf ){
+	std::ifstream file_in( file_path, std::ifstream::binary );
+	std::ostringstream oss;
+	oss << file_in.rdbuf();
+
+	google::protobuf::util::Status status = google::protobuf::util::JsonStringToMessage( oss.str(), protobuf );
+	if( status.ok() ){ return true; }
+	else{
+		blog( LOG_WARNING, "[Lazysplits]Failed to deserialize %s, error : %s", file_path.c_str(), status.error_message().ToString().c_str() );
+		return false;
+	}
+}
 
 /*
 bool SerializeRequestMessage( std::string& out_str, int32_t& message_id_ref ){

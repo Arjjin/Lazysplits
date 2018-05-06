@@ -1,11 +1,14 @@
 #pragma once
 
 #include "util\LzsThread.h"
-#include "pipe\LzsPipeServer.h"
 #include "util\LzsObserver.h"
 #include "util\LzsFrameBuffer.h"
+#include "pipe\LzsPipeServer.h"
 #include "pipe\LzsMessageQueue.h"
 #include "pipe\LzsMessage.h"
+#include "SharedData\LzsSharedData.h"
+
+#include "LzsPipeProtoCpp.pb.h"
 
 #include <atomic>
 #include <memory>
@@ -21,7 +24,7 @@ class LzsCvThread : public LzsThread, public LzsObserver{
 		LzsCvThread( LzsFrameBuffer* frame_buf );
 		void AssignPipe( LzsPipeServer* pipe );
 		
-		bool IsCvActive();
+		bool IsTargets();
 
 		//message queue helpers
 		void MsgPipeConnected( bool connected );
@@ -34,8 +37,6 @@ class LzsCvThread : public LzsThread, public LzsObserver{
 		void* ThreadFunc()override;
 		void ThreadFuncCleanup()override;
 
-		void ActivateCv();
-		void DeactivateCv();
 		void HandleFrameBuffer();
 
 		//message queue handling
@@ -44,17 +45,17 @@ class LzsCvThread : public LzsThread, public LzsObserver{
 		void HandleSetSharedDataPath( std::shared_ptr<CvMsg> msg );
 		void HandleProtobuf( std::shared_ptr<CvMsg> msg );
 
-		//pointer to pipe thread
-		LzsPipeServer* pipe_;
+		void NewTarget( Proto::CsMessage& msg );
 
+		LzsPipeServer* pipe_;
 		LzsFrameBuffer* frame_buf_;
 
-		std::atomic_bool is_cv_active_;
-		std::string shared_data_dir_;
+		std::vector<std::shared_ptr<SharedData::LzsTarget>> target_list_;
 
-		//message queue stuff
 		LzsMsgQueue<std::shared_ptr<CvMsg>> msg_queue_;
 		int32_t pipe_message_id_ref_;
+
+		SharedData::LzsSharedDataManager shared_data_manager_;
 };
 
 } //namespace Lazysplits

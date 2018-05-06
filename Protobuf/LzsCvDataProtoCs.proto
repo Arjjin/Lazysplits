@@ -7,19 +7,19 @@ enum TargetType{
 	TGT_RESET = 1;
 	TGT_START = 2;
 	TGT_STANDARD = 3;
-	TGT_GENERATOR = 4;
-	TGT_END = 5;
+	TGT_END = 4;
 }
 enum WatchType{
-	WT_UNUSED_WATCH = 0;
+	WT_UNUSED = 0;
 	WT_COLOR = 1;
 	WT_IMAGE_STATIC = 2;
+	WT_TEXT = 3;
 }
 message UScalar2d{
 	uint32 x = 1;
 	uint32 y = 2;
 }
-message RGB{
+message RGBColor{
 	uint32 R = 1;
 	uint32 G = 2;
 	uint32 B = 3;
@@ -36,10 +36,8 @@ message GameList{
 
 message GameInfo{
 	message TargetEntry{
-		int32 id = 1;
-		string name = 2;
-		string relative_path = 3;
-		TargetType type = 4;
+		string name = 1;
+		string relative_path = 2;
 	}
 
 	string name = 1;
@@ -47,27 +45,29 @@ message GameInfo{
 }
 
 message TargetInfo{
-	message WatchInfo{
-		message WatchArea{
-			UScalar2d loc = 1;
-			UScalar2d size = 2;
-		}
-
-		uint32 id = 1;
-		uint32 index = 2;
-		WatchType type = 3;
-		WatchArea area = 4;
-
-		oneof watch_cv_data{
-			RGB color = 5;
-			string img_relative_path = 6;
-		}
+	message WatchEntry{
+		string name = 1;
+		string relative_path = 2;
+		uint32 index = 3;
 	}
 
-	int32 id = 1;
-	string name = 2;
-	TargetType type = 3;
-	sint32 split_offset_ms = 4;
+	string name = 1;
+	TargetType type = 2;
+	sint32 split_offset_ms = 3;
+	repeated WatchEntry watches = 4;
+}
 
-	repeated WatchInfo watches = 5;
+message WatchInfo{
+	message WatchArea{
+		UScalar2d loc = 1;
+		UScalar2d size = 2;
+	}
+
+	string name = 1;
+	WatchType type = 2;
+	UScalar2d base_dimensions = 3;
+	WatchArea area = 4;
+
+	RGBColor color = 5;
+	string img_relative_path = 6;
 }

@@ -37,6 +37,12 @@
     <Filter Include="Source Files\protobuf">
       <UniqueIdentifier>{ae59e500-00c6-40b3-a715-2557837da03d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\SharedData">
+      <UniqueIdentifier>{f37f2997-65da-48f0-980c-1cb4d7cb9493}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SharedData">
+      <UniqueIdentifier>{8143efb6-ce2e-445d-863b-82d473d278f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\LzsSourceData.h">
@@ -78,11 +84,14 @@
     <ClInclude Include="src\LzsObsProps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\util\LzsSharedData.h">
-      <Filter>Header Files\util</Filter>
-    </ClInclude>
     <ClInclude Include="src\pipe\LzsMessage.h">
       <Filter>Header Files\pipe</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SharedData\LzsSharedData.h">
+      <Filter>Header Files\SharedData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Protobuf\classes\LzsCvDataProtoCpp.pb.h">
+      <Filter>Header Files\protobuf</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -134,11 +143,26 @@
     <ClCompile Include="src\LzsObsProps.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\util\LzsSharedData.cpp">
-      <Filter>Source Files\util</Filter>
-    </ClCompile>
     <ClCompile Include="src\pipe\LzsMessage.cpp">
       <Filter>Source Files\pipe</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SharedData\LzsSharedDataManager.cpp">
+      <Filter>Source Files\SharedData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SharedData\LzsSharedDataGameList.cpp">
+      <Filter>Source Files\SharedData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Protobuf\classes\LzsCvDataProtoCpp.pb.cc">
+      <Filter>Source Files\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SharedData\LzsSharedDataCurrentGame.cpp">
+      <Filter>Source Files\SharedData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SharedData\LzsTarget.cpp">
+      <Filter>Source Files\SharedData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SharedData\LzsWatch.cpp">
+      <Filter>Source Files\SharedData</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
