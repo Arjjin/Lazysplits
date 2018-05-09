@@ -19,7 +19,10 @@ void LzsGameList::ParseFromDir( const std::string& path ){
 	if( filesys::exists(file_path) && Proto::JsonFileToProto( file_path.string(), &game_list_ ) ){
 		blog( LOG_DEBUG, "[Lazysplits][shared_data] GameList sucessfully parsed at %s", file_path.string().c_str() );
 	}
-	else{ blog( LOG_WARNING, "[Lazysplits][shared_data] Failed to parse GamesList at %s", file_path.string().c_str() ); }
+	else{
+		game_list_ = Proto::GameList();
+		blog( LOG_WARNING, "[Lazysplits][shared_data] Failed to parse GamesList at %s", file_path.string().c_str() );
+	}
 }
 
 bool LzsGameList::GameExists( const std::string& game_name ){
@@ -35,6 +38,10 @@ const std::string& LzsGameList::GetGameDir( const std::string& game_name ){
 		if( game_entry.name() == game_name ){ return game_entry.relative_path(); }
 	}
 	return "game_not_found";
+}
+
+const Proto::GameList& LzsGameList::GetGameList(){
+	return game_list_;
 }
 
 } //namespace SharedData

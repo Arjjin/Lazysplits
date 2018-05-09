@@ -15,6 +15,8 @@ LzsCvThread::LzsCvThread( LzsFrameBuffer* frame_buf )
 
 	frame_buf_ = frame_buf;
 	pipe_message_id_ref_ = 0;
+
+	calib_props_.is_enabled = false;
 }
 
 void LzsCvThread::AssignPipe( LzsPipeServer* pipe ){ pipe_ = pipe; }
@@ -27,12 +29,16 @@ void LzsCvThread::MsgPipeConnected( bool connected ){
 	msg_queue_.Push( std::make_shared<CvPipeConnectionMsg>(connected) );
 }
 
-void LzsCvThread::MsgSetSharedDataPath( std::string path ){
+void LzsCvThread::MsgSetSharedDataPath( const std::string& path ){
 	msg_queue_.Push( std::make_shared<CvSharedPathMsg>(path) );
 }
 
 void LzsCvThread::MsgProtobuf( std::string serialized_protobuf ){
 	msg_queue_.Push( std::make_shared<CvPipeProtobufMsg>(serialized_protobuf) );
+}
+
+void LzsCvThread::MsgCalibData( const SendableCalibrationProps& calib_props ){
+	msg_queue_.Push( std::make_shared<CvCalibrationDataMsg>(calib_props) );
 }
 
 void LzsCvThread::OnSubjectNotify( const std::string& subject_name, const std::string& subject_message ){
@@ -110,6 +116,9 @@ void LzsCvThread::HandleMessageQueue(){
 			case CV_SHARED_DATA_PATH_MSG :
 				HandleSetSharedDataPath(msg);
 			break;
+			case CV_CALIBRATION_DATA_MSG :
+				HandleCalibrationData(msg);
+			break;
 		}
 
 		msg_queue_.Pop();
@@ -144,6 +153,21 @@ void LzsCvThread::HandleProtobuf( std::shared_ptr<CvMsg> msg ){
 			break;
 		}
 	}
+}
+
+void LzsCvThread::HandleCalibrationData( std::shared_ptr<CvMsg> msg ){
+	std::shared_ptr<CvCalibrationDataMsg> calib_msg = std::static_pointer_cast<CvCalibrationDataMsg>(msg);
+	calib_props_ = calib_msg->calib_props_;
+	blog( LOG_DEBUG, "[lazysplits][%s] calibration %s; img dims : (%ix%i), offset : (%i,%i), scale : (%f,%f)",
+		thread_name_.c_str(),
+		calib_props_.is_enabled ? "enabled" : "disabled",
+		calib_props_.img_width,
+		calib_props_.img_height,
+		calib_props_.loc_x,
+		calib_props_.loc_y,
+		calib_props_.scale_x,
+		calib_props_.scale_y
+	);
 }
 
 void LzsCvThread::NewTarget( Proto::CsMessage& msg ){

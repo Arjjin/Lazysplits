@@ -11,27 +11,27 @@ cv::Mat FrameToBGRMat( obs_source_frame* frame ){
 		switch(frame->format){
 			case VIDEO_FORMAT_I420 :
 				BGR_out = cv::Mat( frame->height*1.5F, frame->width, CV_8UC1, frame->data[0] );
-				cv::resize( BGR_out, BGR_out, cv::Size(), 0.25F, 0.25F, cv::INTER_AREA );
+				//cv::resize( BGR_out, BGR_out, cv::Size(), 0.25F, 0.25F, cv::INTER_AREA );
 				cv::cvtColor( BGR_out, BGR_out, CV_YUV2BGR_I420 );
 			break;
 			case VIDEO_FORMAT_NV12 :
 				BGR_out = cv::Mat( frame->height*1.5F, frame->width, CV_8UC1, frame->data[0] );
-				cv::resize( BGR_out, BGR_out, cv::Size(), 0.25F, 0.25F, cv::INTER_AREA );
+				//cv::resize( BGR_out, BGR_out, cv::Size(), 0.25F, 0.25F, cv::INTER_AREA );
 				cv::cvtColor( BGR_out, BGR_out, CV_YUV2BGR_NV12 );
 			break;
 			case VIDEO_FORMAT_YVYU :
 				BGR_out = cv::Mat( frame->height, frame->width, CV_8UC2, frame->data[0] );
-				cv::resize( BGR_out, BGR_out, cv::Size(), 0.25F, 0.25F, cv::INTER_AREA );
+				//cv::resize( BGR_out, BGR_out, cv::Size(), 0.25F, 0.25F, cv::INTER_AREA );
 				cv::cvtColor( BGR_out, BGR_out, CV_YUV2BGR_YVYU );
 			break;
 			case VIDEO_FORMAT_YUY2 :
 				BGR_out = cv::Mat( frame->height, frame->width, CV_8UC2, frame->data[0] );
 				cv::cvtColor( BGR_out, BGR_out, CV_YUV2BGR_YUY2 );
-				cv::resize( BGR_out, BGR_out, cv::Size(), 320.0F/frame->width, 240.0F/frame->height, cv::INTER_LINEAR );
+				//cv::resize( BGR_out, BGR_out, cv::Size(), 320.0F/frame->width, 240.0F/frame->height, cv::INTER_LINEAR );
 			break;
 			case VIDEO_FORMAT_UYVY :
 				BGR_out = cv::Mat( frame->height, frame->width, CV_8UC2, frame->data[0] );
-				cv::resize( BGR_out, BGR_out, cv::Size(), 0.25F, 0.25F, cv::INTER_AREA );
+				//cv::resize( BGR_out, BGR_out, cv::Size(), 0.25F, 0.25F, cv::INTER_AREA );
 				cv::cvtColor( BGR_out, BGR_out, CV_YUV2BGR_UYVY );
 			break;
 			case VIDEO_FORMAT_RGBA :
@@ -52,7 +52,7 @@ cv::Mat FrameToBGRMat( obs_source_frame* frame ){
 		}
 	}
 	catch( cv::Exception cve ){
-		blog( LOG_WARNING, "[Lazysplits] error converting raw frame : %s", cve.msg );
+		blog( LOG_WARNING, "[Lazysplits] error converting raw frame : %s", cve.msg.c_str() );
 	}
 	
 	return BGR_out;

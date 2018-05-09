@@ -30,6 +30,7 @@
     <ClInclude Include="src\pipe\LzsPipeServer.h" />
     <ClInclude Include="src\pipe\LzsPipeTask.h" />
     <ClInclude Include="src\SharedData\LzsSharedData.h" />
+    <ClInclude Include="src\util\LzsCalibrationData.h" />
     <ClInclude Include="src\util\LzsFrameBuffer.h" />
     <ClInclude Include="src\util\LzsImgProc.h" />
     <ClInclude Include="src\util\LzsObserver.h" />
@@ -55,6 +56,7 @@
     <ClCompile Include="src\SharedData\LzsSharedDataManager.cpp" />
     <ClCompile Include="src\SharedData\LzsTarget.cpp" />
     <ClCompile Include="src\SharedData\LzsWatch.cpp" />
+    <ClCompile Include="src\util\LzsCalibrationData.cpp" />
     <ClCompile Include="src\util\LzsFrameBuffer.cpp" />
     <ClCompile Include="src\util\LzsImgProc.cpp" />
     <ClCompile Include="src\util\LzsObserver.cpp" />
@@ -141,6 +143,9 @@
       </SubSystem>
     </Link>
     <ProjectReference />
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)plugin_data" "$(dep_path)\obs-studio\debug64\rundir\Debug\data\obs-plugins" /e /y /i /r</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>

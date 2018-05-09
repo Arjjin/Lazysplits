@@ -1,10 +1,10 @@
 #pragma once
 
+#include "LzsCvDataProtoCpp.pb.h"
+
 #include <string>
 #include <vector>
 #include <memory>
-
-#include "LzsCvDataProtoCpp.pb.h"
 
 namespace Lazysplits{
 namespace SharedData{
@@ -56,6 +56,7 @@ class LzsGameList{
 
 		void ParseFromDir( const std::string& path );
 		bool GameExists( const std::string& game_name );
+		const Proto::GameList& GetGameList();
 	private :
 		Proto::GameList game_list_;
 };

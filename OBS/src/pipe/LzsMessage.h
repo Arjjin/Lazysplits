@@ -1,10 +1,12 @@
 #pragma once
 
+#include "util\LzsCalibrationData.h"
+
 #include <string>
 
 namespace Lazysplits{
 
-enum CV_MESSAGE_TYPE{ NONE, CV_PIPE_CONNECTION_MSG, CV_PIPE_PROTOBUF_MSG, CV_SHARED_DATA_PATH_MSG };
+enum CV_MESSAGE_TYPE{ NONE, CV_PIPE_CONNECTION_MSG, CV_PIPE_PROTOBUF_MSG, CV_SHARED_DATA_PATH_MSG, CV_CALIBRATION_DATA_MSG };
 
 class CvMsg{
 	public :
@@ -26,8 +28,14 @@ class CvPipeProtobufMsg : public CvMsg{
 
 class CvSharedPathMsg : public CvMsg{
 	public :
-		CvSharedPathMsg( std::string shared_data_path );
+		CvSharedPathMsg( const std::string shared_data_path );
 		std::string shared_data_path_;
+};
+
+class CvCalibrationDataMsg : public CvMsg{
+	public :
+		CvCalibrationDataMsg( const SendableCalibrationProps calib_props );
+		SendableCalibrationProps calib_props_;
 };
 
 } //namespace Lazysplits

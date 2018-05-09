@@ -16,9 +16,12 @@ class LzsObsPropBase{
 		void virtual AddProperty( obs_properties_t* source_properties ) = 0;
 		void virtual SetDefault( obs_data_t* source_settings ) = 0;
 		void virtual UpdateProperty( obs_data_t* source_settings ) = 0;
+
+		void SetCallback( obs_property_modified_t modified );
 	protected :
 		std::string prop_name_;
 		std::string prop_desc_;
+		obs_property_modified_t modified_;
 };
 
 class LzsObsPropBool : public LzsObsPropBase{
@@ -75,18 +78,44 @@ class LzsObsPropPath : public LzsObsPropBase{
 		std::string default_path_;
 };
 
-class LzsObsPropList{
+class LzsObsPropsList{
 	public :
-		void AddBool( bool* bool_ptr, std::string prop_name, std::string prop_desc );
-		void AddInt( int64_t* int_ptr, std::string prop_name, std::string prop_desc, int int_min, int int_max, int int_step, bool use_slider = true );
-		void AddFloat( double* float_ptr, std::string prop_name, std::string prop_desc, double int_min, double int_max, double int_step, bool use_slider = true );
-		void AddPath( std::string* string_ptr, std::string prop_name, std::string prop_desc, obs_path_type path_type, std::string filter_string, std::string default_path );
+		void AddBool( bool* bool_ptr, std::string prop_name, std::string prop_desc, obs_property_modified_t modified = NULL );
+		void AddInt(
+			int64_t* int_ptr,
+			std::string prop_name,
+			std::string prop_desc,
+			int int_min,
+			int int_max,
+			int int_step,
+			bool use_slider = true,
+			obs_property_modified_t modified = NULL
+		);
+		void AddFloat(
+			double* float_ptr,
+			std::string prop_name,
+			std::string prop_desc,
+			double float_min,
+			double float_max,
+			double float_step,
+			bool use_slider = true,
+			obs_property_modified_t modified = NULL
+		);
+		void AddPath(
+			std::string* string_ptr,
+			std::string prop_name,
+			std::string prop_desc,
+			obs_path_type path_type,
+			std::string filter_string,
+			std::string default_path,
+			obs_property_modified_t modified = NULL
+		);
 		
 		void AddProperties( obs_properties_t* source_properties );
 		void SetPropertyDefaults( obs_data_t* source_settings );
 		void UpdateProperties( obs_data_t* source_settings );
 	private :
-		std::vector<std::shared_ptr<LzsObsPropBase>> prop_list_;
+		std::vector<std::shared_ptr<LzsObsPropBase>> props_list_;
 };
 
 } //namespace Lazysplits

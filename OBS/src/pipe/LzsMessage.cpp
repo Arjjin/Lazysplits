@@ -16,10 +16,16 @@ CvPipeProtobufMsg::CvPipeProtobufMsg( std::string serialized_protobuf )
 	serialized_protobuf_ = serialized_protobuf;
 }
 	
-CvSharedPathMsg::CvSharedPathMsg( std::string shared_data_path )
+CvSharedPathMsg::CvSharedPathMsg( const std::string shared_data_path )
 	:CvMsg(CV_SHARED_DATA_PATH_MSG)
 {
 	shared_data_path_ = shared_data_path;
+}
+
+CvCalibrationDataMsg::CvCalibrationDataMsg( const SendableCalibrationProps calib_props )
+	:CvMsg(CV_CALIBRATION_DATA_MSG)
+{
+	calib_props_ = calib_props;
 }
 
 } //namespace Lazysplits

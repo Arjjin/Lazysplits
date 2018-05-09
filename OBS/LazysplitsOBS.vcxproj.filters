@@ -93,6 +93,9 @@
     <ClInclude Include="..\Protobuf\classes\LzsCvDataProtoCpp.pb.h">
       <Filter>Header Files\protobuf</Filter>
     </ClInclude>
+    <ClInclude Include="src\util\LzsCalibrationData.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lazysplits.cpp">
@@ -163,6 +166,9 @@
     </ClCompile>
     <ClCompile Include="src\SharedData\LzsWatch.cpp">
       <Filter>Source Files\SharedData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\LzsCalibrationData.cpp">
+      <Filter>Source Files\util</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

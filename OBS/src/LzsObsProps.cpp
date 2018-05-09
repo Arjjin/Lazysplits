@@ -7,6 +7,11 @@ namespace Lazysplits{
 LzsObsPropBase::LzsObsPropBase( std::string prop_name, std::string prop_desc ){
 	prop_name_ = prop_name;
 	prop_desc_ = prop_desc;
+	modified_ = NULL;
+}
+
+void LzsObsPropBase::SetCallback( obs_property_modified_t modified ){
+	modified_ = modified;
 }
 
 //bool property
@@ -18,7 +23,8 @@ LzsObsPropBool::LzsObsPropBool(  bool* bool_ptr, std::string prop_name, std::str
 }
 
 void LzsObsPropBool::AddProperty( obs_properties_t* source_properties ){
-	obs_properties_add_bool( source_properties, prop_name_.c_str(), prop_desc_.c_str() );
+	obs_property_t* prop = obs_properties_add_bool( source_properties, prop_name_.c_str(), prop_desc_.c_str() );
+	if( modified_ != NULL ){ obs_property_set_modified_callback( prop, modified_ ); }
 }
 
 void  LzsObsPropBool::SetDefault( obs_data_t* source_settings ){
@@ -43,9 +49,10 @@ LzsObsPropInt::LzsObsPropInt( int64_t* int_ptr, std::string prop_name, std::stri
 }
 
 void LzsObsPropInt::AddProperty( obs_properties_t* source_properties ){
-	(use_slider_)
+	obs_property_t* prop = (use_slider_)
 		? obs_properties_add_int_slider( source_properties, prop_name_.c_str(), prop_desc_.c_str(), int_min_, int_max_, int_step_ )
 		: obs_properties_add_int( source_properties, prop_name_.c_str(), prop_desc_.c_str(), int_min_, int_max_, int_step_ );
+	if( modified_ != NULL ){ obs_property_set_modified_callback( prop, modified_ ); }
 }
 
 void LzsObsPropInt::SetDefault( obs_data_t* source_settings ){
@@ -69,9 +76,10 @@ LzsObsPropFloat::LzsObsPropFloat( double* float_ptr, std::string prop_name, std:
 }
 
 void LzsObsPropFloat::AddProperty( obs_properties_t* source_properties ){
-	(use_slider_)
+	obs_property_t* prop = (use_slider_)
 		? obs_properties_add_float_slider( source_properties, prop_name_.c_str(), prop_desc_.c_str(), float_min_, float_max_, float_step_ )
 		: obs_properties_add_float( source_properties, prop_name_.c_str(), prop_desc_.c_str(), float_min_, float_max_, float_step_ );
+	if( modified_ != NULL ){ obs_property_set_modified_callback( prop, modified_ ); }
 }
 
 void LzsObsPropFloat::SetDefault( obs_data_t* source_settings ){
@@ -95,7 +103,8 @@ LzsObsPropPath::LzsObsPropPath( std::string* string_ptr, std::string prop_name, 
 }
 
 void LzsObsPropPath::AddProperty( obs_properties_t* source_properties ){
-	obs_properties_add_path( source_properties, prop_name_.c_str(), prop_desc_.c_str(), path_type_, filter_string_.c_str(), default_path_.c_str() );
+	obs_property_t* prop = obs_properties_add_path( source_properties, prop_name_.c_str(), prop_desc_.c_str(), path_type_, filter_string_.c_str(), default_path_.c_str() );
+	if( modified_ != NULL ){ obs_property_set_modified_callback( prop, modified_ ); }
 }
 
 void LzsObsPropPath::SetDefault( obs_data_t* source_settings ){
@@ -109,13 +118,23 @@ void LzsObsPropPath::UpdateProperty(  obs_data_t* source_settings  ){
 
 //property list
 
-void LzsObsPropList::AddBool( bool* bool_ptr, std::string prop_name, std::string prop_desc ){
-	prop_list_.push_back( std::make_shared<LzsObsPropBool>( bool_ptr, prop_name, prop_desc ) );
+void LzsObsPropsList::AddBool( bool* bool_ptr, std::string prop_name, std::string prop_desc, obs_property_modified_t modified ){
+	auto prop = std::make_shared<LzsObsPropBool>( bool_ptr, prop_name, prop_desc );
+	if( modified != NULL ){ prop->SetCallback(modified); }
+	props_list_.push_back(prop);
 }
 
-void LzsObsPropList::AddInt( int64_t* int_ptr, std::string prop_name, std::string prop_desc, int int_min, int int_max, int int_step, bool use_slider ){
-	prop_list_.push_back(
-		std::make_shared<LzsObsPropInt>(
+void LzsObsPropsList::AddInt(
+	int64_t* int_ptr,
+	std::string prop_name,
+	std::string prop_desc,
+	int int_min,
+	int int_max,
+	int int_step,
+	bool use_slider,
+	obs_property_modified_t modified
+){
+	auto prop = std::make_shared<LzsObsPropInt>(
 			int_ptr,
 			prop_name,
 			prop_desc,
@@ -123,13 +142,22 @@ void LzsObsPropList::AddInt( int64_t* int_ptr, std::string prop_name, std::strin
 			int_max,
 			int_step,
 			use_slider
-		)
 	);
+	if( modified != NULL ){ prop->SetCallback(modified); }
+	props_list_.push_back(prop);
 }
 
-void LzsObsPropList::AddFloat( double* float_ptr, std::string prop_name, std::string prop_desc, double float_min, double float_max, double float_step, bool use_slider ){
-	prop_list_.push_back(
-		std::make_shared<LzsObsPropFloat>(
+void LzsObsPropsList::AddFloat(
+	double* float_ptr,
+	std::string prop_name,
+	std::string prop_desc,
+	double float_min,
+	double float_max,
+	double float_step,
+	bool use_slider,
+	obs_property_modified_t modified
+){
+	auto prop = std::make_shared<LzsObsPropFloat>(
 			float_ptr,
 			prop_name,
 			prop_desc,
@@ -137,37 +165,46 @@ void LzsObsPropList::AddFloat( double* float_ptr, std::string prop_name, std::st
 			float_max,
 			float_step,
 			use_slider
-		)
 	);
+	if( modified != NULL ){ prop->SetCallback(modified); }
+	props_list_.push_back(prop);
 }
 
-void LzsObsPropList::AddPath( std::string* string_ptr, std::string prop_name, std::string prop_desc, obs_path_type path_type, std::string filter_string, std::string default_path ){
-	prop_list_.push_back(
-		std::make_shared<LzsObsPropPath>(
+void LzsObsPropsList::AddPath(
+	std::string* string_ptr,
+	std::string prop_name,
+	std::string prop_desc,
+	obs_path_type path_type,
+	std::string filter_string,
+	std::string default_path,
+	obs_property_modified_t modified
+){
+	auto prop = std::make_shared<LzsObsPropPath>(
 			string_ptr,
 			prop_name,
 			prop_desc,
 			path_type,
 			filter_string,
 			default_path
-		)
 	);
+	if( modified != NULL ){ prop->SetCallback(modified); }
+	props_list_.push_back(prop);
 }
 
-void LzsObsPropList::AddProperties( obs_properties_t* source_properties ){
-	for( auto props_it =prop_list_.begin(); props_it != prop_list_.end(); ++props_it ){
+void LzsObsPropsList::AddProperties( obs_properties_t* source_properties ){
+	for( auto props_it =props_list_.begin(); props_it != props_list_.end(); ++props_it ){
 		props_it->get()->AddProperty(source_properties);
 	}
 }
 
-void LzsObsPropList::SetPropertyDefaults( obs_data_t* source_settings ){
-	for( auto props_it =prop_list_.begin(); props_it != prop_list_.end(); ++props_it ){
+void LzsObsPropsList::SetPropertyDefaults( obs_data_t* source_settings ){
+	for( auto props_it =props_list_.begin(); props_it != props_list_.end(); ++props_it ){
 		(*props_it)->SetDefault(source_settings);
 	}
 }
 
-void LzsObsPropList::UpdateProperties( obs_data_t* source_settings ){
-	for( auto props_it =prop_list_.begin(); props_it != prop_list_.end(); ++props_it ){
+void LzsObsPropsList::UpdateProperties( obs_data_t* source_settings ){
+	for( auto props_it =props_list_.begin(); props_it != props_list_.end(); ++props_it ){
 		(*props_it)->UpdateProperty(source_settings);
 	}
 }

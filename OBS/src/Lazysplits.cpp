@@ -1,8 +1,10 @@
-#include <obs-module.h>
-
 #include "LzsSourceData.h"
 
+#include <obs-module.h>
+#include <obs-source.h>
+
 #include <string>
+
 
 /* TODO : limit to one filter instance in OBS*/
 
@@ -15,9 +17,8 @@ static const char* lzs_source_name(void* type_data) {
 }
 
 static void* lzs_source_create( obs_data_t* settings, obs_source_t* context ){
-	LzsSourceData* source_data = new LzsSourceData(context);
+	LzsSourceData* source_data = new LzsSourceData( context, obs_get_module_data_path( obs_current_module() ) );
 	source_data->OnSourceCreate( settings, context );
-
 	return source_data;
 }
 
@@ -29,13 +30,20 @@ static void lzs_source_video_tick( void *data, float seconds ){
 }
 
 static void lzs_source_render_video(void *data, gs_effect_t *effect){
-
+	LzsSourceData* source_data = static_cast<LzsSourceData*>(data);
+	
+	source_data->OnSourceRenderVideo(effect);
 }
 
 static struct obs_source_frame* lzs_source_filter_video( void* data, struct obs_source_frame* frame){
 	LzsSourceData* source_data = static_cast<LzsSourceData*>(data);
 
-	if( source_data->cv_thread_.IsTargets() ){ source_data->frame_buffer_.PushFrame(frame); }
+	if( source_data->cv_thread_.IsTargets() ){
+		//os_atomic_inc_long(&frame->refs);
+		//obs_source_get_frame
+		//obs_source_release_frame
+		source_data->frame_buffer_.PushFrame(frame);
+	}
 
 	return frame;
 }
@@ -60,7 +68,8 @@ static void lzs_source_update(void *data, obs_data_t *settings)
 }
 
 static void lzs_source_save( void* data, obs_data_t* settings ){
-	blog( LOG_DEBUG, "[Lazysplits] lzs_source_save");
+	LzsSourceData* source_data = static_cast<LzsSourceData*>(data);
+	source_data->OnSourceSave(settings);
 }
 
 static void lzs_source_load( void* data, obs_data_t* settings ){
@@ -91,7 +100,7 @@ static struct obs_source_info lzs_source_info = {
     /* show                */ 0,
     /* hide                */ 0,
     /* video_tick          */ lzs_source_video_tick,
-    /* video_render        */ 0,//lzs_source_render_video,
+    /* video_render        */ lzs_source_render_video,
     /* filter_video        */ lzs_source_filter_video,
     /* filter_audio        */ 0,
     /* enum_active_sources */ 0,

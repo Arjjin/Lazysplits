@@ -1,0 +1,56 @@
+uniform float4x4 ViewProj;
+uniform texture2d image;
+
+uniform texture2d calib_image;
+uniform float2 source_dimensions;
+uniform float2 calib_dimensions;
+uniform float calib_opacity;
+uniform float2 calib_loc;
+uniform float2 calib_scale_percent;
+
+sampler_state textureSampler {
+	Filter    = Linear;
+	AddressU  = Clamp;
+	AddressV  = Clamp;
+};
+
+struct CalibVSIn {
+	float4 pos : POSITION;
+	float2 uv  : TEXCOORD0;
+};
+
+struct CalibVSOut {
+	float4 pos : POSITION;
+	float2 uv  : TEXCOORD0;
+	float2 uv2  : TEXCOORD1;
+};
+
+CalibVSOut VSCalib( CalibVSIn vert_in )
+{
+	CalibVSOut vert_out;
+	vert_out.pos = mul( float4(vert_in.pos.xyz, 1.0), ViewProj );
+	vert_out.uv  = vert_in.uv;
+	//vert_out.uv2 = vert_in.uv - (calib_loc/calib_dimensions);
+	//vert_out.uv2 = vert_in.uv * (source_dimensions/calib_dimensions);
+	vert_out.uv2 = ( vert_in.uv / ( calib_scale_percent / 100.0 ) ) - ( calib_loc / source_dimensions );
+	return vert_out;
+}
+
+float4 PSCalib( CalibVSOut vert_in ) : TARGET
+{
+	float4 rgba = image.Sample( textureSampler, vert_in.uv );
+	float4 calib_rgba = calib_image.Sample( textureSampler, vert_in.uv2 );
+	float opacity = calib_opacity * calib_rgba.a;
+	rgba *= ( 1.0 - opacity );
+	rgba += ( calib_rgba * opacity );
+	return rgba;
+}
+
+technique Draw
+{
+	pass
+	{
+		vertex_shader = VSCalib(vert_in);
+		pixel_shader  = PSCalib(vert_in);
+	}
+}
