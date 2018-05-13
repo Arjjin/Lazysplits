@@ -1,6 +1,9 @@
 #pragma once
 
 #include "LzsCvDataProtoCpp.pb.h"
+#include "util\LzsCalibrationData.h"
+
+#include <opencv2\core.hpp>
 
 #include <string>
 #include <vector>
@@ -11,12 +14,21 @@ namespace SharedData{
 
 class LzsWatch{
 	public :
-		LzsWatch( const Proto::WatchInfo& watch_info );
+		LzsWatch( const Proto::WatchInfo& watch_info, int watch_index, std::string watch_dir );
 
 		const std::string& GetName();
 		Proto::WatchType GetType();
+		int GetIndex();
+		const cv::Mat& GetImage( const SendableCalibrationProps& calib_props );
 	private :
+		void MakeImage();
+		bool IsNewCalibProps( const SendableCalibrationProps& calib_props );
+
 		Proto::WatchInfo watch_info_;
+		int index_;
+		std::string watch_dir_;
+		cv::Mat img_;
+		SendableCalibrationProps current_calib_props_;
 };
 
 class LzsTarget{
@@ -26,10 +38,12 @@ class LzsTarget{
 
 		const std::string& GetName();
 		Proto::TargetType GetType();
+		const std::vector<std::shared_ptr<LzsWatch>> GetCurrentWatches();
 	private :
 		Proto::TargetInfo target_info_;
 		std::string game_info_dir_;
-		std::vector<LzsWatch> watch_list_;
+		std::vector<std::shared_ptr<LzsWatch>> watch_list_;
+		int current_watch_index_;
 };
 
 class LzsCurrentGame{
@@ -52,7 +66,7 @@ class LzsCurrentGame{
 
 class LzsGameList{
 	public :
-		const std::string& GetGameDir( const std::string& game_name );
+		const std::string GetGameDir( const std::string& game_name );
 
 		void ParseFromDir( const std::string& path );
 		bool GameExists( const std::string& game_name );

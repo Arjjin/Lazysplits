@@ -183,11 +183,13 @@ namespace LiveSplit.Lazysplits
                     if( Msg.Type == LsMsgType.PipeStatus )
                     {
                         LsPipeStatusMsg PipeStatusMsg = (LsPipeStatusMsg)Msg;
+                        /*
                         if( bPipeConnected = PipeStatusMsg.Connected == true )
                         {
                             SendTargetData();
                         }
-
+                        */
+                        bPipeConnected = PipeStatusMsg.Connected;
                         Log.Debug("Pipe "+ (bPipeConnected ? "Connected" : "Disconnected") );
                     }
                     else if ( Msg.Type == LsMsgType.Protobuf )
@@ -197,7 +199,7 @@ namespace LiveSplit.Lazysplits
                         try
                         {
                             ObsMsg = CppMessage.Parser.ParseFrom(ProtobufMsg.SerializedProtobuf);
-                            Log.Debug("Deserialized message - id : "+ObsMsg.Id + ", type : "+ObsMsg.Type.ToString());
+                            HandleProtobufMsg(ObsMsg);
                         }
                         catch (InvalidProtocolBufferException ex)
                         {
@@ -211,6 +213,17 @@ namespace LiveSplit.Lazysplits
                     Thread.Sleep(50);
                 }
             }
+        }
+
+        void HandleProtobufMsg( CppMessage msg )
+        {
+            switch(msg.Type)
+            {
+                case CppMessage.Types.MessageType.RequestResync:
+                    SendTargetData();
+                break;
+            }
+            Log.Debug("Deserialized message - id : "+msg.Id + ", type : "+msg.Type.ToString());
         }
         
         /* shared data stuff */
@@ -235,7 +248,7 @@ namespace LiveSplit.Lazysplits
         {
             if ( SharedDataManager.SetRootDir(Settings.SharedDataRootDir) )
             {
-                //?
+                SendTargetData();
             }
         }
 

@@ -26,10 +26,9 @@ class LzsSourceData{
 		void OnSourceUpdate( obs_data_t* settings );
 		void OnSourceTick( float seconds );
 		void OnSourceRenderVideo( gs_effect_t* effect );
-		void OnSourceFilterVideo( obs_source_frame* frame );
 		void OnSourceSave( obs_data_t* settings );
 
-		long GetFrameCount();
+		const long GetFrameCount();
 
 		//OBS prop callback
 		static bool PropCalibEnabledModified( obs_properties_t *props, obs_property_t *p, obs_data_t *settings );
@@ -40,9 +39,15 @@ class LzsSourceData{
 		LzsFrameBuffer frame_buffer_;
 	private :
 		void InitProps( obs_source_t* context );
+		void GrabRenderFrame( obs_source_t* target, obs_source_t* parent );
 
 		long frame_count_;
 		std::string module_data_path_;
+
+		//frame capping members
+		long last_cap_;
+		gs_texrender_t* texrender_;
+		gs_stagesurf_t* stagesurface_;
 		
 		LzsObsPropsList properties_;
 		std::string prop_shared_data_dir_;

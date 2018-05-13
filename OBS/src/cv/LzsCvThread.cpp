@@ -4,17 +4,21 @@
 
 #include <obs.h>
 #include <opencv2\highgui.hpp>
+#include <opencv2\imgproc.hpp>
 
 namespace Lazysplits{
 
-LzsCvThread::LzsCvThread( LzsFrameBuffer* frame_buf )
+LzsCvThread::LzsCvThread( LzsFrameBuffer* frame_buf, obs_source_t* context )
 	:LzsThread("CV thread"),
 	 msg_queue_("CV queue")
 {
 	GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+	pipe_connected_ = false;
+
+	context_ = context;
 	frame_buf_ = frame_buf;
-	pipe_message_id_ref_ = 0;
+	ls_msg_id_ = 0;
 
 	calib_props_.is_enabled = false;
 }
@@ -82,22 +86,58 @@ void LzsCvThread::ThreadFuncCleanup(){
 }
 
 void LzsCvThread::HandleFrameBuffer(){
-	obs_source_frame* frame  = frame_buf_->PeekFrame();
-	if( frame ){
+	//if( IsTargets() ){
+	if( frame_buf_->FrameCount() > 0 ){
+		std::shared_ptr<cv::Mat> frame = frame_buf_->PeekFrame();
+
+		try{
 		cv::Mat BGR_frame;
-		BGR_frame = ImgProc::FrameToBGRMat(frame);
+		cv::cvtColor( *frame, BGR_frame, CV_RGBA2BGR );
 
 		/*
+		for( auto target_it = target_list_.begin(); target_it != target_list_.end(); ++target_it ){
+			//blog( LOG_DEBUG, "[Lazysplits][%s] %s target", thread_name_.c_str(), (*target_it)->GetName().c_str() );
+			auto watch_list = (*target_it)->GetCurrentWatches();
+			for( auto watch_it = watch_list.begin(); watch_it != watch_list.end(); ++watch_it ){
+				const cv::Mat& watch_img = (*watch_it)->GetImage( calib_props_ );
+				cv::imwrite( "./images/watch.png", watch_img, compression_params );
+				//blog( LOG_DEBUG, "[Lazysplits][%s] %s watch", thread_name_.c_str(), watch_it->GetName().c_str() );
+				
+			}
+		}
+		*/
+		
 		//cv compression params
 		std::vector<int> compression_params;
 		compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
 		compression_params.push_back(1);
+		cv::imwrite( "./images/frame.png", BGR_frame, compression_params );
+		}
+		catch( cv::Exception cve ){
+			blog( LOG_ERROR, "[lazysplits][%s] failed to process frame; %s!", thread_name_.c_str(), cve.msg.c_str() );
+		}
 
-		cv::imwrite( "../img.png", BGR_frame, compression_params );
-		*/
+		frame_buf_->PopFrame();
 	}
-	else{ blog( LOG_WARNING, "[lazysplits][%s] frame buffer peek is bad", thread_name_.c_str() ); }
-	frame_buf_->PopFrame();
+
+}
+
+/* pipe to livesplit message queue helpers */
+
+int32_t LzsCvThread::GetLsMsgId(){
+	return ls_msg_id_++;
+}
+
+void LzsCvThread::LsMsgRequestResync(){
+	Proto::CppMessage msg;
+	msg.set_id( GetLsMsgId() );
+	msg.set_type( Proto::CppMessage_MessageType::CppMessage_MessageType_REQUEST_RESYNC );
+
+	std::string serialized_msg;
+	if( msg.SerializeToString(&serialized_msg) ){
+		pipe_->MsgProtobuf(serialized_msg);
+	}
+	else{ blog( LOG_WARNING, "[lazysplits][%s] failed to serialize outgoing resync request!", thread_name_.c_str() ); }
 }
 
 /* message queue handling */
@@ -127,14 +167,18 @@ void LzsCvThread::HandleMessageQueue(){
 
 void LzsCvThread::HandlePipeConnected( std::shared_ptr<CvMsg> msg ){
 	std::shared_ptr<CvPipeConnectionMsg> connection_msg = std::static_pointer_cast<CvPipeConnectionMsg>(msg);
-	std::string status = (connection_msg->pipe_connected_) ? "Connected" : "Disconnected";
-	blog( LOG_DEBUG, "[lazysplits][%s] pipe %s", thread_name_.c_str(), status.c_str() );
+	//request targets if we connected, clear our target list if we disconnected
+	( pipe_connected_ = connection_msg->pipe_connected_ ) ? LsMsgRequestResync() : target_list_.clear();
+	blog( LOG_DEBUG, "[lazysplits][%s] pipe %s", thread_name_.c_str(), pipe_connected_ ? "Connected" : "Disconnected" );
 }
 
 void LzsCvThread::HandleSetSharedDataPath( std::shared_ptr<CvMsg> msg ){
 	std::shared_ptr<CvSharedPathMsg> shared_data_path_msg = std::static_pointer_cast<CvSharedPathMsg>(msg);
 
 	shared_data_manager_.SetRootDir(shared_data_path_msg->shared_data_path_);
+
+	target_list_.clear();
+	LsMsgRequestResync();
 }
 
 void LzsCvThread::HandleProtobuf( std::shared_ptr<CvMsg> msg ){

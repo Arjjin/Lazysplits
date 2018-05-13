@@ -32,7 +32,7 @@ bool LzsGameList::GameExists( const std::string& game_name ){
 	return false;
 }
 
-const std::string& LzsGameList::GetGameDir( const std::string& game_name ){
+const std::string LzsGameList::GetGameDir( const std::string& game_name ){
 	for( int i = 0; i < game_list_.games_size(); i++ ){
 		const Proto::GameList::GameEntry& game_entry = game_list_.games().Get(i);
 		if( game_entry.name() == game_name ){ return game_entry.relative_path(); }

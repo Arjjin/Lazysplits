@@ -3,32 +3,34 @@
 #include "LzsObserver.h"
 
 #include <obs.h>
-#include <util\circlebuf.h>
 #include <util\threading.h>
+#include <opencv2\core.hpp>
+
+#include <queue>
+#include <memory>
 
 namespace Lazysplits{
 
-//wrapping a dynamic sized buffer to have a fixed capacity
-//I'm a genius
+//TODO bool try methods for pushing/pulling data for thread safety
 class LzsFrameBuffer : public LzsObservable{
 	public :
 		LzsFrameBuffer( int buf_max_count );
 		~LzsFrameBuffer();
 
-		void PushFrame( obs_source_frame* frame );
-		obs_source_frame* const PeekFrame();
+		void PushFrame( std::shared_ptr<cv::Mat> frame );
+		std::shared_ptr<cv::Mat> const PeekFrame();
 		void PopFrame();
+		void Clear();
 
 		int FrameCount();
 	private :
-		void PushFrameInternal( obs_source_frame* frame );
-		obs_source_frame* const PeekFrameInternal();
+		void PushFrameInternal( std::shared_ptr<cv::Mat> frame );
+		std::shared_ptr<cv::Mat> const PeekFrameInternal();
 		void PopFrameInternal();
-		void FreeFrameBuffer();
 		void LockMutex();
 		void UnlockMutex();
 
-		circlebuf buf_;
+		std::queue<std::shared_ptr<cv::Mat>> buf_;
 		pthread_mutex_t buf_mutex_;
 		const int buf_max_count_;
 		int frame_count_;

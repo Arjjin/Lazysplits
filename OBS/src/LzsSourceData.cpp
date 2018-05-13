@@ -2,16 +2,22 @@
 
 #include "SharedData\LzsSharedData.h"
 
+//DEL
+#include <opencv2\core.hpp>
+#include <opencv2\highgui.hpp>
+#include <opencv2\imgproc.hpp>
+
 namespace Lazysplits{
 
 LzsSourceData::LzsSourceData( obs_source_t* context, const std::string& module_data_path )
 	:context_(context),
 	 frame_buffer_(30),
 	 pipe_server_( "lazysplits_pipe", 8192 ),
-	 cv_thread_( &frame_buffer_ ),
+	 cv_thread_( &frame_buffer_, context_ ),
 	 calib_data_(module_data_path)
 {
 	frame_count_ = 0;
+	last_cap_ = 0;
 
 	//pass thread refrences to each other
 	pipe_server_.AssignCvThread(&cv_thread_);
@@ -35,6 +41,11 @@ LzsSourceData::~LzsSourceData(){
 		cv_thread_.ThreadTerminate();
 		cv_thread_.ThreadJoin();
 	}
+
+	obs_enter_graphics();
+	if(texrender_){ gs_texrender_destroy(texrender_); }
+	if(stagesurface_){ gs_stagesurface_destroy(stagesurface_); }
+	obs_leave_graphics();
 }
 
 void LzsSourceData::InitProps( obs_source_t* context ){
@@ -87,27 +98,73 @@ void LzsSourceData::OnSourceUpdate( obs_data_t *settings ){
 void LzsSourceData::OnSourceTick( float seconds ){ frame_count_++; }
 
 void LzsSourceData::OnSourceRenderVideo( gs_effect_t* effect ){
+    obs_source_t *target = obs_filter_get_target(context_);
+    obs_source_t *parent = obs_filter_get_parent(context_);
+	if( frame_count_ % 15 == 0 ){//&& cv_thread_.IsTargets() ){
+		GrabRenderFrame( target, parent );
+	}
+
 	if( calib_data_.is_adjusting_ ){
 		calib_data_.Render(context_);
 	}
-	else{
+	else if(target){
+		obs_source_video_render(target);
+	}
+	else if(parent){
 		obs_source_skip_video_filter(context_);
 	}
 }
 
-void LzsSourceData::OnSourceFilterVideo( obs_source_frame* frame ){
+void LzsSourceData::GrabRenderFrame( obs_source_t* target, obs_source_t* parent ){
+	if( last_cap_ == frame_count_ || !target || !parent ){
+		return;
+	}
 
+	//uint32_t source_width = obs_source_get_base_width(context_);
+	//uint32_t source_height = obs_source_get_base_height(context_);
+	uint32_t target_width = obs_source_get_base_width(target);
+	uint32_t target_height = obs_source_get_base_height(target);
+
+	if(!texrender_){ texrender_ = gs_texrender_create( GS_RGBA, GS_ZS_NONE ); }
+	else{ gs_texrender_reset(texrender_); }
+
+    if (!stagesurface_) {
+        stagesurface_ = gs_stagesurface_create( target_width, target_height, GS_RGBA );
+    }
+	else if( gs_stagesurface_get_width(stagesurface_) != target_width || gs_stagesurface_get_height(stagesurface_) != target_height ){
+		gs_stagesurface_destroy(stagesurface_);
+        stagesurface_ = gs_stagesurface_create( target_width, target_height, GS_RGBA );
+	}
+	
+	if( gs_texrender_begin( texrender_, target_width, target_height ) ){
+		//clip our source image out of total output dimensions?
+        gs_ortho(0.0f, (float)target_width, 0.0f, (float)target_height, 0.0F, 1.0F );
+        obs_source_video_render(target);
+        gs_texrender_end(texrender_);
+
+		gs_stage_texture( stagesurface_, gs_texrender_get_texture(texrender_) );
+
+		uint8_t* tex_ptr;
+		uint32_t linesize = 0;
+		if( gs_stagesurface_map( stagesurface_, &tex_ptr, &linesize ) ){
+			std::shared_ptr<cv::Mat> mat_ptr = std::make_shared<cv::Mat>( target_height, target_width, CV_8UC4, tex_ptr, linesize );
+			gs_stagesurface_unmap(stagesurface_);
+
+			frame_buffer_.PushFrame(mat_ptr);
+		}
+	}
+
+	last_cap_ = frame_count_;
 }
 
 void LzsSourceData::OnSourceSave( obs_data_t* settings ){
 	blog( LOG_DEBUG, "[Lazysplits] lzs_source_save");
-
 	if( calib_data_.ShouldResend() ){
 		cv_thread_.MsgCalibData( calib_data_.SendData() );
 	}
 }
 
-long LzsSourceData::GetFrameCount(){ return frame_count_; }
+const long LzsSourceData::GetFrameCount(){ return frame_count_; }
 
 bool LzsSourceData::PropCalibEnabledModified( obs_properties_t *props, obs_property_t *p, obs_data_t *settings ){
 	bool calib_active = obs_data_get_bool( settings, "calib_adjust" );

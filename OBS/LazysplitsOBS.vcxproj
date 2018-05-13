@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="..\Protobuf\classes\LzsCvDataProtoCpp.pb.h" />
     <ClInclude Include="..\Protobuf\classes\LzsPipeProtoCpp.pb.h" />
+    <ClInclude Include="src\cv\LzsCvConstants.h" />
     <ClInclude Include="src\cv\LzsCvThread.h" />
     <ClInclude Include="src\LzsObsProps.h" />
     <ClInclude Include="src\LzsSourceData.h" />

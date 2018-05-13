@@ -47,9 +47,10 @@ void LzsPipeTaskManager::AddWriteTask( std::string serialized_protobuf ){
 	task_list_.push_back(write_task);
 }
 
+//this is asserting
 void LzsPipeTaskManager::StartTasks(){
 	for( auto task_it = task_list_.begin(); task_it != task_list_.end(); ++task_it ){
-		if( task_it->get()->GetStatus() == TASK_STATUS_CREATED ){ task_it->get()->StartTask(); }
+		if( (*task_it)->GetStatus() == TASK_STATUS_CREATED ){ (*task_it)->StartTask(); }
 	}
 }
 
@@ -62,8 +63,8 @@ void LzsPipeTaskManager::WaitOnTasks(){
 	std::vector<HANDLE> handle_vec;
 	//add handles only from tasks that are running
 	for( auto task_it = task_list_.begin(); task_it != task_list_.end(); ++task_it ){
-		if( task_it->get()->GetStatus() == TASK_STATUS_RUNNING ){
-			handle_vec.push_back( task_it->get()->GetEventHandle() );
+		if( (*task_it)->GetStatus() == TASK_STATUS_RUNNING ){
+			handle_vec.push_back( (*task_it)->GetEventHandle() );
 		}
 	}
 
@@ -127,15 +128,14 @@ void LzsPipeTaskManager::RemoveStrayTasks(){
 
 void LzsPipeTaskManager::CancelTasks(){
 	for( auto task_it = task_list_.begin(); task_it != task_list_.end(); ++task_it ){
-		LZS_PIPE_TASK_STATUS task_status = task_it->get()->GetStatus();
-		if( task_status == TASK_STATUS_CREATED || task_status == TASK_STATUS_RUNNING ){ task_it->get()->CancelTask(); }
-		//task_it->get()->CancelTask();
+		LZS_PIPE_TASK_STATUS task_status = (*task_it)->GetStatus();
+		if( task_status == TASK_STATUS_CREATED || task_status == TASK_STATUS_RUNNING ){ (*task_it)->CancelTask(); }
 	}
 }
 
 bool LzsPipeTaskManager::IsTaskInList( LZS_PIPE_TASK_TYPE task_type ){
 	for( auto task_it = task_list_.begin(); task_it != task_list_.end(); ++task_it ){
-		if( task_it->get()->GetType() == task_type ){ return true; }
+		if( (*task_it)->GetType() == task_type ){ return true; }
 	}
 	return false;
 }
@@ -143,7 +143,7 @@ bool LzsPipeTaskManager::IsTaskInList( LZS_PIPE_TASK_TYPE task_type ){
 int LzsPipeTaskManager::GetTaskIndex( HANDLE task_handle ){
 	int found_index = -1;
 	for( auto task_it = task_list_.begin(); task_it != task_list_.end(); ++task_it ){
-		if( task_it->get()->GetEventHandle() == task_handle ){
+		if( (*task_it)->GetEventHandle() == task_handle ){
 			//get index from iterator
 			found_index = task_it - task_list_.begin();
 			break;

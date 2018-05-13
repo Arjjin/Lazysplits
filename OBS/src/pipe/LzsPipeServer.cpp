@@ -106,6 +106,11 @@ bool LzsPipeServer::IsConnected(){
 	return pipe_state_ == PIPE_CONNECTED;
 }
 
+void LzsPipeServer::MsgProtobuf( std::string serialized_protobuf ){
+	msg_queue_.Push(serialized_protobuf);
+	//pipe_task_manager_->AddWriteTask(serialized_protobuf);
+}
+
 void LzsPipeServer::OnSubjectNotify( const std::string& subject_name, const std::string& subject_message ){
 	if( pipe_state_ >= PIPE_CREATED ){
 		if( pipe_task_manager_->IsWaiting() ){ pipe_task_manager_->CancelWait(); }

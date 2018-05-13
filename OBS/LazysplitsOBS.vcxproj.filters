@@ -96,6 +96,9 @@
     <ClInclude Include="src\util\LzsCalibrationData.h">
       <Filter>Header Files\util</Filter>
     </ClInclude>
+    <ClInclude Include="src\cv\LzsCvConstants.h">
+      <Filter>Header Files\cv</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lazysplits.cpp">

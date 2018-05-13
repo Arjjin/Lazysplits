@@ -8,25 +8,21 @@ LzsFrameBuffer::LzsFrameBuffer( int buf_max_count )
 {
 	frame_count_ = 0;
 
-	circlebuf_init(&buf_);
-	//hopefully this will prevent any dynamic upsizing?
-	circlebuf_reserve( &buf_, sizeof(obs_source_frame*)*buf_max_count_ );
 	pthread_mutex_init( &buf_mutex_, NULL );
 }
 
 LzsFrameBuffer::~LzsFrameBuffer(){
-	FreeFrameBuffer();
 	pthread_mutex_destroy(&buf_mutex_);
 }
 
-void LzsFrameBuffer::PushFrame( obs_source_frame* frame ){
+void LzsFrameBuffer::PushFrame( std::shared_ptr<cv::Mat> frame ){
 	LockMutex();
 	PushFrameInternal(frame);
 	UnlockMutex();
 }
 
-obs_source_frame* const LzsFrameBuffer::PeekFrame(){
-	obs_source_frame* frame;
+std::shared_ptr<cv::Mat> const LzsFrameBuffer::PeekFrame(){
+	std::shared_ptr<cv::Mat> frame;
 	LockMutex();
 	frame = PeekFrameInternal();
 	UnlockMutex();
@@ -40,6 +36,13 @@ void LzsFrameBuffer::PopFrame( ){
 	UnlockMutex();
 }
 
+void LzsFrameBuffer::Clear(){
+	LockMutex();
+	buf_ = {};
+	frame_count_ = 0;
+	UnlockMutex();
+}
+
 int LzsFrameBuffer::FrameCount(){
 	int frame_count = 0;
 	LockMutex();
@@ -49,33 +52,23 @@ int LzsFrameBuffer::FrameCount(){
 	return frame_count;
 }
 
-void LzsFrameBuffer::PushFrameInternal( obs_source_frame* frame ){
+void LzsFrameBuffer::PushFrameInternal( std::shared_ptr<cv::Mat> frame ){
 	if(frame){
 		//pop a frame if our buffer is at max capacity
 		if( frame_count_ == buf_max_count_ ){ PopFrameInternal(); }
-		circlebuf_push_back( &buf_, &frame, sizeof(obs_source_frame*) );
+		buf_.push(frame);
 		frame_count_++;
 		NotifyAll();
 	}
 }
 
-obs_source_frame* const LzsFrameBuffer::PeekFrameInternal(){
-	obs_source_frame* frame;
-	circlebuf_peek_front( &buf_, &frame, sizeof(obs_source_frame*) );
-
-	return frame;
+std::shared_ptr<cv::Mat> const LzsFrameBuffer::PeekFrameInternal(){
+	return buf_.front();
 }
 
 void LzsFrameBuffer::PopFrameInternal(){
-	obs_source_frame* frame;
-	circlebuf_pop_front( &buf_, &frame, sizeof(obs_source_frame*) );
+	buf_.pop();
 	frame_count_--;
-}
-
-void LzsFrameBuffer::FreeFrameBuffer(){
-	blog( LOG_DEBUG, "[Lazysplits] freeing %i frames from buffer", frame_count_ );
-	while( frame_count_ > 0 ){ PopFrameInternal(); }
-	circlebuf_free(&buf_);
 }
 
 void LzsFrameBuffer::LockMutex(){ pthread_mutex_lock(&buf_mutex_); }

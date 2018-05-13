@@ -34,6 +34,9 @@ class LzsPipeServer : public LzsThread, public LzsObserver{
 		void ThreadTerminate()override;
 		bool IsConnected();
 
+		//message queue helpers
+		void MsgProtobuf( std::string serialized_protobuf );
+
 		void OnSubjectNotify( const std::string& subject_name, const std::string& subject_message );
 	private :
 		void CreatePipe();

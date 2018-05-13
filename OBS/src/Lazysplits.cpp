@@ -35,19 +35,6 @@ static void lzs_source_render_video(void *data, gs_effect_t *effect){
 	source_data->OnSourceRenderVideo(effect);
 }
 
-static struct obs_source_frame* lzs_source_filter_video( void* data, struct obs_source_frame* frame){
-	LzsSourceData* source_data = static_cast<LzsSourceData*>(data);
-
-	if( source_data->cv_thread_.IsTargets() ){
-		//os_atomic_inc_long(&frame->refs);
-		//obs_source_get_frame
-		//obs_source_release_frame
-		source_data->frame_buffer_.PushFrame(frame);
-	}
-
-	return frame;
-}
-
 static obs_properties_t* lzs_source_properties(void* data)
 {
 	LzsSourceData* source_data = static_cast<LzsSourceData*>(data);
@@ -82,7 +69,7 @@ static struct obs_source_info lzs_source_info = {
 
     /* id                  */ "lazysplits",
     /* type                */ OBS_SOURCE_TYPE_FILTER,
-    /* output_flags        */ OBS_SOURCE_VIDEO | OBS_SOURCE_DO_NOT_DUPLICATE,
+    /* output_flags        */ OBS_SOURCE_VIDEO,// | OBS_SOURCE_DO_NOT_DUPLICATE,
     /* get_name            */ lzs_source_name,
     /* create              */ lzs_source_create,
     /* destroy             */ lzs_source_destroy,
@@ -101,7 +88,7 @@ static struct obs_source_info lzs_source_info = {
     /* hide                */ 0,
     /* video_tick          */ lzs_source_video_tick,
     /* video_render        */ lzs_source_render_video,
-    /* filter_video        */ lzs_source_filter_video,
+    /* filter_video        */ 0,
     /* filter_audio        */ 0,
     /* enum_active_sources */ 0,
     /* save                */ lzs_source_save,//0,
