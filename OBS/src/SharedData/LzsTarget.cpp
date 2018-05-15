@@ -27,7 +27,11 @@ bool LzsTarget::ParseWatchList(){
 
 		Proto::WatchInfo watch_info;
 		if( Proto::JsonFileToProto( watch_file_path.string(), &watch_info ) ){
-			watch_list_.push_back( std::make_shared<LzsWatch>( watch_info, watches_it->index(), watch_path.string() ) );
+			switch( watch_info.type() ){
+				case Proto::WatchType::WT_IMAGE_STATIC :
+					watch_list_.push_back( std::make_shared<LzsWatchImageStatic>( watch_info, watches_it->index(), watch_path.string() ) );
+				break;
+			}
 		}
 		else{ return false; }
 	}
@@ -43,13 +47,17 @@ Proto::TargetType LzsTarget::GetType(){
 	return target_info_.type();
 }
 
-const std::vector<std::shared_ptr<LzsWatch>> LzsTarget::GetCurrentWatches(){
-	std::vector<std::shared_ptr<LzsWatch>> current_watches;
+const std::vector<std::shared_ptr<LzsWatchBase>> LzsTarget::GetCurrentWatches(){
+	std::vector<std::shared_ptr<LzsWatchBase>> current_watches;
 	for( auto watch_it = watch_list_.begin(); watch_it != watch_list_.end(); ++watch_it ){
 		if( (*watch_it)->GetIndex() == current_watch_index_ ){ current_watches.push_back(*watch_it); }
 	}
 
 	return current_watches;
+}
+
+void LzsTarget::WatchFound(){
+	current_watch_index_++;
 }
 
 } //namepsace SharedData

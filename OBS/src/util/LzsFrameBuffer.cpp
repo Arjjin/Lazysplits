@@ -15,14 +15,17 @@ LzsFrameBuffer::~LzsFrameBuffer(){
 	pthread_mutex_destroy(&buf_mutex_);
 }
 
-void LzsFrameBuffer::PushFrame( std::shared_ptr<cv::Mat> frame ){
+void LzsFrameBuffer::PushFrame( std::shared_ptr<cv::Mat> frame_mat, uint64_t timestamp ){
 	LockMutex();
-	PushFrameInternal(frame);
+	LzsFrame new_frame;
+	new_frame.frame_mat_ = frame_mat;
+	new_frame.timestamp_ = timestamp;
+	PushFrameInternal(new_frame);
 	UnlockMutex();
 }
 
-std::shared_ptr<cv::Mat> const LzsFrameBuffer::PeekFrame(){
-	std::shared_ptr<cv::Mat> frame;
+LzsFrame LzsFrameBuffer::PeekFrame(){
+	LzsFrame frame;
 	LockMutex();
 	frame = PeekFrameInternal();
 	UnlockMutex();
@@ -52,17 +55,15 @@ int LzsFrameBuffer::FrameCount(){
 	return frame_count;
 }
 
-void LzsFrameBuffer::PushFrameInternal( std::shared_ptr<cv::Mat> frame ){
-	if(frame){
-		//pop a frame if our buffer is at max capacity
-		if( frame_count_ == buf_max_count_ ){ PopFrameInternal(); }
-		buf_.push(frame);
-		frame_count_++;
-		NotifyAll();
-	}
+void LzsFrameBuffer::PushFrameInternal( LzsFrame frame ){
+	//pop a frame if our buffer is at max capacity
+	if( frame_count_ == buf_max_count_ ){ PopFrameInternal(); }
+	buf_.push(frame);
+	frame_count_++;
+	NotifyAll();
 }
 
-std::shared_ptr<cv::Mat> const LzsFrameBuffer::PeekFrameInternal(){
+LzsFrame LzsFrameBuffer::PeekFrameInternal(){
 	return buf_.front();
 }
 

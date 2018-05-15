@@ -86,37 +86,45 @@ void LzsCvThread::ThreadFuncCleanup(){
 }
 
 void LzsCvThread::HandleFrameBuffer(){
-	//if( IsTargets() ){
-	if( frame_buf_->FrameCount() > 0 ){
-		std::shared_ptr<cv::Mat> frame = frame_buf_->PeekFrame();
+	if( frame_buf_->FrameCount() > 0 && IsTargets() ){
+		LzsFrame frame = frame_buf_->PeekFrame();
 
 		try{
-		cv::Mat BGR_frame;
-		cv::cvtColor( *frame, BGR_frame, CV_RGBA2BGR );
+			cv::Mat BGR_frame;
+			cv::cvtColor( *frame.frame_mat_, BGR_frame, CV_RGBA2BGR );
+			//cv::Mat new_frame;
+			//cv::resize( BGR_frame, new_frame, cv::Size( 160, 120 ) );
+			//BGR_frame = new_frame;
+			
+			//cv compression params
+			std::vector<int> compression_params;
+			compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
+			compression_params.push_back(1);
 
-		/*
-		for( auto target_it = target_list_.begin(); target_it != target_list_.end(); ++target_it ){
-			//blog( LOG_DEBUG, "[Lazysplits][%s] %s target", thread_name_.c_str(), (*target_it)->GetName().c_str() );
-			auto watch_list = (*target_it)->GetCurrentWatches();
-			for( auto watch_it = watch_list.begin(); watch_it != watch_list.end(); ++watch_it ){
-				const cv::Mat& watch_img = (*watch_it)->GetImage( calib_props_ );
-				cv::imwrite( "./images/watch.png", watch_img, compression_params );
-				//blog( LOG_DEBUG, "[Lazysplits][%s] %s watch", thread_name_.c_str(), watch_it->GetName().c_str() );
-				
+			for( auto target_it = target_list_.begin(); target_it != target_list_.end(); ++target_it ){
+				auto watch_list = (*target_it)->GetCurrentWatches();
+				for( auto watch_it = watch_list.begin(); watch_it != watch_list.end(); ++watch_it ){
+
+					if( (*watch_it)->WatchFound( BGR_frame, calib_props_ ) ){
+						
+						std::stringstream fn;
+						fn << "./images/found_" << (*watch_it)->GetName().c_str() << ".png";
+
+						uint64_t cur_timestamp = obs_get_video_frame_time();
+						uint64_t timestamp_dif = ( cur_timestamp - frame.timestamp_ );// / 1000000;
+						std::string timestamp_str = std::to_string(timestamp_dif);
+
+						blog( LOG_DEBUG, "[lazysplits][%s] %s watch found, timestamp dif : %s", thread_name_.c_str(), (*watch_it)->GetName().c_str(), timestamp_str.c_str() );
+						(*target_it)->WatchFound();
+						cv::imwrite( fn.str().c_str(), BGR_frame, compression_params );
+						break;
+					}
+				}
 			}
-		}
-		*/
-		
-		//cv compression params
-		std::vector<int> compression_params;
-		compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
-		compression_params.push_back(1);
-		cv::imwrite( "./images/frame.png", BGR_frame, compression_params );
 		}
 		catch( cv::Exception cve ){
 			blog( LOG_ERROR, "[lazysplits][%s] failed to process frame; %s!", thread_name_.c_str(), cve.msg.c_str() );
 		}
-
 		frame_buf_->PopFrame();
 	}
 

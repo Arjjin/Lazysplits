@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClInclude Include="..\Protobuf\classes\LzsCvDataProtoCpp.pb.h" />
     <ClInclude Include="..\Protobuf\classes\LzsPipeProtoCpp.pb.h" />
-    <ClInclude Include="src\cv\LzsCvConstants.h" />
     <ClInclude Include="src\cv\LzsCvThread.h" />
     <ClInclude Include="src\LzsObsProps.h" />
     <ClInclude Include="src\LzsSourceData.h" />
@@ -56,7 +55,8 @@
     <ClCompile Include="src\SharedData\LzsSharedDataGameList.cpp" />
     <ClCompile Include="src\SharedData\LzsSharedDataManager.cpp" />
     <ClCompile Include="src\SharedData\LzsTarget.cpp" />
-    <ClCompile Include="src\SharedData\LzsWatch.cpp" />
+    <ClCompile Include="src\SharedData\LzsWatchBase.cpp" />
+    <ClCompile Include="src\SharedData\LzsWatchImage.cpp" />
     <ClCompile Include="src\util\LzsCalibrationData.cpp" />
     <ClCompile Include="src\util\LzsFrameBuffer.cpp" />
     <ClCompile Include="src\util\LzsImgProc.cpp" />

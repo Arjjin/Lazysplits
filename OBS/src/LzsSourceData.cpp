@@ -95,12 +95,16 @@ void LzsSourceData::OnSourceUpdate( obs_data_t *settings ){
 	}
 }
 
-void LzsSourceData::OnSourceTick( float seconds ){ frame_count_++; }
+void LzsSourceData::OnSourceTick( float seconds ){
+	frame_count_++; 
+}
 
 void LzsSourceData::OnSourceRenderVideo( gs_effect_t* effect ){
     obs_source_t *target = obs_filter_get_target(context_);
     obs_source_t *parent = obs_filter_get_parent(context_);
-	if( frame_count_ % 15 == 0 ){//&& cv_thread_.IsTargets() ){
+	
+	//if( frame_count_ % 4 == 0 && cv_thread_.IsTargets() ){
+	if( cv_thread_.IsTargets() ){
 		GrabRenderFrame( target, parent );
 	}
 
@@ -116,14 +120,14 @@ void LzsSourceData::OnSourceRenderVideo( gs_effect_t* effect ){
 }
 
 void LzsSourceData::GrabRenderFrame( obs_source_t* target, obs_source_t* parent ){
-	if( last_cap_ == frame_count_ || !target || !parent ){
-		return;
-	}
+	if( !target || !parent || last_cap_ == frame_count_ ){ return; }
 
-	//uint32_t source_width = obs_source_get_base_width(context_);
-	//uint32_t source_height = obs_source_get_base_height(context_);
+	uint64_t frame_timestamp = obs_get_video_frame_time();
 	uint32_t target_width = obs_source_get_base_width(target);
 	uint32_t target_height = obs_source_get_base_height(target);
+
+	//no video data
+	if( target_width <= 1 || target_height <= 1 ){ return; }
 
 	if(!texrender_){ texrender_ = gs_texrender_create( GS_RGBA, GS_ZS_NONE ); }
 	else{ gs_texrender_reset(texrender_); }
@@ -135,7 +139,6 @@ void LzsSourceData::GrabRenderFrame( obs_source_t* target, obs_source_t* parent 
 		gs_stagesurface_destroy(stagesurface_);
         stagesurface_ = gs_stagesurface_create( target_width, target_height, GS_RGBA );
 	}
-	
 	if( gs_texrender_begin( texrender_, target_width, target_height ) ){
 		//clip our source image out of total output dimensions?
         gs_ortho(0.0f, (float)target_width, 0.0f, (float)target_height, 0.0F, 1.0F );
@@ -150,7 +153,7 @@ void LzsSourceData::GrabRenderFrame( obs_source_t* target, obs_source_t* parent 
 			std::shared_ptr<cv::Mat> mat_ptr = std::make_shared<cv::Mat>( target_height, target_width, CV_8UC4, tex_ptr, linesize );
 			gs_stagesurface_unmap(stagesurface_);
 
-			frame_buffer_.PushFrame(mat_ptr);
+			frame_buffer_.PushFrame( mat_ptr, frame_timestamp );
 		}
 	}
 
@@ -159,6 +162,7 @@ void LzsSourceData::GrabRenderFrame( obs_source_t* target, obs_source_t* parent 
 
 void LzsSourceData::OnSourceSave( obs_data_t* settings ){
 	blog( LOG_DEBUG, "[Lazysplits] lzs_source_save");
+	
 	if( calib_data_.ShouldResend() ){
 		cv_thread_.MsgCalibData( calib_data_.SendData() );
 	}

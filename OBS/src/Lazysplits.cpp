@@ -63,6 +63,22 @@ static void lzs_source_load( void* data, obs_data_t* settings ){
 	blog( LOG_DEBUG, "[Lazysplits] lzs_source_load");
 }
 
+static void lzs_source_activate( void* data ){
+	blog( LOG_DEBUG, "[Lazysplits] lzs_source_activate");
+}
+
+static void lzs_source_deactivate( void* data ){
+	blog( LOG_DEBUG, "[Lazysplits] lzs_source_deactivate");
+}
+
+static void lzs_source_show( void* data ){
+	blog( LOG_DEBUG, "[Lazysplits] lzs_source_show");
+}
+
+static void lzs_source_hide( void* data ){
+	blog( LOG_DEBUG, "[Lazysplits] lzs_source_hide");
+}
+
 static struct obs_source_info lzs_source_info = {
     /* ----------------------------------------------------------------- */
     /* Required implementation*/
@@ -82,10 +98,10 @@ static struct obs_source_info lzs_source_info = {
     /* get_defaults        */ 0,
     /* get_properties      */ lzs_source_properties,
     /* update              */ lzs_source_update,
-    /* activate            */ 0,
-    /* deactivate          */ 0,
-    /* show                */ 0,
-    /* hide                */ 0,
+    /* activate            */ lzs_source_activate,//0,
+    /* deactivate          */ lzs_source_deactivate,//0,
+    /* show                */ lzs_source_show,//0,
+    /* hide                */ lzs_source_hide,//0,
     /* video_tick          */ lzs_source_video_tick,
     /* video_render        */ lzs_source_render_video,
     /* filter_video        */ 0,

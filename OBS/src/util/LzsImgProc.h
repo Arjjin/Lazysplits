@@ -6,7 +6,7 @@
 namespace Lazysplits{
 namespace ImgProc{
 
-cv::Mat FrameToBGRMat( obs_source_frame* frame );
+bool WatchExists( const cv::Mat& source, cv::Mat& watch_BGR, cv::Mat& watch_A, float threshold );
 
 } //namespace ImgProc
 } //namespace Lazysplits
