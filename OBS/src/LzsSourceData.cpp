@@ -7,6 +7,8 @@
 #include <opencv2\highgui.hpp>
 #include <opencv2\imgproc.hpp>
 
+#include <chrono>
+
 namespace Lazysplits{
 
 LzsSourceData::LzsSourceData( obs_source_t* context, const std::string& module_data_path )
@@ -121,8 +123,8 @@ void LzsSourceData::OnSourceRenderVideo( gs_effect_t* effect ){
 
 void LzsSourceData::GrabRenderFrame( obs_source_t* target, obs_source_t* parent ){
 	if( !target || !parent || last_cap_ == frame_count_ ){ return; }
-
-	uint64_t frame_timestamp = obs_get_video_frame_time();
+	
+	auto epoch_ms = std::chrono::time_point_cast<std::chrono::milliseconds>( std::chrono::system_clock::now() ).time_since_epoch();
 	uint32_t target_width = obs_source_get_base_width(target);
 	uint32_t target_height = obs_source_get_base_height(target);
 
@@ -152,8 +154,8 @@ void LzsSourceData::GrabRenderFrame( obs_source_t* target, obs_source_t* parent 
 		if( gs_stagesurface_map( stagesurface_, &tex_ptr, &linesize ) ){
 			std::shared_ptr<cv::Mat> mat_ptr = std::make_shared<cv::Mat>( target_height, target_width, CV_8UC4, tex_ptr, linesize );
 			gs_stagesurface_unmap(stagesurface_);
-
-			frame_buffer_.PushFrame( mat_ptr, frame_timestamp );
+			
+			frame_buffer_.PushFrame( mat_ptr, epoch_ms.count() );
 		}
 	}
 

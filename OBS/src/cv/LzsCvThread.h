@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include "util\LzsThread.h"
@@ -44,6 +45,7 @@ class LzsCvThread : public LzsThread, public LzsObserver{
 		//pipe to livesplit message queue helpers
 		int GetLsMsgId();
 		void LsMsgRequestResync();
+		void LsMsgTargetFound( const std::string& game_name, const std::string& target_name, uint64_t timestamp, uint64_t split_offset );
 
 		//message queue handling
 		void HandleMessageQueue();

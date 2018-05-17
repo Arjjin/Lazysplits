@@ -98,11 +98,11 @@ LzsWatchImageStatic::LzsWatchImageStatic( const Proto::WatchInfo& watch_info, in
 {}
 
 
-bool LzsWatchImageStatic::WatchFound( const cv::Mat& BGR_frame, const SendableCalibrationProps& calib_props ){
+bool LzsWatchImageStatic::FindWatch( const cv::Mat& BGR_frame, const SendableCalibrationProps& calib_props ){
 	ValidateData( BGR_frame.cols, BGR_frame.rows, calib_props );
 	if( IsGood() ){
 		cv::Mat cropped_frame = BGR_frame(area_);
-		return ImgProc::WatchExists( cropped_frame, img_BGR_, img_mask_, 0.95F );
+		return ImgProc::FindImage( cropped_frame, img_BGR_, img_mask_, 0.95F );
 	}
 	else{
 		return false;
@@ -111,9 +111,7 @@ bool LzsWatchImageStatic::WatchFound( const cv::Mat& BGR_frame, const SendableCa
 }
 
 bool LzsWatchImageStatic::RemakeData(){
-	return 
-		MakeArea() &&
-		MakeImage();
+	return ( MakeArea() && MakeImage()  && CheckBounds() );
 }
 
 

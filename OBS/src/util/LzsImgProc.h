@@ -6,7 +6,8 @@
 namespace Lazysplits{
 namespace ImgProc{
 
-bool WatchExists( const cv::Mat& source, cv::Mat& watch_BGR, cv::Mat& watch_A, float threshold );
+bool FindColor( const cv::Mat& source_BGR, const cv::Scalar& watch_RGB_scalar, float threshold );
+bool FindImage( const cv::Mat& source_BGR, const cv::Mat& watch_BGR, const cv::Mat& watch_A, float threshold );
 
 } //namespace ImgProc
 } //namespace Lazysplits

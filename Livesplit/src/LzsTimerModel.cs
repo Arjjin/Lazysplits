@@ -35,7 +35,7 @@ namespace LiveSplit.Lazysplits
         public event EventHandler OnScrollDown;
         public event EventHandler OnSwitchComparisonPrevious;
         public event EventHandler OnSwitchComparisonNext;
-
+        
         public void Start()
         {
             if (CurrentState.CurrentPhase == TimerPhase.NotRunning)
@@ -44,6 +44,24 @@ namespace LiveSplit.Lazysplits
                 CurrentState.CurrentSplitIndex = 0;
                 CurrentState.AttemptStarted = TimeStamp.CurrentDateTime;
                 CurrentState.AdjustedStartTime = CurrentState.StartTimeWithOffset = TimeStamp.Now - CurrentState.Run.Offset;
+                CurrentState.StartTime = TimeStamp.Now;
+                CurrentState.TimePausedAt = CurrentState.Run.Offset;
+                CurrentState.IsGameTimeInitialized = false;
+                CurrentState.Run.AttemptCount++;
+                CurrentState.Run.HasChanged = true;
+
+                OnStart?.Invoke(this,null);
+            }
+        }
+
+        public void Start( TimeSpan TimeDiff )
+        {
+            if (CurrentState.CurrentPhase == TimerPhase.NotRunning)
+            {
+                CurrentState.CurrentPhase = TimerPhase.Running;
+                CurrentState.CurrentSplitIndex = 0;
+                CurrentState.AttemptStarted = TimeStamp.CurrentDateTime;
+                CurrentState.AdjustedStartTime = CurrentState.StartTimeWithOffset = TimeStamp.Now - CurrentState.Run.Offset - TimeDiff;
                 CurrentState.StartTime = TimeStamp.Now;
                 CurrentState.TimePausedAt = CurrentState.Run.Offset;
                 CurrentState.IsGameTimeInitialized = false;

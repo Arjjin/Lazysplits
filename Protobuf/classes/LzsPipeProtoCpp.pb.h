@@ -272,6 +272,12 @@ class CppMessage : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::google::protobuf::uint64 target_timestamp() const;
   void set_target_timestamp(::google::protobuf::uint64 value);
 
+  // uint64 target_offset_ms = 7;
+  void clear_target_offset_ms();
+  static const int kTargetOffsetMsFieldNumber = 7;
+  ::google::protobuf::uint64 target_offset_ms() const;
+  void set_target_offset_ms(::google::protobuf::uint64 value);
+
   // uint32 target_name = 5;
   void clear_target_name();
   static const int kTargetNameFieldNumber = 5;
@@ -287,6 +293,7 @@ class CppMessage : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::google::protobuf::int32 id_;
   int type_;
   ::google::protobuf::uint64 target_timestamp_;
+  ::google::protobuf::uint64 target_offset_ms_;
   ::google::protobuf::uint32 target_name_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_LzsPipeProtoCpp_2eproto::TableStruct;
@@ -645,6 +652,20 @@ inline void CppMessage::set_target_timestamp(::google::protobuf::uint64 value) {
   
   target_timestamp_ = value;
   // @@protoc_insertion_point(field_set:Lazysplits.Proto.CppMessage.target_timestamp)
+}
+
+// uint64 target_offset_ms = 7;
+inline void CppMessage::clear_target_offset_ms() {
+  target_offset_ms_ = GOOGLE_ULONGLONG(0);
+}
+inline ::google::protobuf::uint64 CppMessage::target_offset_ms() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CppMessage.target_offset_ms)
+  return target_offset_ms_;
+}
+inline void CppMessage::set_target_offset_ms(::google::protobuf::uint64 value) {
+  
+  target_offset_ms_ = value;
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CppMessage.target_offset_ms)
 }
 
 // -------------------------------------------------------------------

@@ -92,21 +92,19 @@ void LzsCvThread::HandleFrameBuffer(){
 		try{
 			cv::Mat BGR_frame;
 			cv::cvtColor( *frame.frame_mat_, BGR_frame, CV_RGBA2BGR );
-			//cv::Mat new_frame;
-			//cv::resize( BGR_frame, new_frame, cv::Size( 160, 120 ) );
-			//BGR_frame = new_frame;
 			
 			//cv compression params
 			std::vector<int> compression_params;
 			compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
 			compression_params.push_back(1);
 
+			/*
 			for( auto target_it = target_list_.begin(); target_it != target_list_.end(); ++target_it ){
+				
 				auto watch_list = (*target_it)->GetCurrentWatches();
 				for( auto watch_it = watch_list.begin(); watch_it != watch_list.end(); ++watch_it ){
 
-					if( (*watch_it)->WatchFound( BGR_frame, calib_props_ ) ){
-						
+					if( (*watch_it)->FindWatch( BGR_frame, calib_props_ ) ){
 						std::stringstream fn;
 						fn << "./images/found_" << (*watch_it)->GetName().c_str() << ".png";
 
@@ -115,15 +113,60 @@ void LzsCvThread::HandleFrameBuffer(){
 						std::string timestamp_str = std::to_string(timestamp_dif);
 
 						blog( LOG_DEBUG, "[lazysplits][%s] %s watch found, timestamp dif : %s", thread_name_.c_str(), (*watch_it)->GetName().c_str(), timestamp_str.c_str() );
-						(*target_it)->WatchFound();
 						cv::imwrite( fn.str().c_str(), BGR_frame, compression_params );
+
+						//advance watch index and check if target is complete
+						if( !(*target_it)->NextWatch() ){
+							if( (*target_it)->TargetFound() ){
+								blog( LOG_DEBUG, "TARGET COMPLETE" );
+							}
+						}
+
 						break;
 					}
+
+				}
+			}
+			*/
+
+			auto target_it = target_list_.begin();
+			while( target_it != target_list_.end() ){
+				
+				auto watch_list = (*target_it)->GetCurrentWatches();
+				for( auto watch_it = watch_list.begin(); watch_it != watch_list.end(); ++watch_it ){
+
+					/*
+					blog( LOG_DEBUG, "[lazysplits][%s] watch is %s, calib_img (%ix%i)", thread_name_.c_str(),
+						( (*watch_it)->IsGood() ? "good" : "bad" ),
+						calib_props_.img_width, calib_props_.img_height
+					);
+					*/
+
+					if( (*watch_it)->FindWatch( BGR_frame, calib_props_ ) ){
+						std::stringstream fn;
+						fn << "./images/found_" << (*watch_it)->GetName().c_str() << ".png";
+
+						blog( LOG_DEBUG, "[lazysplits][%s] %s watch found", thread_name_.c_str(), (*watch_it)->GetName().c_str() );
+						cv::imwrite( fn.str().c_str(), BGR_frame, compression_params );
+
+						//advance watch index
+						(*target_it)->NextWatch();
+						break;
+					}
+				}
+				
+				if( (*target_it)->TargetFound() ){
+					LsMsgTargetFound( shared_data_manager_.GetGameName(), (*target_it)->GetName(), frame.timestamp_, (*target_it)->GetSplitOffset() );
+					target_it = target_list_.erase(target_it);
+				}
+				else{
+					++target_it;
 				}
 			}
 		}
 		catch( cv::Exception cve ){
 			blog( LOG_ERROR, "[lazysplits][%s] failed to process frame; %s!", thread_name_.c_str(), cve.msg.c_str() );
+			throw cve;
 		}
 		frame_buf_->PopFrame();
 	}
@@ -146,6 +189,22 @@ void LzsCvThread::LsMsgRequestResync(){
 		pipe_->MsgProtobuf(serialized_msg);
 	}
 	else{ blog( LOG_WARNING, "[lazysplits][%s] failed to serialize outgoing resync request!", thread_name_.c_str() ); }
+}
+
+void LzsCvThread::LsMsgTargetFound( const std::string& game_name, const std::string& target_name, uint64_t timestamp, uint64_t split_offset ){
+	Proto::CppMessage msg;
+	msg.set_id( GetLsMsgId() );
+	msg.set_type( Proto::CppMessage_MessageType::CppMessage_MessageType_TARGET_FOUND );
+	msg.set_shared_data_dir( shared_data_manager_.GetRootDir() );
+	msg.set_game_name( shared_data_manager_.GetGameName() );
+	msg.set_target_timestamp(timestamp);
+	msg.set_target_offset_ms(split_offset);
+	
+	std::string serialized_msg;
+	if( msg.SerializeToString(&serialized_msg) ){
+		pipe_->MsgProtobuf(serialized_msg);
+	}
+	else{ blog( LOG_WARNING, "[lazysplits][%s] failed to serialize outgoing target found message!", thread_name_.c_str() ); }
 }
 
 /* message queue handling */

@@ -222,6 +222,22 @@ namespace LiveSplit.Lazysplits
                 case CppMessage.Types.MessageType.RequestResync:
                     SendTargetData();
                 break;
+                case CppMessage.Types.MessageType.TargetFound:
+                    string SharedDirsMatch = ( msg.SharedDataDir == Settings.SharedDataRootDir ) ? "match" : "don't match";
+                    string GamesMatch = ( msg.GameName == SharedDataManager.CurrentGame.GameInfo.Name ) ? "match" : "don't match";
+
+                    Log.Debug("Target found - id : "+msg.Id + ", type : "+msg.Type.ToString()+", games : "+GamesMatch+
+                        ", timestamp : "+msg.TargetTimestamp );
+                    ulong epoch_ms = (ulong)DateTime.Now.ToUniversalTime().Subtract( new DateTime( 1970, 1, 1) ).TotalMilliseconds;
+                    ulong total_offset = ( epoch_ms - msg.TargetTimestamp ) + msg.TargetOffsetMs;
+                    Log.Debug( msg.TargetOffsetMs );
+                    Timer.Reset();
+                    Timer.Start(
+                        new TimeSpan( 0, 0, 0, 0, (int)( epoch_ms - msg.TargetTimestamp + msg.TargetOffsetMs ) )
+                    );
+                    SendTargetData();
+                    //Timer.Start();
+                break;
             }
             Log.Debug("Deserialized message - id : "+msg.Id + ", type : "+msg.Type.ToString());
         }

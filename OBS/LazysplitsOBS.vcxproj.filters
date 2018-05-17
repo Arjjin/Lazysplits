@@ -75,9 +75,6 @@
     <ClInclude Include="src\util\LzsProtoHelper.h">
       <Filter>Header Files\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\Protobuf\classes\LzsPipeProtoCpp.pb.h">
-      <Filter>Header Files\protobuf</Filter>
-    </ClInclude>
     <ClInclude Include="src\cv\LzsCvThread.h">
       <Filter>Header Files\cv</Filter>
     </ClInclude>
@@ -90,11 +87,14 @@
     <ClInclude Include="src\SharedData\LzsSharedData.h">
       <Filter>Header Files\SharedData</Filter>
     </ClInclude>
+    <ClInclude Include="src\util\LzsCalibrationData.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
     <ClInclude Include="..\Protobuf\classes\LzsCvDataProtoCpp.pb.h">
       <Filter>Header Files\protobuf</Filter>
     </ClInclude>
-    <ClInclude Include="src\util\LzsCalibrationData.h">
-      <Filter>Header Files\util</Filter>
+    <ClInclude Include="..\Protobuf\classes\LzsPipeProtoCpp.pb.h">
+      <Filter>Header Files\protobuf</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -137,9 +137,6 @@
     <ClCompile Include="src\util\LzsProtoHelper.cpp">
       <Filter>Source Files\util</Filter>
     </ClCompile>
-    <ClCompile Include="..\Protobuf\classes\LzsPipeProtoCpp.pb.cc">
-      <Filter>Source Files\protobuf</Filter>
-    </ClCompile>
     <ClCompile Include="src\cv\LzsCvThread.cpp">
       <Filter>Source Files\cv</Filter>
     </ClCompile>
@@ -155,9 +152,6 @@
     <ClCompile Include="src\SharedData\LzsSharedDataGameList.cpp">
       <Filter>Source Files\SharedData</Filter>
     </ClCompile>
-    <ClCompile Include="..\Protobuf\classes\LzsCvDataProtoCpp.pb.cc">
-      <Filter>Source Files\protobuf</Filter>
-    </ClCompile>
     <ClCompile Include="src\SharedData\LzsSharedDataCurrentGame.cpp">
       <Filter>Source Files\SharedData</Filter>
     </ClCompile>
@@ -172,6 +166,15 @@
     </ClCompile>
     <ClCompile Include="src\SharedData\LzsWatchImage.cpp">
       <Filter>Source Files\SharedData</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SharedData\LzsWatchColor.cpp">
+      <Filter>Source Files\SharedData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Protobuf\classes\LzsCvDataProtoCpp.pb.cc">
+      <Filter>Source Files\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Protobuf\classes\LzsPipeProtoCpp.pb.cc">
+      <Filter>Source Files\protobuf</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

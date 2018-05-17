@@ -23,7 +23,7 @@ class LzsWatchBase{
 		Proto::WatchType GetType();
 		int GetIndex();
 
-		virtual bool WatchFound( const cv::Mat& BGR_frame, const SendableCalibrationProps& calib_props ) = 0;
+		virtual bool FindWatch( const cv::Mat& BGR_frame, const SendableCalibrationProps& calib_props ) = 0;
 	protected :
 		void SetError();
 		void SetUnitialized();
@@ -32,7 +32,7 @@ class LzsWatchBase{
 		void ValidateData( int source_width, int source_height, const SendableCalibrationProps& calib_props );
 		bool ShouldRemakeData( int source_width, int source_height, const SendableCalibrationProps& calib_props );
 		virtual bool RemakeData() = 0;
-
+		
 		virtual bool MakeArea();
 		virtual bool CheckBounds();
 		bool IsDiffCalibProps( const SendableCalibrationProps& calib_props );
@@ -49,6 +49,18 @@ class LzsWatchBase{
 		int current_source_height_;
 };
 
+class LzsWatchColor : public LzsWatchBase{
+	public :
+		LzsWatchColor( const Proto::WatchInfo& watch_info, int watch_index, std::string watch_dir );
+		bool FindWatch( const cv::Mat& BGR_frame, const SendableCalibrationProps& calib_props )override;
+	private :
+		//bool MakeArea()override;
+		//bool CheckBounds()override;
+		bool RemakeData()override;
+
+		cv::Scalar RGB_scalar_;
+};
+
 class LzsWatchImageBase : public LzsWatchBase{
 	public :
 		LzsWatchImageBase( const Proto::WatchInfo& watch_info, int watch_index, std::string watch_dir );
@@ -63,8 +75,8 @@ class LzsWatchImageBase : public LzsWatchBase{
 class LzsWatchImageStatic : public LzsWatchImageBase{
 	public :
 		LzsWatchImageStatic( const Proto::WatchInfo& watch_info, int watch_index, std::string watch_dir );
-		bool WatchFound( const cv::Mat& BGR_frame, const SendableCalibrationProps& calib_props )override;
-	protected :
+		bool FindWatch( const cv::Mat& BGR_frame, const SendableCalibrationProps& calib_props )override;
+	private :
 		bool RemakeData()override;
 };
 
@@ -75,13 +87,16 @@ class LzsTarget{
 
 		const std::string& GetName();
 		Proto::TargetType GetType();
+		uint64_t GetSplitOffset();
 		const std::vector<std::shared_ptr<LzsWatchBase>> GetCurrentWatches();
-		void WatchFound();
+		void NextWatch();
+		bool TargetFound();
 	private :
 		Proto::TargetInfo target_info_;
 		std::string game_info_dir_;
 		std::vector<std::shared_ptr<LzsWatchBase>> watch_list_;
 		int current_watch_index_;
+		int final_watch_index_;
 };
 
 class LzsCurrentGame{
@@ -114,10 +129,11 @@ class LzsGameList{
 
 class LzsSharedDataManager{
 	public :
-		std::string GetRootDir();
+		const std::string& GetRootDir();
 		bool SetRootDir( const std::string& path );
 		bool IsMatchingRootDir( const std::string& path );
 
+		const std::string& GetGameName();
 		bool SetGame( const std::string& game_name );
 
 		bool TryConstructTarget( const std::string& game_name, const std::string& target_name, std::shared_ptr<LzsTarget>& source_target );

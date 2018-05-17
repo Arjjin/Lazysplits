@@ -10,6 +10,7 @@ message CppMessage {
 	string game_name = 4;
 	uint32 target_name = 5;
 	uint64 target_timestamp = 6;
+	uint64 target_offset_ms = 7;
 
 	enum MessageType{
 		NONE = 0;

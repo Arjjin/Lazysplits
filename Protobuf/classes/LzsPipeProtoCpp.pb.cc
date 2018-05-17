@@ -82,6 +82,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CppMessage, game_name_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CppMessage, target_name_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CppMessage, target_timestamp_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CppMessage, target_offset_ms_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -95,7 +96,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Lazysplits::Proto::CppMessage)},
-  { 11, -1, sizeof(::Lazysplits::Proto::CsMessage)},
+  { 12, -1, sizeof(::Lazysplits::Proto::CsMessage)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -125,21 +126,21 @@ void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n\025LzsPipeProtoCpp.proto\022\020Lazysplits.Prot"
-      "o\"\352\001\n\nCppMessage\022\n\n\002id\030\001 \001(\005\0226\n\004type\030\002 \001"
+      "o\"\204\002\n\nCppMessage\022\n\n\002id\030\001 \001(\005\0226\n\004type\030\002 \001"
       "(\0162(.Lazysplits.Proto.CppMessage.Message"
       "Type\022\027\n\017shared_data_dir\030\003 \001(\t\022\021\n\tgame_na"
       "me\030\004 \001(\t\022\023\n\013target_name\030\005 \001(\r\022\030\n\020target_"
-      "timestamp\030\006 \001(\004\"=\n\013MessageType\022\010\n\004NONE\020\000"
-      "\022\022\n\016REQUEST_RESYNC\020\001\022\020\n\014TARGET_FOUND\020\002\"\313"
-      "\001\n\tCsMessage\022\n\n\002id\030\001 \001(\005\0225\n\004type\030\002 \001(\0162\'"
-      ".Lazysplits.Proto.CsMessage.MessageType\022"
-      "\027\n\017shared_data_dir\030\003 \001(\t\022\021\n\tgame_name\030\004 "
-      "\001(\t\022\023\n\013target_name\030\005 \001(\t\":\n\013MessageType\022"
-      "\010\n\004NONE\020\000\022\021\n\rCLEAR_TARGETS\020\001\022\016\n\nNEW_TARG"
-      "ET\020\002b\006proto3"
+      "timestamp\030\006 \001(\004\022\030\n\020target_offset_ms\030\007 \001("
+      "\004\"=\n\013MessageType\022\010\n\004NONE\020\000\022\022\n\016REQUEST_RE"
+      "SYNC\020\001\022\020\n\014TARGET_FOUND\020\002\"\313\001\n\tCsMessage\022\n"
+      "\n\002id\030\001 \001(\005\0225\n\004type\030\002 \001(\0162\'.Lazysplits.Pr"
+      "oto.CsMessage.MessageType\022\027\n\017shared_data"
+      "_dir\030\003 \001(\t\022\021\n\tgame_name\030\004 \001(\t\022\023\n\013target_"
+      "name\030\005 \001(\t\":\n\013MessageType\022\010\n\004NONE\020\000\022\021\n\rC"
+      "LEAR_TARGETS\020\001\022\016\n\nNEW_TARGET\020\002b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 492);
+      descriptor, 518);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "LzsPipeProtoCpp.proto", &protobuf_RegisterTypes);
 }
@@ -215,6 +216,7 @@ const int CppMessage::kSharedDataDirFieldNumber;
 const int CppMessage::kGameNameFieldNumber;
 const int CppMessage::kTargetNameFieldNumber;
 const int CppMessage::kTargetTimestampFieldNumber;
+const int CppMessage::kTargetOffsetMsFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 CppMessage::CppMessage()
@@ -387,6 +389,20 @@ bool CppMessage::MergePartialFromCodedStream(
         break;
       }
 
+      // uint64 target_offset_ms = 7;
+      case 7: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(56u /* 56 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &target_offset_ms_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -454,6 +470,11 @@ void CppMessage::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(6, this->target_timestamp(), output);
   }
 
+  // uint64 target_offset_ms = 7;
+  if (this->target_offset_ms() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(7, this->target_offset_ms(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -511,6 +532,11 @@ void CppMessage::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(6, this->target_timestamp(), target);
   }
 
+  // uint64 target_offset_ms = 7;
+  if (this->target_offset_ms() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(7, this->target_offset_ms(), target);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -560,6 +586,13 @@ size_t CppMessage::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->target_timestamp());
+  }
+
+  // uint64 target_offset_ms = 7;
+  if (this->target_offset_ms() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt64Size(
+        this->target_offset_ms());
   }
 
   // uint32 target_name = 5;
@@ -613,6 +646,9 @@ void CppMessage::MergeFrom(const CppMessage& from) {
   if (from.target_timestamp() != 0) {
     set_target_timestamp(from.target_timestamp());
   }
+  if (from.target_offset_ms() != 0) {
+    set_target_offset_ms(from.target_offset_ms());
+  }
   if (from.target_name() != 0) {
     set_target_name(from.target_name());
   }
@@ -649,6 +685,7 @@ void CppMessage::InternalSwap(CppMessage* other) {
   swap(id_, other->id_);
   swap(type_, other->type_);
   swap(target_timestamp_, other->target_timestamp_);
+  swap(target_offset_ms_, other->target_offset_ms_);
   swap(target_name_, other->target_name_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }

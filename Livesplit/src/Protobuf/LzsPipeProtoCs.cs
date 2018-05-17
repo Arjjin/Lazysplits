@@ -25,21 +25,22 @@ namespace LiveSplit.Lazysplits.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChRMenNQaXBlUHJvdG9Dcy5wcm90bxIaTGl2ZVNwbGl0LkxhenlzcGxpdHMu",
-            "UHJvdG8i9AEKCkNwcE1lc3NhZ2USCgoCaWQYASABKAUSQAoEdHlwZRgCIAEo",
+            "UHJvdG8ijgIKCkNwcE1lc3NhZ2USCgoCaWQYASABKAUSQAoEdHlwZRgCIAEo",
             "DjIyLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3RvLkNwcE1lc3NhZ2UuTWVz",
             "c2FnZVR5cGUSFwoPc2hhcmVkX2RhdGFfZGlyGAMgASgJEhEKCWdhbWVfbmFt",
             "ZRgEIAEoCRITCgt0YXJnZXRfbmFtZRgFIAEoDRIYChB0YXJnZXRfdGltZXN0",
-            "YW1wGAYgASgEIj0KC01lc3NhZ2VUeXBlEggKBE5PTkUQABISCg5SRVFVRVNU",
-            "X1JFU1lOQxABEhAKDFRBUkdFVF9GT1VORBACItUBCglDc01lc3NhZ2USCgoC",
-            "aWQYASABKAUSPwoEdHlwZRgCIAEoDjIxLkxpdmVTcGxpdC5MYXp5c3BsaXRz",
-            "LlByb3RvLkNzTWVzc2FnZS5NZXNzYWdlVHlwZRIXCg9zaGFyZWRfZGF0YV9k",
-            "aXIYAyABKAkSEQoJZ2FtZV9uYW1lGAQgASgJEhMKC3RhcmdldF9uYW1lGAUg",
-            "ASgJIjoKC01lc3NhZ2VUeXBlEggKBE5PTkUQABIRCg1DTEVBUl9UQVJHRVRT",
-            "EAESDgoKTkVXX1RBUkdFVBACYgZwcm90bzM="));
+            "YW1wGAYgASgEEhgKEHRhcmdldF9vZmZzZXRfbXMYByABKAQiPQoLTWVzc2Fn",
+            "ZVR5cGUSCAoETk9ORRAAEhIKDlJFUVVFU1RfUkVTWU5DEAESEAoMVEFSR0VU",
+            "X0ZPVU5EEAIi1QEKCUNzTWVzc2FnZRIKCgJpZBgBIAEoBRI/CgR0eXBlGAIg",
+            "ASgOMjEuTGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8uQ3NNZXNzYWdlLk1l",
+            "c3NhZ2VUeXBlEhcKD3NoYXJlZF9kYXRhX2RpchgDIAEoCRIRCglnYW1lX25h",
+            "bWUYBCABKAkSEwoLdGFyZ2V0X25hbWUYBSABKAkiOgoLTWVzc2FnZVR5cGUS",
+            "CAoETk9ORRAAEhEKDUNMRUFSX1RBUkdFVFMQARIOCgpORVdfVEFSR0VUEAJi",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.CppMessage), global::LiveSplit.Lazysplits.Proto.CppMessage.Parser, new[]{ "Id", "Type", "SharedDataDir", "GameName", "TargetName", "TargetTimestamp" }, null, new[]{ typeof(global::LiveSplit.Lazysplits.Proto.CppMessage.Types.MessageType) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.CppMessage), global::LiveSplit.Lazysplits.Proto.CppMessage.Parser, new[]{ "Id", "Type", "SharedDataDir", "GameName", "TargetName", "TargetTimestamp", "TargetOffsetMs" }, null, new[]{ typeof(global::LiveSplit.Lazysplits.Proto.CppMessage.Types.MessageType) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.CsMessage), global::LiveSplit.Lazysplits.Proto.CsMessage.Parser, new[]{ "Id", "Type", "SharedDataDir", "GameName", "TargetName" }, null, new[]{ typeof(global::LiveSplit.Lazysplits.Proto.CsMessage.Types.MessageType) }, null)
           }));
     }
@@ -78,6 +79,7 @@ namespace LiveSplit.Lazysplits.Proto {
       gameName_ = other.gameName_;
       targetName_ = other.targetName_;
       targetTimestamp_ = other.targetTimestamp_;
+      targetOffsetMs_ = other.targetOffsetMs_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -152,6 +154,17 @@ namespace LiveSplit.Lazysplits.Proto {
       }
     }
 
+    /// <summary>Field number for the "target_offset_ms" field.</summary>
+    public const int TargetOffsetMsFieldNumber = 7;
+    private ulong targetOffsetMs_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ulong TargetOffsetMs {
+      get { return targetOffsetMs_; }
+      set {
+        targetOffsetMs_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as CppMessage);
@@ -171,6 +184,7 @@ namespace LiveSplit.Lazysplits.Proto {
       if (GameName != other.GameName) return false;
       if (TargetName != other.TargetName) return false;
       if (TargetTimestamp != other.TargetTimestamp) return false;
+      if (TargetOffsetMs != other.TargetOffsetMs) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -183,6 +197,7 @@ namespace LiveSplit.Lazysplits.Proto {
       if (GameName.Length != 0) hash ^= GameName.GetHashCode();
       if (TargetName != 0) hash ^= TargetName.GetHashCode();
       if (TargetTimestamp != 0UL) hash ^= TargetTimestamp.GetHashCode();
+      if (TargetOffsetMs != 0UL) hash ^= TargetOffsetMs.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -220,6 +235,10 @@ namespace LiveSplit.Lazysplits.Proto {
         output.WriteRawTag(48);
         output.WriteUInt64(TargetTimestamp);
       }
+      if (TargetOffsetMs != 0UL) {
+        output.WriteRawTag(56);
+        output.WriteUInt64(TargetOffsetMs);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -245,6 +264,9 @@ namespace LiveSplit.Lazysplits.Proto {
       }
       if (TargetTimestamp != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(TargetTimestamp);
+      }
+      if (TargetOffsetMs != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(TargetOffsetMs);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -274,6 +296,9 @@ namespace LiveSplit.Lazysplits.Proto {
       }
       if (other.TargetTimestamp != 0UL) {
         TargetTimestamp = other.TargetTimestamp;
+      }
+      if (other.TargetOffsetMs != 0UL) {
+        TargetOffsetMs = other.TargetOffsetMs;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -308,6 +333,10 @@ namespace LiveSplit.Lazysplits.Proto {
           }
           case 48: {
             TargetTimestamp = input.ReadUInt64();
+            break;
+          }
+          case 56: {
+            TargetOffsetMs = input.ReadUInt64();
             break;
           }
         }

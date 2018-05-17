@@ -8,7 +8,7 @@ namespace filesys = std::experimental::filesystem;
 namespace Lazysplits{
 namespace SharedData{
 
-std::string LzsSharedDataManager::GetRootDir(){
+const std::string& LzsSharedDataManager::GetRootDir(){
 	return root_dir_;
 }
 
@@ -33,6 +33,11 @@ bool LzsSharedDataManager::IsMatchingRootDir( const std::string& path ){
 	dir_path.make_preferred();
 
 	return dir_path == root_dir_;
+}
+
+
+const std::string& LzsSharedDataManager::GetGameName(){
+	return current_game_.GetCurrentGameName();
 }
 
 bool LzsSharedDataManager::SetGame( const std::string& game_name ){
