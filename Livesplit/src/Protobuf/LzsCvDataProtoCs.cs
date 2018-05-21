@@ -25,40 +25,60 @@ namespace LiveSplit.Lazysplits.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZMenNDdkRhdGFQcm90b0NzLnByb3RvEhpMaXZlU3BsaXQuTGF6eXNwbGl0",
-            "cy5Qcm90byIhCglVU2NhbGFyMmQSCQoBeBgBIAEoDRIJCgF5GAIgASgNIiYK",
-            "A1JHQhIJCgFSGAEgASgNEgkKAUcYAiABKA0SCQoBQhgDIAEoDSJ7CghHYW1l",
-            "TGlzdBI9CgVnYW1lcxgBIAMoCzIuLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlBy",
-            "b3RvLkdhbWVMaXN0LkdhbWVFbnRyeRowCglHYW1lRW50cnkSDAoEbmFtZRgB",
-            "IAEoCRIVCg1yZWxhdGl2ZV9wYXRoGAIgASgJIo8BCghHYW1lSW5mbxIMCgRu",
-            "YW1lGAEgASgJEkEKB3RhcmdldHMYAiADKAsyMC5MaXZlU3BsaXQuTGF6eXNw",
-            "bGl0cy5Qcm90by5HYW1lSW5mby5UYXJnZXRFbnRyeRoyCgtUYXJnZXRFbnRy",
-            "eRIMCgRuYW1lGAEgASgJEhUKDXJlbGF0aXZlX3BhdGgYAiABKAki7wEKClRh",
-            "cmdldEluZm8SDAoEbmFtZRgBIAEoCRI0CgR0eXBlGAIgASgOMiYuTGl2ZVNw",
-            "bGl0LkxhenlzcGxpdHMuUHJvdG8uVGFyZ2V0VHlwZRIXCg9zcGxpdF9vZmZz",
-            "ZXRfbXMYAyABKBESQgoHd2F0Y2hlcxgEIAMoCzIxLkxpdmVTcGxpdC5MYXp5",
-            "c3BsaXRzLlByb3RvLlRhcmdldEluZm8uV2F0Y2hFbnRyeRpACgpXYXRjaEVu",
-            "dHJ5EgwKBG5hbWUYASABKAkSFQoNcmVsYXRpdmVfcGF0aBgCIAEoCRINCgVp",
-            "bmRleBgDIAEoDSK0AgoUV2F0Y2hJbmZvU3RhdGljSW1hZ2USDAoEbmFtZRgB",
-            "IAEoCRIzCgR0eXBlGAIgASgOMiUuTGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJv",
-            "dG8uV2F0Y2hUeXBlEkgKBGFyZWEYAyABKAsyOi5MaXZlU3BsaXQuTGF6eXNw",
-            "bGl0cy5Qcm90by5XYXRjaEluZm9TdGF0aWNJbWFnZS5XYXRjaEFyZWESGQoR",
-            "aW1nX3JlbGF0aXZlX3BhdGgYBCABKAkadAoJV2F0Y2hBcmVhEjIKA2xvYxgB",
-            "IAEoCzIlLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3RvLlVTY2FsYXIyZBIz",
-            "CgRzaXplGAIgASgLMiUuTGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8uVVNj",
-            "YWxhcjJkKlkKClRhcmdldFR5cGUSDgoKVEdUX1VOVVNFRBAAEg0KCVRHVF9S",
-            "RVNFVBABEg0KCVRHVF9TVEFSVBACEhAKDFRHVF9TVEFOREFSRBADEgsKB1RH",
-            "VF9FTkQQBCpKCglXYXRjaFR5cGUSDQoJV1RfVU5VU0VEEAASDAoIV1RfQ09M",
-            "T1IQARITCg9XVF9JTUFHRV9TVEFUSUMQAhILCgdXVF9URVhUEANiBnByb3Rv",
-            "Mw=="));
+            "cy5Qcm90byIhCglVU2NhbGFyMmQSCQoBeBgBIAEoDRIJCgF5GAIgASgNIisK",
+            "CFJHQkNvbG9yEgkKAVIYASABKA0SCQoBRxgCIAEoDRIJCgFCGAMgASgNInsK",
+            "CEdhbWVMaXN0Ej0KBWdhbWVzGAEgAygLMi4uTGl2ZVNwbGl0LkxhenlzcGxp",
+            "dHMuUHJvdG8uR2FtZUxpc3QuR2FtZUVudHJ5GjAKCUdhbWVFbnRyeRIMCgRu",
+            "YW1lGAEgASgJEhUKDXJlbGF0aXZlX3BhdGgYAiABKAkijwEKCEdhbWVJbmZv",
+            "EgwKBG5hbWUYASABKAkSQQoHdGFyZ2V0cxgCIAMoCzIwLkxpdmVTcGxpdC5M",
+            "YXp5c3BsaXRzLlByb3RvLkdhbWVJbmZvLlRhcmdldEVudHJ5GjIKC1Rhcmdl",
+            "dEVudHJ5EgwKBG5hbWUYASABKAkSFQoNcmVsYXRpdmVfcGF0aBgCIAEoCSLv",
+            "AQoKVGFyZ2V0SW5mbxIMCgRuYW1lGAEgASgJEjQKBHR5cGUYAiABKA4yJi5M",
+            "aXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90by5UYXJnZXRUeXBlEhcKD3NwbGl0",
+            "X29mZnNldF9tcxgDIAEoERJCCgd3YXRjaGVzGAQgAygLMjEuTGl2ZVNwbGl0",
+            "LkxhenlzcGxpdHMuUHJvdG8uVGFyZ2V0SW5mby5XYXRjaEVudHJ5GkAKCldh",
+            "dGNoRW50cnkSDAoEbmFtZRgBIAEoCRIVCg1yZWxhdGl2ZV9wYXRoGAIgASgJ",
+            "Eg0KBWluZGV4GAMgASgNIv8GCglXYXRjaEluZm8SDAoEbmFtZRgBIAEoCRIz",
+            "CgR0eXBlGAIgASgOMiUuTGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8uV2F0",
+            "Y2hUeXBlEj4KD2Jhc2VfZGltZW5zaW9ucxgDIAEoCzIlLkxpdmVTcGxpdC5M",
+            "YXp5c3BsaXRzLlByb3RvLlVTY2FsYXIyZBI9CgRhcmVhGAQgASgLMi8uTGl2",
+            "ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8uV2F0Y2hJbmZvLldhdGNoQXJlYRIz",
+            "CgVjb2xvchgFIAEoCzIkLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3RvLlJH",
+            "QkNvbG9yEhkKEWltZ19yZWxhdGl2ZV9wYXRoGAYgASgJEkcKEWNoYXJhY3Rl",
+            "cl9qdXN0aWZ5GAcgASgOMiwuTGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8u",
+            "Q2hhcmFjdGVySnVzdGlmeRJGChFjaGFyYWN0ZXJfel9vcmRlchgIIAEoDjIr",
+            "LkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3RvLkNoYXJhY3RlclpPcmRlchJI",
+            "CgpjaGFyYWN0ZXJzGAkgAygLMjQuTGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJv",
+            "dG8uV2F0Y2hJbmZvLkNoYXJhY3RlckVudHJ5ElgKEmFkZGl0aW9uYWxfcGFk",
+            "ZGluZxgKIAMoCzI8LkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3RvLldhdGNo",
+            "SW5mby5BZGRpdGlvbmFsUGFkZGluZ0VudHJ5GnQKCVdhdGNoQXJlYRIyCgNs",
+            "b2MYASABKAsyJS5MaXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90by5VU2NhbGFy",
+            "MmQSMwoEc2l6ZRgCIAEoCzIlLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3Rv",
+            "LlVTY2FsYXIyZBpmCg5DaGFyYWN0ZXJFbnRyeRIXCg9jaGFyYWN0ZXJfaW5k",
+            "ZXgYASABKA0SFQoNY2hhcmFjdGVyX3ZhbBgCIAEoCRIRCgl4X3BhZGRpbmcY",
+            "AyABKBESEQoJeV9wYWRkaW5nGAQgASgRGk0KFkFkZGl0aW9uYWxQYWRkaW5n",
+            "RW50cnkSIgoaY2hhcmFjdGVyX2xlbmd0aF90aHJlc2hvbGQYASABKA0SDwoH",
+            "cGFkZGluZxgCIAEoESpZCgpUYXJnZXRUeXBlEg4KClRHVF9VTlVTRUQQABIN",
+            "CglUR1RfUkVTRVQQARINCglUR1RfU1RBUlQQAhIQCgxUR1RfU1RBTkRBUkQQ",
+            "AxILCgdUR1RfRU5EEAQqUwoJV2F0Y2hUeXBlEg0KCVdUX1VOVVNFRBAAEgwK",
+            "CFdUX0NPTE9SEAESEwoPV1RfSU1BR0VfU1RBVElDEAISFAoQV1RfQ0hBUkFD",
+            "VEVSX1NFVBADKmkKEENoYXJhY3Rlckp1c3RpZnkSHAoYQ0hBUkFDVEVSX0pV",
+            "U1RJRllfVU5VU0VEEAASGgoWQ0hBUkFDVEVSX0pVU1RJRllfTEVGVBABEhsK",
+            "F0NIQVJBQ1RFUl9KVVNUSUZZX1JJR0hUEAIqZwoPQ2hhcmFjdGVyWk9yZGVy",
+            "EhYKEkNIQVJBQ1RFUl9aX1VOVVNFRBAAEh0KGUNIQVJBQ1RFUl9aX0xFRlRf",
+            "VE9fUklHSFQQARIdChlDSEFSQUNURVJfWl9SSUdIVF9UT19MRUZUEAJiBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::LiveSplit.Lazysplits.Proto.TargetType), typeof(global::LiveSplit.Lazysplits.Proto.WatchType), }, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::LiveSplit.Lazysplits.Proto.TargetType), typeof(global::LiveSplit.Lazysplits.Proto.WatchType), typeof(global::LiveSplit.Lazysplits.Proto.CharacterJustify), typeof(global::LiveSplit.Lazysplits.Proto.CharacterZOrder), }, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.UScalar2d), global::LiveSplit.Lazysplits.Proto.UScalar2d.Parser, new[]{ "X", "Y" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.RGB), global::LiveSplit.Lazysplits.Proto.RGB.Parser, new[]{ "R", "G", "B" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.RGBColor), global::LiveSplit.Lazysplits.Proto.RGBColor.Parser, new[]{ "R", "G", "B" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameList), global::LiveSplit.Lazysplits.Proto.GameList.Parser, new[]{ "Games" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameList.Types.GameEntry), global::LiveSplit.Lazysplits.Proto.GameList.Types.GameEntry.Parser, new[]{ "Name", "RelativePath" }, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameInfo), global::LiveSplit.Lazysplits.Proto.GameInfo.Parser, new[]{ "Name", "Targets" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameInfo.Types.TargetEntry), global::LiveSplit.Lazysplits.Proto.GameInfo.Types.TargetEntry.Parser, new[]{ "Name", "RelativePath" }, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.TargetInfo), global::LiveSplit.Lazysplits.Proto.TargetInfo.Parser, new[]{ "Name", "Type", "SplitOffsetMs", "Watches" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchEntry), global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchEntry.Parser, new[]{ "Name", "RelativePath", "Index" }, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfoStaticImage), global::LiveSplit.Lazysplits.Proto.WatchInfoStaticImage.Parser, new[]{ "Name", "Type", "Area", "ImgRelativePath" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfoStaticImage.Types.WatchArea), global::LiveSplit.Lazysplits.Proto.WatchInfoStaticImage.Types.WatchArea.Parser, new[]{ "Loc", "Size" }, null, null, null)})
+            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo), global::LiveSplit.Lazysplits.Proto.WatchInfo.Parser, new[]{ "Name", "Type", "BaseDimensions", "Area", "Color", "ImgRelativePath", "CharacterJustify", "CharacterZOrder", "Characters", "AdditionalPadding" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.WatchArea), global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.WatchArea.Parser, new[]{ "Loc", "Size" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.CharacterEntry), global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.CharacterEntry.Parser, new[]{ "CharacterIndex", "CharacterVal", "XPadding", "YPadding" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalPaddingEntry), global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalPaddingEntry.Parser, new[]{ "CharacterLengthThreshold", "Padding" }, null, null, null)})
           }));
     }
     #endregion
@@ -77,7 +97,19 @@ namespace LiveSplit.Lazysplits.Proto {
     [pbr::OriginalName("WT_UNUSED")] WtUnused = 0,
     [pbr::OriginalName("WT_COLOR")] WtColor = 1,
     [pbr::OriginalName("WT_IMAGE_STATIC")] WtImageStatic = 2,
-    [pbr::OriginalName("WT_TEXT")] WtText = 3,
+    [pbr::OriginalName("WT_CHARACTER_SET")] WtCharacterSet = 3,
+  }
+
+  public enum CharacterJustify {
+    [pbr::OriginalName("CHARACTER_JUSTIFY_UNUSED")] Unused = 0,
+    [pbr::OriginalName("CHARACTER_JUSTIFY_LEFT")] Left = 1,
+    [pbr::OriginalName("CHARACTER_JUSTIFY_RIGHT")] Right = 2,
+  }
+
+  public enum CharacterZOrder {
+    [pbr::OriginalName("CHARACTER_Z_UNUSED")] CharacterZUnused = 0,
+    [pbr::OriginalName("CHARACTER_Z_LEFT_TO_RIGHT")] CharacterZLeftToRight = 1,
+    [pbr::OriginalName("CHARACTER_Z_RIGHT_TO_LEFT")] CharacterZRightToLeft = 2,
   }
 
   #endregion
@@ -240,11 +272,11 @@ namespace LiveSplit.Lazysplits.Proto {
 
   }
 
-  public sealed partial class RGB : pb::IMessage<RGB> {
-    private static readonly pb::MessageParser<RGB> _parser = new pb::MessageParser<RGB>(() => new RGB());
+  public sealed partial class RGBColor : pb::IMessage<RGBColor> {
+    private static readonly pb::MessageParser<RGBColor> _parser = new pb::MessageParser<RGBColor>(() => new RGBColor());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<RGB> Parser { get { return _parser; } }
+    public static pb::MessageParser<RGBColor> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -257,14 +289,14 @@ namespace LiveSplit.Lazysplits.Proto {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RGB() {
+    public RGBColor() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RGB(RGB other) : this() {
+    public RGBColor(RGBColor other) : this() {
       r_ = other.r_;
       g_ = other.g_;
       b_ = other.b_;
@@ -272,8 +304,8 @@ namespace LiveSplit.Lazysplits.Proto {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RGB Clone() {
-      return new RGB(this);
+    public RGBColor Clone() {
+      return new RGBColor(this);
     }
 
     /// <summary>Field number for the "R" field.</summary>
@@ -311,11 +343,11 @@ namespace LiveSplit.Lazysplits.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as RGB);
+      return Equals(other as RGBColor);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(RGB other) {
+    public bool Equals(RGBColor other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -383,7 +415,7 @@ namespace LiveSplit.Lazysplits.Proto {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(RGB other) {
+    public void MergeFrom(RGBColor other) {
       if (other == null) {
         return;
       }
@@ -1420,11 +1452,11 @@ namespace LiveSplit.Lazysplits.Proto {
 
   }
 
-  public sealed partial class WatchInfoStaticImage : pb::IMessage<WatchInfoStaticImage> {
-    private static readonly pb::MessageParser<WatchInfoStaticImage> _parser = new pb::MessageParser<WatchInfoStaticImage>(() => new WatchInfoStaticImage());
+  public sealed partial class WatchInfo : pb::IMessage<WatchInfo> {
+    private static readonly pb::MessageParser<WatchInfo> _parser = new pb::MessageParser<WatchInfo>(() => new WatchInfo());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<WatchInfoStaticImage> Parser { get { return _parser; } }
+    public static pb::MessageParser<WatchInfo> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -1437,24 +1469,30 @@ namespace LiveSplit.Lazysplits.Proto {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public WatchInfoStaticImage() {
+    public WatchInfo() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public WatchInfoStaticImage(WatchInfoStaticImage other) : this() {
+    public WatchInfo(WatchInfo other) : this() {
       name_ = other.name_;
       type_ = other.type_;
+      BaseDimensions = other.baseDimensions_ != null ? other.BaseDimensions.Clone() : null;
       Area = other.area_ != null ? other.Area.Clone() : null;
+      Color = other.color_ != null ? other.Color.Clone() : null;
       imgRelativePath_ = other.imgRelativePath_;
+      characterJustify_ = other.characterJustify_;
+      characterZOrder_ = other.characterZOrder_;
+      characters_ = other.characters_.Clone();
+      additionalPadding_ = other.additionalPadding_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public WatchInfoStaticImage Clone() {
-      return new WatchInfoStaticImage(this);
+    public WatchInfo Clone() {
+      return new WatchInfo(this);
     }
 
     /// <summary>Field number for the "name" field.</summary>
@@ -1479,20 +1517,48 @@ namespace LiveSplit.Lazysplits.Proto {
       }
     }
 
-    /// <summary>Field number for the "area" field.</summary>
-    public const int AreaFieldNumber = 3;
-    private global::LiveSplit.Lazysplits.Proto.WatchInfoStaticImage.Types.WatchArea area_;
+    /// <summary>Field number for the "base_dimensions" field.</summary>
+    public const int BaseDimensionsFieldNumber = 3;
+    private global::LiveSplit.Lazysplits.Proto.UScalar2d baseDimensions_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::LiveSplit.Lazysplits.Proto.WatchInfoStaticImage.Types.WatchArea Area {
+    public global::LiveSplit.Lazysplits.Proto.UScalar2d BaseDimensions {
+      get { return baseDimensions_; }
+      set {
+        baseDimensions_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "area" field.</summary>
+    public const int AreaFieldNumber = 4;
+    private global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.WatchArea area_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.WatchArea Area {
       get { return area_; }
       set {
         area_ = value;
       }
     }
 
+    /// <summary>Field number for the "color" field.</summary>
+    public const int ColorFieldNumber = 5;
+    private global::LiveSplit.Lazysplits.Proto.RGBColor color_;
+    /// <summary>
+    ///color watch specific
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::LiveSplit.Lazysplits.Proto.RGBColor Color {
+      get { return color_; }
+      set {
+        color_ = value;
+      }
+    }
+
     /// <summary>Field number for the "img_relative_path" field.</summary>
-    public const int ImgRelativePathFieldNumber = 4;
+    public const int ImgRelativePathFieldNumber = 6;
     private string imgRelativePath_ = "";
+    /// <summary>
+    ///static image/character set specific
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string ImgRelativePath {
       get { return imgRelativePath_; }
@@ -1501,13 +1567,55 @@ namespace LiveSplit.Lazysplits.Proto {
       }
     }
 
+    /// <summary>Field number for the "character_justify" field.</summary>
+    public const int CharacterJustifyFieldNumber = 7;
+    private global::LiveSplit.Lazysplits.Proto.CharacterJustify characterJustify_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as WatchInfoStaticImage);
+    public global::LiveSplit.Lazysplits.Proto.CharacterJustify CharacterJustify {
+      get { return characterJustify_; }
+      set {
+        characterJustify_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "character_z_order" field.</summary>
+    public const int CharacterZOrderFieldNumber = 8;
+    private global::LiveSplit.Lazysplits.Proto.CharacterZOrder characterZOrder_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::LiveSplit.Lazysplits.Proto.CharacterZOrder CharacterZOrder {
+      get { return characterZOrder_; }
+      set {
+        characterZOrder_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "characters" field.</summary>
+    public const int CharactersFieldNumber = 9;
+    private static readonly pb::FieldCodec<global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.CharacterEntry> _repeated_characters_codec
+        = pb::FieldCodec.ForMessage(74, global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.CharacterEntry.Parser);
+    private readonly pbc::RepeatedField<global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.CharacterEntry> characters_ = new pbc::RepeatedField<global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.CharacterEntry>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.CharacterEntry> Characters {
+      get { return characters_; }
+    }
+
+    /// <summary>Field number for the "additional_padding" field.</summary>
+    public const int AdditionalPaddingFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalPaddingEntry> _repeated_additionalPadding_codec
+        = pb::FieldCodec.ForMessage(82, global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalPaddingEntry.Parser);
+    private readonly pbc::RepeatedField<global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalPaddingEntry> additionalPadding_ = new pbc::RepeatedField<global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalPaddingEntry>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalPaddingEntry> AdditionalPadding {
+      get { return additionalPadding_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(WatchInfoStaticImage other) {
+    public override bool Equals(object other) {
+      return Equals(other as WatchInfo);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(WatchInfo other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -1516,8 +1624,14 @@ namespace LiveSplit.Lazysplits.Proto {
       }
       if (Name != other.Name) return false;
       if (Type != other.Type) return false;
+      if (!object.Equals(BaseDimensions, other.BaseDimensions)) return false;
       if (!object.Equals(Area, other.Area)) return false;
+      if (!object.Equals(Color, other.Color)) return false;
       if (ImgRelativePath != other.ImgRelativePath) return false;
+      if (CharacterJustify != other.CharacterJustify) return false;
+      if (CharacterZOrder != other.CharacterZOrder) return false;
+      if(!characters_.Equals(other.characters_)) return false;
+      if(!additionalPadding_.Equals(other.additionalPadding_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1526,8 +1640,14 @@ namespace LiveSplit.Lazysplits.Proto {
       int hash = 1;
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Type != 0) hash ^= Type.GetHashCode();
+      if (baseDimensions_ != null) hash ^= BaseDimensions.GetHashCode();
       if (area_ != null) hash ^= Area.GetHashCode();
+      if (color_ != null) hash ^= Color.GetHashCode();
       if (ImgRelativePath.Length != 0) hash ^= ImgRelativePath.GetHashCode();
+      if (CharacterJustify != 0) hash ^= CharacterJustify.GetHashCode();
+      if (CharacterZOrder != 0) hash ^= CharacterZOrder.GetHashCode();
+      hash ^= characters_.GetHashCode();
+      hash ^= additionalPadding_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1549,14 +1669,32 @@ namespace LiveSplit.Lazysplits.Proto {
         output.WriteRawTag(16);
         output.WriteEnum((int) Type);
       }
-      if (area_ != null) {
+      if (baseDimensions_ != null) {
         output.WriteRawTag(26);
+        output.WriteMessage(BaseDimensions);
+      }
+      if (area_ != null) {
+        output.WriteRawTag(34);
         output.WriteMessage(Area);
       }
+      if (color_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Color);
+      }
       if (ImgRelativePath.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(50);
         output.WriteString(ImgRelativePath);
       }
+      if (CharacterJustify != 0) {
+        output.WriteRawTag(56);
+        output.WriteEnum((int) CharacterJustify);
+      }
+      if (CharacterZOrder != 0) {
+        output.WriteRawTag(64);
+        output.WriteEnum((int) CharacterZOrder);
+      }
+      characters_.WriteTo(output, _repeated_characters_codec);
+      additionalPadding_.WriteTo(output, _repeated_additionalPadding_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1571,12 +1709,26 @@ namespace LiveSplit.Lazysplits.Proto {
       if (Type != 0) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
+      if (baseDimensions_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BaseDimensions);
+      }
       if (area_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Area);
+      }
+      if (color_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Color);
       }
       if (ImgRelativePath.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ImgRelativePath);
       }
+      if (CharacterJustify != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CharacterJustify);
+      }
+      if (CharacterZOrder != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CharacterZOrder);
+      }
+      size += characters_.CalculateSize(_repeated_characters_codec);
+      size += additionalPadding_.CalculateSize(_repeated_additionalPadding_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1584,7 +1736,7 @@ namespace LiveSplit.Lazysplits.Proto {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(WatchInfoStaticImage other) {
+    public void MergeFrom(WatchInfo other) {
       if (other == null) {
         return;
       }
@@ -1594,15 +1746,35 @@ namespace LiveSplit.Lazysplits.Proto {
       if (other.Type != 0) {
         Type = other.Type;
       }
+      if (other.baseDimensions_ != null) {
+        if (baseDimensions_ == null) {
+          baseDimensions_ = new global::LiveSplit.Lazysplits.Proto.UScalar2d();
+        }
+        BaseDimensions.MergeFrom(other.BaseDimensions);
+      }
       if (other.area_ != null) {
         if (area_ == null) {
-          area_ = new global::LiveSplit.Lazysplits.Proto.WatchInfoStaticImage.Types.WatchArea();
+          area_ = new global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.WatchArea();
         }
         Area.MergeFrom(other.Area);
+      }
+      if (other.color_ != null) {
+        if (color_ == null) {
+          color_ = new global::LiveSplit.Lazysplits.Proto.RGBColor();
+        }
+        Color.MergeFrom(other.Color);
       }
       if (other.ImgRelativePath.Length != 0) {
         ImgRelativePath = other.ImgRelativePath;
       }
+      if (other.CharacterJustify != 0) {
+        CharacterJustify = other.CharacterJustify;
+      }
+      if (other.CharacterZOrder != 0) {
+        CharacterZOrder = other.CharacterZOrder;
+      }
+      characters_.Add(other.characters_);
+      additionalPadding_.Add(other.additionalPadding_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1623,14 +1795,44 @@ namespace LiveSplit.Lazysplits.Proto {
             break;
           }
           case 26: {
+            if (baseDimensions_ == null) {
+              baseDimensions_ = new global::LiveSplit.Lazysplits.Proto.UScalar2d();
+            }
+            input.ReadMessage(baseDimensions_);
+            break;
+          }
+          case 34: {
             if (area_ == null) {
-              area_ = new global::LiveSplit.Lazysplits.Proto.WatchInfoStaticImage.Types.WatchArea();
+              area_ = new global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.WatchArea();
             }
             input.ReadMessage(area_);
             break;
           }
-          case 34: {
+          case 42: {
+            if (color_ == null) {
+              color_ = new global::LiveSplit.Lazysplits.Proto.RGBColor();
+            }
+            input.ReadMessage(color_);
+            break;
+          }
+          case 50: {
             ImgRelativePath = input.ReadString();
+            break;
+          }
+          case 56: {
+            characterJustify_ = (global::LiveSplit.Lazysplits.Proto.CharacterJustify) input.ReadEnum();
+            break;
+          }
+          case 64: {
+            characterZOrder_ = (global::LiveSplit.Lazysplits.Proto.CharacterZOrder) input.ReadEnum();
+            break;
+          }
+          case 74: {
+            characters_.AddEntriesFrom(input, _repeated_characters_codec);
+            break;
+          }
+          case 82: {
+            additionalPadding_.AddEntriesFrom(input, _repeated_additionalPadding_codec);
             break;
           }
         }
@@ -1638,7 +1840,7 @@ namespace LiveSplit.Lazysplits.Proto {
     }
 
     #region Nested types
-    /// <summary>Container for nested types declared in the WatchInfoStaticImage message type.</summary>
+    /// <summary>Container for nested types declared in the WatchInfo message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       public sealed partial class WatchArea : pb::IMessage<WatchArea> {
@@ -1649,7 +1851,7 @@ namespace LiveSplit.Lazysplits.Proto {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor {
-          get { return global::LiveSplit.Lazysplits.Proto.WatchInfoStaticImage.Descriptor.NestedTypes[0]; }
+          get { return global::LiveSplit.Lazysplits.Proto.WatchInfo.Descriptor.NestedTypes[0]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1802,6 +2004,379 @@ namespace LiveSplit.Lazysplits.Proto {
                   size_ = new global::LiveSplit.Lazysplits.Proto.UScalar2d();
                 }
                 input.ReadMessage(size_);
+                break;
+              }
+            }
+          }
+        }
+
+      }
+
+      /// <summary>
+      ///character set specific
+      /// </summary>
+      public sealed partial class CharacterEntry : pb::IMessage<CharacterEntry> {
+        private static readonly pb::MessageParser<CharacterEntry> _parser = new pb::MessageParser<CharacterEntry>(() => new CharacterEntry());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<CharacterEntry> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::LiveSplit.Lazysplits.Proto.WatchInfo.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public CharacterEntry() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public CharacterEntry(CharacterEntry other) : this() {
+          characterIndex_ = other.characterIndex_;
+          characterVal_ = other.characterVal_;
+          xPadding_ = other.xPadding_;
+          yPadding_ = other.yPadding_;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public CharacterEntry Clone() {
+          return new CharacterEntry(this);
+        }
+
+        /// <summary>Field number for the "character_index" field.</summary>
+        public const int CharacterIndexFieldNumber = 1;
+        private uint characterIndex_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint CharacterIndex {
+          get { return characterIndex_; }
+          set {
+            characterIndex_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "character_val" field.</summary>
+        public const int CharacterValFieldNumber = 2;
+        private string characterVal_ = "";
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string CharacterVal {
+          get { return characterVal_; }
+          set {
+            characterVal_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "x_padding" field.</summary>
+        public const int XPaddingFieldNumber = 3;
+        private int xPadding_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int XPadding {
+          get { return xPadding_; }
+          set {
+            xPadding_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "y_padding" field.</summary>
+        public const int YPaddingFieldNumber = 4;
+        private int yPadding_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int YPadding {
+          get { return yPadding_; }
+          set {
+            yPadding_ = value;
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as CharacterEntry);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(CharacterEntry other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (CharacterIndex != other.CharacterIndex) return false;
+          if (CharacterVal != other.CharacterVal) return false;
+          if (XPadding != other.XPadding) return false;
+          if (YPadding != other.YPadding) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (CharacterIndex != 0) hash ^= CharacterIndex.GetHashCode();
+          if (CharacterVal.Length != 0) hash ^= CharacterVal.GetHashCode();
+          if (XPadding != 0) hash ^= XPadding.GetHashCode();
+          if (YPadding != 0) hash ^= YPadding.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (CharacterIndex != 0) {
+            output.WriteRawTag(8);
+            output.WriteUInt32(CharacterIndex);
+          }
+          if (CharacterVal.Length != 0) {
+            output.WriteRawTag(18);
+            output.WriteString(CharacterVal);
+          }
+          if (XPadding != 0) {
+            output.WriteRawTag(24);
+            output.WriteSInt32(XPadding);
+          }
+          if (YPadding != 0) {
+            output.WriteRawTag(32);
+            output.WriteSInt32(YPadding);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (CharacterIndex != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CharacterIndex);
+          }
+          if (CharacterVal.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(CharacterVal);
+          }
+          if (XPadding != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeSInt32Size(XPadding);
+          }
+          if (YPadding != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeSInt32Size(YPadding);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(CharacterEntry other) {
+          if (other == null) {
+            return;
+          }
+          if (other.CharacterIndex != 0) {
+            CharacterIndex = other.CharacterIndex;
+          }
+          if (other.CharacterVal.Length != 0) {
+            CharacterVal = other.CharacterVal;
+          }
+          if (other.XPadding != 0) {
+            XPadding = other.XPadding;
+          }
+          if (other.YPadding != 0) {
+            YPadding = other.YPadding;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 8: {
+                CharacterIndex = input.ReadUInt32();
+                break;
+              }
+              case 18: {
+                CharacterVal = input.ReadString();
+                break;
+              }
+              case 24: {
+                XPadding = input.ReadSInt32();
+                break;
+              }
+              case 32: {
+                YPadding = input.ReadSInt32();
+                break;
+              }
+            }
+          }
+        }
+
+      }
+
+      public sealed partial class AdditionalPaddingEntry : pb::IMessage<AdditionalPaddingEntry> {
+        private static readonly pb::MessageParser<AdditionalPaddingEntry> _parser = new pb::MessageParser<AdditionalPaddingEntry>(() => new AdditionalPaddingEntry());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<AdditionalPaddingEntry> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::LiveSplit.Lazysplits.Proto.WatchInfo.Descriptor.NestedTypes[2]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public AdditionalPaddingEntry() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public AdditionalPaddingEntry(AdditionalPaddingEntry other) : this() {
+          characterLengthThreshold_ = other.characterLengthThreshold_;
+          padding_ = other.padding_;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public AdditionalPaddingEntry Clone() {
+          return new AdditionalPaddingEntry(this);
+        }
+
+        /// <summary>Field number for the "character_length_threshold" field.</summary>
+        public const int CharacterLengthThresholdFieldNumber = 1;
+        private uint characterLengthThreshold_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public uint CharacterLengthThreshold {
+          get { return characterLengthThreshold_; }
+          set {
+            characterLengthThreshold_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "padding" field.</summary>
+        public const int PaddingFieldNumber = 2;
+        private int padding_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int Padding {
+          get { return padding_; }
+          set {
+            padding_ = value;
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as AdditionalPaddingEntry);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(AdditionalPaddingEntry other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (CharacterLengthThreshold != other.CharacterLengthThreshold) return false;
+          if (Padding != other.Padding) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (CharacterLengthThreshold != 0) hash ^= CharacterLengthThreshold.GetHashCode();
+          if (Padding != 0) hash ^= Padding.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (CharacterLengthThreshold != 0) {
+            output.WriteRawTag(8);
+            output.WriteUInt32(CharacterLengthThreshold);
+          }
+          if (Padding != 0) {
+            output.WriteRawTag(16);
+            output.WriteSInt32(Padding);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (CharacterLengthThreshold != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CharacterLengthThreshold);
+          }
+          if (Padding != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeSInt32Size(Padding);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(AdditionalPaddingEntry other) {
+          if (other == null) {
+            return;
+          }
+          if (other.CharacterLengthThreshold != 0) {
+            CharacterLengthThreshold = other.CharacterLengthThreshold;
+          }
+          if (other.Padding != 0) {
+            Padding = other.Padding;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 8: {
+                CharacterLengthThreshold = input.ReadUInt32();
+                break;
+              }
+              case 16: {
+                Padding = input.ReadSInt32();
                 break;
               }
             }

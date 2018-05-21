@@ -17,7 +17,7 @@ namespace SharedData{
 /* LzsWatchImageBase */
 
 LzsWatchImageBase::LzsWatchImageBase( const Proto::WatchInfo& watch_info, int watch_index, std::string watch_dir )
-	:LzsWatchBase( watch_info, watch_index, watch_dir)
+	:LzsWatchBase( watch_info, watch_index, watch_dir )
 {}
 
 bool LzsWatchImageBase::MakeImage(){
@@ -33,32 +33,30 @@ bool LzsWatchImageBase::MakeImage(){
 
 		/* general resizing to source/calibration */
 			
-		//int watch_width = watch_info_.base_dimensions().x();
-		//int watch_height = watch_info_.base_dimensions().y();
-		int watch_width = watch_info_.area().size().x();
-		int watch_height = watch_info_.area().size().y();
-		float x_multiplier = (float)current_source_width_/watch_width;
-		float y_multiplier = (float)current_source_height_/watch_height;
+		int watch_base_width = watch_info_.base_dimensions().x();
+		int watch_base_height = watch_info_.base_dimensions().y();
+		float x_multiplier = (float)current_source_width_/watch_base_width;
+		float y_multiplier = (float)current_source_height_/watch_base_height;
 
 		if( current_calib_props_.is_enabled ){
-			float calib_x_multiplier = ( (float)watch_width/ current_calib_props_.img_width ) * ( current_calib_props_.scale_x / 100.0F );
-			float calib_y_multiplier = ( (float)watch_height/ current_calib_props_.img_height ) * ( current_calib_props_.scale_y / 100.0F );
+			float calib_x_multiplier = ( (float)current_calib_props_.img_width/watch_base_width ) * ( current_calib_props_.scale_x / 100.0F );
+			float calib_y_multiplier = ( (float)current_calib_props_.img_height/watch_base_height ) * ( current_calib_props_.scale_y / 100.0F );
 			x_multiplier *= calib_x_multiplier;
 			y_multiplier *= calib_y_multiplier;
 		}
 		int new_width = new_img.cols * x_multiplier;
 		int new_height = new_img.rows * y_multiplier;
 
-		cv::Mat new_resized_img;
-		cv::resize( new_img, new_resized_img, cv::Size( new_width, new_height ) );
+		//cv::Mat new_resized_img;
+		cv::resize( new_img, new_img, cv::Size( new_width, new_height ), 0.0, 0.0, CV_INTER_NN );
 
 		/* moving BGRA mat into BGR and mask mats */
 
-		img_BGR_ = cv::Mat( new_resized_img.rows, new_resized_img.cols, CV_8UC3 );
-		img_mask_ = cv::Mat( new_resized_img.rows, new_resized_img.cols, CV_8UC3 );
+		img_BGR_ = cv::Mat( new_img.rows, new_img.cols, CV_8UC3 );
+		img_mask_ = cv::Mat( new_img.rows, new_img.cols, CV_8UC3 );
 		cv::Mat mix_destination[] = { img_BGR_, img_mask_ };
 		int mix_pairing[] = { 0,0, 1,1, 2,2, 3,3, 3,4, 3,5 };
-		cv::mixChannels( &new_resized_img, 1, mix_destination, 2, mix_pairing, 6 );
+		cv::mixChannels( &new_img, 1, mix_destination, 2, mix_pairing, 6 );
 	}
 	catch( cv::Exception cve ){
 		blog( LOG_ERROR, "[lazysplits][SharedData] error making watch image for %s; %s!", GetName().c_str(), cve.msg.c_str() );
@@ -81,9 +79,15 @@ bool LzsWatchImageBase::CheckBounds(){
 	else if( area_ != new_area ){
 		int area_img_width_diff = area_.width - img_BGR_.cols;
 		int area_img_height_diff = area_.height - img_BGR_.rows;
+		int additonal_area_padding = watch_info_.additional_area_padding();
 
 		area_ = new_area;
-		cv::Rect img_crop( area_x_neg_offset, area_y_neg_offset, ( area_.width - area_img_width_diff ), ( area_.height - area_img_height_diff ) );
+		cv::Rect img_crop(
+			area_x_neg_offset + additonal_area_padding,
+			area_y_neg_offset + additonal_area_padding,
+			( area_.width - area_img_width_diff ) - ( additonal_area_padding * 2 ),
+			( area_.height - area_img_height_diff ) - ( additonal_area_padding * 2 )
+		);
 		img_BGR_ = img_BGR_(img_crop);
 		img_mask_ = img_mask_(img_crop);
 	}
@@ -98,16 +102,9 @@ LzsWatchImageStatic::LzsWatchImageStatic( const Proto::WatchInfo& watch_info, in
 {}
 
 
-bool LzsWatchImageStatic::FindWatch( const cv::Mat& BGR_frame, const SendableCalibrationProps& calib_props ){
-	ValidateData( BGR_frame.cols, BGR_frame.rows, calib_props );
-	if( IsGood() ){
-		cv::Mat cropped_frame = BGR_frame(area_);
-		return ImgProc::FindImage( cropped_frame, img_BGR_, img_mask_, 0.95F );
-	}
-	else{
-		return false;
-	}
-
+bool LzsWatchImageStatic::CvLogic( const cv::Mat& BGR_frame ){
+	cv::Mat cropped_frame = BGR_frame(area_);
+	return ImgProc::FindImage( cropped_frame, img_BGR_, img_mask_, 0.95F );
 }
 
 bool LzsWatchImageStatic::RemakeData(){

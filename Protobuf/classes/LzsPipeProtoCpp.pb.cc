@@ -19,6 +19,9 @@
 #endif
 // @@protoc_insertion_point(includes)
 
+namespace protobuf_LzsPipeProtoCpp_2eproto {
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsPipeProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_CsMessage_WatchVariable;
+}  // namespace protobuf_LzsPipeProtoCpp_2eproto
 namespace Lazysplits {
 namespace Proto {
 class CppMessageDefaultTypeInternal {
@@ -26,6 +29,11 @@ class CppMessageDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<CppMessage>
       _instance;
 } _CppMessage_default_instance_;
+class CsMessage_WatchVariableDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<CsMessage_WatchVariable>
+      _instance;
+} _CsMessage_WatchVariable_default_instance_;
 class CsMessageDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<CsMessage>
@@ -48,6 +56,20 @@ static void InitDefaultsCppMessage() {
 ::google::protobuf::internal::SCCInfo<0> scc_info_CppMessage =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsCppMessage}, {}};
 
+static void InitDefaultsCsMessage_WatchVariable() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::Lazysplits::Proto::_CsMessage_WatchVariable_default_instance_;
+    new (ptr) ::Lazysplits::Proto::CsMessage_WatchVariable();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::Lazysplits::Proto::CsMessage_WatchVariable::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_CsMessage_WatchVariable =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsCsMessage_WatchVariable}, {}};
+
 static void InitDefaultsCsMessage() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -59,15 +81,17 @@ static void InitDefaultsCsMessage() {
   ::Lazysplits::Proto::CsMessage::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_CsMessage =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsCsMessage}, {}};
+::google::protobuf::internal::SCCInfo<1> scc_info_CsMessage =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsCsMessage}, {
+      &protobuf_LzsPipeProtoCpp_2eproto::scc_info_CsMessage_WatchVariable.base,}};
 
 void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_CppMessage.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_CsMessage_WatchVariable.base);
   ::google::protobuf::internal::InitSCC(&scc_info_CsMessage.base);
 }
 
-::google::protobuf::Metadata file_level_metadata[2];
+::google::protobuf::Metadata file_level_metadata[3];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[2];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
@@ -82,7 +106,13 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CppMessage, game_name_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CppMessage, target_name_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CppMessage, target_timestamp_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CppMessage, target_offset_ms_),
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage_WatchVariable, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage_WatchVariable, name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage_WatchVariable, value_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -93,14 +123,17 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage, shared_data_dir_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage, game_name_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage, target_name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::CsMessage, watch_variables_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Lazysplits::Proto::CppMessage)},
-  { 12, -1, sizeof(::Lazysplits::Proto::CsMessage)},
+  { 11, -1, sizeof(::Lazysplits::Proto::CsMessage_WatchVariable)},
+  { 18, -1, sizeof(::Lazysplits::Proto::CsMessage)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_CppMessage_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_CsMessage_WatchVariable_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_CsMessage_default_instance_),
 };
 
@@ -119,28 +152,31 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 2);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 3);
 }
 
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n\025LzsPipeProtoCpp.proto\022\020Lazysplits.Prot"
-      "o\"\204\002\n\nCppMessage\022\n\n\002id\030\001 \001(\005\0226\n\004type\030\002 \001"
+      "o\"\352\001\n\nCppMessage\022\n\n\002id\030\001 \001(\005\0226\n\004type\030\002 \001"
       "(\0162(.Lazysplits.Proto.CppMessage.Message"
       "Type\022\027\n\017shared_data_dir\030\003 \001(\t\022\021\n\tgame_na"
-      "me\030\004 \001(\t\022\023\n\013target_name\030\005 \001(\r\022\030\n\020target_"
-      "timestamp\030\006 \001(\004\022\030\n\020target_offset_ms\030\007 \001("
-      "\004\"=\n\013MessageType\022\010\n\004NONE\020\000\022\022\n\016REQUEST_RE"
-      "SYNC\020\001\022\020\n\014TARGET_FOUND\020\002\"\313\001\n\tCsMessage\022\n"
-      "\n\002id\030\001 \001(\005\0225\n\004type\030\002 \001(\0162\'.Lazysplits.Pr"
-      "oto.CsMessage.MessageType\022\027\n\017shared_data"
-      "_dir\030\003 \001(\t\022\021\n\tgame_name\030\004 \001(\t\022\023\n\013target_"
-      "name\030\005 \001(\t\":\n\013MessageType\022\010\n\004NONE\020\000\022\021\n\rC"
-      "LEAR_TARGETS\020\001\022\016\n\nNEW_TARGET\020\002b\006proto3"
+      "me\030\004 \001(\t\022\023\n\013target_name\030\005 \001(\t\022\030\n\020target_"
+      "timestamp\030\006 \001(\004\"=\n\013MessageType\022\010\n\004NONE\020\000"
+      "\022\022\n\016REQUEST_RESYNC\020\001\022\020\n\014TARGET_FOUND\020\002\"\275"
+      "\002\n\tCsMessage\022\n\n\002id\030\001 \001(\005\0225\n\004type\030\002 \001(\0162\'"
+      ".Lazysplits.Proto.CsMessage.MessageType\022"
+      "\027\n\017shared_data_dir\030\003 \001(\t\022\021\n\tgame_name\030\004 "
+      "\001(\t\022\023\n\013target_name\030\005 \001(\t\022B\n\017watch_variab"
+      "les\030\006 \003(\0132).Lazysplits.Proto.CsMessage.W"
+      "atchVariable\032,\n\rWatchVariable\022\014\n\004name\030\001 "
+      "\001(\t\022\r\n\005value\030\002 \001(\t\":\n\013MessageType\022\010\n\004NON"
+      "E\020\000\022\021\n\rCLEAR_TARGETS\020\001\022\016\n\nNEW_TARGET\020\002b\006"
+      "proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 518);
+      descriptor, 606);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "LzsPipeProtoCpp.proto", &protobuf_RegisterTypes);
 }
@@ -216,7 +252,6 @@ const int CppMessage::kSharedDataDirFieldNumber;
 const int CppMessage::kGameNameFieldNumber;
 const int CppMessage::kTargetNameFieldNumber;
 const int CppMessage::kTargetTimestampFieldNumber;
-const int CppMessage::kTargetOffsetMsFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 CppMessage::CppMessage()
@@ -238,18 +273,23 @@ CppMessage::CppMessage(const CppMessage& from)
   if (from.game_name().size() > 0) {
     game_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.game_name_);
   }
+  target_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.target_name().size() > 0) {
+    target_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.target_name_);
+  }
   ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&target_name_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(target_name_));
+    static_cast<size_t>(reinterpret_cast<char*>(&target_timestamp_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(target_timestamp_));
   // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.CppMessage)
 }
 
 void CppMessage::SharedCtor() {
   shared_data_dir_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   game_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  target_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&target_name_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(target_name_));
+      reinterpret_cast<char*>(&target_timestamp_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(target_timestamp_));
 }
 
 CppMessage::~CppMessage() {
@@ -260,6 +300,7 @@ CppMessage::~CppMessage() {
 void CppMessage::SharedDtor() {
   shared_data_dir_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   game_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  target_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void CppMessage::SetCachedSize(int size) const {
@@ -284,9 +325,10 @@ void CppMessage::Clear() {
 
   shared_data_dir_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   game_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  target_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&target_name_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(target_name_));
+      reinterpret_cast<char*>(&target_timestamp_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(target_timestamp_));
   _internal_metadata_.Clear();
 }
 
@@ -361,14 +403,16 @@ bool CppMessage::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 target_name = 5;
+      // string target_name = 5;
       case 5: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(40u /* 40 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &target_name_)));
+            static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_target_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->target_name().data(), static_cast<int>(this->target_name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "Lazysplits.Proto.CppMessage.target_name"));
         } else {
           goto handle_unusual;
         }
@@ -383,20 +427,6 @@ bool CppMessage::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &target_timestamp_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // uint64 target_offset_ms = 7;
-      case 7: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(56u /* 56 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &target_offset_ms_)));
         } else {
           goto handle_unusual;
         }
@@ -460,19 +490,19 @@ void CppMessage::SerializeWithCachedSizes(
       4, this->game_name(), output);
   }
 
-  // uint32 target_name = 5;
-  if (this->target_name() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->target_name(), output);
+  // string target_name = 5;
+  if (this->target_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->target_name().data(), static_cast<int>(this->target_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.CppMessage.target_name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      5, this->target_name(), output);
   }
 
   // uint64 target_timestamp = 6;
   if (this->target_timestamp() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(6, this->target_timestamp(), output);
-  }
-
-  // uint64 target_offset_ms = 7;
-  if (this->target_offset_ms() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(7, this->target_offset_ms(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -522,19 +552,20 @@ void CppMessage::SerializeWithCachedSizes(
         4, this->game_name(), target);
   }
 
-  // uint32 target_name = 5;
-  if (this->target_name() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->target_name(), target);
+  // string target_name = 5;
+  if (this->target_name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->target_name().data(), static_cast<int>(this->target_name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.CppMessage.target_name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        5, this->target_name(), target);
   }
 
   // uint64 target_timestamp = 6;
   if (this->target_timestamp() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(6, this->target_timestamp(), target);
-  }
-
-  // uint64 target_offset_ms = 7;
-  if (this->target_offset_ms() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(7, this->target_offset_ms(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -568,6 +599,13 @@ size_t CppMessage::ByteSizeLong() const {
         this->game_name());
   }
 
+  // string target_name = 5;
+  if (this->target_name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->target_name());
+  }
+
   // int32 id = 1;
   if (this->id() != 0) {
     total_size += 1 +
@@ -586,20 +624,6 @@ size_t CppMessage::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt64Size(
         this->target_timestamp());
-  }
-
-  // uint64 target_offset_ms = 7;
-  if (this->target_offset_ms() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt64Size(
-        this->target_offset_ms());
-  }
-
-  // uint32 target_name = 5;
-  if (this->target_name() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->target_name());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -637,6 +661,10 @@ void CppMessage::MergeFrom(const CppMessage& from) {
 
     game_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.game_name_);
   }
+  if (from.target_name().size() > 0) {
+
+    target_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.target_name_);
+  }
   if (from.id() != 0) {
     set_id(from.id());
   }
@@ -645,12 +673,6 @@ void CppMessage::MergeFrom(const CppMessage& from) {
   }
   if (from.target_timestamp() != 0) {
     set_target_timestamp(from.target_timestamp());
-  }
-  if (from.target_offset_ms() != 0) {
-    set_target_offset_ms(from.target_offset_ms());
-  }
-  if (from.target_name() != 0) {
-    set_target_name(from.target_name());
   }
 }
 
@@ -682,15 +704,315 @@ void CppMessage::InternalSwap(CppMessage* other) {
     GetArenaNoVirtual());
   game_name_.Swap(&other->game_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
+  target_name_.Swap(&other->target_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   swap(id_, other->id_);
   swap(type_, other->type_);
   swap(target_timestamp_, other->target_timestamp_);
-  swap(target_offset_ms_, other->target_offset_ms_);
-  swap(target_name_, other->target_name_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
 ::google::protobuf::Metadata CppMessage::GetMetadata() const {
+  protobuf_LzsPipeProtoCpp_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_LzsPipeProtoCpp_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
+void CsMessage_WatchVariable::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int CsMessage_WatchVariable::kNameFieldNumber;
+const int CsMessage_WatchVariable::kValueFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+CsMessage_WatchVariable::CsMessage_WatchVariable()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_LzsPipeProtoCpp_2eproto::scc_info_CsMessage_WatchVariable.base);
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:Lazysplits.Proto.CsMessage.WatchVariable)
+}
+CsMessage_WatchVariable::CsMessage_WatchVariable(const CsMessage_WatchVariable& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.name().size() > 0) {
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
+  value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.value().size() > 0) {
+    value_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.value_);
+  }
+  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.CsMessage.WatchVariable)
+}
+
+void CsMessage_WatchVariable::SharedCtor() {
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+CsMessage_WatchVariable::~CsMessage_WatchVariable() {
+  // @@protoc_insertion_point(destructor:Lazysplits.Proto.CsMessage.WatchVariable)
+  SharedDtor();
+}
+
+void CsMessage_WatchVariable::SharedDtor() {
+  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  value_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void CsMessage_WatchVariable::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ::google::protobuf::Descriptor* CsMessage_WatchVariable::descriptor() {
+  ::protobuf_LzsPipeProtoCpp_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_LzsPipeProtoCpp_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const CsMessage_WatchVariable& CsMessage_WatchVariable::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_LzsPipeProtoCpp_2eproto::scc_info_CsMessage_WatchVariable.base);
+  return *internal_default_instance();
+}
+
+
+void CsMessage_WatchVariable::Clear() {
+// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.CsMessage.WatchVariable)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  value_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _internal_metadata_.Clear();
+}
+
+bool CsMessage_WatchVariable::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.CsMessage.WatchVariable)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string name = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->name().data(), static_cast<int>(this->name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "Lazysplits.Proto.CsMessage.WatchVariable.name"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string value = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_value()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->value().data(), static_cast<int>(this->value().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "Lazysplits.Proto.CsMessage.WatchVariable.value"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.CsMessage.WatchVariable)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.CsMessage.WatchVariable)
+  return false;
+#undef DO_
+}
+
+void CsMessage_WatchVariable::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.CsMessage.WatchVariable)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), static_cast<int>(this->name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.CsMessage.WatchVariable.name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->name(), output);
+  }
+
+  // string value = 2;
+  if (this->value().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->value().data(), static_cast<int>(this->value().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.CsMessage.WatchVariable.value");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->value(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.CsMessage.WatchVariable)
+}
+
+::google::protobuf::uint8* CsMessage_WatchVariable::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.CsMessage.WatchVariable)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), static_cast<int>(this->name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.CsMessage.WatchVariable.name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->name(), target);
+  }
+
+  // string value = 2;
+  if (this->value().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->value().data(), static_cast<int>(this->value().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.CsMessage.WatchVariable.value");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->value(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.CsMessage.WatchVariable)
+  return target;
+}
+
+size_t CsMessage_WatchVariable::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.CsMessage.WatchVariable)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // string name = 1;
+  if (this->name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->name());
+  }
+
+  // string value = 2;
+  if (this->value().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->value());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void CsMessage_WatchVariable::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.CsMessage.WatchVariable)
+  GOOGLE_DCHECK_NE(&from, this);
+  const CsMessage_WatchVariable* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const CsMessage_WatchVariable>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.CsMessage.WatchVariable)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.CsMessage.WatchVariable)
+    MergeFrom(*source);
+  }
+}
+
+void CsMessage_WatchVariable::MergeFrom(const CsMessage_WatchVariable& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.CsMessage.WatchVariable)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.name().size() > 0) {
+
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
+  if (from.value().size() > 0) {
+
+    value_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.value_);
+  }
+}
+
+void CsMessage_WatchVariable::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.CsMessage.WatchVariable)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void CsMessage_WatchVariable::CopyFrom(const CsMessage_WatchVariable& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.CsMessage.WatchVariable)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CsMessage_WatchVariable::IsInitialized() const {
+  return true;
+}
+
+void CsMessage_WatchVariable::Swap(CsMessage_WatchVariable* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void CsMessage_WatchVariable::InternalSwap(CsMessage_WatchVariable* other) {
+  using std::swap;
+  name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  value_.Swap(&other->value_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::google::protobuf::Metadata CsMessage_WatchVariable::GetMetadata() const {
   protobuf_LzsPipeProtoCpp_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_LzsPipeProtoCpp_2eproto::file_level_metadata[kIndexInFileMessages];
 }
@@ -706,6 +1028,7 @@ const int CsMessage::kTypeFieldNumber;
 const int CsMessage::kSharedDataDirFieldNumber;
 const int CsMessage::kGameNameFieldNumber;
 const int CsMessage::kTargetNameFieldNumber;
+const int CsMessage::kWatchVariablesFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 CsMessage::CsMessage()
@@ -717,7 +1040,8 @@ CsMessage::CsMessage()
 }
 CsMessage::CsMessage(const CsMessage& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      watch_variables_(from.watch_variables_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   shared_data_dir_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.shared_data_dir().size() > 0) {
@@ -777,6 +1101,7 @@ void CsMessage::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  watch_variables_.Clear();
   shared_data_dir_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   game_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   target_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -873,6 +1198,18 @@ bool CsMessage::MergePartialFromCodedStream(
         break;
       }
 
+      // repeated .Lazysplits.Proto.CsMessage.WatchVariable watch_variables = 6;
+      case 6: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+                input, add_watch_variables()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -940,6 +1277,15 @@ void CsMessage::SerializeWithCachedSizes(
       5, this->target_name(), output);
   }
 
+  // repeated .Lazysplits.Proto.CsMessage.WatchVariable watch_variables = 6;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->watch_variables_size()); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      6,
+      this->watch_variables(static_cast<int>(i)),
+      output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -998,6 +1344,14 @@ void CsMessage::SerializeWithCachedSizes(
         5, this->target_name(), target);
   }
 
+  // repeated .Lazysplits.Proto.CsMessage.WatchVariable watch_variables = 6;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->watch_variables_size()); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        6, this->watch_variables(static_cast<int>(i)), deterministic, target);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -1015,6 +1369,17 @@ size_t CsMessage::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
+  // repeated .Lazysplits.Proto.CsMessage.WatchVariable watch_variables = 6;
+  {
+    unsigned int count = static_cast<unsigned int>(this->watch_variables_size());
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          this->watch_variables(static_cast<int>(i)));
+    }
+  }
+
   // string shared_data_dir = 3;
   if (this->shared_data_dir().size() > 0) {
     total_size += 1 +
@@ -1076,6 +1441,7 @@ void CsMessage::MergeFrom(const CsMessage& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  watch_variables_.MergeFrom(from.watch_variables_);
   if (from.shared_data_dir().size() > 0) {
 
     shared_data_dir_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.shared_data_dir_);
@@ -1120,6 +1486,7 @@ void CsMessage::Swap(CsMessage* other) {
 }
 void CsMessage::InternalSwap(CsMessage* other) {
   using std::swap;
+  CastToBase(&watch_variables_)->InternalSwap(CastToBase(&other->watch_variables_));
   shared_data_dir_.Swap(&other->shared_data_dir_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   game_name_.Swap(&other->game_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
@@ -1144,6 +1511,9 @@ namespace google {
 namespace protobuf {
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::CppMessage* Arena::CreateMaybeMessage< ::Lazysplits::Proto::CppMessage >(Arena* arena) {
   return Arena::CreateInternal< ::Lazysplits::Proto::CppMessage >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::CsMessage_WatchVariable* Arena::CreateMaybeMessage< ::Lazysplits::Proto::CsMessage_WatchVariable >(Arena* arena) {
+  return Arena::CreateInternal< ::Lazysplits::Proto::CsMessage_WatchVariable >(arena);
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::CsMessage* Arena::CreateMaybeMessage< ::Lazysplits::Proto::CsMessage >(Arena* arena) {
   return Arena::CreateInternal< ::Lazysplits::Proto::CsMessage >(arena);

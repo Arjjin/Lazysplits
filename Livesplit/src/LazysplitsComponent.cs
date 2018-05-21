@@ -26,7 +26,7 @@ namespace LiveSplit.Lazysplits
         public IDictionary<string, Action> ContextMenuControls{ get; protected set; }
         private LiveSplitState State;
         private LzsTimerModel Timer;
-
+        
         //NLog
         private static Logger Log = LogManager.GetCurrentClassLogger();
 
@@ -62,14 +62,17 @@ namespace LiveSplit.Lazysplits
             MsgQueue = new LzsMessageQueue<LsMsg>("LazysplitsComponent message queue");
             MsgQueue.AttachObserver(this);
 
-            SharedDataManager = new LzsSharedDataManager(State.Run);
-            SharedDataManager.AttachObserver(this);
+            SharedDataManager = new LzsSharedDataManager(State);
 
             Settings.SharedDataRootDirChanged += OnRootDirChanged;
             State.RunManuallyModified += OnRunChanged;
 
+            State.OnSplit += OnSplitControlChanged;
+            State.OnStart += OnSplitControlChanged;
+            State.OnSkipSplit += OnSplitControlChanged;
+            State.OnUndoSplit += OnSplitControlChanged;
+
             PipeClient.ThreadCreate();
-            //if( SharedDataManager.CurrentGame.bAvailable ){ SharedDataManager.}
 
             VerticalHeight = 10f;
             HorizontalWidth = 10f;
@@ -119,12 +122,6 @@ namespace LiveSplit.Lazysplits
             {
                 case "LazysplitsComponent message queue":
                     CheckMsgQueue();
-                break;
-                case "Shared data manager":
-                    if( message == "Splits changed" && bPipeConnected )
-                    {
-                        SendTargetData();
-                    }
                 break;
             }
         }
@@ -223,23 +220,38 @@ namespace LiveSplit.Lazysplits
                     SendTargetData();
                 break;
                 case CppMessage.Types.MessageType.TargetFound:
-                    string SharedDirsMatch = ( msg.SharedDataDir == Settings.SharedDataRootDir ) ? "match" : "don't match";
-                    string GamesMatch = ( msg.GameName == SharedDataManager.CurrentGame.GameInfo.Name ) ? "match" : "don't match";
+                    TargetInfo TargetInfo = new TargetInfo();
+                    if( SharedDataManager.TryGetTarget( msg.TargetName, ref TargetInfo ) )
+                    {
+                        string SharedDirsMatch = ( msg.SharedDataDir == Settings.SharedDataRootDir ) ? "match" : "don't match";
+                        string GamesMatch = ( msg.GameName == SharedDataManager.GetCurrentGameName() ) ? "match" : "don't match";
+                        Log.Debug("Target '"+TargetInfo.Name+"' found - id : "+msg.Id + ", type : "+TargetInfo.Type.ToString()+", games : "+GamesMatch );
+                        
+                        double epoch_ms = DateTime.Now.ToUniversalTime().Subtract( new DateTime( 1970, 1, 1) ).TotalMilliseconds;
+                        int total_offset = (int)( ( epoch_ms - msg.TargetTimestamp ) + TargetInfo.SplitOffsetMs );
 
-                    Log.Debug("Target found - id : "+msg.Id + ", type : "+msg.Type.ToString()+", games : "+GamesMatch+
-                        ", timestamp : "+msg.TargetTimestamp );
-                    ulong epoch_ms = (ulong)DateTime.Now.ToUniversalTime().Subtract( new DateTime( 1970, 1, 1) ).TotalMilliseconds;
-                    ulong total_offset = ( epoch_ms - msg.TargetTimestamp ) + msg.TargetOffsetMs;
-                    Log.Debug( msg.TargetOffsetMs );
-                    Timer.Reset();
-                    Timer.Start(
-                        new TimeSpan( 0, 0, 0, 0, (int)( epoch_ms - msg.TargetTimestamp + msg.TargetOffsetMs ) )
-                    );
-                    SendTargetData();
-                    //Timer.Start();
+                        switch( TargetInfo.Type )
+                        {
+                            case TargetType.TgtStart :
+                                Timer.Reset();
+                                Timer.Start(
+                                    new TimeSpan( 0, 0, 0, 0, total_offset )
+                                );
+                            break;
+                            case TargetType.TgtStandard :
+                                Timer.Split(
+                                    new TimeSpan( 0, 0, 0, 0, total_offset )
+                                );
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        Log.Warn("Could not find target "+msg.TargetName+" for game "+msg.GameName);
+                    }
+                    //SendTargetData();
                 break;
             }
-            Log.Debug("Deserialized message - id : "+msg.Id + ", type : "+msg.Type.ToString());
         }
         
         /* shared data stuff */
@@ -247,15 +259,17 @@ namespace LiveSplit.Lazysplits
         private void SendTargetData()
         {
             PipeClient.MsgSerializedProtobuf( LzsProtoHelper.ClearTargetMsg() );
-            if( SharedDataManager.CurrentGame.SplitsFile.bAvailable )
-            {
-                List<string> TargetNames = SharedDataManager.CurrentGame.SplitsFile.GetGlobalTargets();
 
-                foreach( string TargetName in TargetNames )
-                {
-                    byte[] SerializedMsg = LzsProtoHelper.NewTargetMsg( Settings.SharedDataRootDir, SharedDataManager.CurrentGame.GameInfo.Name, TargetName );
-                    PipeClient.MsgSerializedProtobuf(SerializedMsg);
-                }
+            List<LzsSplitTarget> SplitTargets = SharedDataManager.GetCurrentSplitTargets();
+            foreach( LzsSplitTarget splitTarget in SplitTargets )
+            {
+                byte[] SerializedMsg = LzsProtoHelper.NewTargetMsg(
+                    Settings.SharedDataRootDir,
+                    SharedDataManager.GetCurrentGameName(),
+                    splitTarget.Name,
+                    splitTarget.WatchVars
+                );
+                PipeClient.MsgSerializedProtobuf(SerializedMsg);
             }
         }
 
@@ -270,7 +284,16 @@ namespace LiveSplit.Lazysplits
 
         public void OnRunChanged(object sender, EventArgs e)
         {
-            SharedDataManager.RunChanged(State.Run);
+            //if we successfully updated data and are connected, resend targets
+            if( SharedDataManager.RunChanged() && bPipeConnected  )
+            {
+                SendTargetData();
+            }
+        }
+        
+        public void OnSplitControlChanged(object sender, EventArgs e)
+        {
+            SendTargetData();
         }
 
         //IDisposable

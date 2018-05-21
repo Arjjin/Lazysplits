@@ -197,8 +197,8 @@ void LzsCvThread::LsMsgTargetFound( const std::string& game_name, const std::str
 	msg.set_type( Proto::CppMessage_MessageType::CppMessage_MessageType_TARGET_FOUND );
 	msg.set_shared_data_dir( shared_data_manager_.GetRootDir() );
 	msg.set_game_name( shared_data_manager_.GetGameName() );
+	msg.set_target_name(target_name);
 	msg.set_target_timestamp(timestamp);
-	msg.set_target_offset_ms(split_offset);
 	
 	std::string serialized_msg;
 	if( msg.SerializeToString(&serialized_msg) ){
@@ -285,7 +285,7 @@ void LzsCvThread::NewTarget( Proto::CsMessage& msg ){
 	//make sure shared data directory is the same as our LiveSplit plugin
 	if( shared_data_manager_.IsMatchingRootDir( msg.shared_data_dir() ) ){
 		std::shared_ptr<SharedData::LzsTarget> target;
-		if( shared_data_manager_.TryConstructTarget( msg.game_name(), msg.target_name(), target ) ){
+		if( shared_data_manager_.TryConstructTarget( msg, target ) ){
 			target_list_.push_back(target);
 			blog( LOG_DEBUG, "[lazysplits][%s] target added; name : %s", thread_name_.c_str(), target->GetName().c_str() );
 		}

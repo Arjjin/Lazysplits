@@ -84,17 +84,17 @@
     <ClInclude Include="src\pipe\LzsMessage.h">
       <Filter>Header Files\pipe</Filter>
     </ClInclude>
-    <ClInclude Include="src\SharedData\LzsSharedData.h">
-      <Filter>Header Files\SharedData</Filter>
-    </ClInclude>
     <ClInclude Include="src\util\LzsCalibrationData.h">
       <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Protobuf\classes\LzsPipeProtoCpp.pb.h">
+      <Filter>Header Files\protobuf</Filter>
     </ClInclude>
     <ClInclude Include="..\Protobuf\classes\LzsCvDataProtoCpp.pb.h">
       <Filter>Header Files\protobuf</Filter>
     </ClInclude>
-    <ClInclude Include="..\Protobuf\classes\LzsPipeProtoCpp.pb.h">
-      <Filter>Header Files\protobuf</Filter>
+    <ClInclude Include="src\SharedData\LzsSharedData.h">
+      <Filter>Header Files\SharedData</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -170,10 +170,13 @@
     <ClCompile Include="src\SharedData\LzsWatchColor.cpp">
       <Filter>Source Files\SharedData</Filter>
     </ClCompile>
-    <ClCompile Include="..\Protobuf\classes\LzsCvDataProtoCpp.pb.cc">
-      <Filter>Source Files\protobuf</Filter>
+    <ClCompile Include="src\SharedData\LzsWatchCharacterSet.cpp">
+      <Filter>Source Files\SharedData</Filter>
     </ClCompile>
     <ClCompile Include="..\Protobuf\classes\LzsPipeProtoCpp.pb.cc">
+      <Filter>Source Files\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Protobuf\classes\LzsCvDataProtoCpp.pb.cc">
       <Filter>Source Files\protobuf</Filter>
     </ClCompile>
   </ItemGroup>

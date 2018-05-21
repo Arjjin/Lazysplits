@@ -13,15 +13,9 @@ LzsWatchColor::LzsWatchColor( const Proto::WatchInfo& watch_info, int watch_inde
 	RGB_scalar_ = cv::Scalar( color.r(), color.g(), color.b(), 255.0 );
 }
 
-bool LzsWatchColor::FindWatch( const cv::Mat& BGR_frame, const SendableCalibrationProps& calib_props ){
-	ValidateData( BGR_frame.cols, BGR_frame.rows, calib_props );
-	if( IsGood() ){
-		cv::Mat cropped_frame = BGR_frame(area_);
-		return ImgProc::FindColor( cropped_frame, RGB_scalar_, 0.99 );
-	}
-	else{
-		return false;
-	}
+bool LzsWatchColor::CvLogic( const cv::Mat& BGR_frame ){
+	cv::Mat cropped_frame = BGR_frame(area_);
+	return ImgProc::FindColor( cropped_frame, RGB_scalar_, 0.995F );
 }
 
 bool LzsWatchColor::RemakeData(){

@@ -31,11 +31,12 @@ class LzsFrameBuffer : public LzsObservable{
 	private :
 		void PushFrameInternal( LzsFrame frame );
 		LzsFrame PeekFrameInternal();
-		void PopFrameInternal();
+		void PopFrameFrontInternal();
+		void PopFrameBackInternal();
 		void LockMutex();
 		void UnlockMutex();
 
-		std::queue<LzsFrame> buf_;
+		std::deque<LzsFrame> buf_;
 		pthread_mutex_t buf_mutex_;
 		const int buf_max_count_;
 		int frame_count_;

@@ -35,7 +35,7 @@ LzsFrame LzsFrameBuffer::PeekFrame(){
 
 void LzsFrameBuffer::PopFrame( ){
 	LockMutex();
-	PopFrameInternal();
+	PopFrameFrontInternal();
 	UnlockMutex();
 }
 
@@ -57,8 +57,8 @@ int LzsFrameBuffer::FrameCount(){
 
 void LzsFrameBuffer::PushFrameInternal( LzsFrame frame ){
 	//pop a frame if our buffer is at max capacity
-	if( frame_count_ == buf_max_count_ ){ PopFrameInternal(); }
-	buf_.push(frame);
+	if( frame_count_ == buf_max_count_ ){ PopFrameBackInternal(); }
+	buf_.push_back(frame);
 	frame_count_++;
 	NotifyAll();
 }
@@ -67,8 +67,13 @@ LzsFrame LzsFrameBuffer::PeekFrameInternal(){
 	return buf_.front();
 }
 
-void LzsFrameBuffer::PopFrameInternal(){
-	buf_.pop();
+void LzsFrameBuffer::PopFrameFrontInternal(){
+	buf_.pop_front();
+	frame_count_--;
+}
+
+void LzsFrameBuffer::PopFrameBackInternal(){
+	buf_.pop_back();
 	frame_count_--;
 }
 

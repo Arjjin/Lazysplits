@@ -1,7 +1,8 @@
 #pragma once
 
-#include "LzsCvDataProtoCpp.pb.h"
 #include "util\LzsCalibrationData.h"
+#include "LzsCvDataProtoCpp.pb.h"
+#include "LzsPipeProtoCpp.pb.h"
 
 #include <opencv2\core.hpp>
 
@@ -23,7 +24,8 @@ class LzsWatchBase{
 		Proto::WatchType GetType();
 		int GetIndex();
 
-		virtual bool FindWatch( const cv::Mat& BGR_frame, const SendableCalibrationProps& calib_props ) = 0;
+		bool FindWatch( const cv::Mat& BGR_frame, const SendableCalibrationProps& calib_props );
+		virtual bool CvLogic( const cv::Mat& BGR_frame ) = 0;
 	protected :
 		void SetError();
 		void SetUnitialized();
@@ -52,7 +54,7 @@ class LzsWatchBase{
 class LzsWatchColor : public LzsWatchBase{
 	public :
 		LzsWatchColor( const Proto::WatchInfo& watch_info, int watch_index, std::string watch_dir );
-		bool FindWatch( const cv::Mat& BGR_frame, const SendableCalibrationProps& calib_props )override;
+		bool CvLogic( const cv::Mat& BGR_frame )override;
 	private :
 		//bool MakeArea()override;
 		//bool CheckBounds()override;
@@ -65,7 +67,7 @@ class LzsWatchImageBase : public LzsWatchBase{
 	public :
 		LzsWatchImageBase( const Proto::WatchInfo& watch_info, int watch_index, std::string watch_dir );
 	protected :
-		bool MakeImage();
+		virtual bool MakeImage();
 		virtual bool CheckBounds()override;
 
 		cv::Mat img_BGR_;
@@ -75,14 +77,33 @@ class LzsWatchImageBase : public LzsWatchBase{
 class LzsWatchImageStatic : public LzsWatchImageBase{
 	public :
 		LzsWatchImageStatic( const Proto::WatchInfo& watch_info, int watch_index, std::string watch_dir );
-		bool FindWatch( const cv::Mat& BGR_frame, const SendableCalibrationProps& calib_props )override;
+		bool CvLogic( const cv::Mat& BGR_frame )override;
 	private :
 		bool RemakeData()override;
 };
 
+class LzsWatchCharacterSet : public LzsWatchImageBase{
+	public :
+		LzsWatchCharacterSet( const Proto::WatchInfo& watch_info, int watch_index, std::string watch_dir, const std::string character_input );
+		bool CvLogic( const cv::Mat& BGR_frame )override;
+	private :
+		bool MakeArea()override;
+		bool MakeImage()override;
+		bool RemakeData()override;
+
+		void MakeCharMap();
+		void MakeCharInput( const std::string& input_string );
+		std::pair<int,int> GetAdditonalAreaOffset();
+
+		//const std::string character_input_;
+		std::map<char,Proto::WatchInfo_CharacterEntry> character_map_;
+		std::vector<Proto::WatchInfo_CharacterEntry> character_input_;
+
+};
+
 class LzsTarget{
 	public :
-		LzsTarget( const Proto::TargetInfo& target_info, const std::string& game_info_dir  );
+		LzsTarget( const Proto::TargetInfo& target_info, const std::string& game_info_dir, std::map<std::string,std::string> watch_vars );
 		bool ParseWatchList();
 
 		const std::string& GetName();
@@ -94,9 +115,10 @@ class LzsTarget{
 	private :
 		Proto::TargetInfo target_info_;
 		std::string game_info_dir_;
-		std::vector<std::shared_ptr<LzsWatchBase>> watch_list_;
-		int current_watch_index_;
-		int final_watch_index_;
+		std::vector<std::shared_ptr<LzsWatchBase>> watches_;
+		std::map<std::string,std::string> watch_vars_;
+		uint32_t current_watch_index_;
+		uint32_t final_watch_index_;
 };
 
 class LzsCurrentGame{
@@ -136,7 +158,7 @@ class LzsSharedDataManager{
 		const std::string& GetGameName();
 		bool SetGame( const std::string& game_name );
 
-		bool TryConstructTarget( const std::string& game_name, const std::string& target_name, std::shared_ptr<LzsTarget>& source_target );
+		bool TryConstructTarget( const Proto::CsMessage& cs_msg, std::shared_ptr<LzsTarget>& source_target );
 	private :
 		std::string root_dir_;
 		LzsGameList game_list_;

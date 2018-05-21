@@ -56,7 +56,7 @@ void LzsPipeTaskRead::StartTask(){
 
 void LzsPipeTaskRead::HandleTaskResult(){
 	DWORD bytes_transferred = 0;
-	bool read_result = GetOverlappedResult( pipe_handle_, &task_overlapped_, &bytes_transferred, FALSE );
+	BOOL read_result = GetOverlappedResult( pipe_handle_, &task_overlapped_, &bytes_transferred, FALSE );
 	if( read_result == 0 ){
 		DWORD read_result_last_error = GetLastError();
 		if( read_result_last_error == ERROR_BROKEN_PIPE ){

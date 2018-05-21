@@ -3,33 +3,37 @@ syntax = "proto3";
 package Lazysplits.Proto;
 
 message CppMessage {
-	int32 id = 1;
-	MessageType type = 2;
-
-	string shared_data_dir = 3;
-	string game_name = 4;
-	uint32 target_name = 5;
-	uint64 target_timestamp = 6;
-	uint64 target_offset_ms = 7;
-
 	enum MessageType{
 		NONE = 0;
 		REQUEST_RESYNC = 1;
 		TARGET_FOUND = 2;
 	}
-}
 
-message CsMessage {
 	int32 id = 1;
 	MessageType type = 2;
 
 	string shared_data_dir = 3;
 	string game_name = 4;
 	string target_name = 5;
+	uint64 target_timestamp = 6;
+}
 
+message CsMessage {
 	enum MessageType{
 		NONE = 0;
 		CLEAR_TARGETS = 1;
 		NEW_TARGET = 2;
 	}
+	message WatchVariable{
+		string name = 1;
+		string value = 2;
+	}
+
+	int32 id = 1;
+	MessageType type = 2;
+
+	string shared_data_dir = 3;
+	string game_name = 4;
+	string target_name = 5;
+	repeated WatchVariable watch_variables = 6;
 }

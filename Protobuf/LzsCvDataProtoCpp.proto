@@ -13,11 +13,24 @@ enum WatchType{
 	WT_UNUSED = 0;
 	WT_COLOR = 1;
 	WT_IMAGE_STATIC = 2;
-	WT_TEXT = 3;
+	WT_CHARACTER_SET = 3;
 }
+
+enum CharacterJustify{
+	CHARACTER_JUSTIFY_UNUSED = 0;
+	CHARACTER_JUSTIFY_LEFT = 1;
+	CHARACTER_JUSTIFY_RIGHT = 2;
+}
+
+enum CharacterZOrder{
+	CHARACTER_Z_UNUSED = 0;
+	CHARACTER_Z_LEFT_TO_RIGHT = 1;
+	CHARACTER_Z_RIGHT_TO_LEFT = 2;
+}
+
 message UScalar2d{
-	uint32 x = 1;
-	uint32 y = 2;
+	sint32 x = 1;
+	sint32 y = 2;
 }
 message RGBColor{
 	uint32 R = 1;
@@ -67,7 +80,27 @@ message WatchInfo{
 	WatchType type = 2;
 	UScalar2d base_dimensions = 3;
 	WatchArea area = 4;
+	uint32 additional_area_padding = 11;
 
+	//color watch specific
 	RGBColor color = 5;
+
+	//static image/character set specific
 	string img_relative_path = 6;
+
+	//character set specific
+	message CharacterEntry{
+		uint32 character_index = 1;
+		string character_val = 2;
+		sint32 x_padding = 3;
+		sint32 y_padding = 4;
+	}
+	message AdditionalOffsetEntry{
+		uint32 character_length_threshold = 1;
+		UScalar2d offset = 2;
+	}
+	CharacterJustify character_justify = 7;
+	CharacterZOrder character_z_order = 8;
+	repeated CharacterEntry characters = 9;
+	repeated AdditionalOffsetEntry additional_offset = 10;
 }

@@ -69,8 +69,9 @@ namespace LiveSplit.Lazysplits.SharedData
     {
         public bool bAvailable { get; private set; }
         //internal protobuf type
-        public GameInfo GameInfo { get; private set; }
-        public LzsSplitsFile SplitsFile { get; private set; }
+        private string GameInfoDir { get; set; }
+        private GameInfo GameInfo { get; set; }
+        private LzsSplitsFile SplitsFile { get; set; }
         
         //NLog
         private static Logger Log = LogManager.GetCurrentClassLogger();
@@ -78,6 +79,7 @@ namespace LiveSplit.Lazysplits.SharedData
         public LzsCurrentGame()
         {
             bAvailable = false;
+            GameInfoDir = "";
             GameInfo = new GameInfo();
             SplitsFile = new LzsSplitsFile();
         }
@@ -85,8 +87,22 @@ namespace LiveSplit.Lazysplits.SharedData
         public void SetUnavailable()
         {
             bAvailable = false;
+            GameInfoDir = "";
             GameInfo = new GameInfo();
             SplitsFile.SetUnavailable();
+        }
+
+        public string GetGameName()
+        {
+            return GameInfo.Name;
+        }
+        public string GetSplitsFilePath()
+        {
+            return SplitsFile.Path;
+        }
+        public List<LzsSplitTarget> GetCurrentSplitsTargets( string currentSplitName )
+        {
+            return SplitsFile.GetCurrentTargets(currentSplitName);
         }
 
         public void NewSplitsFile( string path )
@@ -96,7 +112,8 @@ namespace LiveSplit.Lazysplits.SharedData
 
         public void ParseFromDir( string gameInfoDir )
         {
-            string GameInfoPath = gameInfoDir+"\\GameInfo.json";
+            GameInfoDir = gameInfoDir;
+            string GameInfoPath = GameInfoDir+"\\GameInfo.json";
             if( File.Exists(GameInfoPath) )
             {
                 try
@@ -117,6 +134,59 @@ namespace LiveSplit.Lazysplits.SharedData
                 string PathString = String.IsNullOrEmpty(gameInfoDir) ? "empty path" : gameInfoDir;
                 Log.Error("GameInfo.json not found in ["+PathString+"]!");
             }
+        }
+
+        public bool TryGetTarget( string targetName, ref TargetInfo targetInfoRef )
+        {
+            foreach( GameInfo.Types.TargetEntry targetEntry in GameInfo.Targets )
+            {
+                if( targetEntry.Name == targetName )
+                {
+                    string TargetInfoPath = GameInfoDir+targetEntry.RelativePath+"\\TargetInfo.json";
+                    if( File.Exists(TargetInfoPath) )
+                    {
+                        try
+                        {
+                            TextReader FileReader = File.OpenText(TargetInfoPath);
+                            JsonParser Parser = new JsonParser(JsonParser.Settings.Default);
+                            targetInfoRef = Parser.Parse<TargetInfo>(FileReader);
+                            return true;
+                        }
+                        catch( InvalidJsonException e ){
+                            Log.Error("protobuf parsing error : "+e.Message);
+                            return false;
+                        }
+                        catch( InvalidProtocolBufferException e ){
+                            Log.Error("protobuf parsing error : "+e.Message);
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        Log.Error("TargetInfo.json not found in ["+TargetInfoPath+"]!");
+                        return false;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+    }
+
+    public class LzsSplitTarget
+    {
+        public string Name { get; private set; }
+        public List<KeyValuePair<string,string>> WatchVars { get; private set; }
+
+        public LzsSplitTarget( string name )
+        {
+            Name = name;
+            WatchVars = new List<KeyValuePair<string,string>>();
+        }
+        public void AddWatchVar( string varName, string varValue )
+        {
+            WatchVars.Add( new KeyValuePair<string,string>( varName, varValue ) );
         }
     }
 
@@ -155,28 +225,68 @@ namespace LiveSplit.Lazysplits.SharedData
                 Log.Debug("Error parsing XML : "+e.Message);
             }
         }
-
-        public List<string> GetGlobalTargets()
+        
+        //TODO clean up this mess
+        public List<LzsSplitTarget> GetCurrentTargets( string currentSplitName )
         {
-            List<string> TargetList = new List<string>();
+            List<LzsSplitTarget> TargetNames = new List<LzsSplitTarget>();
 
             if( bAvailable )
             {
                 try
                 {
-                    foreach( XmlNode LazysplitsNode in Xml.GetElementsByTagName("Lazysplits") )
+                    //get global targets
+                    XmlNodeList GlobalTargets = Xml.GetElementsByTagName("GlobalTargets");
+                    if( GlobalTargets.Count == 1 )
                     {
-                        if( LazysplitsNode.ParentNode.Name == "Run" )
+                        foreach( XmlNode target in  GlobalTargets.Item(0).ChildNodes )
                         {
-                            if( LazysplitsNode["GlobalTargets"] != null )
-                            {
-                                foreach( XmlNode Target in LazysplitsNode["GlobalTargets"].ChildNodes )
+                            if( target["TargetName"] != null ){
+                                LzsSplitTarget SplitTarget = new LzsSplitTarget( target["TargetName"].InnerText );
+                                if( target["WatchVariables"] != null)
                                 {
-                                    if( Target["TargetName"] != null ){ TargetList.Add(Target["TargetName"].InnerText); }
+                                    foreach( XmlNode watchVariable in target["WatchVariables"].ChildNodes )
+                                    {
+                                        if( watchVariable["Name"] != null && watchVariable["Value"] != null )
+                                        {
+                                            SplitTarget.AddWatchVar( watchVariable["Name"].InnerText, watchVariable["Value"].InnerText );
+                                        }
+                                    }
+                                }
+                                TargetNames.Add(SplitTarget);
+                            }
+                        }
+                    }
+
+                    //get active split targets if applicable
+                    if( currentSplitName != string.Empty )
+                    {
+                        XmlNodeList Segments = Xml.GetElementsByTagName("Segment");
+                        foreach( XmlNode segment in Segments)
+                        {
+                            if( segment["Name"].InnerText == currentSplitName && segment["Lazysplits"] != null )
+                            {
+                                foreach( XmlNode target in  segment["Lazysplits"].ChildNodes )
+                                {
+                                    if( target["TargetName"] != null ){
+                                        LzsSplitTarget SplitTarget = new LzsSplitTarget( target["TargetName"].InnerText );
+                                        if( target["WatchVariables"] != null)
+                                        {
+                                            foreach( XmlNode watchVariable in target["WatchVariables"].ChildNodes )
+                                            {
+                                                if( watchVariable["Name"] != null && watchVariable["Value"] != null )
+                                                {
+                                                    SplitTarget.AddWatchVar( watchVariable["Name"].InnerText, watchVariable["Value"].InnerText );
+                                                }
+                                            }
+                                        }
+                                        TargetNames.Add(SplitTarget);
+                                    }
                                 }
                             }
-                        }               
-                    }
+                        }
+                    }  
+                      
                 }
                 catch( Exception e )
                 {
@@ -184,7 +294,7 @@ namespace LiveSplit.Lazysplits.SharedData
                 }
             }
 
-            return TargetList;
+            return TargetNames;
         }
     }
 }

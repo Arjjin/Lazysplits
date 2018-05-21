@@ -47,7 +47,10 @@ bool LzsSharedDataManager::SetGame( const std::string& game_name ){
 	return current_game_.ParseFromDir( game_path.string() );
 }
 
-bool LzsSharedDataManager::TryConstructTarget( const std::string& game_name, const std::string& target_name, std::shared_ptr<LzsTarget>& source_target  ){
+bool LzsSharedDataManager::TryConstructTarget( const Proto::CsMessage& cs_msg, std::shared_ptr<LzsTarget>& source_target  ){
+	const std::string game_name = cs_msg.game_name();
+	const std::string target_name = cs_msg.target_name();
+
 	//if target game doesn't match current one, try to reparse it
 	if( game_name != current_game_.GetCurrentGameName() && !SetGame(game_name) ){
 		blog( LOG_DEBUG, "[Lazysplits][shared_data] Failed to get target %s for %s; failed to parse/reparse game from \"%s\"!",
@@ -61,7 +64,18 @@ bool LzsSharedDataManager::TryConstructTarget( const std::string& game_name, con
 	
 	Proto::TargetInfo target_info;
 	if( current_game_.GetTargetInfo( target_name, target_info) ){
-		source_target = std::make_shared<LzsTarget>( target_info, current_game_.GetCurrentGamePath() );
+		//make watch variable list
+		std::map<std::string,std::string> watch_vars;
+		for( auto watch_var_it = cs_msg.watch_variables().begin(); watch_var_it != cs_msg.watch_variables().end(); ++watch_var_it ){
+			if( watch_var_it->name().empty() || watch_var_it->value().empty() ){
+				blog( LOG_WARNING, "[Lazysplits][shared_data] watch var for %s has empty name or value!", target_name.c_str() );
+			}
+			else{
+				watch_vars.emplace( watch_var_it->name(), watch_var_it->value() );
+			}
+		}
+
+		source_target = std::make_shared<LzsTarget>( target_info, current_game_.GetCurrentGamePath(), watch_vars );
 		if( !source_target->ParseWatchList() ){
 			return false;
 		}
