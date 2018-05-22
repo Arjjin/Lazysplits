@@ -66,8 +66,8 @@ bool LzsWatchImageBase::MakeImage(){
 }
 
 bool LzsWatchImageBase::CheckBounds(){
-	int area_x_neg_offset = std::max( 0, area_.x );
-	int area_y_neg_offset = std::max( 0 , area_.y );
+	//int area_x_neg_offset = std::min( 0, area_.x );
+	//int area_y_neg_offset = std::min( 0 , area_.y );
 	cv::Rect source_rect( 0, 0, current_source_width_, current_source_height_ );
 
 	//intersection of current watch area and source dimensions
@@ -83,8 +83,10 @@ bool LzsWatchImageBase::CheckBounds(){
 
 		area_ = new_area;
 		cv::Rect img_crop(
-			area_x_neg_offset + additonal_area_padding,
-			area_y_neg_offset + additonal_area_padding,
+			//area_x_neg_offset + additonal_area_padding,
+			//area_y_neg_offset + additonal_area_padding,
+			additonal_area_padding,
+			additonal_area_padding,
 			( area_.width - area_img_width_diff ) - ( additonal_area_padding * 2 ),
 			( area_.height - area_img_height_diff ) - ( additonal_area_padding * 2 )
 		);
@@ -104,7 +106,22 @@ LzsWatchImageStatic::LzsWatchImageStatic( const Proto::WatchInfo& watch_info, in
 
 bool LzsWatchImageStatic::CvLogic( const cv::Mat& BGR_frame ){
 	cv::Mat cropped_frame = BGR_frame(area_);
-	return ImgProc::FindImage( cropped_frame, img_BGR_, img_mask_, 0.95F );
+
+	//cv compression params
+	std::vector<int> compression_params;
+	compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
+	compression_params.push_back(1);
+
+	cv::Mat cropped_area_frame = BGR_frame(area_);
+	std::stringstream fn_area;
+	fn_area << "./images/watch_area_" << GetName().c_str() << ".png";
+	cv::imwrite( fn_area.str().c_str(), cropped_area_frame, compression_params );
+
+	std::stringstream fn_BGR;
+	fn_BGR << "./images/watch_image_BGR_" << GetName().c_str() << ".png";
+	cv::imwrite( fn_BGR.str().c_str(), img_BGR_, compression_params );
+
+	return ImgProc::FindImage( cropped_frame, img_BGR_, img_mask_, watch_info_.base_threshold() );
 }
 
 bool LzsWatchImageStatic::RemakeData(){

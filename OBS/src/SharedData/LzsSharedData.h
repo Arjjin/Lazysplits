@@ -22,6 +22,7 @@ class LzsWatchBase{
 		bool IsGood();
 		const std::string& GetName();
 		Proto::WatchType GetType();
+		float GetThreshold();
 		int GetIndex();
 
 		bool FindWatch( const cv::Mat& BGR_frame, const SendableCalibrationProps& calib_props );

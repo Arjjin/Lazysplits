@@ -35,6 +35,7 @@ LzsWatchCharacterSet::LzsWatchCharacterSet( const Proto::WatchInfo& watch_info, 
 }
 
 bool LzsWatchCharacterSet::CvLogic( const cv::Mat& BGR_frame ){
+	/*
 	//cv compression params
 	std::vector<int> compression_params;
 	compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
@@ -52,9 +53,10 @@ bool LzsWatchCharacterSet::CvLogic( const cv::Mat& BGR_frame ){
 	std::stringstream fn_A;
 	fn_A << "./images/watch_image_A_" << GetName().c_str() << ".png";
 	cv::imwrite( fn_A.str().c_str(), img_mask_, compression_params );
+	*/
 	
 	cv::Mat cropped_frame = BGR_frame(area_);
-	return ImgProc::FindImage( cropped_frame, img_BGR_, img_mask_, 0.985F );
+	return ImgProc::FindImage( cropped_frame, img_BGR_, img_mask_, watch_info_.base_threshold() );
 }
 
 bool LzsWatchCharacterSet::MakeArea(){

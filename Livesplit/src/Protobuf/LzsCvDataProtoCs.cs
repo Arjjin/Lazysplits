@@ -25,7 +25,7 @@ namespace LiveSplit.Lazysplits.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZMenNDdkRhdGFQcm90b0NzLnByb3RvEhpMaXZlU3BsaXQuTGF6eXNwbGl0",
-            "cy5Qcm90byIhCglVU2NhbGFyMmQSCQoBeBgBIAEoDRIJCgF5GAIgASgNIisK",
+            "cy5Qcm90byIhCglVU2NhbGFyMmQSCQoBeBgBIAEoERIJCgF5GAIgASgRIisK",
             "CFJHQkNvbG9yEgkKAVIYASABKA0SCQoBRxgCIAEoDRIJCgFCGAMgASgNInsK",
             "CEdhbWVMaXN0Ej0KBWdhbWVzGAEgAygLMi4uTGl2ZVNwbGl0LkxhenlzcGxp",
             "dHMuUHJvdG8uR2FtZUxpc3QuR2FtZUVudHJ5GjAKCUdhbWVFbnRyeRIMCgRu",
@@ -38,36 +38,38 @@ namespace LiveSplit.Lazysplits.Proto {
             "X29mZnNldF9tcxgDIAEoERJCCgd3YXRjaGVzGAQgAygLMjEuTGl2ZVNwbGl0",
             "LkxhenlzcGxpdHMuUHJvdG8uVGFyZ2V0SW5mby5XYXRjaEVudHJ5GkAKCldh",
             "dGNoRW50cnkSDAoEbmFtZRgBIAEoCRIVCg1yZWxhdGl2ZV9wYXRoGAIgASgJ",
-            "Eg0KBWluZGV4GAMgASgNIv8GCglXYXRjaEluZm8SDAoEbmFtZRgBIAEoCRIz",
+            "Eg0KBWluZGV4GAMgASgNItsHCglXYXRjaEluZm8SDAoEbmFtZRgBIAEoCRIz",
             "CgR0eXBlGAIgASgOMiUuTGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8uV2F0",
             "Y2hUeXBlEj4KD2Jhc2VfZGltZW5zaW9ucxgDIAEoCzIlLkxpdmVTcGxpdC5M",
             "YXp5c3BsaXRzLlByb3RvLlVTY2FsYXIyZBI9CgRhcmVhGAQgASgLMi8uTGl2",
-            "ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8uV2F0Y2hJbmZvLldhdGNoQXJlYRIz",
-            "CgVjb2xvchgFIAEoCzIkLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3RvLlJH",
-            "QkNvbG9yEhkKEWltZ19yZWxhdGl2ZV9wYXRoGAYgASgJEkcKEWNoYXJhY3Rl",
-            "cl9qdXN0aWZ5GAcgASgOMiwuTGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8u",
-            "Q2hhcmFjdGVySnVzdGlmeRJGChFjaGFyYWN0ZXJfel9vcmRlchgIIAEoDjIr",
-            "LkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3RvLkNoYXJhY3RlclpPcmRlchJI",
-            "CgpjaGFyYWN0ZXJzGAkgAygLMjQuTGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJv",
-            "dG8uV2F0Y2hJbmZvLkNoYXJhY3RlckVudHJ5ElgKEmFkZGl0aW9uYWxfcGFk",
-            "ZGluZxgKIAMoCzI8LkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3RvLldhdGNo",
-            "SW5mby5BZGRpdGlvbmFsUGFkZGluZ0VudHJ5GnQKCVdhdGNoQXJlYRIyCgNs",
-            "b2MYASABKAsyJS5MaXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90by5VU2NhbGFy",
-            "MmQSMwoEc2l6ZRgCIAEoCzIlLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3Rv",
-            "LlVTY2FsYXIyZBpmCg5DaGFyYWN0ZXJFbnRyeRIXCg9jaGFyYWN0ZXJfaW5k",
-            "ZXgYASABKA0SFQoNY2hhcmFjdGVyX3ZhbBgCIAEoCRIRCgl4X3BhZGRpbmcY",
-            "AyABKBESEQoJeV9wYWRkaW5nGAQgASgRGk0KFkFkZGl0aW9uYWxQYWRkaW5n",
-            "RW50cnkSIgoaY2hhcmFjdGVyX2xlbmd0aF90aHJlc2hvbGQYASABKA0SDwoH",
-            "cGFkZGluZxgCIAEoESpZCgpUYXJnZXRUeXBlEg4KClRHVF9VTlVTRUQQABIN",
-            "CglUR1RfUkVTRVQQARINCglUR1RfU1RBUlQQAhIQCgxUR1RfU1RBTkRBUkQQ",
-            "AxILCgdUR1RfRU5EEAQqUwoJV2F0Y2hUeXBlEg0KCVdUX1VOVVNFRBAAEgwK",
-            "CFdUX0NPTE9SEAESEwoPV1RfSU1BR0VfU1RBVElDEAISFAoQV1RfQ0hBUkFD",
-            "VEVSX1NFVBADKmkKEENoYXJhY3Rlckp1c3RpZnkSHAoYQ0hBUkFDVEVSX0pV",
-            "U1RJRllfVU5VU0VEEAASGgoWQ0hBUkFDVEVSX0pVU1RJRllfTEVGVBABEhsK",
-            "F0NIQVJBQ1RFUl9KVVNUSUZZX1JJR0hUEAIqZwoPQ2hhcmFjdGVyWk9yZGVy",
-            "EhYKEkNIQVJBQ1RFUl9aX1VOVVNFRBAAEh0KGUNIQVJBQ1RFUl9aX0xFRlRf",
-            "VE9fUklHSFQQARIdChlDSEFSQUNURVJfWl9SSUdIVF9UT19MRUZUEAJiBnBy",
-            "b3RvMw=="));
+            "ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8uV2F0Y2hJbmZvLldhdGNoQXJlYRIf",
+            "ChdhZGRpdGlvbmFsX2FyZWFfcGFkZGluZxgLIAEoDRIWCg5iYXNlX3RocmVz",
+            "aG9sZBgMIAEoAhIzCgVjb2xvchgFIAEoCzIkLkxpdmVTcGxpdC5MYXp5c3Bs",
+            "aXRzLlByb3RvLlJHQkNvbG9yEhkKEWltZ19yZWxhdGl2ZV9wYXRoGAYgASgJ",
+            "EkcKEWNoYXJhY3Rlcl9qdXN0aWZ5GAcgASgOMiwuTGl2ZVNwbGl0Lkxhenlz",
+            "cGxpdHMuUHJvdG8uQ2hhcmFjdGVySnVzdGlmeRJGChFjaGFyYWN0ZXJfel9v",
+            "cmRlchgIIAEoDjIrLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3RvLkNoYXJh",
+            "Y3RlclpPcmRlchJICgpjaGFyYWN0ZXJzGAkgAygLMjQuTGl2ZVNwbGl0Lkxh",
+            "enlzcGxpdHMuUHJvdG8uV2F0Y2hJbmZvLkNoYXJhY3RlckVudHJ5ElYKEWFk",
+            "ZGl0aW9uYWxfb2Zmc2V0GAogAygLMjsuTGl2ZVNwbGl0LkxhenlzcGxpdHMu",
+            "UHJvdG8uV2F0Y2hJbmZvLkFkZGl0aW9uYWxPZmZzZXRFbnRyeRp0CglXYXRj",
+            "aEFyZWESMgoDbG9jGAEgASgLMiUuTGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJv",
+            "dG8uVVNjYWxhcjJkEjMKBHNpemUYAiABKAsyJS5MaXZlU3BsaXQuTGF6eXNw",
+            "bGl0cy5Qcm90by5VU2NhbGFyMmQaZgoOQ2hhcmFjdGVyRW50cnkSFwoPY2hh",
+            "cmFjdGVyX2luZGV4GAEgASgNEhUKDWNoYXJhY3Rlcl92YWwYAiABKAkSEQoJ",
+            "eF9wYWRkaW5nGAMgASgREhEKCXlfcGFkZGluZxgEIAEoERpyChVBZGRpdGlv",
+            "bmFsT2Zmc2V0RW50cnkSIgoaY2hhcmFjdGVyX2xlbmd0aF90aHJlc2hvbGQY",
+            "ASABKA0SNQoGb2Zmc2V0GAIgASgLMiUuTGl2ZVNwbGl0LkxhenlzcGxpdHMu",
+            "UHJvdG8uVVNjYWxhcjJkKlkKClRhcmdldFR5cGUSDgoKVEdUX1VOVVNFRBAA",
+            "Eg0KCVRHVF9SRVNFVBABEg0KCVRHVF9TVEFSVBACEhAKDFRHVF9TVEFOREFS",
+            "RBADEgsKB1RHVF9FTkQQBCpTCglXYXRjaFR5cGUSDQoJV1RfVU5VU0VEEAAS",
+            "DAoIV1RfQ09MT1IQARITCg9XVF9JTUFHRV9TVEFUSUMQAhIUChBXVF9DSEFS",
+            "QUNURVJfU0VUEAMqaQoQQ2hhcmFjdGVySnVzdGlmeRIcChhDSEFSQUNURVJf",
+            "SlVTVElGWV9VTlVTRUQQABIaChZDSEFSQUNURVJfSlVTVElGWV9MRUZUEAES",
+            "GwoXQ0hBUkFDVEVSX0pVU1RJRllfUklHSFQQAipnCg9DaGFyYWN0ZXJaT3Jk",
+            "ZXISFgoSQ0hBUkFDVEVSX1pfVU5VU0VEEAASHQoZQ0hBUkFDVEVSX1pfTEVG",
+            "VF9UT19SSUdIVBABEh0KGUNIQVJBQ1RFUl9aX1JJR0hUX1RPX0xFRlQQAmIG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::LiveSplit.Lazysplits.Proto.TargetType), typeof(global::LiveSplit.Lazysplits.Proto.WatchType), typeof(global::LiveSplit.Lazysplits.Proto.CharacterJustify), typeof(global::LiveSplit.Lazysplits.Proto.CharacterZOrder), }, new pbr::GeneratedClrTypeInfo[] {
@@ -76,9 +78,9 @@ namespace LiveSplit.Lazysplits.Proto {
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameList), global::LiveSplit.Lazysplits.Proto.GameList.Parser, new[]{ "Games" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameList.Types.GameEntry), global::LiveSplit.Lazysplits.Proto.GameList.Types.GameEntry.Parser, new[]{ "Name", "RelativePath" }, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameInfo), global::LiveSplit.Lazysplits.Proto.GameInfo.Parser, new[]{ "Name", "Targets" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameInfo.Types.TargetEntry), global::LiveSplit.Lazysplits.Proto.GameInfo.Types.TargetEntry.Parser, new[]{ "Name", "RelativePath" }, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.TargetInfo), global::LiveSplit.Lazysplits.Proto.TargetInfo.Parser, new[]{ "Name", "Type", "SplitOffsetMs", "Watches" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchEntry), global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchEntry.Parser, new[]{ "Name", "RelativePath", "Index" }, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo), global::LiveSplit.Lazysplits.Proto.WatchInfo.Parser, new[]{ "Name", "Type", "BaseDimensions", "Area", "Color", "ImgRelativePath", "CharacterJustify", "CharacterZOrder", "Characters", "AdditionalPadding" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.WatchArea), global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.WatchArea.Parser, new[]{ "Loc", "Size" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo), global::LiveSplit.Lazysplits.Proto.WatchInfo.Parser, new[]{ "Name", "Type", "BaseDimensions", "Area", "AdditionalAreaPadding", "BaseThreshold", "Color", "ImgRelativePath", "CharacterJustify", "CharacterZOrder", "Characters", "AdditionalOffset" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.WatchArea), global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.WatchArea.Parser, new[]{ "Loc", "Size" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.CharacterEntry), global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.CharacterEntry.Parser, new[]{ "CharacterIndex", "CharacterVal", "XPadding", "YPadding" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalPaddingEntry), global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalPaddingEntry.Parser, new[]{ "CharacterLengthThreshold", "Padding" }, null, null, null)})
+            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalOffsetEntry), global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalOffsetEntry.Parser, new[]{ "CharacterLengthThreshold", "Offset" }, null, null, null)})
           }));
     }
     #endregion
@@ -152,9 +154,9 @@ namespace LiveSplit.Lazysplits.Proto {
 
     /// <summary>Field number for the "x" field.</summary>
     public const int XFieldNumber = 1;
-    private uint x_;
+    private int x_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint X {
+    public int X {
       get { return x_; }
       set {
         x_ = value;
@@ -163,9 +165,9 @@ namespace LiveSplit.Lazysplits.Proto {
 
     /// <summary>Field number for the "y" field.</summary>
     public const int YFieldNumber = 2;
-    private uint y_;
+    private int y_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint Y {
+    public int Y {
       get { return y_; }
       set {
         y_ = value;
@@ -210,11 +212,11 @@ namespace LiveSplit.Lazysplits.Proto {
     public void WriteTo(pb::CodedOutputStream output) {
       if (X != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(X);
+        output.WriteSInt32(X);
       }
       if (Y != 0) {
         output.WriteRawTag(16);
-        output.WriteUInt32(Y);
+        output.WriteSInt32(Y);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -225,10 +227,10 @@ namespace LiveSplit.Lazysplits.Proto {
     public int CalculateSize() {
       int size = 0;
       if (X != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(X);
+        size += 1 + pb::CodedOutputStream.ComputeSInt32Size(X);
       }
       if (Y != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Y);
+        size += 1 + pb::CodedOutputStream.ComputeSInt32Size(Y);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -259,11 +261,11 @@ namespace LiveSplit.Lazysplits.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            X = input.ReadUInt32();
+            X = input.ReadSInt32();
             break;
           }
           case 16: {
-            Y = input.ReadUInt32();
+            Y = input.ReadSInt32();
             break;
           }
         }
@@ -1481,12 +1483,14 @@ namespace LiveSplit.Lazysplits.Proto {
       type_ = other.type_;
       BaseDimensions = other.baseDimensions_ != null ? other.BaseDimensions.Clone() : null;
       Area = other.area_ != null ? other.Area.Clone() : null;
+      additionalAreaPadding_ = other.additionalAreaPadding_;
+      baseThreshold_ = other.baseThreshold_;
       Color = other.color_ != null ? other.Color.Clone() : null;
       imgRelativePath_ = other.imgRelativePath_;
       characterJustify_ = other.characterJustify_;
       characterZOrder_ = other.characterZOrder_;
       characters_ = other.characters_.Clone();
-      additionalPadding_ = other.additionalPadding_.Clone();
+      additionalOffset_ = other.additionalOffset_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1536,6 +1540,28 @@ namespace LiveSplit.Lazysplits.Proto {
       get { return area_; }
       set {
         area_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "additional_area_padding" field.</summary>
+    public const int AdditionalAreaPaddingFieldNumber = 11;
+    private uint additionalAreaPadding_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint AdditionalAreaPadding {
+      get { return additionalAreaPadding_; }
+      set {
+        additionalAreaPadding_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "base_threshold" field.</summary>
+    public const int BaseThresholdFieldNumber = 12;
+    private float baseThreshold_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float BaseThreshold {
+      get { return baseThreshold_; }
+      set {
+        baseThreshold_ = value;
       }
     }
 
@@ -1599,14 +1625,14 @@ namespace LiveSplit.Lazysplits.Proto {
       get { return characters_; }
     }
 
-    /// <summary>Field number for the "additional_padding" field.</summary>
-    public const int AdditionalPaddingFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalPaddingEntry> _repeated_additionalPadding_codec
-        = pb::FieldCodec.ForMessage(82, global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalPaddingEntry.Parser);
-    private readonly pbc::RepeatedField<global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalPaddingEntry> additionalPadding_ = new pbc::RepeatedField<global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalPaddingEntry>();
+    /// <summary>Field number for the "additional_offset" field.</summary>
+    public const int AdditionalOffsetFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalOffsetEntry> _repeated_additionalOffset_codec
+        = pb::FieldCodec.ForMessage(82, global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalOffsetEntry.Parser);
+    private readonly pbc::RepeatedField<global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalOffsetEntry> additionalOffset_ = new pbc::RepeatedField<global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalOffsetEntry>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalPaddingEntry> AdditionalPadding {
-      get { return additionalPadding_; }
+    public pbc::RepeatedField<global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalOffsetEntry> AdditionalOffset {
+      get { return additionalOffset_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1626,12 +1652,14 @@ namespace LiveSplit.Lazysplits.Proto {
       if (Type != other.Type) return false;
       if (!object.Equals(BaseDimensions, other.BaseDimensions)) return false;
       if (!object.Equals(Area, other.Area)) return false;
+      if (AdditionalAreaPadding != other.AdditionalAreaPadding) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(BaseThreshold, other.BaseThreshold)) return false;
       if (!object.Equals(Color, other.Color)) return false;
       if (ImgRelativePath != other.ImgRelativePath) return false;
       if (CharacterJustify != other.CharacterJustify) return false;
       if (CharacterZOrder != other.CharacterZOrder) return false;
       if(!characters_.Equals(other.characters_)) return false;
-      if(!additionalPadding_.Equals(other.additionalPadding_)) return false;
+      if(!additionalOffset_.Equals(other.additionalOffset_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1642,12 +1670,14 @@ namespace LiveSplit.Lazysplits.Proto {
       if (Type != 0) hash ^= Type.GetHashCode();
       if (baseDimensions_ != null) hash ^= BaseDimensions.GetHashCode();
       if (area_ != null) hash ^= Area.GetHashCode();
+      if (AdditionalAreaPadding != 0) hash ^= AdditionalAreaPadding.GetHashCode();
+      if (BaseThreshold != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(BaseThreshold);
       if (color_ != null) hash ^= Color.GetHashCode();
       if (ImgRelativePath.Length != 0) hash ^= ImgRelativePath.GetHashCode();
       if (CharacterJustify != 0) hash ^= CharacterJustify.GetHashCode();
       if (CharacterZOrder != 0) hash ^= CharacterZOrder.GetHashCode();
       hash ^= characters_.GetHashCode();
-      hash ^= additionalPadding_.GetHashCode();
+      hash ^= additionalOffset_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1694,7 +1724,15 @@ namespace LiveSplit.Lazysplits.Proto {
         output.WriteEnum((int) CharacterZOrder);
       }
       characters_.WriteTo(output, _repeated_characters_codec);
-      additionalPadding_.WriteTo(output, _repeated_additionalPadding_codec);
+      additionalOffset_.WriteTo(output, _repeated_additionalOffset_codec);
+      if (AdditionalAreaPadding != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(AdditionalAreaPadding);
+      }
+      if (BaseThreshold != 0F) {
+        output.WriteRawTag(101);
+        output.WriteFloat(BaseThreshold);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1715,6 +1753,12 @@ namespace LiveSplit.Lazysplits.Proto {
       if (area_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Area);
       }
+      if (AdditionalAreaPadding != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AdditionalAreaPadding);
+      }
+      if (BaseThreshold != 0F) {
+        size += 1 + 4;
+      }
       if (color_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Color);
       }
@@ -1728,7 +1772,7 @@ namespace LiveSplit.Lazysplits.Proto {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CharacterZOrder);
       }
       size += characters_.CalculateSize(_repeated_characters_codec);
-      size += additionalPadding_.CalculateSize(_repeated_additionalPadding_codec);
+      size += additionalOffset_.CalculateSize(_repeated_additionalOffset_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1758,6 +1802,12 @@ namespace LiveSplit.Lazysplits.Proto {
         }
         Area.MergeFrom(other.Area);
       }
+      if (other.AdditionalAreaPadding != 0) {
+        AdditionalAreaPadding = other.AdditionalAreaPadding;
+      }
+      if (other.BaseThreshold != 0F) {
+        BaseThreshold = other.BaseThreshold;
+      }
       if (other.color_ != null) {
         if (color_ == null) {
           color_ = new global::LiveSplit.Lazysplits.Proto.RGBColor();
@@ -1774,7 +1824,7 @@ namespace LiveSplit.Lazysplits.Proto {
         CharacterZOrder = other.CharacterZOrder;
       }
       characters_.Add(other.characters_);
-      additionalPadding_.Add(other.additionalPadding_);
+      additionalOffset_.Add(other.additionalOffset_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1832,7 +1882,15 @@ namespace LiveSplit.Lazysplits.Proto {
             break;
           }
           case 82: {
-            additionalPadding_.AddEntriesFrom(input, _repeated_additionalPadding_codec);
+            additionalOffset_.AddEntriesFrom(input, _repeated_additionalOffset_codec);
+            break;
+          }
+          case 88: {
+            AdditionalAreaPadding = input.ReadUInt32();
+            break;
+          }
+          case 101: {
+            BaseThreshold = input.ReadFloat();
             break;
           }
         }
@@ -2228,11 +2286,11 @@ namespace LiveSplit.Lazysplits.Proto {
 
       }
 
-      public sealed partial class AdditionalPaddingEntry : pb::IMessage<AdditionalPaddingEntry> {
-        private static readonly pb::MessageParser<AdditionalPaddingEntry> _parser = new pb::MessageParser<AdditionalPaddingEntry>(() => new AdditionalPaddingEntry());
+      public sealed partial class AdditionalOffsetEntry : pb::IMessage<AdditionalOffsetEntry> {
+        private static readonly pb::MessageParser<AdditionalOffsetEntry> _parser = new pb::MessageParser<AdditionalOffsetEntry>(() => new AdditionalOffsetEntry());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public static pb::MessageParser<AdditionalPaddingEntry> Parser { get { return _parser; } }
+        public static pb::MessageParser<AdditionalOffsetEntry> Parser { get { return _parser; } }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor {
@@ -2245,22 +2303,22 @@ namespace LiveSplit.Lazysplits.Proto {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public AdditionalPaddingEntry() {
+        public AdditionalOffsetEntry() {
           OnConstruction();
         }
 
         partial void OnConstruction();
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public AdditionalPaddingEntry(AdditionalPaddingEntry other) : this() {
+        public AdditionalOffsetEntry(AdditionalOffsetEntry other) : this() {
           characterLengthThreshold_ = other.characterLengthThreshold_;
-          padding_ = other.padding_;
+          Offset = other.offset_ != null ? other.Offset.Clone() : null;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public AdditionalPaddingEntry Clone() {
-          return new AdditionalPaddingEntry(this);
+        public AdditionalOffsetEntry Clone() {
+          return new AdditionalOffsetEntry(this);
         }
 
         /// <summary>Field number for the "character_length_threshold" field.</summary>
@@ -2274,24 +2332,24 @@ namespace LiveSplit.Lazysplits.Proto {
           }
         }
 
-        /// <summary>Field number for the "padding" field.</summary>
-        public const int PaddingFieldNumber = 2;
-        private int padding_;
+        /// <summary>Field number for the "offset" field.</summary>
+        public const int OffsetFieldNumber = 2;
+        private global::LiveSplit.Lazysplits.Proto.UScalar2d offset_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public int Padding {
-          get { return padding_; }
+        public global::LiveSplit.Lazysplits.Proto.UScalar2d Offset {
+          get { return offset_; }
           set {
-            padding_ = value;
+            offset_ = value;
           }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override bool Equals(object other) {
-          return Equals(other as AdditionalPaddingEntry);
+          return Equals(other as AdditionalOffsetEntry);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public bool Equals(AdditionalPaddingEntry other) {
+        public bool Equals(AdditionalOffsetEntry other) {
           if (ReferenceEquals(other, null)) {
             return false;
           }
@@ -2299,7 +2357,7 @@ namespace LiveSplit.Lazysplits.Proto {
             return true;
           }
           if (CharacterLengthThreshold != other.CharacterLengthThreshold) return false;
-          if (Padding != other.Padding) return false;
+          if (!object.Equals(Offset, other.Offset)) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
@@ -2307,7 +2365,7 @@ namespace LiveSplit.Lazysplits.Proto {
         public override int GetHashCode() {
           int hash = 1;
           if (CharacterLengthThreshold != 0) hash ^= CharacterLengthThreshold.GetHashCode();
-          if (Padding != 0) hash ^= Padding.GetHashCode();
+          if (offset_ != null) hash ^= Offset.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -2325,9 +2383,9 @@ namespace LiveSplit.Lazysplits.Proto {
             output.WriteRawTag(8);
             output.WriteUInt32(CharacterLengthThreshold);
           }
-          if (Padding != 0) {
-            output.WriteRawTag(16);
-            output.WriteSInt32(Padding);
+          if (offset_ != null) {
+            output.WriteRawTag(18);
+            output.WriteMessage(Offset);
           }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
@@ -2340,8 +2398,8 @@ namespace LiveSplit.Lazysplits.Proto {
           if (CharacterLengthThreshold != 0) {
             size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CharacterLengthThreshold);
           }
-          if (Padding != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeSInt32Size(Padding);
+          if (offset_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Offset);
           }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
@@ -2350,15 +2408,18 @@ namespace LiveSplit.Lazysplits.Proto {
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public void MergeFrom(AdditionalPaddingEntry other) {
+        public void MergeFrom(AdditionalOffsetEntry other) {
           if (other == null) {
             return;
           }
           if (other.CharacterLengthThreshold != 0) {
             CharacterLengthThreshold = other.CharacterLengthThreshold;
           }
-          if (other.Padding != 0) {
-            Padding = other.Padding;
+          if (other.offset_ != null) {
+            if (offset_ == null) {
+              offset_ = new global::LiveSplit.Lazysplits.Proto.UScalar2d();
+            }
+            Offset.MergeFrom(other.Offset);
           }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
@@ -2375,8 +2436,11 @@ namespace LiveSplit.Lazysplits.Proto {
                 CharacterLengthThreshold = input.ReadUInt32();
                 break;
               }
-              case 16: {
-                Padding = input.ReadSInt32();
+              case 18: {
+                if (offset_ == null) {
+                  offset_ = new global::LiveSplit.Lazysplits.Proto.UScalar2d();
+                }
+                input.ReadMessage(offset_);
                 break;
               }
             }

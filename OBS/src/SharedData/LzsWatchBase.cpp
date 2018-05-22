@@ -26,6 +26,8 @@ const std::string& LzsWatchBase::GetName(){ return watch_info_.name(); }
 
 Proto::WatchType LzsWatchBase::GetType(){ return watch_info_.type(); }
 
+float LzsWatchBase::GetThreshold(){ return watch_info_.base_threshold(); }
+
 int LzsWatchBase::GetIndex(){ return index_; }
 
 bool LzsWatchBase::FindWatch( const cv::Mat& BGR_frame, const SendableCalibrationProps& calib_props  ){

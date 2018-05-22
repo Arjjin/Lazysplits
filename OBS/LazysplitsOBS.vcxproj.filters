@@ -90,11 +90,11 @@
     <ClInclude Include="..\Protobuf\classes\LzsPipeProtoCpp.pb.h">
       <Filter>Header Files\protobuf</Filter>
     </ClInclude>
-    <ClInclude Include="..\Protobuf\classes\LzsCvDataProtoCpp.pb.h">
-      <Filter>Header Files\protobuf</Filter>
-    </ClInclude>
     <ClInclude Include="src\SharedData\LzsSharedData.h">
       <Filter>Header Files\SharedData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Protobuf\classes\LzsCvDataProtoCpp.pb.h">
+      <Filter>Header Files\protobuf</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

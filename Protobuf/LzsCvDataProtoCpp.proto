@@ -81,6 +81,7 @@ message WatchInfo{
 	UScalar2d base_dimensions = 3;
 	WatchArea area = 4;
 	uint32 additional_area_padding = 11;
+	float base_threshold = 12;
 
 	//color watch specific
 	RGBColor color = 5;

@@ -146,7 +146,10 @@ void LzsCvThread::HandleFrameBuffer(){
 						std::stringstream fn;
 						fn << "./images/found_" << (*watch_it)->GetName().c_str() << ".png";
 
-						blog( LOG_DEBUG, "[lazysplits][%s] %s watch found", thread_name_.c_str(), (*watch_it)->GetName().c_str() );
+						blog( LOG_DEBUG, "[lazysplits][%s] %s watch found for threshold %f", thread_name_.c_str(),
+							(*watch_it)->GetName().c_str(),
+							(*watch_it)->GetThreshold()
+						);
 						cv::imwrite( fn.str().c_str(), BGR_frame, compression_params );
 
 						//advance watch index

@@ -38,37 +38,38 @@ namespace LiveSplit.Lazysplits.Proto {
             "X29mZnNldF9tcxgDIAEoERJCCgd3YXRjaGVzGAQgAygLMjEuTGl2ZVNwbGl0",
             "LkxhenlzcGxpdHMuUHJvdG8uVGFyZ2V0SW5mby5XYXRjaEVudHJ5GkAKCldh",
             "dGNoRW50cnkSDAoEbmFtZRgBIAEoCRIVCg1yZWxhdGl2ZV9wYXRoGAIgASgJ",
-            "Eg0KBWluZGV4GAMgASgNIsMHCglXYXRjaEluZm8SDAoEbmFtZRgBIAEoCRIz",
+            "Eg0KBWluZGV4GAMgASgNItsHCglXYXRjaEluZm8SDAoEbmFtZRgBIAEoCRIz",
             "CgR0eXBlGAIgASgOMiUuTGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8uV2F0",
             "Y2hUeXBlEj4KD2Jhc2VfZGltZW5zaW9ucxgDIAEoCzIlLkxpdmVTcGxpdC5M",
             "YXp5c3BsaXRzLlByb3RvLlVTY2FsYXIyZBI9CgRhcmVhGAQgASgLMi8uTGl2",
             "ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8uV2F0Y2hJbmZvLldhdGNoQXJlYRIf",
-            "ChdhZGRpdGlvbmFsX2FyZWFfcGFkZGluZxgLIAEoDRIzCgVjb2xvchgFIAEo",
-            "CzIkLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3RvLlJHQkNvbG9yEhkKEWlt",
-            "Z19yZWxhdGl2ZV9wYXRoGAYgASgJEkcKEWNoYXJhY3Rlcl9qdXN0aWZ5GAcg",
-            "ASgOMiwuTGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8uQ2hhcmFjdGVySnVz",
-            "dGlmeRJGChFjaGFyYWN0ZXJfel9vcmRlchgIIAEoDjIrLkxpdmVTcGxpdC5M",
-            "YXp5c3BsaXRzLlByb3RvLkNoYXJhY3RlclpPcmRlchJICgpjaGFyYWN0ZXJz",
-            "GAkgAygLMjQuTGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8uV2F0Y2hJbmZv",
-            "LkNoYXJhY3RlckVudHJ5ElYKEWFkZGl0aW9uYWxfb2Zmc2V0GAogAygLMjsu",
-            "TGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8uV2F0Y2hJbmZvLkFkZGl0aW9u",
-            "YWxPZmZzZXRFbnRyeRp0CglXYXRjaEFyZWESMgoDbG9jGAEgASgLMiUuTGl2",
-            "ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8uVVNjYWxhcjJkEjMKBHNpemUYAiAB",
-            "KAsyJS5MaXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90by5VU2NhbGFyMmQaZgoO",
-            "Q2hhcmFjdGVyRW50cnkSFwoPY2hhcmFjdGVyX2luZGV4GAEgASgNEhUKDWNo",
-            "YXJhY3Rlcl92YWwYAiABKAkSEQoJeF9wYWRkaW5nGAMgASgREhEKCXlfcGFk",
-            "ZGluZxgEIAEoERpyChVBZGRpdGlvbmFsT2Zmc2V0RW50cnkSIgoaY2hhcmFj",
-            "dGVyX2xlbmd0aF90aHJlc2hvbGQYASABKA0SNQoGb2Zmc2V0GAIgASgLMiUu",
-            "TGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8uVVNjYWxhcjJkKlkKClRhcmdl",
-            "dFR5cGUSDgoKVEdUX1VOVVNFRBAAEg0KCVRHVF9SRVNFVBABEg0KCVRHVF9T",
-            "VEFSVBACEhAKDFRHVF9TVEFOREFSRBADEgsKB1RHVF9FTkQQBCpTCglXYXRj",
-            "aFR5cGUSDQoJV1RfVU5VU0VEEAASDAoIV1RfQ09MT1IQARITCg9XVF9JTUFH",
-            "RV9TVEFUSUMQAhIUChBXVF9DSEFSQUNURVJfU0VUEAMqaQoQQ2hhcmFjdGVy",
-            "SnVzdGlmeRIcChhDSEFSQUNURVJfSlVTVElGWV9VTlVTRUQQABIaChZDSEFS",
-            "QUNURVJfSlVTVElGWV9MRUZUEAESGwoXQ0hBUkFDVEVSX0pVU1RJRllfUklH",
-            "SFQQAipnCg9DaGFyYWN0ZXJaT3JkZXISFgoSQ0hBUkFDVEVSX1pfVU5VU0VE",
-            "EAASHQoZQ0hBUkFDVEVSX1pfTEVGVF9UT19SSUdIVBABEh0KGUNIQVJBQ1RF",
-            "Ul9aX1JJR0hUX1RPX0xFRlQQAmIGcHJvdG8z"));
+            "ChdhZGRpdGlvbmFsX2FyZWFfcGFkZGluZxgLIAEoDRIWCg5iYXNlX3RocmVz",
+            "aG9sZBgMIAEoAhIzCgVjb2xvchgFIAEoCzIkLkxpdmVTcGxpdC5MYXp5c3Bs",
+            "aXRzLlByb3RvLlJHQkNvbG9yEhkKEWltZ19yZWxhdGl2ZV9wYXRoGAYgASgJ",
+            "EkcKEWNoYXJhY3Rlcl9qdXN0aWZ5GAcgASgOMiwuTGl2ZVNwbGl0Lkxhenlz",
+            "cGxpdHMuUHJvdG8uQ2hhcmFjdGVySnVzdGlmeRJGChFjaGFyYWN0ZXJfel9v",
+            "cmRlchgIIAEoDjIrLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3RvLkNoYXJh",
+            "Y3RlclpPcmRlchJICgpjaGFyYWN0ZXJzGAkgAygLMjQuTGl2ZVNwbGl0Lkxh",
+            "enlzcGxpdHMuUHJvdG8uV2F0Y2hJbmZvLkNoYXJhY3RlckVudHJ5ElYKEWFk",
+            "ZGl0aW9uYWxfb2Zmc2V0GAogAygLMjsuTGl2ZVNwbGl0LkxhenlzcGxpdHMu",
+            "UHJvdG8uV2F0Y2hJbmZvLkFkZGl0aW9uYWxPZmZzZXRFbnRyeRp0CglXYXRj",
+            "aEFyZWESMgoDbG9jGAEgASgLMiUuTGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJv",
+            "dG8uVVNjYWxhcjJkEjMKBHNpemUYAiABKAsyJS5MaXZlU3BsaXQuTGF6eXNw",
+            "bGl0cy5Qcm90by5VU2NhbGFyMmQaZgoOQ2hhcmFjdGVyRW50cnkSFwoPY2hh",
+            "cmFjdGVyX2luZGV4GAEgASgNEhUKDWNoYXJhY3Rlcl92YWwYAiABKAkSEQoJ",
+            "eF9wYWRkaW5nGAMgASgREhEKCXlfcGFkZGluZxgEIAEoERpyChVBZGRpdGlv",
+            "bmFsT2Zmc2V0RW50cnkSIgoaY2hhcmFjdGVyX2xlbmd0aF90aHJlc2hvbGQY",
+            "ASABKA0SNQoGb2Zmc2V0GAIgASgLMiUuTGl2ZVNwbGl0LkxhenlzcGxpdHMu",
+            "UHJvdG8uVVNjYWxhcjJkKlkKClRhcmdldFR5cGUSDgoKVEdUX1VOVVNFRBAA",
+            "Eg0KCVRHVF9SRVNFVBABEg0KCVRHVF9TVEFSVBACEhAKDFRHVF9TVEFOREFS",
+            "RBADEgsKB1RHVF9FTkQQBCpTCglXYXRjaFR5cGUSDQoJV1RfVU5VU0VEEAAS",
+            "DAoIV1RfQ09MT1IQARITCg9XVF9JTUFHRV9TVEFUSUMQAhIUChBXVF9DSEFS",
+            "QUNURVJfU0VUEAMqaQoQQ2hhcmFjdGVySnVzdGlmeRIcChhDSEFSQUNURVJf",
+            "SlVTVElGWV9VTlVTRUQQABIaChZDSEFSQUNURVJfSlVTVElGWV9MRUZUEAES",
+            "GwoXQ0hBUkFDVEVSX0pVU1RJRllfUklHSFQQAipnCg9DaGFyYWN0ZXJaT3Jk",
+            "ZXISFgoSQ0hBUkFDVEVSX1pfVU5VU0VEEAASHQoZQ0hBUkFDVEVSX1pfTEVG",
+            "VF9UT19SSUdIVBABEh0KGUNIQVJBQ1RFUl9aX1JJR0hUX1RPX0xFRlQQAmIG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::LiveSplit.Lazysplits.Proto.TargetType), typeof(global::LiveSplit.Lazysplits.Proto.WatchType), typeof(global::LiveSplit.Lazysplits.Proto.CharacterJustify), typeof(global::LiveSplit.Lazysplits.Proto.CharacterZOrder), }, new pbr::GeneratedClrTypeInfo[] {
@@ -77,7 +78,7 @@ namespace LiveSplit.Lazysplits.Proto {
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameList), global::LiveSplit.Lazysplits.Proto.GameList.Parser, new[]{ "Games" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameList.Types.GameEntry), global::LiveSplit.Lazysplits.Proto.GameList.Types.GameEntry.Parser, new[]{ "Name", "RelativePath" }, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameInfo), global::LiveSplit.Lazysplits.Proto.GameInfo.Parser, new[]{ "Name", "Targets" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameInfo.Types.TargetEntry), global::LiveSplit.Lazysplits.Proto.GameInfo.Types.TargetEntry.Parser, new[]{ "Name", "RelativePath" }, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.TargetInfo), global::LiveSplit.Lazysplits.Proto.TargetInfo.Parser, new[]{ "Name", "Type", "SplitOffsetMs", "Watches" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchEntry), global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchEntry.Parser, new[]{ "Name", "RelativePath", "Index" }, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo), global::LiveSplit.Lazysplits.Proto.WatchInfo.Parser, new[]{ "Name", "Type", "BaseDimensions", "Area", "AdditionalAreaPadding", "Color", "ImgRelativePath", "CharacterJustify", "CharacterZOrder", "Characters", "AdditionalOffset" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.WatchArea), global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.WatchArea.Parser, new[]{ "Loc", "Size" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo), global::LiveSplit.Lazysplits.Proto.WatchInfo.Parser, new[]{ "Name", "Type", "BaseDimensions", "Area", "AdditionalAreaPadding", "BaseThreshold", "Color", "ImgRelativePath", "CharacterJustify", "CharacterZOrder", "Characters", "AdditionalOffset" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.WatchArea), global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.WatchArea.Parser, new[]{ "Loc", "Size" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.CharacterEntry), global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.CharacterEntry.Parser, new[]{ "CharacterIndex", "CharacterVal", "XPadding", "YPadding" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalOffsetEntry), global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalOffsetEntry.Parser, new[]{ "CharacterLengthThreshold", "Offset" }, null, null, null)})
           }));
@@ -1483,6 +1484,7 @@ namespace LiveSplit.Lazysplits.Proto {
       BaseDimensions = other.baseDimensions_ != null ? other.BaseDimensions.Clone() : null;
       Area = other.area_ != null ? other.Area.Clone() : null;
       additionalAreaPadding_ = other.additionalAreaPadding_;
+      baseThreshold_ = other.baseThreshold_;
       Color = other.color_ != null ? other.Color.Clone() : null;
       imgRelativePath_ = other.imgRelativePath_;
       characterJustify_ = other.characterJustify_;
@@ -1549,6 +1551,17 @@ namespace LiveSplit.Lazysplits.Proto {
       get { return additionalAreaPadding_; }
       set {
         additionalAreaPadding_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "base_threshold" field.</summary>
+    public const int BaseThresholdFieldNumber = 12;
+    private float baseThreshold_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float BaseThreshold {
+      get { return baseThreshold_; }
+      set {
+        baseThreshold_ = value;
       }
     }
 
@@ -1640,6 +1653,7 @@ namespace LiveSplit.Lazysplits.Proto {
       if (!object.Equals(BaseDimensions, other.BaseDimensions)) return false;
       if (!object.Equals(Area, other.Area)) return false;
       if (AdditionalAreaPadding != other.AdditionalAreaPadding) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(BaseThreshold, other.BaseThreshold)) return false;
       if (!object.Equals(Color, other.Color)) return false;
       if (ImgRelativePath != other.ImgRelativePath) return false;
       if (CharacterJustify != other.CharacterJustify) return false;
@@ -1657,6 +1671,7 @@ namespace LiveSplit.Lazysplits.Proto {
       if (baseDimensions_ != null) hash ^= BaseDimensions.GetHashCode();
       if (area_ != null) hash ^= Area.GetHashCode();
       if (AdditionalAreaPadding != 0) hash ^= AdditionalAreaPadding.GetHashCode();
+      if (BaseThreshold != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(BaseThreshold);
       if (color_ != null) hash ^= Color.GetHashCode();
       if (ImgRelativePath.Length != 0) hash ^= ImgRelativePath.GetHashCode();
       if (CharacterJustify != 0) hash ^= CharacterJustify.GetHashCode();
@@ -1714,6 +1729,10 @@ namespace LiveSplit.Lazysplits.Proto {
         output.WriteRawTag(88);
         output.WriteUInt32(AdditionalAreaPadding);
       }
+      if (BaseThreshold != 0F) {
+        output.WriteRawTag(101);
+        output.WriteFloat(BaseThreshold);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1736,6 +1755,9 @@ namespace LiveSplit.Lazysplits.Proto {
       }
       if (AdditionalAreaPadding != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AdditionalAreaPadding);
+      }
+      if (BaseThreshold != 0F) {
+        size += 1 + 4;
       }
       if (color_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Color);
@@ -1782,6 +1804,9 @@ namespace LiveSplit.Lazysplits.Proto {
       }
       if (other.AdditionalAreaPadding != 0) {
         AdditionalAreaPadding = other.AdditionalAreaPadding;
+      }
+      if (other.BaseThreshold != 0F) {
+        BaseThreshold = other.BaseThreshold;
       }
       if (other.color_ != null) {
         if (color_ == null) {
@@ -1862,6 +1887,10 @@ namespace LiveSplit.Lazysplits.Proto {
           }
           case 88: {
             AdditionalAreaPadding = input.ReadUInt32();
+            break;
+          }
+          case 101: {
+            BaseThreshold = input.ReadFloat();
             break;
           }
         }

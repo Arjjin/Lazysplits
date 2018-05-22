@@ -1760,6 +1760,12 @@ class WatchInfo : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::google::protobuf::uint32 additional_area_padding() const;
   void set_additional_area_padding(::google::protobuf::uint32 value);
 
+  // float base_threshold = 12;
+  void clear_base_threshold();
+  static const int kBaseThresholdFieldNumber = 12;
+  float base_threshold() const;
+  void set_base_threshold(float value);
+
   // @@protoc_insertion_point(class_scope:Lazysplits.Proto.WatchInfo)
  private:
 
@@ -1775,6 +1781,7 @@ class WatchInfo : public ::google::protobuf::Message /* @@protoc_insertion_point
   int character_justify_;
   int character_z_order_;
   ::google::protobuf::uint32 additional_area_padding_;
+  float base_threshold_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_LzsCvDataProtoCpp_2eproto::TableStruct;
 };
@@ -2917,6 +2924,20 @@ inline void WatchInfo::set_additional_area_padding(::google::protobuf::uint32 va
   
   additional_area_padding_ = value;
   // @@protoc_insertion_point(field_set:Lazysplits.Proto.WatchInfo.additional_area_padding)
+}
+
+// float base_threshold = 12;
+inline void WatchInfo::clear_base_threshold() {
+  base_threshold_ = 0;
+}
+inline float WatchInfo::base_threshold() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.WatchInfo.base_threshold)
+  return base_threshold_;
+}
+inline void WatchInfo::set_base_threshold(float value) {
+  
+  base_threshold_ = value;
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.WatchInfo.base_threshold)
 }
 
 // .Lazysplits.Proto.RGBColor color = 5;

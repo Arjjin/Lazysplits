@@ -383,6 +383,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::WatchInfo, base_dimensions_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::WatchInfo, area_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::WatchInfo, additional_area_padding_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::WatchInfo, base_threshold_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::WatchInfo, color_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::WatchInfo, img_relative_path_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::WatchInfo, character_justify_),
@@ -455,42 +456,42 @@ void AddDescriptorsImpl() {
       "getType\022\027\n\017split_offset_ms\030\003 \001(\021\0228\n\007watc"
       "hes\030\004 \003(\0132\'.Lazysplits.Proto.TargetInfo."
       "WatchEntry\032@\n\nWatchEntry\022\014\n\004name\030\001 \001(\t\022\025"
-      "\n\rrelative_path\030\002 \001(\t\022\r\n\005index\030\003 \001(\r\"\325\006\n"
+      "\n\rrelative_path\030\002 \001(\t\022\r\n\005index\030\003 \001(\r\"\355\006\n"
       "\tWatchInfo\022\014\n\004name\030\001 \001(\t\022)\n\004type\030\002 \001(\0162\033"
       ".Lazysplits.Proto.WatchType\0224\n\017base_dime"
       "nsions\030\003 \001(\0132\033.Lazysplits.Proto.UScalar2"
       "d\0223\n\004area\030\004 \001(\0132%.Lazysplits.Proto.Watch"
       "Info.WatchArea\022\037\n\027additional_area_paddin"
-      "g\030\013 \001(\r\022)\n\005color\030\005 \001(\0132\032.Lazysplits.Prot"
-      "o.RGBColor\022\031\n\021img_relative_path\030\006 \001(\t\022=\n"
-      "\021character_justify\030\007 \001(\0162\".Lazysplits.Pr"
-      "oto.CharacterJustify\022<\n\021character_z_orde"
-      "r\030\010 \001(\0162!.Lazysplits.Proto.CharacterZOrd"
-      "er\022>\n\ncharacters\030\t \003(\0132*.Lazysplits.Prot"
-      "o.WatchInfo.CharacterEntry\022L\n\021additional"
-      "_offset\030\n \003(\01321.Lazysplits.Proto.WatchIn"
-      "fo.AdditionalOffsetEntry\032`\n\tWatchArea\022(\n"
-      "\003loc\030\001 \001(\0132\033.Lazysplits.Proto.UScalar2d\022"
-      ")\n\004size\030\002 \001(\0132\033.Lazysplits.Proto.UScalar"
-      "2d\032f\n\016CharacterEntry\022\027\n\017character_index\030"
-      "\001 \001(\r\022\025\n\rcharacter_val\030\002 \001(\t\022\021\n\tx_paddin"
-      "g\030\003 \001(\021\022\021\n\ty_padding\030\004 \001(\021\032h\n\025Additional"
-      "OffsetEntry\022\"\n\032character_length_threshol"
-      "d\030\001 \001(\r\022+\n\006offset\030\002 \001(\0132\033.Lazysplits.Pro"
-      "to.UScalar2d*Y\n\nTargetType\022\016\n\nTGT_UNUSED"
-      "\020\000\022\r\n\tTGT_RESET\020\001\022\r\n\tTGT_START\020\002\022\020\n\014TGT_"
-      "STANDARD\020\003\022\013\n\007TGT_END\020\004*S\n\tWatchType\022\r\n\t"
-      "WT_UNUSED\020\000\022\014\n\010WT_COLOR\020\001\022\023\n\017WT_IMAGE_ST"
-      "ATIC\020\002\022\024\n\020WT_CHARACTER_SET\020\003*i\n\020Characte"
-      "rJustify\022\034\n\030CHARACTER_JUSTIFY_UNUSED\020\000\022\032"
-      "\n\026CHARACTER_JUSTIFY_LEFT\020\001\022\033\n\027CHARACTER_"
-      "JUSTIFY_RIGHT\020\002*g\n\017CharacterZOrder\022\026\n\022CH"
-      "ARACTER_Z_UNUSED\020\000\022\035\n\031CHARACTER_Z_LEFT_T"
-      "O_RIGHT\020\001\022\035\n\031CHARACTER_Z_RIGHT_TO_LEFT\020\002"
-      "b\006proto3"
+      "g\030\013 \001(\r\022\026\n\016base_threshold\030\014 \001(\002\022)\n\005color"
+      "\030\005 \001(\0132\032.Lazysplits.Proto.RGBColor\022\031\n\021im"
+      "g_relative_path\030\006 \001(\t\022=\n\021character_justi"
+      "fy\030\007 \001(\0162\".Lazysplits.Proto.CharacterJus"
+      "tify\022<\n\021character_z_order\030\010 \001(\0162!.Lazysp"
+      "lits.Proto.CharacterZOrder\022>\n\ncharacters"
+      "\030\t \003(\0132*.Lazysplits.Proto.WatchInfo.Char"
+      "acterEntry\022L\n\021additional_offset\030\n \003(\01321."
+      "Lazysplits.Proto.WatchInfo.AdditionalOff"
+      "setEntry\032`\n\tWatchArea\022(\n\003loc\030\001 \001(\0132\033.Laz"
+      "ysplits.Proto.UScalar2d\022)\n\004size\030\002 \001(\0132\033."
+      "Lazysplits.Proto.UScalar2d\032f\n\016CharacterE"
+      "ntry\022\027\n\017character_index\030\001 \001(\r\022\025\n\rcharact"
+      "er_val\030\002 \001(\t\022\021\n\tx_padding\030\003 \001(\021\022\021\n\ty_pad"
+      "ding\030\004 \001(\021\032h\n\025AdditionalOffsetEntry\022\"\n\032c"
+      "haracter_length_threshold\030\001 \001(\r\022+\n\006offse"
+      "t\030\002 \001(\0132\033.Lazysplits.Proto.UScalar2d*Y\n\n"
+      "TargetType\022\016\n\nTGT_UNUSED\020\000\022\r\n\tTGT_RESET\020"
+      "\001\022\r\n\tTGT_START\020\002\022\020\n\014TGT_STANDARD\020\003\022\013\n\007TG"
+      "T_END\020\004*S\n\tWatchType\022\r\n\tWT_UNUSED\020\000\022\014\n\010W"
+      "T_COLOR\020\001\022\023\n\017WT_IMAGE_STATIC\020\002\022\024\n\020WT_CHA"
+      "RACTER_SET\020\003*i\n\020CharacterJustify\022\034\n\030CHAR"
+      "ACTER_JUSTIFY_UNUSED\020\000\022\032\n\026CHARACTER_JUST"
+      "IFY_LEFT\020\001\022\033\n\027CHARACTER_JUSTIFY_RIGHT\020\002*"
+      "g\n\017CharacterZOrder\022\026\n\022CHARACTER_Z_UNUSED"
+      "\020\000\022\035\n\031CHARACTER_Z_LEFT_TO_RIGHT\020\001\022\035\n\031CHA"
+      "RACTER_Z_RIGHT_TO_LEFT\020\002b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1848);
+      descriptor, 1872);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "LzsCvDataProtoCpp.proto", &protobuf_RegisterTypes);
 }
@@ -3897,6 +3898,7 @@ const int WatchInfo::kTypeFieldNumber;
 const int WatchInfo::kBaseDimensionsFieldNumber;
 const int WatchInfo::kAreaFieldNumber;
 const int WatchInfo::kAdditionalAreaPaddingFieldNumber;
+const int WatchInfo::kBaseThresholdFieldNumber;
 const int WatchInfo::kColorFieldNumber;
 const int WatchInfo::kImgRelativePathFieldNumber;
 const int WatchInfo::kCharacterJustifyFieldNumber;
@@ -3942,8 +3944,8 @@ WatchInfo::WatchInfo(const WatchInfo& from)
     color_ = NULL;
   }
   ::memcpy(&type_, &from.type_,
-    static_cast<size_t>(reinterpret_cast<char*>(&additional_area_padding_) -
-    reinterpret_cast<char*>(&type_)) + sizeof(additional_area_padding_));
+    static_cast<size_t>(reinterpret_cast<char*>(&base_threshold_) -
+    reinterpret_cast<char*>(&type_)) + sizeof(base_threshold_));
   // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.WatchInfo)
 }
 
@@ -3951,8 +3953,8 @@ void WatchInfo::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   img_relative_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&base_dimensions_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&additional_area_padding_) -
-      reinterpret_cast<char*>(&base_dimensions_)) + sizeof(additional_area_padding_));
+      reinterpret_cast<char*>(&base_threshold_) -
+      reinterpret_cast<char*>(&base_dimensions_)) + sizeof(base_threshold_));
 }
 
 WatchInfo::~WatchInfo() {
@@ -4005,8 +4007,8 @@ void WatchInfo::Clear() {
   }
   color_ = NULL;
   ::memset(&type_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&additional_area_padding_) -
-      reinterpret_cast<char*>(&type_)) + sizeof(additional_area_padding_));
+      reinterpret_cast<char*>(&base_threshold_) -
+      reinterpret_cast<char*>(&type_)) + sizeof(base_threshold_));
   _internal_metadata_.Clear();
 }
 
@@ -4171,6 +4173,20 @@ bool WatchInfo::MergePartialFromCodedStream(
         break;
       }
 
+      // float base_threshold = 12;
+      case 12: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(101u /* 101 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &base_threshold_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -4276,6 +4292,11 @@ void WatchInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(11, this->additional_area_padding(), output);
   }
 
+  // float base_threshold = 12;
+  if (this->base_threshold() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(12, this->base_threshold(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -4370,6 +4391,11 @@ void WatchInfo::SerializeWithCachedSizes(
   // uint32 additional_area_padding = 11;
   if (this->additional_area_padding() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(11, this->additional_area_padding(), target);
+  }
+
+  // float base_threshold = 12;
+  if (this->base_threshold() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(12, this->base_threshold(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -4471,6 +4497,11 @@ size_t WatchInfo::ByteSizeLong() const {
         this->additional_area_padding());
   }
 
+  // float base_threshold = 12;
+  if (this->base_threshold() != 0) {
+    total_size += 1 + 4;
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -4529,6 +4560,9 @@ void WatchInfo::MergeFrom(const WatchInfo& from) {
   if (from.additional_area_padding() != 0) {
     set_additional_area_padding(from.additional_area_padding());
   }
+  if (from.base_threshold() != 0) {
+    set_base_threshold(from.base_threshold());
+  }
 }
 
 void WatchInfo::CopyFrom(const ::google::protobuf::Message& from) {
@@ -4568,6 +4602,7 @@ void WatchInfo::InternalSwap(WatchInfo* other) {
   swap(character_justify_, other->character_justify_);
   swap(character_z_order_, other->character_z_order_);
   swap(additional_area_padding_, other->additional_area_padding_);
+  swap(base_threshold_, other->base_threshold_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
