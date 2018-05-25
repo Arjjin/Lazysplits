@@ -5,6 +5,7 @@
 #include "LzsPipeProtoCpp.pb.h"
 
 #include <opencv2\core.hpp>
+#include <opencv2\core\types.hpp>
 
 #include <string>
 #include <vector>
@@ -94,7 +95,7 @@ class LzsWatchCharacterSet : public LzsWatchImageBase{
 
 		void MakeCharMap();
 		void MakeCharInput( const std::string& input_string );
-		std::pair<int,int> GetAdditonalAreaOffset();
+		const cv::Point2i GetAdditonalAreaOffset();
 
 		//const std::string character_input_;
 		std::map<char,Proto::WatchInfo_CharacterEntry> character_map_;

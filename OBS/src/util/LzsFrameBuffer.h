@@ -8,6 +8,7 @@
 
 #include <queue>
 #include <memory>
+#include <map>
 
 namespace Lazysplits{
 
@@ -28,6 +29,9 @@ class LzsFrameBuffer : public LzsObservable{
 		void Clear();
 
 		int FrameCount();
+		bool Full();
+		//void AddFrameThrottle( int frame_num, int throttle_mod );
+		int GetThrottleMod();
 	private :
 		void PushFrameInternal( LzsFrame frame );
 		LzsFrame PeekFrameInternal();
@@ -40,6 +44,8 @@ class LzsFrameBuffer : public LzsObservable{
 		pthread_mutex_t buf_mutex_;
 		const int buf_max_count_;
 		int frame_count_;
+		std::map<int,int> frame_throttles_;
+		int current_throttle_mod_;
 };
 
 } //namespace Lazysplits

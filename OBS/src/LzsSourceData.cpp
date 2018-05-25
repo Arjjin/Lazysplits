@@ -105,9 +105,11 @@ void LzsSourceData::OnSourceRenderVideo( gs_effect_t* effect ){
     obs_source_t *target = obs_filter_get_target(context_);
     obs_source_t *parent = obs_filter_get_parent(context_);
 	
-	if( frame_count_ % 4 == 0 && cv_thread_.IsTargets() ){
-	//if( cv_thread_.IsTargets() ){
-		GrabRenderFrame( target, parent );
+	if( cv_thread_.IsTargets() && !frame_buffer_.Full() ){
+		int throttle_mod = frame_buffer_.GetThrottleMod();
+		if( frame_count_ % throttle_mod == 0 ){
+			GrabRenderFrame( target, parent );
+		}
 	}
 
 	if( calib_data_.is_adjusting_ ){

@@ -74,8 +74,8 @@ namespace LiveSplit.Lazysplits
 
             PipeClient.ThreadCreate();
 
-            VerticalHeight = 10f;
-            HorizontalWidth = 10f;
+            VerticalHeight = 10;
+            HorizontalWidth = 10;
         }
 
         public Control GetSettingsControl(LayoutMode mode)
@@ -95,26 +95,40 @@ namespace LiveSplit.Lazysplits
         {
         }
         
+        /* drawing */
+
         private void DrawBase(Graphics g, Model.LiveSplitState state, float width, float height, LayoutMode mode)
         {
+            DrawBackground(g, width, height);
+        }
+        private void DrawBackground(Graphics g, float width, float height)
+        {
+            if (Settings.BackgroundColor.A > 0
+                || Settings.BackgroundGradient != GradientType.Plain
+                && Settings.BackgroundColor2.A > 0)
+            {
                 var gradientBrush = new LinearGradientBrush(
-                    new PointF(0, 0),
-                    new PointF(0, height),
-                    Color.Aqua,
-                    Color.DarkRed
-                );
-            
+                            new PointF(0, 0),
+                            Settings.BackgroundGradient == GradientType.Horizontal
+                            ? new PointF(width, 0)
+                            : new PointF(0, height),
+                            Settings.BackgroundColor,
+                            Settings.BackgroundGradient == GradientType.Plain
+                            ? Settings.BackgroundColor
+                            : Settings.BackgroundColor2);
                 g.FillRectangle(gradientBrush, 0, 0, width, height);
+            }
         }
         public void DrawHorizontal(Graphics g, Model.LiveSplitState state, float height, Region clipRegion)
         {
             DrawBase(g, state, HorizontalWidth, height, LayoutMode.Horizontal);
         }
-
         public void DrawVertical(System.Drawing.Graphics g, Model.LiveSplitState state, float width, Region clipRegion)
         {
             DrawBase(g, state, width, VerticalHeight, LayoutMode.Vertical);
         }
+
+        /* observer */
 
         public void OnSubjectNotify( string subjectName, string message )
         {
@@ -249,7 +263,6 @@ namespace LiveSplit.Lazysplits
                     {
                         Log.Warn("Could not find target "+msg.TargetName+" for game "+msg.GameName);
                     }
-                    //SendTargetData();
                 break;
             }
         }

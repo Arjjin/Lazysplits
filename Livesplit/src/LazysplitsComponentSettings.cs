@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Drawing;
 using System.Xml;
 using LiveSplit.UI;
 
@@ -19,6 +20,14 @@ namespace LiveSplit.Lazysplits
                 SharedDataRootDirChanged?.Invoke( this, EventArgs.Empty );
             }
         }
+        public Color BackgroundColor { get; set; }
+        public Color BackgroundColor2 { get; set; }
+        public GradientType BackgroundGradient { get; set; }
+        public string GradientString
+        {
+            get { return BackgroundGradient.ToString(); }
+            set { BackgroundGradient = (GradientType)Enum.Parse(typeof(GradientType), value); }
+        }
         
         //NLog
         private static Logger Log = LogManager.GetCurrentClassLogger();
@@ -28,25 +37,41 @@ namespace LiveSplit.Lazysplits
             InitializeComponent();
 
             SharedDataRootDir = string.Empty;
+            BackgroundColor = Color.Transparent;
+            BackgroundColor2 = Color.Transparent;
+            BackgroundGradient = GradientType.Plain;
 
             SharedDataDirText.DataBindings.Add("Text", this, "SharedDataRootDir", false, DataSourceUpdateMode.OnPropertyChanged);
+            btnColor1.DataBindings.Add("BackColor", this, "BackgroundColor", false, DataSourceUpdateMode.OnPropertyChanged);
+            btnColor2.DataBindings.Add("BackColor", this, "BackgroundColor2", false, DataSourceUpdateMode.OnPropertyChanged);
+            cmbGradientType.DataBindings.Add("SelectedItem", this, "GradientString", false, DataSourceUpdateMode.OnPropertyChanged);
         }
         
-        public XmlNode GetSettings(XmlDocument document)
-        {
-            var settings_node = document.CreateElement("Settings");
-            SettingsHelper.CreateSetting( document, settings_node, "Version", "1.0" );
-            SettingsHelper.CreateSetting( document, settings_node, "SharedDataRootDir", SharedDataRootDir );
-
-            return settings_node;
-        }
         public void SetSettings(XmlNode node)
         {
             var element = (XmlElement)node;
             SharedDataRootDir = SettingsHelper.ParseString(element["SharedDataRootDir"]);
+            BackgroundColor = SettingsHelper.ParseColor(element["BackgroundColor"]);
+            BackgroundColor2 = SettingsHelper.ParseColor(element["BackgroundColor2"]);
+            GradientString = SettingsHelper.ParseString(element["BackgroundGradient"]);
         }
-        
+        public XmlNode GetSettings(XmlDocument document)
+        {
+            var parent = document.CreateElement("Settings");
+            CreateSettingsNode(document, parent);
+            return parent;
+        }
+        private int CreateSettingsNode(XmlDocument document, XmlElement parent)
+        {
+            return SettingsHelper.CreateSetting( document, parent, "Version", "1.0" ) ^
+            SettingsHelper.CreateSetting( document, parent, "SharedDataRootDir", SharedDataRootDir ) ^
+            SettingsHelper.CreateSetting(document, parent, "BackgroundColor", BackgroundColor) ^
+            SettingsHelper.CreateSetting(document, parent, "BackgroundColor2", BackgroundColor2) ^
+            SettingsHelper.CreateSetting(document, parent, "BackgroundGradient", BackgroundGradient);
+        }
+
         /* shared data path stuff */
+
         private void ChangeSharedDataText( string text )
         {
             SharedDataDirText.Text = text;
@@ -59,6 +84,20 @@ namespace LiveSplit.Lazysplits
             {
                 SharedDataRootDir = dialog.SelectedPath;
             }
+        }
+
+        /* color stuff */
+        
+        private void ColorButtonClick(object sender, EventArgs e)
+        {
+            SettingsHelper.ColorButtonClick((Button)sender, this);
+        }
+        void cmbGradientType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnColor1.Visible = cmbGradientType.SelectedItem.ToString() != "Plain";
+            btnColor2.DataBindings.Clear();
+            btnColor2.DataBindings.Add("BackColor", this, btnColor1.Visible ? "BackgroundColor2" : "BackgroundColor", false, DataSourceUpdateMode.OnPropertyChanged);
+            GradientString = cmbGradientType.SelectedItem.ToString();
         }
         
     }

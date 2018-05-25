@@ -47,12 +47,37 @@ void LzsFrameBuffer::Clear(){
 }
 
 int LzsFrameBuffer::FrameCount(){
-	int frame_count = 0;
+	int frame_count;
 	LockMutex();
 	frame_count = frame_count_;
 	UnlockMutex();
 
 	return frame_count;
+}
+
+bool LzsFrameBuffer::Full(){
+	int frame_count;
+	LockMutex();
+	frame_count = frame_count_;
+	UnlockMutex();
+
+	return frame_count >= buf_max_count_;
+}
+
+int LzsFrameBuffer::GetThrottleMod(){
+	int frame_count;
+	LockMutex();
+	frame_count = frame_count_;
+	UnlockMutex();
+
+	if( frame_count >= 15 ){
+		return 2;
+	}
+	else if( frame_count >= 25 ){
+		return 4;
+	}
+
+	return 1;
 }
 
 void LzsFrameBuffer::PushFrameInternal( LzsFrame frame ){
