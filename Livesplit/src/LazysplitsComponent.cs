@@ -26,6 +26,7 @@ namespace LiveSplit.Lazysplits
         public IDictionary<string, Action> ContextMenuControls{ get; protected set; }
         private LiveSplitState State;
         private LzsTimerModel Timer;
+        private bool SettingsShouldInit = true;
         
         //NLog
         private static Logger Log = LogManager.GetCurrentClassLogger();
@@ -49,13 +50,17 @@ namespace LiveSplit.Lazysplits
 
         public LazysplitsComponent(LiveSplitState state)
         {
+            VerticalHeight = 10;
+            HorizontalWidth = 10;
+
             Settings = new LazysplitsComponentSettings();
             State = state;
+            //Timer = new LzsTimerModel();
             Timer = new LzsTimerModel();
             Timer.CurrentState = State;
 
             ContextMenuControls = (IDictionary<string, Action>) new Dictionary<string, Action>();
-            //ContextMenuControls.Add("Lazysplits : Start pipe", new Action(this.StartPipeClient));
+            ContextMenuControls.Add( "Lazysplits : Start pipe", new Action(this.StartPipeClient) );
 
             PipeClient = new LzsPipeClient( "Pipe client thread", "lazysplits_pipe", this );
             bPipeConnected = false;
@@ -71,28 +76,40 @@ namespace LiveSplit.Lazysplits
             State.OnStart += OnSplitControlChanged;
             State.OnSkipSplit += OnSplitControlChanged;
             State.OnUndoSplit += OnSplitControlChanged;
-
-            PipeClient.ThreadCreate();
-
-            VerticalHeight = 10;
-            HorizontalWidth = 10;
+            
+            Log.Debug( "OpenPipeOnStart : "+Settings.OpenPipeOnStart );
+            if( Settings.OpenPipeOnStart )
+            {
+                //StartPipeClient();
+            }
         }
 
         public Control GetSettingsControl(LayoutMode mode)
         {
-            return this.Settings;
+            return Settings;
         }
         public System.Xml.XmlNode GetSettings(System.Xml.XmlDocument document)
         {
-            return this.Settings.GetSettings(document);
+            return Settings.GetSettings(document);
         }
         public void SetSettings(System.Xml.XmlNode settings)
         {
-            this.Settings.SetSettings(settings);
+            Settings.SetSettings(settings);
+
+            if( SettingsShouldInit)
+            {
+                if( Settings.OpenPipeOnStart )
+                {
+                    StartPipeClient();
+                }
+
+                SettingsShouldInit = false;
+            }
         }
 
         public void Update(IInvalidator invalidator, Model.LiveSplitState state, float width, float height, LayoutMode mode)
         {
+
         }
         
         /* drawing */
@@ -248,14 +265,10 @@ namespace LiveSplit.Lazysplits
                         {
                             case TargetType.TgtStart :
                                 Timer.Reset();
-                                Timer.Start(
-                                    new TimeSpan( 0, 0, 0, 0, total_offset )
-                                );
+                                Timer.AdjustedStart(total_offset);
                             break;
                             case TargetType.TgtStandard :
-                                Timer.Split(
-                                    new TimeSpan( 0, 0, 0, 0, total_offset )
-                                );
+                                Timer.AdjustedSplit(total_offset);
                             break;
                         }
                     }
@@ -318,6 +331,11 @@ namespace LiveSplit.Lazysplits
                 PipeClient.ThreadJoin();
             }
             Log.Debug("Component disposed");
+        }
+
+        public int GetSettingsHashCode()
+        {
+            return Settings.GetSettingsHashCode();
         }
     }
 } //namespace LiveSplit.Lazysplits
