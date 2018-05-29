@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.IO.Pipes;
 
 using NLog;
+using LiveSplit.Lazysplits;
 
 namespace LiveSplit.Lazysplits.Pipe
 {
@@ -79,7 +80,7 @@ namespace LiveSplit.Lazysplits.Pipe
             return false;
         }
 
-        public void WaitOnTasks()
+        public void WaitOnTasks( LazysplitsComponent lzsComponent )
         {
             if( PipeTaskList.Count > 0 )
             {
@@ -102,10 +103,20 @@ namespace LiveSplit.Lazysplits.Pipe
                     int SignalledTaskIndex = Task.WaitAny( TaskArray.ToArray(), WaitTokenSource.Token );
                     bIsWaiting = false;
                     //wait finished, handle result
-                    PipeTaskList[SignalledTaskIndex].HandleTaskResult();
+                    IPipeTask CurrentTask = PipeTaskList[SignalledTaskIndex];
+                    CurrentTask.HandleTaskResult();
+                    //handle status icons if enabled from our LiveSplit component...really ugly
+                    if( lzsComponent.Settings.bStatusIconsEnabled )
+                    {
+                        if( CurrentTask.GetTask().Status == TaskStatus.RanToCompletion )
+                        {
+                            if( CurrentTask.GetTaskType() == PipeTaskType.Read ){ lzsComponent.MsgPipeData(LsPipeDataType.Received); }
+                            else if( CurrentTask.GetTaskType() == PipeTaskType.Write ){ lzsComponent.MsgPipeData(LsPipeDataType.Sent); }
+                        }
+                    }
 
                     //dispose of task and remove from list
-                    Log.Trace( "Removing {0} from list", Enum.GetName( typeof(PipeTaskType), PipeTaskList[SignalledTaskIndex].GetTaskType() ) );
+                    Log.Trace( "Removing {0} from list", Enum.GetName( typeof(PipeTaskType), CurrentTask.GetTaskType() ) );
                     PipeTaskList.RemoveAt(SignalledTaskIndex);
                 }
                 catch(OperationCanceledException){ Log.Trace("Task wait cancelled"); }

@@ -52,9 +52,10 @@ namespace LiveSplit.Lazysplits.SharedData
                     TextReader FileReader = File.OpenText(GameListPath);
                     JsonParser Parser = new JsonParser(JsonParser.Settings.Default);
                     GameList = Parser.Parse<GameList>(FileReader);
+                    Log.Info("GameList parsed from ("+GameListPath+")");
                 }
-                catch( InvalidJsonException e ){ Log.Error("protobuf parsing error : "+e.Message); }
-                catch( InvalidProtocolBufferException e ) {  Log.Error("protobuf parsing error : "+e.Message); }
+                catch( InvalidJsonException e ){ Log.Error("error parsing GameList : "+e.Message); }
+                catch( InvalidProtocolBufferException e ) {  Log.Error("error parsing GameList : "+e.Message); }
             }
             else
             {
@@ -122,11 +123,11 @@ namespace LiveSplit.Lazysplits.SharedData
                     JsonParser Parser = new JsonParser(JsonParser.Settings.Default);
                     GameInfo = Parser.Parse<GameInfo>(FileReader);
                     bAvailable = true;
-                    Log.Debug(GameInfo.Name+" parsed from ["+GameInfoPath+"]");
+                    Log.Info(GameInfo.Name+" parsed from ("+GameInfoPath+")");
 
                 }
-                catch( InvalidJsonException e ){ Log.Error("protobuf parsing error : "+e.Message); }
-                catch( InvalidProtocolBufferException e ) {  Log.Error("protobuf parsing error : "+e.Message); }
+                catch( InvalidJsonException e ){ Log.Error("error parsing GameInfo : "+e.Message); }
+                catch( InvalidProtocolBufferException e ) {  Log.Error("error parsing GameInfo : "+e.Message); }
             }
             else
             {
@@ -153,11 +154,11 @@ namespace LiveSplit.Lazysplits.SharedData
                             return true;
                         }
                         catch( InvalidJsonException e ){
-                            Log.Error("protobuf parsing error : "+e.Message);
+                            Log.Error("Error parsing Target : "+e.Message);
                             return false;
                         }
                         catch( InvalidProtocolBufferException e ){
-                            Log.Error("protobuf parsing error : "+e.Message);
+                            Log.Error("Error parsing Target : "+e.Message);
                             return false;
                         }
                     }
@@ -222,7 +223,7 @@ namespace LiveSplit.Lazysplits.SharedData
             {
                 SetUnavailable();
 
-                Log.Debug("Error parsing XML : "+e.Message);
+                Log.Debug("Error parsing split XML : "+e.Message);
             }
         }
         
@@ -290,7 +291,7 @@ namespace LiveSplit.Lazysplits.SharedData
                 }
                 catch( Exception e )
                 {
-                    Log.Debug("Error parsing XML : "+e.Message);
+                    Log.Debug("Error parsing split XML : "+e.Message);
                 }
             }
 

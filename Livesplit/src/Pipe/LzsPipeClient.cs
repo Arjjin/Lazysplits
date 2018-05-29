@@ -89,7 +89,7 @@ namespace LiveSplit.Lazysplits.Pipe
                 }
 
                 //wait on tasks
-                TaskManager.WaitOnTasks();
+                TaskManager.WaitOnTasks( LzsComponent );
                 
                 //if our connection status has just changed, let our livesplits component know
                 if( PipeStream.IsConnected != bConnectionStateLastLoop )

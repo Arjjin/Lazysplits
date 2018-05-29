@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Threading;
 
 using NLog;
@@ -21,22 +22,7 @@ namespace LiveSplit.Lazysplits
 {
     public class LazysplitsComponent : IComponent, ILzsObserver
     {
-        public LazysplitsComponentSettings Settings { get; set; }
-        public string ComponentName{ get { return "Lazysplits"; } }
-        public IDictionary<string, Action> ContextMenuControls{ get; protected set; }
-        private LiveSplitState State;
-        private LzsTimerModel Timer;
-        private bool SettingsShouldInit = true;
-        
-        //NLog
-        private static Logger Log = LogManager.GetCurrentClassLogger();
-
-        //pipe stuff
-        private LzsPipeClient PipeClient;
-        private bool bPipeConnected;
-        private LzsMessageQueue<LsMsg> MsgQueue;
-
-        private LzsSharedDataManager SharedDataManager;
+        public GraphicsCache Cache { get; set; }
 
         public float VerticalHeight { get; set; }
         public float MinimumHeight { get; set; }
@@ -48,14 +34,33 @@ namespace LiveSplit.Lazysplits
         public float PaddingBottom { get; set; }
         public float PaddingRight { get; set; }
 
+        public LazysplitsComponentSettings Settings { get; set; }
+        public string ComponentName{ get { return "Lazysplits"; } }
+        public IDictionary<string, Action> ContextMenuControls{ get; protected set; }
+        private LiveSplitState State;
+        private LzsTimerModel Timer;
+        private bool bSettingsShouldInit = true;
+        
+        //NLog
+        private static Logger Log = LogManager.GetCurrentClassLogger();
+        
+        private LzsPipeClient PipeClient;
+        private bool bPipeConnected;
+        private LzsMessageQueue<LsMsg> MsgQueue;
+        
+        private LzsSharedDataManager SharedDataManager;
+        private LzsStatusIcons StatusIcons;
+        
         public LazysplitsComponent(LiveSplitState state)
         {
-            VerticalHeight = 10;
-            HorizontalWidth = 10;
+            MinimumWidth = 60;
+            MinimumHeight = 60;
+            VerticalHeight = 60;
+            HorizontalWidth = 60;
+            Cache = new GraphicsCache();
 
             Settings = new LazysplitsComponentSettings();
             State = state;
-            //Timer = new LzsTimerModel();
             Timer = new LzsTimerModel();
             Timer.CurrentState = State;
 
@@ -68,20 +73,17 @@ namespace LiveSplit.Lazysplits
             MsgQueue.AttachObserver(this);
 
             SharedDataManager = new LzsSharedDataManager(State);
+            StatusIcons = new LzsStatusIcons();
 
             Settings.SharedDataRootDirChanged += OnRootDirChanged;
+            Settings.StatusIconsEnabledChanged += OnStatusIconsChanged;
             State.RunManuallyModified += OnRunChanged;
 
+            State.OnReset += OnSplitReset;
             State.OnSplit += OnSplitControlChanged;
             State.OnStart += OnSplitControlChanged;
             State.OnSkipSplit += OnSplitControlChanged;
             State.OnUndoSplit += OnSplitControlChanged;
-            
-            Log.Debug( "OpenPipeOnStart : "+Settings.OpenPipeOnStart );
-            if( Settings.OpenPipeOnStart )
-            {
-                //StartPipeClient();
-            }
         }
 
         public Control GetSettingsControl(LayoutMode mode)
@@ -90,26 +92,52 @@ namespace LiveSplit.Lazysplits
         }
         public System.Xml.XmlNode GetSettings(System.Xml.XmlDocument document)
         {
+            Log.Debug("GetSettings");
             return Settings.GetSettings(document);
         }
         public void SetSettings(System.Xml.XmlNode settings)
         {
+            Log.Debug("SetSettings");
             Settings.SetSettings(settings);
-
-            if( SettingsShouldInit)
+        }
+        private void SettingsInit()
+        {
+            if( Settings.bOpenPipeOnStart )
             {
-                if( Settings.OpenPipeOnStart )
-                {
-                    StartPipeClient();
-                }
-
-                SettingsShouldInit = false;
+                StartPipeClient();
             }
+
+            bSettingsShouldInit = false;
         }
 
         public void Update(IInvalidator invalidator, Model.LiveSplitState state, float width, float height, LayoutMode mode)
         {
+            State = state;
 
+            if(bSettingsShouldInit)
+            {
+                SettingsInit();
+            }
+            
+            if( Settings.bStatusIconsEnabled )
+            { 
+                StatusIcons.Update();
+
+                Cache.Restart();
+                Cache["IconPadding"] = Settings.IconPadding;
+                Cache["IconMargin"] = Settings.IconMargin;
+                Cache["ConnectionIconColor"] = Settings.ConnectionIconColor;
+                Cache["IncomingDataIconColor"] = Settings.IncomingDataIconColor;
+                Cache["OutgoingDataIconColor"] = Settings.OutgoingDataIconColor;
+                Cache["WarningIconColor"] = Settings.WarningIconColor;
+                Cache["ErrorIconColor"] = Settings.ErrorIconColor;
+                Cache["InactiveIconColor"] = Settings.InactiveIconColor;
+            }
+
+            if ( invalidator != null && ( Cache.HasChanged || Settings.bStatusIconsEnabled && StatusIcons.CacheHasChanged() ) )
+            {
+               invalidator.Invalidate(0, 0, width, height);
+            }
         }
         
         /* drawing */
@@ -117,6 +145,16 @@ namespace LiveSplit.Lazysplits
         private void DrawBase(Graphics g, Model.LiveSplitState state, float width, float height, LayoutMode mode)
         {
             DrawBackground(g, width, height);
+            if( Settings.bStatusIconsEnabled ){
+                if( mode == LayoutMode.Vertical )
+                {
+                    StatusIcons.DrawStatusVertical( g, Settings, width, VerticalHeight );
+                }
+                else
+                {
+                    StatusIcons.DrawStatusHorizontal( g, Settings, HorizontalWidth, height );
+                }
+            }
         }
         private void DrawBackground(Graphics g, float width, float height)
         {
@@ -142,7 +180,7 @@ namespace LiveSplit.Lazysplits
         }
         public void DrawVertical(System.Drawing.Graphics g, Model.LiveSplitState state, float width, Region clipRegion)
         {
-            DrawBase(g, state, width, VerticalHeight, LayoutMode.Vertical);
+            DrawBase( g, state, width, VerticalHeight, LayoutMode.Vertical );
         }
 
         /* observer */
@@ -190,13 +228,16 @@ namespace LiveSplit.Lazysplits
         }
 
         /* message queue stuff */
-
-        public void MsgPipeStatus(bool connected)
+        
+        public void MsgPipeStatus( bool connected )
         {
             MsgQueue.Enqueue( new LsPipeStatusMsg(connected) );
         }
-
-        public void MsgProtobuf(byte[] serializedProtobuf)
+        public void MsgPipeData( LsPipeDataType dataType )
+        {
+            MsgQueue.Enqueue( new LsPipeDataMsg(dataType) );
+        }
+        public void MsgProtobuf( byte[] serializedProtobuf )
         {
             MsgQueue.Enqueue( new LsProtobufMsg(serializedProtobuf) );
         }
@@ -210,19 +251,31 @@ namespace LiveSplit.Lazysplits
                 {
                     if( Msg.Type == LsMsgType.PipeStatus )
                     {
-                        LsPipeStatusMsg PipeStatusMsg = (LsPipeStatusMsg)Msg;
-                        /*
-                        if( bPipeConnected = PipeStatusMsg.Connected == true )
-                        {
-                            SendTargetData();
-                        }
-                        */
+                        var PipeStatusMsg = (LsPipeStatusMsg)Msg;
                         bPipeConnected = PipeStatusMsg.Connected;
+
+                        if(bPipeConnected){ StatusIcons.Connected(); }
+                        else{ StatusIcons.Disconnected(); }
+
                         Log.Debug("Pipe "+ (bPipeConnected ? "Connected" : "Disconnected") );
+                    }
+                    else if ( Msg.Type == LsMsgType.PipeData )
+                    {
+                        var PipeDataMsg = (LsPipeDataMsg)Msg;
+                        if( PipeDataMsg.DataType == LsPipeDataType.Received )
+                        {
+                            StatusIcons.MessageReceived();
+                            Log.Debug("Message received");
+                        }
+                        else if( PipeDataMsg.DataType == LsPipeDataType.Sent )
+                        {
+                            StatusIcons.MessageSent();
+                            Log.Debug("Message sent");
+                        }
                     }
                     else if ( Msg.Type == LsMsgType.Protobuf )
                     {
-                        LsProtobufMsg ProtobufMsg = (LsProtobufMsg) Msg;
+                        var ProtobufMsg = (LsProtobufMsg) Msg;
                         CppMessage ObsMsg;
                         try
                         {
@@ -263,8 +316,11 @@ namespace LiveSplit.Lazysplits
 
                         switch( TargetInfo.Type )
                         {
+                            case TargetType.TgtReset :
+                                if( State.CurrentPhase != TimerPhase.NotRunning ){ Timer.Reset(); }
+                            break;
                             case TargetType.TgtStart :
-                                Timer.Reset();
+                                if( State.CurrentPhase != TimerPhase.NotRunning ){ Timer.Reset(); }
                                 Timer.AdjustedStart(total_offset);
                             break;
                             case TargetType.TgtStandard :
@@ -307,8 +363,12 @@ namespace LiveSplit.Lazysplits
                 SendTargetData();
             }
         }
-
-        public void OnRunChanged(object sender, EventArgs e)
+        public void OnStatusIconsChanged( object sender, EventArgs e )
+        {
+            VerticalHeight = Settings.bStatusIconsEnabled ? 20 : 0;
+            HorizontalWidth = Settings.bStatusIconsEnabled ? 20 : 0;
+        }
+        public void OnRunChanged( object sender, EventArgs e )
         {
             //if we successfully updated data and are connected, resend targets
             if( SharedDataManager.RunChanged() && bPipeConnected  )
@@ -316,8 +376,11 @@ namespace LiveSplit.Lazysplits
                 SendTargetData();
             }
         }
-        
-        public void OnSplitControlChanged(object sender, EventArgs e)
+        public void OnSplitReset( object sender, TimerPhase timerPhase )
+        {
+            SendTargetData();
+        }
+        public void OnSplitControlChanged( object sender, EventArgs e )
         {
             SendTargetData();
         }

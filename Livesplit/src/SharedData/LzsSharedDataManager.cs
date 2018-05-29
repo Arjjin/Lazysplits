@@ -36,13 +36,13 @@ namespace LiveSplit.Lazysplits.SharedData
             if( RootDir != path )
             {
                 RootDir = path;
+                Log.Info("New root directory ("+path+")");
                 GameList.ParseFromDir(RootDir);
                 if( GameList.GameExists(State.Run.GameName) )
                 {
                     string GamePath = RootDir+GameList.GetGameDir(State.Run.GameName);
                     CurrentGame.ParseFromDir(GamePath);
                 }
-
                 return true;
             }
             return false;

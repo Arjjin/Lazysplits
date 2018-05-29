@@ -74,6 +74,7 @@
       <DependentUpon>LazysplitsComponentSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="src\LazysplitsComponent.cs" />
+    <Compile Include="src\LzsStatusIcons.cs" />
     <Compile Include="src\Pipe\LszPipeTaskManager.cs" />
     <Compile Include="src\LzsTimerModel.cs" />
     <Compile Include="src\Protobuf\LzsCvDataProtoCs.cs" />

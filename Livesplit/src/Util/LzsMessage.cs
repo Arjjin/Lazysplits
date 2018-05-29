@@ -1,7 +1,8 @@
 ﻿
 namespace LiveSplit.Lazysplits
 {
-    enum LsMsgType { None, PipeStatus, Protobuf }
+    public enum LsMsgType { None, PipeStatus, PipeData, Protobuf }
+    public enum LsPipeDataType { None, Sent, Received }
 
     abstract class LsMsg
     {
@@ -15,6 +16,15 @@ namespace LiveSplit.Lazysplits
         public LsPipeStatusMsg( bool connected ) : base(LsMsgType.PipeStatus)
         {
             Connected = connected;
+        }
+    }
+
+    class LsPipeDataMsg : LsMsg
+    {
+        public LsPipeDataType DataType { get; private set; }
+        public LsPipeDataMsg( LsPipeDataType dataType ) : base(LsMsgType.PipeData)
+        {
+            DataType = dataType;
         }
     }
 
