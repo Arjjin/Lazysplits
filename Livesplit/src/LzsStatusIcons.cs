@@ -112,15 +112,15 @@ namespace LiveSplit.Lazysplits
             Cache = new GraphicsCache();
             Icons = new List<LzsStatusIcon>();
             
-            ImageConnected = new LzsStatusIcon( "components/lazysplits_icons/icon_connected.png", false, 0 );
+            ImageConnected = new LzsStatusIcon( "components/Lazysplits/icons/icon_connected.png", false, 0 );
             Icons.Add(ImageConnected);
-            ImageInData = new LzsStatusIcon( "components/lazysplits_icons/icon_message_received.png", false, 100 );
+            ImageInData = new LzsStatusIcon( "components/Lazysplits/icons/icon_message_received.png", false, 100 );
             Icons.Add(ImageInData);
-            ImageOutData = new LzsStatusIcon( "components/lazysplits_icons/icon_message_sent.png", false, 100 );
+            ImageOutData = new LzsStatusIcon( "components/Lazysplits/icons/icon_message_sent.png", false, 100 );
             Icons.Add(ImageOutData);
-            ImageWarning = new LzsStatusIcon( "components/lazysplits_icons/icon_warning.png", false, 3000 );
+            ImageWarning = new LzsStatusIcon( "components/Lazysplits/icons/icon_warning.png", false, 3000 );
             Icons.Add(ImageWarning);
-            ImageError = new LzsStatusIcon( "components/lazysplits_icons/icon_error.png", false, 3000 );
+            ImageError = new LzsStatusIcon( "components/Lazysplits/icons/icon_error.png", false, 3000 );
             Icons.Add(ImageError);
         }
         
@@ -213,7 +213,7 @@ namespace LiveSplit.Lazysplits
         public void Update()
         {
             foreach( var icon in Icons ){
-                if (icon.bImageValid){ icon.Update(); }
+                if(icon.bImageValid){ icon.Update(); }
             }
         }
         

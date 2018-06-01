@@ -26,21 +26,17 @@ namespace LiveSplit.Lazysplits.Proto
             return OutMsg.ToByteArray();
         }
 
-        public static byte[] NewTargetMsg( string sharedDataDir, string gameName, string targetName, List<KeyValuePair<string,string>> watchVariables  )
+        public static byte[] NewTargetMsg( string sharedDataDir, string gameName, List<CsMessage.Types.Target> targets  )
         {
             CsMessage OutMsg = new CsMessage();
             OutMsg.Id = GetMsgId();
-            OutMsg.Type = CsMessage.Types.MessageType.NewTarget;
+            OutMsg.Type = CsMessage.Types.MessageType.NewTargets;
             OutMsg.SharedDataDir = sharedDataDir;
             OutMsg.GameName = gameName;
-            OutMsg.TargetName = targetName;
 
-            foreach( KeyValuePair<string,string> watchVariable in watchVariables )
+            foreach( var target in targets )
             {
-                CsMessage.Types.WatchVariable ProtoWatchVariable = new CsMessage.Types.WatchVariable();
-                ProtoWatchVariable.Name = watchVariable.Key;
-                ProtoWatchVariable.Value = watchVariable.Value;
-                OutMsg.WatchVariables.Add(ProtoWatchVariable);
+                OutMsg.Targets.Add(target);
             }
 
             return OutMsg.ToByteArray();

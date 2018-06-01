@@ -10,10 +10,11 @@
 namespace Lazysplits{
 namespace SharedData{
 
-LzsWatchBase::LzsWatchBase( const Proto::WatchInfo& watch_info, int watch_index, std::string watch_dir ){
+LzsWatchBase::LzsWatchBase( const Proto::WatchInfo& watch_info, int watch_index, const std::string& watch_dir, const std::string& watch_var ){
 	watch_info_ = watch_info;
 	index_ = watch_index;
 	watch_dir_ = watch_dir;
+	watch_var_ = watch_var;
 	current_source_width_ = 0;
 	current_source_height_ = 0;
 

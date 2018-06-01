@@ -54,7 +54,7 @@ class LzsCvThread : public LzsThread, public LzsObserver{
 		void HandleProtobuf( std::shared_ptr<CvMsg> msg );
 		void HandleCalibrationData( std::shared_ptr<CvMsg> msg );
 
-		void NewTarget( Proto::CsMessage& msg );
+		void NewTargets( Proto::CsMessage& msg );
 
 		obs_source_t* context_;
 

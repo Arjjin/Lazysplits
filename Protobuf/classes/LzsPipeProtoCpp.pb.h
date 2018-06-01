@@ -39,7 +39,7 @@ namespace protobuf_LzsPipeProtoCpp_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[3];
+  static const ::google::protobuf::internal::ParseTable schema[4];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -54,6 +54,9 @@ extern CppMessageDefaultTypeInternal _CppMessage_default_instance_;
 class CsMessage;
 class CsMessageDefaultTypeInternal;
 extern CsMessageDefaultTypeInternal _CsMessage_default_instance_;
+class CsMessage_Target;
+class CsMessage_TargetDefaultTypeInternal;
+extern CsMessage_TargetDefaultTypeInternal _CsMessage_Target_default_instance_;
 class CsMessage_WatchVariable;
 class CsMessage_WatchVariableDefaultTypeInternal;
 extern CsMessage_WatchVariableDefaultTypeInternal _CsMessage_WatchVariable_default_instance_;
@@ -63,6 +66,7 @@ namespace google {
 namespace protobuf {
 template<> ::Lazysplits::Proto::CppMessage* Arena::CreateMaybeMessage<::Lazysplits::Proto::CppMessage>(Arena*);
 template<> ::Lazysplits::Proto::CsMessage* Arena::CreateMaybeMessage<::Lazysplits::Proto::CsMessage>(Arena*);
+template<> ::Lazysplits::Proto::CsMessage_Target* Arena::CreateMaybeMessage<::Lazysplits::Proto::CsMessage_Target>(Arena*);
 template<> ::Lazysplits::Proto::CsMessage_WatchVariable* Arena::CreateMaybeMessage<::Lazysplits::Proto::CsMessage_WatchVariable>(Arena*);
 }  // namespace protobuf
 }  // namespace google
@@ -94,13 +98,13 @@ inline bool CppMessage_MessageType_Parse(
 enum CsMessage_MessageType {
   CsMessage_MessageType_NONE = 0,
   CsMessage_MessageType_CLEAR_TARGETS = 1,
-  CsMessage_MessageType_NEW_TARGET = 2,
+  CsMessage_MessageType_NEW_TARGETS = 2,
   CsMessage_MessageType_CsMessage_MessageType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   CsMessage_MessageType_CsMessage_MessageType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool CsMessage_MessageType_IsValid(int value);
 const CsMessage_MessageType CsMessage_MessageType_MessageType_MIN = CsMessage_MessageType_NONE;
-const CsMessage_MessageType CsMessage_MessageType_MessageType_MAX = CsMessage_MessageType_NEW_TARGET;
+const CsMessage_MessageType CsMessage_MessageType_MessageType_MAX = CsMessage_MessageType_NEW_TARGETS;
 const int CsMessage_MessageType_MessageType_ARRAYSIZE = CsMessage_MessageType_MessageType_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* CsMessage_MessageType_descriptor();
@@ -392,9 +396,9 @@ class CsMessage_WatchVariable : public ::google::protobuf::Message /* @@protoc_i
 
   // accessors -------------------------------------------------------
 
-  // string name = 1;
+  // string name = 2;
   void clear_name();
-  static const int kNameFieldNumber = 1;
+  static const int kNameFieldNumber = 2;
   const ::std::string& name() const;
   void set_name(const ::std::string& value);
   #if LANG_CXX11
@@ -406,9 +410,9 @@ class CsMessage_WatchVariable : public ::google::protobuf::Message /* @@protoc_i
   ::std::string* release_name();
   void set_allocated_name(::std::string* name);
 
-  // string value = 2;
+  // string value = 3;
   void clear_value();
-  static const int kValueFieldNumber = 2;
+  static const int kValueFieldNumber = 3;
   const ::std::string& value() const;
   void set_value(const ::std::string& value);
   #if LANG_CXX11
@@ -420,12 +424,143 @@ class CsMessage_WatchVariable : public ::google::protobuf::Message /* @@protoc_i
   ::std::string* release_value();
   void set_allocated_value(::std::string* value);
 
+  // uint32 index = 1;
+  void clear_index();
+  static const int kIndexFieldNumber = 1;
+  ::google::protobuf::uint32 index() const;
+  void set_index(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:Lazysplits.Proto.CsMessage.WatchVariable)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::internal::ArenaStringPtr value_;
+  ::google::protobuf::uint32 index_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_LzsPipeProtoCpp_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class CsMessage_Target : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Lazysplits.Proto.CsMessage.Target) */ {
+ public:
+  CsMessage_Target();
+  virtual ~CsMessage_Target();
+
+  CsMessage_Target(const CsMessage_Target& from);
+
+  inline CsMessage_Target& operator=(const CsMessage_Target& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  CsMessage_Target(CsMessage_Target&& from) noexcept
+    : CsMessage_Target() {
+    *this = ::std::move(from);
+  }
+
+  inline CsMessage_Target& operator=(CsMessage_Target&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const CsMessage_Target& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const CsMessage_Target* internal_default_instance() {
+    return reinterpret_cast<const CsMessage_Target*>(
+               &_CsMessage_Target_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  void Swap(CsMessage_Target* other);
+  friend void swap(CsMessage_Target& a, CsMessage_Target& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline CsMessage_Target* New() const final {
+    return CreateMaybeMessage<CsMessage_Target>(NULL);
+  }
+
+  CsMessage_Target* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<CsMessage_Target>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const CsMessage_Target& from);
+  void MergeFrom(const CsMessage_Target& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(CsMessage_Target* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .Lazysplits.Proto.CsMessage.WatchVariable watch_variables = 2;
+  int watch_variables_size() const;
+  void clear_watch_variables();
+  static const int kWatchVariablesFieldNumber = 2;
+  ::Lazysplits::Proto::CsMessage_WatchVariable* mutable_watch_variables(int index);
+  ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::CsMessage_WatchVariable >*
+      mutable_watch_variables();
+  const ::Lazysplits::Proto::CsMessage_WatchVariable& watch_variables(int index) const;
+  ::Lazysplits::Proto::CsMessage_WatchVariable* add_watch_variables();
+  const ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::CsMessage_WatchVariable >&
+      watch_variables() const;
+
+  // string target_name = 1;
+  void clear_target_name();
+  static const int kTargetNameFieldNumber = 1;
+  const ::std::string& target_name() const;
+  void set_target_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_target_name(::std::string&& value);
+  #endif
+  void set_target_name(const char* value);
+  void set_target_name(const char* value, size_t size);
+  ::std::string* mutable_target_name();
+  ::std::string* release_target_name();
+  void set_allocated_target_name(::std::string* target_name);
+
+  // @@protoc_insertion_point(class_scope:Lazysplits.Proto.CsMessage.Target)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::CsMessage_WatchVariable > watch_variables_;
+  ::google::protobuf::internal::ArenaStringPtr target_name_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_LzsPipeProtoCpp_2eproto::TableStruct;
 };
@@ -466,7 +601,7 @@ class CsMessage : public ::google::protobuf::Message /* @@protoc_insertion_point
                &_CsMessage_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   void Swap(CsMessage* other);
   friend void swap(CsMessage& a, CsMessage& b) {
@@ -517,14 +652,15 @@ class CsMessage : public ::google::protobuf::Message /* @@protoc_insertion_point
   // nested types ----------------------------------------------------
 
   typedef CsMessage_WatchVariable WatchVariable;
+  typedef CsMessage_Target Target;
 
   typedef CsMessage_MessageType MessageType;
   static const MessageType NONE =
     CsMessage_MessageType_NONE;
   static const MessageType CLEAR_TARGETS =
     CsMessage_MessageType_CLEAR_TARGETS;
-  static const MessageType NEW_TARGET =
-    CsMessage_MessageType_NEW_TARGET;
+  static const MessageType NEW_TARGETS =
+    CsMessage_MessageType_NEW_TARGETS;
   static inline bool MessageType_IsValid(int value) {
     return CsMessage_MessageType_IsValid(value);
   }
@@ -548,17 +684,17 @@ class CsMessage : public ::google::protobuf::Message /* @@protoc_insertion_point
 
   // accessors -------------------------------------------------------
 
-  // repeated .Lazysplits.Proto.CsMessage.WatchVariable watch_variables = 6;
-  int watch_variables_size() const;
-  void clear_watch_variables();
-  static const int kWatchVariablesFieldNumber = 6;
-  ::Lazysplits::Proto::CsMessage_WatchVariable* mutable_watch_variables(int index);
-  ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::CsMessage_WatchVariable >*
-      mutable_watch_variables();
-  const ::Lazysplits::Proto::CsMessage_WatchVariable& watch_variables(int index) const;
-  ::Lazysplits::Proto::CsMessage_WatchVariable* add_watch_variables();
-  const ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::CsMessage_WatchVariable >&
-      watch_variables() const;
+  // repeated .Lazysplits.Proto.CsMessage.Target targets = 5;
+  int targets_size() const;
+  void clear_targets();
+  static const int kTargetsFieldNumber = 5;
+  ::Lazysplits::Proto::CsMessage_Target* mutable_targets(int index);
+  ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::CsMessage_Target >*
+      mutable_targets();
+  const ::Lazysplits::Proto::CsMessage_Target& targets(int index) const;
+  ::Lazysplits::Proto::CsMessage_Target* add_targets();
+  const ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::CsMessage_Target >&
+      targets() const;
 
   // string shared_data_dir = 3;
   void clear_shared_data_dir();
@@ -588,20 +724,6 @@ class CsMessage : public ::google::protobuf::Message /* @@protoc_insertion_point
   ::std::string* release_game_name();
   void set_allocated_game_name(::std::string* game_name);
 
-  // string target_name = 5;
-  void clear_target_name();
-  static const int kTargetNameFieldNumber = 5;
-  const ::std::string& target_name() const;
-  void set_target_name(const ::std::string& value);
-  #if LANG_CXX11
-  void set_target_name(::std::string&& value);
-  #endif
-  void set_target_name(const char* value);
-  void set_target_name(const char* value, size_t size);
-  ::std::string* mutable_target_name();
-  ::std::string* release_target_name();
-  void set_allocated_target_name(::std::string* target_name);
-
   // int32 id = 1;
   void clear_id();
   static const int kIdFieldNumber = 1;
@@ -618,10 +740,9 @@ class CsMessage : public ::google::protobuf::Message /* @@protoc_insertion_point
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::CsMessage_WatchVariable > watch_variables_;
+  ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::CsMessage_Target > targets_;
   ::google::protobuf::internal::ArenaStringPtr shared_data_dir_;
   ::google::protobuf::internal::ArenaStringPtr game_name_;
-  ::google::protobuf::internal::ArenaStringPtr target_name_;
   ::google::protobuf::int32 id_;
   int type_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
@@ -843,7 +964,21 @@ inline void CppMessage::set_target_timestamp(::google::protobuf::uint64 value) {
 
 // CsMessage_WatchVariable
 
-// string name = 1;
+// uint32 index = 1;
+inline void CsMessage_WatchVariable::clear_index() {
+  index_ = 0u;
+}
+inline ::google::protobuf::uint32 CsMessage_WatchVariable::index() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CsMessage.WatchVariable.index)
+  return index_;
+}
+inline void CsMessage_WatchVariable::set_index(::google::protobuf::uint32 value) {
+  
+  index_ = value;
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CsMessage.WatchVariable.index)
+}
+
+// string name = 2;
 inline void CsMessage_WatchVariable::clear_name() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -896,7 +1031,7 @@ inline void CsMessage_WatchVariable::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CsMessage.WatchVariable.name)
 }
 
-// string value = 2;
+// string value = 3;
 inline void CsMessage_WatchVariable::clear_value() {
   value_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -947,6 +1082,93 @@ inline void CsMessage_WatchVariable::set_allocated_value(::std::string* value) {
   }
   value_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
   // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CsMessage.WatchVariable.value)
+}
+
+// -------------------------------------------------------------------
+
+// CsMessage_Target
+
+// string target_name = 1;
+inline void CsMessage_Target::clear_target_name() {
+  target_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& CsMessage_Target::target_name() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CsMessage.Target.target_name)
+  return target_name_.GetNoArena();
+}
+inline void CsMessage_Target::set_target_name(const ::std::string& value) {
+  
+  target_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CsMessage.Target.target_name)
+}
+#if LANG_CXX11
+inline void CsMessage_Target::set_target_name(::std::string&& value) {
+  
+  target_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Lazysplits.Proto.CsMessage.Target.target_name)
+}
+#endif
+inline void CsMessage_Target::set_target_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  target_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Lazysplits.Proto.CsMessage.Target.target_name)
+}
+inline void CsMessage_Target::set_target_name(const char* value, size_t size) {
+  
+  target_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Lazysplits.Proto.CsMessage.Target.target_name)
+}
+inline ::std::string* CsMessage_Target::mutable_target_name() {
+  
+  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.CsMessage.Target.target_name)
+  return target_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* CsMessage_Target::release_target_name() {
+  // @@protoc_insertion_point(field_release:Lazysplits.Proto.CsMessage.Target.target_name)
+  
+  return target_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void CsMessage_Target::set_allocated_target_name(::std::string* target_name) {
+  if (target_name != NULL) {
+    
+  } else {
+    
+  }
+  target_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), target_name);
+  // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CsMessage.Target.target_name)
+}
+
+// repeated .Lazysplits.Proto.CsMessage.WatchVariable watch_variables = 2;
+inline int CsMessage_Target::watch_variables_size() const {
+  return watch_variables_.size();
+}
+inline void CsMessage_Target::clear_watch_variables() {
+  watch_variables_.Clear();
+}
+inline ::Lazysplits::Proto::CsMessage_WatchVariable* CsMessage_Target::mutable_watch_variables(int index) {
+  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.CsMessage.Target.watch_variables)
+  return watch_variables_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::CsMessage_WatchVariable >*
+CsMessage_Target::mutable_watch_variables() {
+  // @@protoc_insertion_point(field_mutable_list:Lazysplits.Proto.CsMessage.Target.watch_variables)
+  return &watch_variables_;
+}
+inline const ::Lazysplits::Proto::CsMessage_WatchVariable& CsMessage_Target::watch_variables(int index) const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CsMessage.Target.watch_variables)
+  return watch_variables_.Get(index);
+}
+inline ::Lazysplits::Proto::CsMessage_WatchVariable* CsMessage_Target::add_watch_variables() {
+  // @@protoc_insertion_point(field_add:Lazysplits.Proto.CsMessage.Target.watch_variables)
+  return watch_variables_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::CsMessage_WatchVariable >&
+CsMessage_Target::watch_variables() const {
+  // @@protoc_insertion_point(field_list:Lazysplits.Proto.CsMessage.Target.watch_variables)
+  return watch_variables_;
 }
 
 // -------------------------------------------------------------------
@@ -1087,92 +1309,41 @@ inline void CsMessage::set_allocated_game_name(::std::string* game_name) {
   // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CsMessage.game_name)
 }
 
-// string target_name = 5;
-inline void CsMessage::clear_target_name() {
-  target_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// repeated .Lazysplits.Proto.CsMessage.Target targets = 5;
+inline int CsMessage::targets_size() const {
+  return targets_.size();
 }
-inline const ::std::string& CsMessage::target_name() const {
-  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CsMessage.target_name)
-  return target_name_.GetNoArena();
+inline void CsMessage::clear_targets() {
+  targets_.Clear();
 }
-inline void CsMessage::set_target_name(const ::std::string& value) {
-  
-  target_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Lazysplits.Proto.CsMessage.target_name)
+inline ::Lazysplits::Proto::CsMessage_Target* CsMessage::mutable_targets(int index) {
+  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.CsMessage.targets)
+  return targets_.Mutable(index);
 }
-#if LANG_CXX11
-inline void CsMessage::set_target_name(::std::string&& value) {
-  
-  target_name_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Lazysplits.Proto.CsMessage.target_name)
+inline ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::CsMessage_Target >*
+CsMessage::mutable_targets() {
+  // @@protoc_insertion_point(field_mutable_list:Lazysplits.Proto.CsMessage.targets)
+  return &targets_;
 }
-#endif
-inline void CsMessage::set_target_name(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  target_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Lazysplits.Proto.CsMessage.target_name)
+inline const ::Lazysplits::Proto::CsMessage_Target& CsMessage::targets(int index) const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CsMessage.targets)
+  return targets_.Get(index);
 }
-inline void CsMessage::set_target_name(const char* value, size_t size) {
-  
-  target_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Lazysplits.Proto.CsMessage.target_name)
+inline ::Lazysplits::Proto::CsMessage_Target* CsMessage::add_targets() {
+  // @@protoc_insertion_point(field_add:Lazysplits.Proto.CsMessage.targets)
+  return targets_.Add();
 }
-inline ::std::string* CsMessage::mutable_target_name() {
-  
-  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.CsMessage.target_name)
-  return target_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* CsMessage::release_target_name() {
-  // @@protoc_insertion_point(field_release:Lazysplits.Proto.CsMessage.target_name)
-  
-  return target_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void CsMessage::set_allocated_target_name(::std::string* target_name) {
-  if (target_name != NULL) {
-    
-  } else {
-    
-  }
-  target_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), target_name);
-  // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.CsMessage.target_name)
-}
-
-// repeated .Lazysplits.Proto.CsMessage.WatchVariable watch_variables = 6;
-inline int CsMessage::watch_variables_size() const {
-  return watch_variables_.size();
-}
-inline void CsMessage::clear_watch_variables() {
-  watch_variables_.Clear();
-}
-inline ::Lazysplits::Proto::CsMessage_WatchVariable* CsMessage::mutable_watch_variables(int index) {
-  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.CsMessage.watch_variables)
-  return watch_variables_.Mutable(index);
-}
-inline ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::CsMessage_WatchVariable >*
-CsMessage::mutable_watch_variables() {
-  // @@protoc_insertion_point(field_mutable_list:Lazysplits.Proto.CsMessage.watch_variables)
-  return &watch_variables_;
-}
-inline const ::Lazysplits::Proto::CsMessage_WatchVariable& CsMessage::watch_variables(int index) const {
-  // @@protoc_insertion_point(field_get:Lazysplits.Proto.CsMessage.watch_variables)
-  return watch_variables_.Get(index);
-}
-inline ::Lazysplits::Proto::CsMessage_WatchVariable* CsMessage::add_watch_variables() {
-  // @@protoc_insertion_point(field_add:Lazysplits.Proto.CsMessage.watch_variables)
-  return watch_variables_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::CsMessage_WatchVariable >&
-CsMessage::watch_variables() const {
-  // @@protoc_insertion_point(field_list:Lazysplits.Proto.CsMessage.watch_variables)
-  return watch_variables_;
+inline const ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::CsMessage_Target >&
+CsMessage::targets() const {
+  // @@protoc_insertion_point(field_list:Lazysplits.Proto.CsMessage.targets)
+  return targets_;
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -7,8 +7,8 @@
     <ProjectGuid>{B9F26332-2BA3-4CE7-B515-55F991794A3C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Livesplit.Lazysplits</RootNamespace>
-    <AssemblyName>Livesplit.Lazysplits</AssemblyName>
+    <RootNamespace>LiveSplit.Lazysplits</RootNamespace>
+    <AssemblyName>LiveSplit.Lazysplits</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -46,6 +46,10 @@
       <Private>True</Private>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="SpeedrunComSharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Deps\LiveSplit\LiveSplit\Libs\SpeedrunComSharp\SpeedrunComSharp\bin\Debug with API Calls\SpeedrunComSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -80,8 +84,10 @@
     <Compile Include="src\Protobuf\LzsCvDataProtoCs.cs" />
     <Compile Include="src\Protobuf\LzsPipeProtoCs.cs" />
     <Compile Include="src\Protobuf\LzsProtoHelper.cs" />
-    <Compile Include="src\SharedData\LzsSharedDataHelpers.cs" />
+    <Compile Include="src\SharedData\LzsCurrentGame.cs" />
+    <Compile Include="src\SharedData\LzsGameList.cs" />
     <Compile Include="src\SharedData\LzsSharedDataManager.cs" />
+    <Compile Include="src\SharedData\LzsSplitsData.cs" />
     <Compile Include="src\Util\LzsMessage.cs" />
     <Compile Include="src\Util\LzsMessageQueue.cs" />
     <Compile Include="src\Util\LzsObserver.cs" />

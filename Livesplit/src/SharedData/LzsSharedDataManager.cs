@@ -14,10 +14,11 @@ namespace LiveSplit.Lazysplits.SharedData
     {
         //private LazysplitsComponentSettings ParentSettings;
 
-        private string RootDir { get; set; }
-        private LiveSplitState State { get; set; }
-        private LzsGameList GameList { get; set; }
-        private LzsCurrentGame CurrentGame { get; set; }
+        private string RootDir;
+        private LiveSplitState State;
+        private LzsGameList GameList;
+        private LzsCurrentGame CurrentGame;
+        private LzsSplitsData SplitsData;
 
         //NLog
         private static Logger Log = LogManager.GetCurrentClassLogger();
@@ -27,8 +28,7 @@ namespace LiveSplit.Lazysplits.SharedData
             State = state;
             GameList = new LzsGameList();
             CurrentGame = new LzsCurrentGame();
-
-            if( State.Run.FilePath != String.Empty ){ CurrentGame.NewSplitsFile(State.Run.FilePath); }
+            SplitsData = new LzsSplitsData(State);
         }
 
         public bool SetRootDir( string path )
@@ -57,35 +57,43 @@ namespace LiveSplit.Lazysplits.SharedData
                 {
                     string GamePath = RootDir+GameList.GetGameDir(State.Run.GameName);
                     CurrentGame.ParseFromDir(GamePath);
-                    CurrentGame.NewSplitsFile(State.Run.FilePath);
+                    SplitsData.ParseTargets();
                     
                     return true;
                 }
                 else if(CurrentGame.bAvailable)
                 {
                     CurrentGame.SetUnavailable();
+
                     return true;
                 }
             }
             //if game is the same, check if splits file changed
-            else if( CurrentGame.bAvailable && CurrentGame.GetGameName() == State.Run.GameName && CurrentGame.GetSplitsFilePath() != State.Run.FilePath )
+            else if( CurrentGame.bAvailable && CurrentGame.GetGameName() == State.Run.GameName )
             {
-                CurrentGame.NewSplitsFile(State.Run.FilePath);
+                SplitsData.ParseTargets();
 
-                //if ( CurrentGame.SplitsFile.bAvailable ){ NotifyAll("Splits changed"); }
                 return true;
             }
+
             return false;
         }
         
+        public bool IsCurrentGameAvailable()
+        {
+            return CurrentGame.bAvailable;
+        }
         public string GetCurrentGameName()
         {
             return CurrentGame.GetGameName();
         }
-        public List<LzsSplitTarget> GetCurrentSplitTargets()
+        public List<CsMessage.Types.Target> GetCurrentSplitTargets()
         {
-            string CurrentSplitName = ( State.CurrentSplit != null ) ? State.CurrentSplit.Name : "";
-            return CurrentGame.GetCurrentSplitsTargets(CurrentSplitName);
+            return SplitsData.GetTargets();
+        }
+        public bool IsTargets()
+        {
+            return SplitsData.IsTargets();
         }
         public bool TryGetTarget( string targetName, ref TargetInfo targetInfoRef )
         {

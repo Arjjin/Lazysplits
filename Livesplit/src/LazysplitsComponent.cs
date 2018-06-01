@@ -53,10 +53,8 @@ namespace LiveSplit.Lazysplits
         
         public LazysplitsComponent(LiveSplitState state)
         {
-            MinimumWidth = 60;
-            MinimumHeight = 60;
-            VerticalHeight = 60;
-            HorizontalWidth = 60;
+            VerticalHeight = 0;
+            HorizontalWidth = 0;
             Cache = new GraphicsCache();
 
             Settings = new LazysplitsComponentSettings();
@@ -71,7 +69,7 @@ namespace LiveSplit.Lazysplits
             bPipeConnected = false;
             MsgQueue = new LzsMessageQueue<LsMsg>("LazysplitsComponent message queue");
             MsgQueue.AttachObserver(this);
-
+            
             SharedDataManager = new LzsSharedDataManager(State);
             StatusIcons = new LzsStatusIcons();
 
@@ -84,6 +82,7 @@ namespace LiveSplit.Lazysplits
             State.OnStart += OnSplitControlChanged;
             State.OnSkipSplit += OnSplitControlChanged;
             State.OnUndoSplit += OnSplitControlChanged;
+            
         }
 
         public Control GetSettingsControl(LayoutMode mode)
@@ -133,10 +132,27 @@ namespace LiveSplit.Lazysplits
                 Cache["ErrorIconColor"] = Settings.ErrorIconColor;
                 Cache["InactiveIconColor"] = Settings.InactiveIconColor;
             }
-
-            if ( invalidator != null && ( Cache.HasChanged || Settings.bStatusIconsEnabled && StatusIcons.CacheHasChanged() ) )
+            
+            /*
+            if( invalidator != null && ( Cache.HasChanged || Settings.bStatusIconsEnabled && StatusIcons.CacheHasChanged() ) )
             {
                invalidator.Invalidate(0, 0, width, height);
+            }
+            */
+
+            if( invalidator != null )
+            {
+                if( Cache.HasChanged )
+                {
+                    invalidator.Invalidate(0, 0, width, height);
+                }
+                else if( Settings.bStatusIconsEnabled )
+                {
+                    if( StatusIcons.CacheHasChanged() )
+                    {
+                        invalidator.Invalidate(0, 0, width, height);
+                    }
+                }
             }
         }
         
@@ -341,15 +357,13 @@ namespace LiveSplit.Lazysplits
         private void SendTargetData()
         {
             PipeClient.MsgSerializedProtobuf( LzsProtoHelper.ClearTargetMsg() );
-
-            List<LzsSplitTarget> SplitTargets = SharedDataManager.GetCurrentSplitTargets();
-            foreach( LzsSplitTarget splitTarget in SplitTargets )
+            
+            if( SharedDataManager.IsCurrentGameAvailable() && SharedDataManager.IsTargets() )
             {
                 byte[] SerializedMsg = LzsProtoHelper.NewTargetMsg(
                     Settings.SharedDataRootDir,
                     SharedDataManager.GetCurrentGameName(),
-                    splitTarget.Name,
-                    splitTarget.WatchVars
+                    SharedDataManager.GetCurrentSplitTargets()
                 );
                 PipeClient.MsgSerializedProtobuf(SerializedMsg);
             }
@@ -378,6 +392,7 @@ namespace LiveSplit.Lazysplits
         }
         public void OnSplitReset( object sender, TimerPhase timerPhase )
         {
+            //SharedDataManager.Parse
             SendTargetData();
         }
         public void OnSplitControlChanged( object sender, EventArgs e )

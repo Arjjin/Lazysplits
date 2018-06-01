@@ -6,8 +6,8 @@
 namespace Lazysplits{
 namespace SharedData{
 
-LzsWatchColor::LzsWatchColor( const Proto::WatchInfo& watch_info, int watch_index, std::string watch_dir )
-	:LzsWatchBase( watch_info, watch_index, watch_dir )
+LzsWatchColor::LzsWatchColor( const Proto::WatchInfo& watch_info, int watch_index, const std::string& watch_dir, const std::string& watch_var )
+	:LzsWatchBase( watch_info, watch_index, watch_dir, watch_var )
 {
 	auto color = watch_info.color();
 	RGB_scalar_ = cv::Scalar( color.r(), color.g(), color.b(), 255.0 );

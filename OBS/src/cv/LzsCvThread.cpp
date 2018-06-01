@@ -98,37 +98,6 @@ void LzsCvThread::HandleFrameBuffer(){
 			compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
 			compression_params.push_back(1);
 
-			/*
-			for( auto target_it = target_list_.begin(); target_it != target_list_.end(); ++target_it ){
-				
-				auto watch_list = (*target_it)->GetCurrentWatches();
-				for( auto watch_it = watch_list.begin(); watch_it != watch_list.end(); ++watch_it ){
-
-					if( (*watch_it)->FindWatch( BGR_frame, calib_props_ ) ){
-						std::stringstream fn;
-						fn << "./images/found_" << (*watch_it)->GetName().c_str() << ".png";
-
-						uint64_t cur_timestamp = obs_get_video_frame_time();
-						uint64_t timestamp_dif = ( cur_timestamp - frame.timestamp_ );// / 1000000;
-						std::string timestamp_str = std::to_string(timestamp_dif);
-
-						blog( LOG_DEBUG, "[lazysplits][%s] %s watch found, timestamp dif : %s", thread_name_.c_str(), (*watch_it)->GetName().c_str(), timestamp_str.c_str() );
-						cv::imwrite( fn.str().c_str(), BGR_frame, compression_params );
-
-						//advance watch index and check if target is complete
-						if( !(*target_it)->NextWatch() ){
-							if( (*target_it)->TargetFound() ){
-								blog( LOG_DEBUG, "TARGET COMPLETE" );
-							}
-						}
-
-						break;
-					}
-
-				}
-			}
-			*/
-
 			auto target_it = target_list_.begin();
 			while( target_it != target_list_.end() ){
 				
@@ -262,8 +231,8 @@ void LzsCvThread::HandleProtobuf( std::shared_ptr<CvMsg> msg ){
 				target_list_.clear();
 				blog( LOG_DEBUG, "[lazysplits][%s] cleared targets", thread_name_.c_str() );
 			break;
-			case CsMsg.NEW_TARGET :
-				NewTarget(CsMsg);
+			case CsMsg.NEW_TARGETS :
+				NewTargets(CsMsg);
 			break;
 		}
 	}
@@ -284,17 +253,19 @@ void LzsCvThread::HandleCalibrationData( std::shared_ptr<CvMsg> msg ){
 	);
 }
 
-void LzsCvThread::NewTarget( Proto::CsMessage& msg ){
+void LzsCvThread::NewTargets( Proto::CsMessage& msg ){
 	//make sure shared data directory is the same as our LiveSplit plugin
 	if( shared_data_manager_.IsMatchingRootDir( msg.shared_data_dir() ) ){
-		std::shared_ptr<SharedData::LzsTarget> target;
-		if( shared_data_manager_.TryConstructTarget( msg, target ) ){
-			target_list_.push_back(target);
-			blog( LOG_DEBUG, "[lazysplits][%s] target added; name : %s", thread_name_.c_str(), target->GetName().c_str() );
-		}
+		shared_data_manager_.TryConstructTargetList( msg, target_list_ );
 	}
 	else{
-		blog( LOG_WARNING, "[lazysplits][%s] mismatched shared data dirs! OBS : %s, LS : %s", thread_name_.c_str(), shared_data_manager_.GetRootDir().c_str(), msg.shared_data_dir().c_str() );
+		blog(
+			LOG_WARNING,
+			"[lazysplits][%s] mismatched shared data dirs! OBS : %s, LS : %s",
+			thread_name_.c_str(),
+			shared_data_manager_.GetRootDir().c_str(),
+			msg.shared_data_dir().c_str()
+		);
 		return;
 	}
 }

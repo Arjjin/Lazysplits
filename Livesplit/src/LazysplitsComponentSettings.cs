@@ -65,13 +65,13 @@ namespace LiveSplit.Lazysplits
             BackgroundColor2 = Color.Transparent;
             BackgroundGradient = GradientType.Plain;
             bStatusIconsEnabled = true;
-            IconPadding = 3;
+            IconPadding = 1;
             IconMargin = 10;
             ConnectionIconColor = Color.White;
             IncomingDataIconColor = Color.GreenYellow;
             OutgoingDataIconColor = Color.DarkOrange;
             WarningIconColor = Color.Gold;
-            ErrorIconColor = Color.Salmon;
+            ErrorIconColor = Color.Tomato;
             InactiveIconColor = Color.FromArgb( 60, 70, 70, 70 );
 
             //bindings

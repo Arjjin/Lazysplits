@@ -18,13 +18,14 @@ enum LzsWatchStatus{ LZS_WATCH_ERROR, LZS_WATCH_UNITIALIZED, LZS_WATCH_GOOD };
 
 class LzsWatchBase{
 	public :
-		LzsWatchBase( const Proto::WatchInfo& watch_info, int watch_index, std::string watch_dir );
+		LzsWatchBase( const Proto::WatchInfo& watch_info, int watch_index, const std::string& watch_dir, const std::string& watch_var );
 
 		bool IsGood();
 		const std::string& GetName();
 		Proto::WatchType GetType();
 		float GetThreshold();
 		int GetIndex();
+		void SetWatchVar( const std::string& watch_var );
 
 		bool FindWatch( const cv::Mat& BGR_frame, const SendableCalibrationProps& calib_props );
 		virtual bool CvLogic( const cv::Mat& BGR_frame ) = 0;
@@ -45,6 +46,7 @@ class LzsWatchBase{
 		LzsWatchStatus status_;
 		int index_;
 		std::string watch_dir_;
+		std::string watch_var_;
 
 		cv::Rect area_;
 
@@ -55,7 +57,7 @@ class LzsWatchBase{
 
 class LzsWatchColor : public LzsWatchBase{
 	public :
-		LzsWatchColor( const Proto::WatchInfo& watch_info, int watch_index, std::string watch_dir );
+		LzsWatchColor( const Proto::WatchInfo& watch_info, int watch_index, const std::string& watch_dir, const std::string& watch_var );
 		bool CvLogic( const cv::Mat& BGR_frame )override;
 	private :
 		//bool MakeArea()override;
@@ -67,7 +69,7 @@ class LzsWatchColor : public LzsWatchBase{
 
 class LzsWatchImageBase : public LzsWatchBase{
 	public :
-		LzsWatchImageBase( const Proto::WatchInfo& watch_info, int watch_index, std::string watch_dir );
+		LzsWatchImageBase( const Proto::WatchInfo& watch_info, int watch_index, const std::string& watch_dir, const std::string& watch_var );
 	protected :
 		virtual bool MakeImage();
 		virtual bool CheckBounds()override;
@@ -78,7 +80,7 @@ class LzsWatchImageBase : public LzsWatchBase{
 
 class LzsWatchImageStatic : public LzsWatchImageBase{
 	public :
-		LzsWatchImageStatic( const Proto::WatchInfo& watch_info, int watch_index, std::string watch_dir );
+		LzsWatchImageStatic( const Proto::WatchInfo& watch_info, int watch_index, const std::string& watch_dir, const std::string& watch_var );
 		bool CvLogic( const cv::Mat& BGR_frame )override;
 	private :
 		bool RemakeData()override;
@@ -86,7 +88,7 @@ class LzsWatchImageStatic : public LzsWatchImageBase{
 
 class LzsWatchCharacterSet : public LzsWatchImageBase{
 	public :
-		LzsWatchCharacterSet( const Proto::WatchInfo& watch_info, int watch_index, std::string watch_dir, const std::string character_input );
+		LzsWatchCharacterSet( const Proto::WatchInfo& watch_info, int watch_index, const std::string& watch_dir, const std::string& watch_var );
 		bool CvLogic( const cv::Mat& BGR_frame )override;
 	private :
 		bool MakeArea()override;
@@ -103,9 +105,16 @@ class LzsWatchCharacterSet : public LzsWatchImageBase{
 
 };
 
+struct LzsWatchVar{
+	int watch_index_;
+	std::string watch_name_;
+	std::string value_;
+};
+
 class LzsTarget{
 	public :
-		LzsTarget( const Proto::TargetInfo& target_info, const std::string& game_info_dir, std::map<std::string,std::string> watch_vars );
+		//LzsTarget( const Proto::TargetInfo& target_info, const std::string& game_info_dir, std::vector<LzsWatchVar> watch_vars );
+		LzsTarget( const std::string& game_info_dir, const Proto::TargetInfo& target_info, std::vector<std::shared_ptr<LzsWatchVar>> watch_vars );
 		bool ParseWatchList();
 
 		const std::string& GetName();
@@ -115,10 +124,12 @@ class LzsTarget{
 		void NextWatch();
 		bool TargetFound();
 	private :
+		const std::string FindWatchVar( int watch_index, const std::string& watch_name );
+
 		Proto::TargetInfo target_info_;
 		std::string game_info_dir_;
 		std::vector<std::shared_ptr<LzsWatchBase>> watches_;
-		std::map<std::string,std::string> watch_vars_;
+		std::vector<std::shared_ptr<LzsWatchVar>> watch_vars_;
 		uint32_t current_watch_index_;
 		uint32_t final_watch_index_;
 };
@@ -159,8 +170,9 @@ class LzsSharedDataManager{
 
 		const std::string& GetGameName();
 		bool SetGame( const std::string& game_name );
-
+		
 		bool TryConstructTarget( const Proto::CsMessage& cs_msg, std::shared_ptr<LzsTarget>& source_target );
+		bool TryConstructTargetList( const Proto::CsMessage& cs_msg, std::vector<std::shared_ptr<SharedData::LzsTarget>>& target_list );
 	private :
 		std::string root_dir_;
 		LzsGameList game_list_;
