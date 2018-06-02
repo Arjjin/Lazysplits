@@ -100,9 +100,12 @@ void LzsCvThread::HandleFrameBuffer(){
 
 			auto target_it = target_list_.begin();
 			while( target_it != target_list_.end() ){
+				std::shared_ptr<SharedData::LzsTarget> current_target = (*target_it);
 				
-				auto watch_list = (*target_it)->GetCurrentWatches();
+				auto watch_list = current_target->GetCurrentWatches();
+				bool target_found = false;
 				for( auto watch_it = watch_list.begin(); watch_it != watch_list.end(); ++watch_it ){
+					std::shared_ptr<SharedData::LzsWatchBase> current_watch = (*watch_it);
 
 					/*
 					blog( LOG_DEBUG, "[lazysplits][%s] watch is %s, calib_img (%ix%i)", thread_name_.c_str(),
@@ -111,23 +114,22 @@ void LzsCvThread::HandleFrameBuffer(){
 					);
 					*/
 
-					if( (*watch_it)->FindWatch( BGR_frame, calib_props_ ) ){
+					if( current_watch->FindWatch( BGR_frame, calib_props_ ) ){
 						std::stringstream fn;
-						fn << "./images/found_" << (*watch_it)->GetName().c_str() << ".png";
+						fn << "./images/found_" << current_watch->GetName().c_str() << ".png";
 
 						blog( LOG_DEBUG, "[lazysplits][%s] %s watch found for threshold %f", thread_name_.c_str(),
-							(*watch_it)->GetName().c_str(),
-							(*watch_it)->GetThreshold()
+							current_watch->GetName().c_str(),
+							current_watch->GetThreshold()
 						);
 						cv::imwrite( fn.str().c_str(), BGR_frame, compression_params );
 
-						//advance watch index
-						(*target_it)->NextWatch();
+						current_target->WatchAction( current_watch->GetAction(), current_watch->GetActionVal() );
 						break;
 					}
 				}
 				
-				if( (*target_it)->TargetFound() ){
+				if( current_target->IsComplete() ){
 					LsMsgTargetFound( shared_data_manager_.GetGameName(), (*target_it)->GetName(), frame.timestamp_, (*target_it)->GetSplitOffset() );
 					target_it = target_list_.erase(target_it);
 				}

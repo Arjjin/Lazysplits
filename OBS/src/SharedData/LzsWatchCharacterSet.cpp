@@ -14,8 +14,13 @@ namespace filesys = std::experimental::filesystem;
 namespace Lazysplits{
 namespace SharedData{
 
-LzsWatchCharacterSet::LzsWatchCharacterSet( const Proto::WatchInfo& watch_info, int watch_index, const std::string& watch_dir, const std::string& watch_var )
-	:LzsWatchImageBase( watch_info, watch_index, watch_dir, watch_var )
+LzsWatchCharacterSet::LzsWatchCharacterSet(
+	const Proto::WatchInfo& watch_info,
+	const Proto::TargetInfo_WatchEntry& watch_entry,
+	const std::string& watch_dir,
+	const std::string& watch_var
+)
+	:LzsWatchImageBase( watch_info, watch_entry, watch_dir, watch_var )
 {
 	//make an internal map of our character entries
 	MakeCharMap();

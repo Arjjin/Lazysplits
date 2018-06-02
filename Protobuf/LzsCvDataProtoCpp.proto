@@ -16,6 +16,20 @@ enum WatchType{
 	WT_CHARACTER_SET = 3;
 }
 
+enum WatchAction{
+	WA_UNUSED = 0;
+	WA_INCREMENT_INDEX = 1;
+	WA_DECREMENT_INDEX = 2;
+	WA_GOTO_INDEX = 3;
+	WA_COMPLETE = 4;
+}
+
+enum WatchPersistence{
+	WP_NONE = 0;
+	WP_SPECIFY_MAX = 1;
+	WP_TOTAL = 2;
+}
+
 enum CharacterJustify{
 	CHARACTER_JUSTIFY_UNUSED = 0;
 	CHARACTER_JUSTIFY_LEFT = 1;
@@ -61,7 +75,11 @@ message TargetInfo{
 	message WatchEntry{
 		string name = 1;
 		string relative_path = 2;
-		uint32 index = 3;
+		sint32 index = 3;
+		WatchAction action = 4;
+		uint32 action_val = 5;
+		WatchPersistence persistence = 6;
+		uint32 persistence_max = 7;
 	}
 
 	string name = 1;

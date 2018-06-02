@@ -152,6 +152,52 @@ inline bool WatchType_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<WatchType>(
     WatchType_descriptor(), name, value);
 }
+enum WatchAction {
+  WA_UNUSED = 0,
+  WA_INCREMENT_INDEX = 1,
+  WA_DECREMENT_INDEX = 2,
+  WA_GOTO_INDEX = 3,
+  WA_COMPLETE = 4,
+  WatchAction_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  WatchAction_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool WatchAction_IsValid(int value);
+const WatchAction WatchAction_MIN = WA_UNUSED;
+const WatchAction WatchAction_MAX = WA_COMPLETE;
+const int WatchAction_ARRAYSIZE = WatchAction_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* WatchAction_descriptor();
+inline const ::std::string& WatchAction_Name(WatchAction value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    WatchAction_descriptor(), value);
+}
+inline bool WatchAction_Parse(
+    const ::std::string& name, WatchAction* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<WatchAction>(
+    WatchAction_descriptor(), name, value);
+}
+enum WatchPersistence {
+  WP_NONE = 0,
+  WP_SPECIFY_MAX = 1,
+  WP_TOTAL = 2,
+  WatchPersistence_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  WatchPersistence_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool WatchPersistence_IsValid(int value);
+const WatchPersistence WatchPersistence_MIN = WP_NONE;
+const WatchPersistence WatchPersistence_MAX = WP_TOTAL;
+const int WatchPersistence_ARRAYSIZE = WatchPersistence_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* WatchPersistence_descriptor();
+inline const ::std::string& WatchPersistence_Name(WatchPersistence value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    WatchPersistence_descriptor(), value);
+}
+inline bool WatchPersistence_Parse(
+    const ::std::string& name, WatchPersistence* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<WatchPersistence>(
+    WatchPersistence_descriptor(), name, value);
+}
 enum CharacterJustify {
   CHARACTER_JUSTIFY_UNUSED = 0,
   CHARACTER_JUSTIFY_LEFT = 1,
@@ -1029,11 +1075,35 @@ class TargetInfo_WatchEntry : public ::google::protobuf::Message /* @@protoc_ins
   ::std::string* release_relative_path();
   void set_allocated_relative_path(::std::string* relative_path);
 
-  // uint32 index = 3;
+  // sint32 index = 3;
   void clear_index();
   static const int kIndexFieldNumber = 3;
-  ::google::protobuf::uint32 index() const;
-  void set_index(::google::protobuf::uint32 value);
+  ::google::protobuf::int32 index() const;
+  void set_index(::google::protobuf::int32 value);
+
+  // .Lazysplits.Proto.WatchAction action = 4;
+  void clear_action();
+  static const int kActionFieldNumber = 4;
+  ::Lazysplits::Proto::WatchAction action() const;
+  void set_action(::Lazysplits::Proto::WatchAction value);
+
+  // uint32 action_val = 5;
+  void clear_action_val();
+  static const int kActionValFieldNumber = 5;
+  ::google::protobuf::uint32 action_val() const;
+  void set_action_val(::google::protobuf::uint32 value);
+
+  // .Lazysplits.Proto.WatchPersistence persistence = 6;
+  void clear_persistence();
+  static const int kPersistenceFieldNumber = 6;
+  ::Lazysplits::Proto::WatchPersistence persistence() const;
+  void set_persistence(::Lazysplits::Proto::WatchPersistence value);
+
+  // uint32 persistence_max = 7;
+  void clear_persistence_max();
+  static const int kPersistenceMaxFieldNumber = 7;
+  ::google::protobuf::uint32 persistence_max() const;
+  void set_persistence_max(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:Lazysplits.Proto.TargetInfo.WatchEntry)
  private:
@@ -1041,7 +1111,11 @@ class TargetInfo_WatchEntry : public ::google::protobuf::Message /* @@protoc_ins
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::internal::ArenaStringPtr relative_path_;
-  ::google::protobuf::uint32 index_;
+  ::google::protobuf::int32 index_;
+  int action_;
+  ::google::protobuf::uint32 action_val_;
+  int persistence_;
+  ::google::protobuf::uint32 persistence_max_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_LzsCvDataProtoCpp_2eproto::TableStruct;
 };
@@ -2321,18 +2395,74 @@ inline void TargetInfo_WatchEntry::set_allocated_relative_path(::std::string* re
   // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.TargetInfo.WatchEntry.relative_path)
 }
 
-// uint32 index = 3;
+// sint32 index = 3;
 inline void TargetInfo_WatchEntry::clear_index() {
-  index_ = 0u;
+  index_ = 0;
 }
-inline ::google::protobuf::uint32 TargetInfo_WatchEntry::index() const {
+inline ::google::protobuf::int32 TargetInfo_WatchEntry::index() const {
   // @@protoc_insertion_point(field_get:Lazysplits.Proto.TargetInfo.WatchEntry.index)
   return index_;
 }
-inline void TargetInfo_WatchEntry::set_index(::google::protobuf::uint32 value) {
+inline void TargetInfo_WatchEntry::set_index(::google::protobuf::int32 value) {
   
   index_ = value;
   // @@protoc_insertion_point(field_set:Lazysplits.Proto.TargetInfo.WatchEntry.index)
+}
+
+// .Lazysplits.Proto.WatchAction action = 4;
+inline void TargetInfo_WatchEntry::clear_action() {
+  action_ = 0;
+}
+inline ::Lazysplits::Proto::WatchAction TargetInfo_WatchEntry::action() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.TargetInfo.WatchEntry.action)
+  return static_cast< ::Lazysplits::Proto::WatchAction >(action_);
+}
+inline void TargetInfo_WatchEntry::set_action(::Lazysplits::Proto::WatchAction value) {
+  
+  action_ = value;
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.TargetInfo.WatchEntry.action)
+}
+
+// uint32 action_val = 5;
+inline void TargetInfo_WatchEntry::clear_action_val() {
+  action_val_ = 0u;
+}
+inline ::google::protobuf::uint32 TargetInfo_WatchEntry::action_val() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.TargetInfo.WatchEntry.action_val)
+  return action_val_;
+}
+inline void TargetInfo_WatchEntry::set_action_val(::google::protobuf::uint32 value) {
+  
+  action_val_ = value;
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.TargetInfo.WatchEntry.action_val)
+}
+
+// .Lazysplits.Proto.WatchPersistence persistence = 6;
+inline void TargetInfo_WatchEntry::clear_persistence() {
+  persistence_ = 0;
+}
+inline ::Lazysplits::Proto::WatchPersistence TargetInfo_WatchEntry::persistence() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.TargetInfo.WatchEntry.persistence)
+  return static_cast< ::Lazysplits::Proto::WatchPersistence >(persistence_);
+}
+inline void TargetInfo_WatchEntry::set_persistence(::Lazysplits::Proto::WatchPersistence value) {
+  
+  persistence_ = value;
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.TargetInfo.WatchEntry.persistence)
+}
+
+// uint32 persistence_max = 7;
+inline void TargetInfo_WatchEntry::clear_persistence_max() {
+  persistence_max_ = 0u;
+}
+inline ::google::protobuf::uint32 TargetInfo_WatchEntry::persistence_max() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.TargetInfo.WatchEntry.persistence_max)
+  return persistence_max_;
+}
+inline void TargetInfo_WatchEntry::set_persistence_max(::google::protobuf::uint32 value) {
+  
+  persistence_max_ = value;
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.TargetInfo.WatchEntry.persistence_max)
 }
 
 // -------------------------------------------------------------------
@@ -3178,6 +3308,16 @@ template <> struct is_proto_enum< ::Lazysplits::Proto::WatchType> : ::std::true_
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::Lazysplits::Proto::WatchType>() {
   return ::Lazysplits::Proto::WatchType_descriptor();
+}
+template <> struct is_proto_enum< ::Lazysplits::Proto::WatchAction> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::Lazysplits::Proto::WatchAction>() {
+  return ::Lazysplits::Proto::WatchAction_descriptor();
+}
+template <> struct is_proto_enum< ::Lazysplits::Proto::WatchPersistence> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::Lazysplits::Proto::WatchPersistence>() {
+  return ::Lazysplits::Proto::WatchPersistence_descriptor();
 }
 template <> struct is_proto_enum< ::Lazysplits::Proto::CharacterJustify> : ::std::true_type {};
 template <>

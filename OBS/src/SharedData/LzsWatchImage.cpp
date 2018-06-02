@@ -16,8 +16,13 @@ namespace SharedData{
 
 /* LzsWatchImageBase */
 
-LzsWatchImageBase::LzsWatchImageBase( const Proto::WatchInfo& watch_info, int watch_index, const std::string& watch_dir, const std::string& watch_var )
-	:LzsWatchBase( watch_info, watch_index, watch_dir, watch_var )
+LzsWatchImageBase::LzsWatchImageBase(
+	const Proto::WatchInfo& watch_info,
+	const Proto::TargetInfo_WatchEntry& watch_entry,
+	const std::string& watch_dir,
+	const std::string& watch_var
+)
+	:LzsWatchBase( watch_info, watch_entry, watch_dir, watch_var )
 {}
 
 bool LzsWatchImageBase::MakeImage(){
@@ -102,8 +107,13 @@ bool LzsWatchImageBase::CheckBounds(){
 
 /* LzsWatchImageStatic */
 
-LzsWatchImageStatic::LzsWatchImageStatic( const Proto::WatchInfo& watch_info, int watch_index, const std::string& watch_dir, const std::string& watch_var )
-	:LzsWatchImageBase( watch_info, watch_index, watch_dir, watch_var )
+LzsWatchImageStatic::LzsWatchImageStatic(
+	const Proto::WatchInfo& watch_info,
+	const Proto::TargetInfo_WatchEntry& watch_entry,
+	const std::string& watch_dir,
+	const std::string& watch_var
+)
+	:LzsWatchImageBase( watch_info, watch_entry, watch_dir, watch_var )
 {}
 
 

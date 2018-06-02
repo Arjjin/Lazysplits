@@ -10,11 +10,21 @@
 namespace Lazysplits{
 namespace SharedData{
 
-LzsWatchBase::LzsWatchBase( const Proto::WatchInfo& watch_info, int watch_index, const std::string& watch_dir, const std::string& watch_var ){
+LzsWatchBase::LzsWatchBase(
+	const Proto::WatchInfo& watch_info,
+	const Proto::TargetInfo_WatchEntry& watch_entry,
+	const std::string& watch_dir,
+	const std::string& watch_var
+){
 	watch_info_ = watch_info;
-	index_ = watch_index;
+	index_ = watch_entry.index();
+	action_ = watch_entry.action();
+	action_val_ = watch_entry.action_val();
+	persistence_ = watch_entry.persistence();
+	persistence_max_ = watch_entry.persistence_max();
 	watch_dir_ = watch_dir;
 	watch_var_ = watch_var;
+
 	current_source_width_ = 0;
 	current_source_height_ = 0;
 
@@ -27,9 +37,17 @@ const std::string& LzsWatchBase::GetName(){ return watch_info_.name(); }
 
 Proto::WatchType LzsWatchBase::GetType(){ return watch_info_.type(); }
 
-float LzsWatchBase::GetThreshold(){ return watch_info_.base_threshold(); }
-
 int LzsWatchBase::GetIndex(){ return index_; }
+
+Proto::WatchAction LzsWatchBase::GetAction(){ return action_; }
+
+int LzsWatchBase::GetActionVal(){ return action_val_; }
+
+Proto::WatchPersistence LzsWatchBase::GetPersistence(){ return persistence_; }
+
+int LzsWatchBase::GetPersistenceMax(){ return persistence_max_; }
+
+float LzsWatchBase::GetThreshold(){ return watch_info_.base_threshold(); }
 
 bool LzsWatchBase::FindWatch( const cv::Mat& BGR_frame, const SendableCalibrationProps& calib_props  ){
 	ValidateData( BGR_frame.cols, BGR_frame.rows, calib_props );
