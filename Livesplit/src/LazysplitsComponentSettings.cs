@@ -32,8 +32,10 @@ namespace LiveSplit.Lazysplits
             get { return BackgroundGradient.ToString(); }
             set { BackgroundGradient = (GradientType)Enum.Parse(typeof(GradientType), value); }
         }
-        private bool _bStatusIconsEnabled;
+        //private bool _bStatusIconsEnabled;
         public event EventHandler StatusIconsEnabledChanged;
+        public bool bStatusIconsEnabled { get; set; }
+            /*
         public bool bStatusIconsEnabled {
             get { return _bStatusIconsEnabled; }
             set
@@ -42,6 +44,8 @@ namespace LiveSplit.Lazysplits
                 StatusIconsEnabledChanged?.Invoke( this, EventArgs.Empty );
             }
         }
+        */
+        public int IconFrameSize { get; set; }
         public int IconPadding { get; set; }
         public int IconMargin { get; set; }
         public Color ConnectionIconColor { get; set; }
@@ -65,6 +69,7 @@ namespace LiveSplit.Lazysplits
             BackgroundColor2 = Color.Transparent;
             BackgroundGradient = GradientType.Plain;
             bStatusIconsEnabled = true;
+            IconFrameSize = 15;
             IconPadding = 1;
             IconMargin = 10;
             ConnectionIconColor = Color.White;
@@ -81,6 +86,7 @@ namespace LiveSplit.Lazysplits
             cmbGradientType.DataBindings.Add( "SelectedItem", this, "GradientString", false, DataSourceUpdateMode.OnPropertyChanged);
             checkBoxPipeStart.DataBindings.Add( "Checked", this, "bOpenPipeOnStart", false, DataSourceUpdateMode.OnPropertyChanged );
             checkBoxStatusIconsEnabled.DataBindings.Add( "Checked", this, "bStatusIconsEnabled", false, DataSourceUpdateMode.OnPropertyChanged );
+            numUpDownIconFrameSize.DataBindings.Add( "Value", this, "IconFrameSize", false, DataSourceUpdateMode.OnPropertyChanged );
             numUpDownIconPadding.DataBindings.Add( "Value", this, "IconPadding", false, DataSourceUpdateMode.OnPropertyChanged );
             numUpDownIconMargin.DataBindings.Add( "Value", this, "IconMargin", false, DataSourceUpdateMode.OnPropertyChanged );
             btnColorConnection.DataBindings.Add( "BackColor", this, "ConnectionIconColor", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -100,6 +106,7 @@ namespace LiveSplit.Lazysplits
             GradientString = SettingsHelper.ParseString(element["BackgroundGradient"]);
             bOpenPipeOnStart = SettingsHelper.ParseBool(element["bOpenPipeOnStart"]);
             bStatusIconsEnabled = SettingsHelper.ParseBool(element["bStatusIconsEnabled"]);
+            IconFrameSize = SettingsHelper.ParseInt(element["IconFrameSize"]);
             IconPadding = SettingsHelper.ParseInt(element["IconPadding"]);
             IconMargin = SettingsHelper.ParseInt(element["IconMargin"]);
             ConnectionIconColor = SettingsHelper.ParseColor(element["ConnectionIconColor"]);
@@ -129,6 +136,7 @@ namespace LiveSplit.Lazysplits
                    SettingsHelper.CreateSetting( document, parent, "bOpenPipeOnStart",      bOpenPipeOnStart      ) ^
                    SettingsHelper.CreateSetting( document, parent, "bStatusIconsEnabled",   bStatusIconsEnabled   ) ^
                    SettingsHelper.CreateSetting( document, parent, "ConnectionIconColor",   ConnectionIconColor   ) ^
+                   SettingsHelper.CreateSetting( document, parent, "IconFrameSize",         IconFrameSize         ) ^
                    SettingsHelper.CreateSetting( document, parent, "IconPadding",           IconPadding           ) ^
                    SettingsHelper.CreateSetting( document, parent, "IconMargin",            IconMargin            ) ^
                    SettingsHelper.CreateSetting( document, parent, "IncomingDataIconColor", IncomingDataIconColor ) ^
@@ -175,12 +183,11 @@ namespace LiveSplit.Lazysplits
 
         /* other UI settings */
         
-        private void checkBoxPipeStart_CheckedChanged(object sender, EventArgs e)
-        {
-            //bOpenPipeOnStart = checkBoxPipeStart.Checked;
-        }
         private void checkBoxStatusIconsEnabled_CheckedChanged(object sender, EventArgs e)
         {
+            bStatusIconsEnabled = checkBoxStatusIconsEnabled.Checked;
+
+            numUpDownIconFrameSize.Enabled = checkBoxStatusIconsEnabled.Checked;
             numUpDownIconMargin.Enabled = checkBoxStatusIconsEnabled.Checked;
             numUpDownIconPadding.Enabled = checkBoxStatusIconsEnabled.Checked;
             labelColorConnection.Enabled = checkBoxStatusIconsEnabled.Checked;
@@ -195,6 +202,8 @@ namespace LiveSplit.Lazysplits
             btnColorError.Enabled = checkBoxStatusIconsEnabled.Checked;
             labelColorInactive.Enabled = checkBoxStatusIconsEnabled.Checked;
             btnColorInactive.Enabled = checkBoxStatusIconsEnabled.Checked;
+
+            StatusIconsEnabledChanged?.Invoke( this, EventArgs.Empty );
         }
     }
 } //namespace LiveSplit.Lazysplits

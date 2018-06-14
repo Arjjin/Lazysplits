@@ -88,6 +88,7 @@
     <Compile Include="src\SharedData\LzsGameList.cs" />
     <Compile Include="src\SharedData\LzsSharedDataManager.cs" />
     <Compile Include="src\SharedData\LzsSplitsData.cs" />
+    <Compile Include="src\Util\LzsLogging.cs" />
     <Compile Include="src\Util\LzsMessage.cs" />
     <Compile Include="src\Util\LzsMessageQueue.cs" />
     <Compile Include="src\Util\LzsObserver.cs" />

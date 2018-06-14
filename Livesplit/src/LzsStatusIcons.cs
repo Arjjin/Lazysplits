@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Threading;
 using System.Drawing;
 using System.Drawing.Imaging;
 
@@ -18,6 +19,7 @@ namespace LiveSplit.Lazysplits
         public Color ActiveColor {get; private set; }
         public Color InactiveColor { get; private set; }
         private ColorMatrix ColorMatrix;
+        public Mutex ColorMatrixMutex;
         public bool bActive { get; private set; }
         public long MsWhenChanged { get; private set; }
         public int ActiveMs { get; private set; }
@@ -42,6 +44,7 @@ namespace LiveSplit.Lazysplits
             ActiveColor = Color.White;
             InactiveColor = Color.DarkGray;
             ColorMatrix = new ColorMatrix();
+            ColorMatrixMutex = new Mutex();
             ColorMatrix.Matrix00 = 1.0F;
             ColorMatrix.Matrix11 = 1.0F;
             ColorMatrix.Matrix22 = 1.0F;
@@ -72,11 +75,15 @@ namespace LiveSplit.Lazysplits
         }
         private void SetImageColor( Color color )
         {
+            ColorMatrixMutex.WaitOne();
+
             ColorMatrix.Matrix40 = -1.0F + ( color.R*(1.0F/255.0F) );
             ColorMatrix.Matrix41 = -1.0F + ( color.G*(1.0F/255.0F) );
             ColorMatrix.Matrix42 = -1.0F + ( color.B*(1.0F/255.0F) );
             ColorMatrix.Matrix43 = -1.0F + ( color.A*(1.0F/255.0F) );
             ImageAttributes.SetColorMatrix(ColorMatrix);
+
+            ColorMatrixMutex.ReleaseMutex();
         }
         public void Update()
         {
@@ -93,8 +100,13 @@ namespace LiveSplit.Lazysplits
             bActive = enabled;
             MsWhenChanged = GetCurrentMs();
 
-            if(bActive){ SetImageColor(ActiveColor); }
-            else{ SetImageColor(InactiveColor); }
+            if(bActive)
+            {
+                SetImageColor(ActiveColor);
+            }
+            else{
+                SetImageColor(InactiveColor);
+            }
         }
     }
     class LzsStatusIcons
@@ -114,13 +126,13 @@ namespace LiveSplit.Lazysplits
             
             ImageConnected = new LzsStatusIcon( "components/Lazysplits/icons/icon_connected.png", false, 0 );
             Icons.Add(ImageConnected);
-            ImageInData = new LzsStatusIcon( "components/Lazysplits/icons/icon_message_received.png", false, 100 );
+            ImageInData = new LzsStatusIcon( "components/Lazysplits/icons/icon_message_received.png", false, 30 );
             Icons.Add(ImageInData);
-            ImageOutData = new LzsStatusIcon( "components/Lazysplits/icons/icon_message_sent.png", false, 100 );
+            ImageOutData = new LzsStatusIcon( "components/Lazysplits/icons/icon_message_sent.png", false, 30 );
             Icons.Add(ImageOutData);
-            ImageWarning = new LzsStatusIcon( "components/Lazysplits/icons/icon_warning.png", false, 3000 );
+            ImageWarning = new LzsStatusIcon( "components/Lazysplits/icons/icon_warning.png", false, 5000 );
             Icons.Add(ImageWarning);
-            ImageError = new LzsStatusIcon( "components/Lazysplits/icons/icon_error.png", false, 3000 );
+            ImageError = new LzsStatusIcon( "components/Lazysplits/icons/icon_error.png", false, 5000 );
             Icons.Add(ImageError);
         }
         
@@ -152,7 +164,8 @@ namespace LiveSplit.Lazysplits
                     float ImageScaling = width/icon.Image.Width;
                     int DrawWidth = (int)( icon.Image.Width * ImageScaling );
                     int DrawHeight = (int)( icon.Image.Height * ImageScaling );
-
+                    
+                    icon.ColorMatrixMutex.WaitOne();
                     g.DrawImage(
                         icon.Image,
                         new Rectangle(
@@ -168,6 +181,8 @@ namespace LiveSplit.Lazysplits
                         GraphicsUnit.Pixel,
                         icon.ImageAttributes
                     );
+                    icon.ColorMatrixMutex.ReleaseMutex();
+
                     StartY += DrawHeight + settings.IconMargin;
                 }
             }
@@ -190,7 +205,8 @@ namespace LiveSplit.Lazysplits
                     float ImageScaling = height/icon.Image.Height;
                     int DrawWidth = (int)( icon.Image.Width * ImageScaling );
                     int DrawHeight = (int)( icon.Image.Height * ImageScaling );
-
+                    
+                    icon.ColorMatrixMutex.WaitOne();
                     g.DrawImage(
                         icon.Image,
                         new Rectangle(
@@ -206,6 +222,8 @@ namespace LiveSplit.Lazysplits
                         GraphicsUnit.Pixel,
                         icon.ImageAttributes
                     );
+                    icon.ColorMatrixMutex.ReleaseMutex();
+
                     StartX += DrawWidth + settings.IconMargin;
                 }
             }

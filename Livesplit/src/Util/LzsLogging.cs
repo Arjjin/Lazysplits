@@ -1,38 +1,34 @@
 ﻿using System;
-using LiveSplit.Model;
-using LiveSplit.UI.Components;
-using LiveSplit.Lazysplits;
 
 using NLog;
 using NLog.Targets;
 using NLog.Config;
 
-[assembly: ComponentFactory(typeof(LazysplitsComponentFactory))]
-
 namespace LiveSplit.Lazysplits
 {
-    public class LazysplitsComponentFactory : IComponentFactory
+    public static class LzsLogging
     {
-        public string ComponentName{ get { return "Lazysplits"; } }
-        public string Description{ get { return "Lazysplits component"; } }
-        public ComponentCategory Category{ get { return ComponentCategory.Control; } }
         
-        public string UpdateName{ get {return ComponentName; } }
-        public string XMLURL{ get; }
-        public string UpdateURL{ get; }
-        public Version Version{ get { return Version.Parse("1.0"); } }
-
-        public IComponent Create(LiveSplitState state)
+        public static event EventHandler<OnLogWarningOrErrorArgs> OnLogWarningOrError;
+        public class OnLogWarningOrErrorArgs : EventArgs 
         {
-            //InitNLog();
-            return new LazysplitsComponent(state);
+            public string LogLevel { get; set; }
         }
 
-        private void InitNLog()
+        public static void TryInitNLog()
         {
             if( LogManager.Configuration == null )
             {
                 LoggingConfiguration LogConfig = new LoggingConfiguration();
+
+                //status icon warning/errors
+                MethodCallTarget StatusIconTarget = new MethodCallTarget();
+                StatusIconTarget.ClassName = typeof(LzsLogging).AssemblyQualifiedName;
+                StatusIconTarget.MethodName = "LogWarningOrError";
+                StatusIconTarget.Parameters.Add( new MethodCallParameter("${level}") );
+                LoggingRule StatusIconRule = new LoggingRule( "*", LogLevel.Warn, StatusIconTarget );
+                LogConfig.AddTarget( "StatusIcon", StatusIconTarget );
+                LogConfig.LoggingRules.Add(StatusIconRule);
 
                 //File log
                 FileTarget LogFileTarget = new FileTarget();
@@ -64,5 +60,12 @@ namespace LiveSplit.Lazysplits
                 LogManager.Configuration = LogConfig;
             }
         }
+
+        public static void LogWarningOrError( string logLevel )
+        {
+            var args = new OnLogWarningOrErrorArgs();
+            args.LogLevel = logLevel;
+            OnLogWarningOrError?.Invoke( null, args );
+        }
     }
-} //namespace LiveSplit.Lazysplits
+}

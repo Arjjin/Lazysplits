@@ -1,53 +1,58 @@
 #include "LzsObserver.h"
 
-#include <obs.h>
-
 namespace Lazysplits{
 
-//TODO : (1) all the nested vector looping can be extremely bad with many subjects/observers connected to each other, hard to tell if iterators will remain valid (2) nothing has any thread safety
+LzsObserver::LzsObserver(){
+	id_ = ++id_ref_;
+}
+
+int LzsObserver::GetId(){
+	return id_;
+}
+std::atomic_int LzsObserver::id_ref_ = -1;
 
 LzsObservable::LzsObservable( const std::string& subject_name )
 	:subject_name_(subject_name)
-{}
+{
+	pthread_mutex_init( &mutex_, NULL );
+}
+
+LzsObservable::~LzsObservable(){
+	pthread_mutex_destroy(&mutex_);
+}
 
 void LzsObservable::AttachObserver( LzsObserver* observer ){
+	LockMutex();
 	observer_list_.push_back(observer);
-	observer->Attached(this);
+	UnlockMutex();
 }
 
 void LzsObservable::DetachObserver( LzsObserver* observer ){
+	LockMutex();
+	auto observer_it = observer_list_.begin();
 	for( auto observer_it = observer_list_.begin(); observer_it != observer_list_.end(); ++observer_it ){
-		//comparing pointers for identity, good enough?
-		if( observer == *observer_it ){
-			observer->Detached(this);
+		if( observer->GetId() == (*observer_it)->GetId() ){
 			observer_list_.erase(observer_it);
-			return;
+			break;
 		}
 	}
+	UnlockMutex();
 }
 
 void LzsObservable::NotifyAll( std::string message ){
+	LockMutex();
 	for( auto observer_it = observer_list_.begin(); observer_it != observer_list_.end(); ++observer_it ){
 		(*observer_it)->OnSubjectNotify( subject_name_, message );
 	}
+	UnlockMutex();
 }
 
-LzsObserver::~LzsObserver(){
-	//observer will detach itself from subject/subjects when destructor is called
-	while( !subject_list_.empty() ){
-		subject_list_.front()->DetachObserver(this);
-	}
+void LzsObservable::LockMutex(){
+	pthread_mutex_lock(&mutex_);
 }
 
-void LzsObserver::Attached( LzsObservable* subject ){ subject_list_.push_back(subject); }
-
-void LzsObserver::Detached( LzsObservable* subject ){
-	for( auto subject_it = subject_list_.begin(); subject_it != subject_list_.end(); ++subject_it ){
-		if( (*subject_it) == subject ){
-			subject_list_.erase(subject_it);
-			return;
-		}
-	}
+void LzsObservable::UnlockMutex(){
+	pthread_mutex_unlock(&mutex_);
 }
 
 } //namespace Lazysplits

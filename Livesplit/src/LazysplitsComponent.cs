@@ -53,6 +53,8 @@ namespace LiveSplit.Lazysplits
         
         public LazysplitsComponent(LiveSplitState state)
         {
+            LzsLogging.TryInitNLog();
+
             VerticalHeight = 0;
             HorizontalWidth = 0;
             Cache = new GraphicsCache();
@@ -73,6 +75,8 @@ namespace LiveSplit.Lazysplits
             SharedDataManager = new LzsSharedDataManager(State);
             StatusIcons = new LzsStatusIcons();
 
+            LzsLogging.OnLogWarningOrError += OnLogWarningOrError;
+
             Settings.SharedDataRootDirChanged += OnRootDirChanged;
             Settings.StatusIconsEnabledChanged += OnStatusIconsChanged;
             State.RunManuallyModified += OnRunChanged;
@@ -82,7 +86,6 @@ namespace LiveSplit.Lazysplits
             State.OnStart += OnSplitControlChanged;
             State.OnSkipSplit += OnSplitControlChanged;
             State.OnUndoSplit += OnSplitControlChanged;
-            
         }
 
         public Control GetSettingsControl(LayoutMode mode)
@@ -91,12 +94,10 @@ namespace LiveSplit.Lazysplits
         }
         public System.Xml.XmlNode GetSettings(System.Xml.XmlDocument document)
         {
-            Log.Debug("GetSettings");
             return Settings.GetSettings(document);
         }
         public void SetSettings(System.Xml.XmlNode settings)
         {
-            Log.Debug("SetSettings");
             Settings.SetSettings(settings);
         }
         private void SettingsInit()
@@ -108,7 +109,7 @@ namespace LiveSplit.Lazysplits
 
             bSettingsShouldInit = false;
         }
-
+        
         public void Update(IInvalidator invalidator, Model.LiveSplitState state, float width, float height, LayoutMode mode)
         {
             State = state;
@@ -119,10 +120,16 @@ namespace LiveSplit.Lazysplits
             }
             
             if( Settings.bStatusIconsEnabled )
-            { 
+            {
+                if( Settings.IconFrameSize != VerticalHeight || Settings.IconFrameSize != HorizontalWidth )
+                {
+                    VerticalHeight = Settings.IconFrameSize;
+                    HorizontalWidth = Settings.IconFrameSize;
+                }
                 StatusIcons.Update();
 
                 Cache.Restart();
+                Cache["IconFrameSize"] = Settings.IconFrameSize;
                 Cache["IconPadding"] = Settings.IconPadding;
                 Cache["IconMargin"] = Settings.IconMargin;
                 Cache["ConnectionIconColor"] = Settings.ConnectionIconColor;
@@ -379,8 +386,23 @@ namespace LiveSplit.Lazysplits
         }
         public void OnStatusIconsChanged( object sender, EventArgs e )
         {
-            VerticalHeight = Settings.bStatusIconsEnabled ? 20 : 0;
-            HorizontalWidth = Settings.bStatusIconsEnabled ? 20 : 0;
+            VerticalHeight = Settings.bStatusIconsEnabled ? Settings.IconFrameSize : 0;
+            HorizontalWidth = Settings.bStatusIconsEnabled ? Settings.IconFrameSize : 0;
+        }
+        public void OnLogWarningOrError( object sender, LzsLogging.OnLogWarningOrErrorArgs e )
+        {
+            if( Settings.bStatusIconsEnabled )
+            {
+                switch(e.LogLevel)
+                {
+                    case "Warn" :
+                        StatusIcons.Warning();
+                    break;
+                    case "Error": case "Fatal" :
+                        StatusIcons.Error();
+                    break;
+                }
+            }
         }
         public void OnRunChanged( object sender, EventArgs e )
         {
@@ -408,6 +430,7 @@ namespace LiveSplit.Lazysplits
                 PipeClient.ThreadTerminate();
                 PipeClient.ThreadJoin();
             }
+            LzsLogging.OnLogWarningOrError -= OnLogWarningOrError;
             Log.Debug("Component disposed");
         }
 
