@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -35,20 +35,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
+      <HintPath>..\..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="LiveSplit.Core">
-      <HintPath>..\..\Deps\LiveSplit\LiveSplit\bin\Debug\LiveSplit.Core.dll</HintPath>
+      <HintPath>..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\LiveSplit.Core.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.5.2\lib\net45\NLog.dll</HintPath>
+      <HintPath>..\..\packages\NLog.4.5.6\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="SpeedrunComSharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Deps\LiveSplit\LiveSplit\Libs\SpeedrunComSharp\SpeedrunComSharp\bin\Debug with API Calls\SpeedrunComSharp.dll</HintPath>
+    <Reference Include="SpeedrunComSharp">
+      <HintPath>..\..\..\Deps\LiveSplit\LiveSplit\Libs\SpeedrunComSharp\SpeedrunComSharp\bin\Debug with API Calls\SpeedrunComSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -66,7 +64,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="UpdateManager">
-      <HintPath>..\..\Deps\LiveSplit\LiveSplit\bin\Debug\UpdateManager.dll</HintPath>
+      <HintPath>..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\UpdateManager.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -110,12 +108,12 @@
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Debug (
 cd $(ProjectDir)
-copy /y debug\Livesplit.Lazysplits.dll ..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
-copy /y debug\Livesplit.Lazysplits.pdb ..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
-copy /y debug\NLog.dll ..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
-copy /y debug\NLog.xml ..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
-copy /y debug\Google.Protobuf.dll ..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
-copy /y debug\Google.Protobuf.xml ..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
+copy /y ..\bin\Debug\Livesplit.Lazysplits.dll ..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
+copy /y  ..\bin\Debug\Livesplit.Lazysplits.pdb ..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
+copy /y  ..\bin\Debug\NLog.dll ..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
+copy /y  ..\bin\Debug\NLog.xml ..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
+copy /y  ..\bin\Debug\Google.Protobuf.dll ..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
+copy /y  ..\bin\Debug\Google.Protobuf.xml ..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
 )</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

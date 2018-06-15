@@ -89,7 +89,7 @@ namespace LiveSplit.Lazysplits.SharedData
         }
         public List<CsMessage.Types.Target> GetCurrentSplitTargets()
         {
-            return SplitsData.GetTargets();
+            return SplitsData.GetCurrentTargets();
         }
         public bool IsTargets()
         {

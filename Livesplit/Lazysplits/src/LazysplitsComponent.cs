@@ -54,6 +54,14 @@ namespace LiveSplit.Lazysplits
         public LazysplitsComponent(LiveSplitState state)
         {
             LzsLogging.TryInitNLog();
+            //state.Run.
+            /*
+            foreach( ISegment segment in state.Run )
+            {
+                //segment.Name = "lol";
+                //Log.Info("Segment name : "+segment.Name);
+            }
+            */
 
             VerticalHeight = 0;
             HorizontalWidth = 0;
