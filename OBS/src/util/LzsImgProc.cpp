@@ -31,7 +31,7 @@ bool FindImage( const cv::Mat& source_BGR, const cv::Mat& watch_BGR, const cv::M
 		double min = 0.0F;
 		double max = 0.0F;
 		cv::minMaxLoc( result, &min, &max );
-		//blog( LOG_ERROR, "[lazysplits][ImgProc] min : %f, max : %f", (float)min, (float)max );
+		//blog( LOG_DEBUG, "[lazysplits][ImgProc] min : %f, max : %f", (float)min, (float)max );
 		
 		if( max >= threshold ){ return true; }
 	}

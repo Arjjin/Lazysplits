@@ -52,8 +52,6 @@ bool LzsWatchImageBase::MakeImage(){
 		int new_width = new_img.cols * x_multiplier;
 		int new_height = new_img.rows * y_multiplier;
 
-		//cv::resize( new_img, new_img, cv::Size( new_width, new_height ), 0.0, 0.0, CV_INTER_NN );
-
 		/* moving BGRA mat into BGR and mask mats */
 
 		img_BGR_ = cv::Mat( new_img.rows, new_img.cols, CV_8UC3 );
@@ -120,59 +118,7 @@ LzsWatchImageStatic::LzsWatchImageStatic(
 bool LzsWatchImageStatic::CvLogic( const cv::Mat& BGR_frame ){
 	cv::Mat cropped_frame = BGR_frame(area_);
 
-	/*
-	cv::Mat img_HLS;
-	cv::Mat img_HLS_chans[3];
-	cv::cvtColor( img_BGR_, img_HLS, CV_BGR2HLS );
-	cv::split( img_HLS, img_HLS_chans );
-	cv::Mat single_chan_mask;
-	cv::cvtColor( img_mask_, single_chan_mask, CV_BGR2GRAY );
-
-	cv::Mat HLS_frame;
-	cv::cvtColor( BGR_frame(area_), HLS_frame, CV_RGB2HLS );
-	cv::Mat HLS_frame_chans[3];
-	cv::split( HLS_frame, HLS_frame_chans );
-	
-	cv::Scalar img_luma_mean = cv::mean( img_HLS_chans[1], single_chan_mask );
-	cv::Mat area_mask( area_.height, area_.width, CV_8UC1, cv::Scalar( 0.0 ) );
-	single_chan_mask.copyTo( area_mask(
-		cv::Rect(
-			std::max<int>( 0, ( area_.width-single_chan_mask.cols ) / 2 ),
-			std::max<int>( 0, ( area_.height-single_chan_mask.rows ) / 2 ),
-			single_chan_mask.cols,
-			single_chan_mask.rows
-		)
-	) );
-	cv::Scalar frame_luma_mean = cv::mean( HLS_frame_chans[1], area_mask );
-    cv::Scalar mean_ratio = img_luma_mean/frame_luma_mean;
-	HLS_frame_chans[1] = HLS_frame_chans[1].mul( mean_ratio );
-
-	cv::merge( HLS_frame_chans, 3, HLS_frame );
-
-	cv::Mat frame_luma_adj;
-	cv::cvtColor( HLS_frame, frame_luma_adj, CV_HLS2RGB );
-
-
-	//cv compression params
-	std::vector<int> compression_params;
-	compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
-	compression_params.push_back(1);
-
-	std::stringstream fn_area_luma_adj;
-	fn_area_luma_adj << "./images/watch_area_luma_adj_" << GetName().c_str() << ".png";
-	cv::imwrite( fn_area_luma_adj.str().c_str(), frame_luma_adj, compression_params );
-
-	std::stringstream fn_area;
-	fn_area << "./images/watch_area_" << GetName().c_str() << ".png";
-	cv::imwrite( fn_area.str().c_str(), cropped_frame, compression_params );
-
-	std::stringstream fn_BGR;
-	fn_BGR << "./images/watch_image_BGR_" << GetName().c_str() << ".png";
-	cv::imwrite( fn_BGR.str().c_str(), img_BGR_, compression_params );
-	*/
-
 	return ImgProc::FindImage( cropped_frame, img_BGR_, img_mask_, watch_info_.base_threshold() );
-	//return ImgProc::FindImage( frame_luma_adj, img_BGR_, img_mask_, watch_info_.base_threshold() );
 }
 
 bool LzsWatchImageStatic::RemakeData(){

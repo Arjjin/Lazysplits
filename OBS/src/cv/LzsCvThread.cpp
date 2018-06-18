@@ -107,13 +107,6 @@ void LzsCvThread::HandleFrameBuffer(){
 				for( auto watch_it = watch_list.begin(); watch_it != watch_list.end(); ++watch_it ){
 					std::shared_ptr<SharedData::LzsWatchBase> current_watch = (*watch_it);
 
-					/*
-					blog( LOG_DEBUG, "[lazysplits][%s] watch is %s, calib_img (%ix%i)", thread_name_.c_str(),
-						( (*watch_it)->IsGood() ? "good" : "bad" ),
-						calib_props_.img_width, calib_props_.img_height
-					);
-					*/
-
 					if( current_watch->FindWatch( BGR_frame, calib_props_ ) ){
 						std::stringstream fn;
 						fn << "./images/found_" << current_watch->GetName().c_str() << ".png";
