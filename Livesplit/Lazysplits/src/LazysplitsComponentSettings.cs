@@ -32,19 +32,8 @@ namespace LiveSplit.Lazysplits
             get { return BackgroundGradient.ToString(); }
             set { BackgroundGradient = (GradientType)Enum.Parse(typeof(GradientType), value); }
         }
-        //private bool _bStatusIconsEnabled;
         public event EventHandler StatusIconsEnabledChanged;
         public bool bStatusIconsEnabled { get; set; }
-            /*
-        public bool bStatusIconsEnabled {
-            get { return _bStatusIconsEnabled; }
-            set
-            {
-                _bStatusIconsEnabled = value;
-                StatusIconsEnabledChanged?.Invoke( this, EventArgs.Empty );
-            }
-        }
-        */
         public int IconFrameSize { get; set; }
         public int IconPadding { get; set; }
         public int IconMargin { get; set; }
@@ -68,10 +57,12 @@ namespace LiveSplit.Lazysplits
             BackgroundColor = Color.Transparent;
             BackgroundColor2 = Color.Transparent;
             BackgroundGradient = GradientType.Plain;
-            bStatusIconsEnabled = true;
+
+            bStatusIconsEnabled = false;
             IconFrameSize = 15;
             IconPadding = 1;
-            IconMargin = 10;
+            IconMargin = 15
+                ;
             ConnectionIconColor = Color.White;
             IncomingDataIconColor = Color.GreenYellow;
             OutgoingDataIconColor = Color.DarkOrange;

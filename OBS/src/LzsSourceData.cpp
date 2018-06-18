@@ -19,6 +19,7 @@ LzsSourceData::LzsSourceData( obs_source_t* context, const std::string& module_d
 	 calib_data_(module_data_path)
 {
 	frame_count_ = 0;
+	frame_limit_factor_ = 2;
 	last_cap_ = 0;
 
 	//pass thread refrences to each other
@@ -52,6 +53,7 @@ LzsSourceData::~LzsSourceData(){
 
 void LzsSourceData::InitProps( obs_source_t* context ){
 	properties_.AddPath( &prop_shared_data_dir_, "shared_data_path", "Shared data directory", OBS_PATH_DIRECTORY, "", "" );
+	properties_.AddInt( &frame_limit_factor_, "frame_limit_factor", "frame limit factor", 1, 30, 1 );
 	properties_.AddBool( &calib_data_.current_sendable_props_.is_enabled, "calib_enable", "Enable calibration" );
 	properties_.AddBool( &calib_data_.is_adjusting_, "calib_adjust", "Set calibration", PropCalibEnabledModified );
 	properties_.AddPath( &calib_data_.img_path_, "calib_img_path", "Calibration image", OBS_PATH_FILE, "PNG files (*.PNG)", prop_shared_data_dir_ );
@@ -107,7 +109,11 @@ void LzsSourceData::OnSourceRenderVideo( gs_effect_t* effect ){
 	
 	if( cv_thread_.IsTargets() && !frame_buffer_.Full() ){
 		int throttle_mod = frame_buffer_.GetThrottleMod();
-		if( frame_count_ % throttle_mod == 0 ){
+		int fps_throttle = frame_limit_factor_ * throttle_mod;
+
+		blog( LOG_DEBUG, "fps_throttle : %i", fps_throttle );
+		//if( frame_count_ % throttle_mod == 0 ){
+		if( frame_count_ % fps_throttle == 0 ){
 			GrabRenderFrame( target, parent );
 		}
 	}

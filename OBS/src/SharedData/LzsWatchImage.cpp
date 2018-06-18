@@ -64,7 +64,7 @@ bool LzsWatchImageBase::MakeImage(){
 
 		//resize BGR with linear interp and bitmask with NN
 		cv::resize( img_BGR_, img_BGR_, cv::Size( new_width, new_height ) );
-		cv::resize( img_mask_, img_mask_, cv::Size( new_width, new_height ), 0.0, 0.0, CV_INTER_NN );
+		cv::resize( img_mask_, img_mask_, cv::Size( new_width, new_height ), 0.0, 0.0, cv::INTER_NEAREST );
 	}
 	catch( cv::Exception cve ){
 		blog( LOG_ERROR, "[lazysplits][SharedData] error making watch image for %s; %s!", GetName().c_str(), cve.msg.c_str() );

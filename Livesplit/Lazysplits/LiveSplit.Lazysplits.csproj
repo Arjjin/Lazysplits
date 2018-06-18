@@ -109,11 +109,12 @@
     <PostBuildEvent>if $(ConfigurationName) == Debug (
 cd $(ProjectDir)
 copy /y ..\bin\Debug\Livesplit.Lazysplits.dll ..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
-copy /y  ..\bin\Debug\Livesplit.Lazysplits.pdb ..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
-copy /y  ..\bin\Debug\NLog.dll ..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
-copy /y  ..\bin\Debug\NLog.xml ..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
-copy /y  ..\bin\Debug\Google.Protobuf.dll ..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
-copy /y  ..\bin\Debug\Google.Protobuf.xml ..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
+copy /y ..\bin\Debug\Livesplit.Lazysplits.pdb ..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
+copy /y ..\bin\Debug\NLog.dll ..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
+copy /y ..\bin\Debug\NLog.xml ..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
+copy /y ..\bin\Debug\Google.Protobuf.dll ..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
+copy /y ..\bin\Debug\Google.Protobuf.xml ..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components
+xcopy /y /e /i "..\component_data\*.*" "..\..\..\Deps\LiveSplit\LiveSplit\bin\Debug\Components"
 )</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

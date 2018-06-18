@@ -42,6 +42,7 @@ class LzsSourceData{
 		void GrabRenderFrame( obs_source_t* target, obs_source_t* parent );
 
 		long frame_count_;
+		int64_t frame_limit_factor_;
 		std::string module_data_path_;
 
 		//frame capping members

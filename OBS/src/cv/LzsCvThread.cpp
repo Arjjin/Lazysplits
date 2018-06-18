@@ -91,11 +91,11 @@ void LzsCvThread::HandleFrameBuffer(){
 
 		try{
 			cv::Mat BGR_frame;
-			cv::cvtColor( *frame.frame_mat_, BGR_frame, CV_RGBA2BGR );
+			cv::cvtColor( *frame.frame_mat_, BGR_frame, cv::COLOR_RGBA2BGR );
 			
 			//cv compression params
 			std::vector<int> compression_params;
-			compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
+			compression_params.push_back(cv::IMWRITE_PNG_COMPRESSION);
 			compression_params.push_back(1);
 
 			auto target_it = target_list_.begin();

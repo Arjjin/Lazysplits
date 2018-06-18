@@ -26,7 +26,7 @@ bool FindImage( const cv::Mat& source_BGR, const cv::Mat& watch_BGR, const cv::M
 
 	try{
 		cv::Mat result;
-		cv::matchTemplate( source_BGR, watch_BGR, result, CV_TM_CCORR_NORMED, watch_A );
+		cv::matchTemplate( source_BGR, watch_BGR, result, cv::TM_CCORR_NORMED, watch_A );
 		
 		double min = 0.0F;
 		double max = 0.0F;
