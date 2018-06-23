@@ -38,11 +38,10 @@ void LzsPipeTaskWrite::StartTask(){
 		//sometimes async events can complete synchronously
 		else{
 			if( write_result_last_error == 0 ){
-				blog( LOG_WARNING, "[Lazysplits][%s] write task returned != 0 trying to write to pipe (forced synchronous?)", owning_thread_name_.c_str() );
+				blog( LOG_DEBUG, "[Lazysplits][%s] write task returned != 0 trying to write to pipe (forced synchronous?)", owning_thread_name_.c_str() );
 				//task_status_ = TASK_STATUS_COMPLETED;
 				HandleTaskResult();
 			}
-			//no idea why this error is returned when WriteFile doesn't return 0, but it is
 			else if( write_result_last_error == ERROR_IO_PENDING ){
 				blog( LOG_DEBUG, "[Lazysplits][%s] write task : waiting for write to complete", owning_thread_name_.c_str() );
 				task_status_ = TASK_STATUS_RUNNING;

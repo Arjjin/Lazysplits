@@ -41,7 +41,7 @@ void LzsPipeTaskRead::StartTask(){
 		//sometimes async events can complete synchronously
 		else{
 			if( read_result_last_error == 0 ){
-				blog( LOG_WARNING, "[Lazysplits][%s] read task returned != 0 trying to read from pipe (forced synchronous?)", owning_thread_name_.c_str() );
+				blog( LOG_DEBUG, "[Lazysplits][%s] read task returned != 0 trying to read from pipe (forced synchronous?)", owning_thread_name_.c_str() );
 				//task_status_ = TASK_STATUS_COMPLETED;
 				HandleTaskResult();
 			}

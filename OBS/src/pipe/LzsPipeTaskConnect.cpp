@@ -33,7 +33,7 @@ void LzsPipeTaskConnect::StartTask(){
 		else{
 			DWORD connect_result_last_error = GetLastError();
 			if( connect_result_last_error == 0 ){
-				blog( LOG_WARNING, "[Lazysplits][%s] task returned != 0 trying to connect to pipe (forced synchronous?)", owning_thread_name_.c_str() );
+				blog( LOG_DEBUG, "[Lazysplits][%s] task returned != 0 trying to connect to pipe (forced synchronous?)", owning_thread_name_.c_str() );
 				//task_status_ = TASK_STATUS_COMPLETED;
 				HandleTaskResult();
 			}
