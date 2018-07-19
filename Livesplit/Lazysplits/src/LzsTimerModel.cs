@@ -62,7 +62,7 @@ namespace LiveSplit.Lazysplits
             {
                 TimeSpan AdjustedTimeSpan = new TimeSpan( 0, 0, 0, 0, adjustedMs );
                 Time AdjTime = new Time();
-                AdjTime.RealTime = CurrentState.CurrentTime.RealTime + AdjustedTimeSpan;
+                AdjTime.RealTime = CurrentState.CurrentTime.RealTime - AdjustedTimeSpan;
 
                 CurrentState.CurrentSplit.SplitTime = AdjTime;
                 CurrentState.CurrentSplitIndex++;

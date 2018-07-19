@@ -111,7 +111,6 @@ void LzsSourceData::OnSourceRenderVideo( gs_effect_t* effect ){
 		int throttle_mod = frame_buffer_.GetThrottleMod();
 		int fps_throttle = frame_limit_factor_ * throttle_mod;
 
-		blog( LOG_DEBUG, "fps_throttle : %i", fps_throttle );
 		//if( frame_count_ % throttle_mod == 0 ){
 		if( frame_count_ % fps_throttle == 0 ){
 			GrabRenderFrame( target, parent );
