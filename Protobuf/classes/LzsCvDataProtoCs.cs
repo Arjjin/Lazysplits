@@ -72,11 +72,12 @@ namespace LiveSplit.Lazysplits.Proto {
             "TlRfSU5ERVgQARIWChJXQV9ERUNSRU1FTlRfSU5ERVgQAhIRCg1XQV9HT1RP",
             "X0lOREVYEAMSDwoLV0FfQ09NUExFVEUQBCpBChBXYXRjaFBlcnNpc3RlbmNl",
             "EgsKB1dQX05PTkUQABISCg5XUF9TUEVDSUZZX01BWBABEgwKCFdQX1RPVEFM",
-            "EAIqaQoQQ2hhcmFjdGVySnVzdGlmeRIcChhDSEFSQUNURVJfSlVTVElGWV9V",
-            "TlVTRUQQABIaChZDSEFSQUNURVJfSlVTVElGWV9MRUZUEAESGwoXQ0hBUkFD",
-            "VEVSX0pVU1RJRllfUklHSFQQAipnCg9DaGFyYWN0ZXJaT3JkZXISFgoSQ0hB",
-            "UkFDVEVSX1pfVU5VU0VEEAASHQoZQ0hBUkFDVEVSX1pfTEVGVF9UT19SSUdI",
-            "VBABEh0KGUNIQVJBQ1RFUl9aX1JJR0hUX1RPX0xFRlQQAmIGcHJvdG8z"));
+            "EAIqhwEKEENoYXJhY3Rlckp1c3RpZnkSHAoYQ0hBUkFDVEVSX0pVU1RJRllf",
+            "VU5VU0VEEAASGgoWQ0hBUkFDVEVSX0pVU1RJRllfTEVGVBABEhsKF0NIQVJB",
+            "Q1RFUl9KVVNUSUZZX1JJR0hUEAISHAoYQ0hBUkFDVEVSX0pVU1RJRllfQ0VO",
+            "VEVSEAMqZwoPQ2hhcmFjdGVyWk9yZGVyEhYKEkNIQVJBQ1RFUl9aX1VOVVNF",
+            "RBAAEh0KGUNIQVJBQ1RFUl9aX0xFRlRfVE9fUklHSFQQARIdChlDSEFSQUNU",
+            "RVJfWl9SSUdIVF9UT19MRUZUEAJiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::LiveSplit.Lazysplits.Proto.TargetType), typeof(global::LiveSplit.Lazysplits.Proto.WatchType), typeof(global::LiveSplit.Lazysplits.Proto.WatchAction), typeof(global::LiveSplit.Lazysplits.Proto.WatchPersistence), typeof(global::LiveSplit.Lazysplits.Proto.CharacterJustify), typeof(global::LiveSplit.Lazysplits.Proto.CharacterZOrder), }, new pbr::GeneratedClrTypeInfo[] {
@@ -127,6 +128,7 @@ namespace LiveSplit.Lazysplits.Proto {
     [pbr::OriginalName("CHARACTER_JUSTIFY_UNUSED")] Unused = 0,
     [pbr::OriginalName("CHARACTER_JUSTIFY_LEFT")] Left = 1,
     [pbr::OriginalName("CHARACTER_JUSTIFY_RIGHT")] Right = 2,
+    [pbr::OriginalName("CHARACTER_JUSTIFY_CENTER")] Center = 3,
   }
 
   public enum CharacterZOrder {

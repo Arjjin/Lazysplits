@@ -42,6 +42,17 @@ LzsWatchCharacterSet::LzsWatchCharacterSet(
 bool LzsWatchCharacterSet::CvLogic( const cv::Mat& BGR_frame ){
 	cv::Mat cropped_frame = BGR_frame(area_);
 
+	/*
+	std::vector<int> compression_params;
+	compression_params.push_back(cv::IMWRITE_PNG_COMPRESSION);
+	compression_params.push_back(1);
+
+	cv::imwrite("source_frame.png ",BGR_frame,compression_params);
+	cv::imwrite("cropped_source_frame.png",cropped_frame,compression_params);
+	cv::imwrite("search_frame.png",img_BGR_,compression_params);
+	//blog( LOG_DEBUG, "[lazysplits][SharedData] area : %ix%i", area_.x, area_.y );
+	*/
+
 	return ImgProc::FindImage( cropped_frame, img_BGR_, img_mask_, watch_info_.base_threshold() );
 }
 
@@ -71,21 +82,21 @@ bool LzsWatchCharacterSet::MakeArea(){
 	else{
 		x_padding -= ( character_input_.end() - 1 )->x_padding();
 	}
+	area_width += x_padding;
 
 	//adjust for left/right justification
-	//TODO take y padding into account
+	//TODO take char y padding into account
 	cv::Point2i additional_area_offset = GetAdditonalAreaOffset();
 	switch( watch_info_.character_justify() ){
 		case Proto::CharacterJustify::CHARACTER_JUSTIFY_LEFT :
-			area_width += x_padding;
-
 			area_x += additional_area_offset.x;
 		break;
 		case Proto::CharacterJustify::CHARACTER_JUSTIFY_RIGHT :
-			area_width += x_padding;
-
 			//invert values for right justified watch, and subtract base width of watch
 			area_x -= additional_area_offset.x+area_width;
+		break;
+		case Proto::CharacterJustify::CHARACTER_JUSTIFY_CENTER :
+			area_x -= area_width/2;
 		break;
 	}
 
@@ -176,7 +187,7 @@ bool LzsWatchCharacterSet::MakeImage(){
 			if( watch_info_.character_z_order() == Proto::CHARACTER_Z_LEFT_TO_RIGHT ){
 				const Proto::WatchInfo_CharacterEntry& char_entry = character_input_.at(index);
 				//pull individual character image from character set
-				cv::Mat char_image = character_set( cv::Rect( char_entry.character_index()*char_width, 0, char_width, char_height ) );
+				cv::Mat char_image = GetCharMat( character_set, char_entry.character_index(), char_width, char_height );
 
 				int cur_x_loc = prev_x_loc + char_entry.x_padding();
 				//range clamping
@@ -199,7 +210,7 @@ bool LzsWatchCharacterSet::MakeImage(){
 			else{
 				const Proto::WatchInfo_CharacterEntry& char_entry = character_input_.at(inv_index);
 				//pull individual character image from character set
-				cv::Mat char_image = character_set( cv::Rect( char_entry.character_index()*char_width, 0, char_width, char_height ) );
+				cv::Mat char_image = GetCharMat( character_set, char_entry.character_index(), char_width, char_height );
 
 				int cur_x_loc = prev_x_loc - char_width - char_entry.x_padding();
 				//range clamping
@@ -246,9 +257,23 @@ bool LzsWatchCharacterSet::MakeImage(){
 		int mix_pairing[] = { 0,0, 1,1, 2,2, 3,3, 3,4, 3,5 };
 		cv::mixChannels( &composite_image, 1, mix_destination, 2, mix_pairing, 6 );
 
-		//resize BGR with linear interp and bitmask with NN
-		cv::resize( img_BGR_, img_BGR_, cv::Size( new_width, new_height ) );
-		cv::resize( img_mask_, img_mask_, cv::Size( new_width, new_height ), 0.0, 0.0, cv::INTER_NEAREST ); 
+		//resize BGR with cubic interp (unless manually overridden) and bitmask with NN
+		cv::resize(
+			img_BGR_,
+			img_BGR_,
+			cv::Size( new_width, new_height ),
+			0.0,
+			0.0,
+			current_calib_props_.use_nn_interp ? cv::INTER_NEAREST : cv::INTER_LINEAR
+		); 
+		cv::resize(
+			img_mask_,
+			img_mask_,
+			cv::Size( new_width, new_height ),
+			0.0,
+			0.0,
+			cv::INTER_NEAREST
+		); 
 	}
 	catch( cv::Exception cve ){
 		blog( LOG_ERROR, "[lazysplits][SharedData] error making watch image for %s; %s!", GetName().c_str(), cve.msg.c_str() );
@@ -277,6 +302,16 @@ void LzsWatchCharacterSet::MakeCharInput( const std::string& input_string ){
 			character_input_.push_back( char_entry_it->second );
 		}
 	}
+}
+
+cv::Mat LzsWatchCharacterSet::GetCharMat( cv::Mat source_mat, int char_index, int char_width, int char_height ){
+	int char_x = ( char_index % ( source_mat.cols / char_width ) ) * char_width;
+	int char_y = ( ( char_index * char_width ) / source_mat.cols ) * char_height;
+	cv::Mat char_mat = source_mat(
+		cv::Rect( char_x, char_y, char_width, char_height )
+	);
+
+	return char_mat;
 }
 
 const cv::Point2i LzsWatchCharacterSet::GetAdditonalAreaOffset(){

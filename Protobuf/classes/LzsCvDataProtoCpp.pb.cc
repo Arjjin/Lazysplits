@@ -495,16 +495,16 @@ void AddDescriptorsImpl() {
       "NCREMENT_INDEX\020\001\022\026\n\022WA_DECREMENT_INDEX\020\002"
       "\022\021\n\rWA_GOTO_INDEX\020\003\022\017\n\013WA_COMPLETE\020\004*A\n\020"
       "WatchPersistence\022\013\n\007WP_NONE\020\000\022\022\n\016WP_SPEC"
-      "IFY_MAX\020\001\022\014\n\010WP_TOTAL\020\002*i\n\020CharacterJust"
-      "ify\022\034\n\030CHARACTER_JUSTIFY_UNUSED\020\000\022\032\n\026CHA"
-      "RACTER_JUSTIFY_LEFT\020\001\022\033\n\027CHARACTER_JUSTI"
-      "FY_RIGHT\020\002*g\n\017CharacterZOrder\022\026\n\022CHARACT"
-      "ER_Z_UNUSED\020\000\022\035\n\031CHARACTER_Z_LEFT_TO_RIG"
-      "HT\020\001\022\035\n\031CHARACTER_Z_RIGHT_TO_LEFT\020\002b\006pro"
-      "to3"
+      "IFY_MAX\020\001\022\014\n\010WP_TOTAL\020\002*\207\001\n\020CharacterJus"
+      "tify\022\034\n\030CHARACTER_JUSTIFY_UNUSED\020\000\022\032\n\026CH"
+      "ARACTER_JUSTIFY_LEFT\020\001\022\033\n\027CHARACTER_JUST"
+      "IFY_RIGHT\020\002\022\034\n\030CHARACTER_JUSTIFY_CENTER\020"
+      "\003*g\n\017CharacterZOrder\022\026\n\022CHARACTER_Z_UNUS"
+      "ED\020\000\022\035\n\031CHARACTER_Z_LEFT_TO_RIGHT\020\001\022\035\n\031C"
+      "HARACTER_Z_RIGHT_TO_LEFT\020\002b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2203);
+      descriptor, 2234);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "LzsCvDataProtoCpp.proto", &protobuf_RegisterTypes);
 }
@@ -596,6 +596,7 @@ bool CharacterJustify_IsValid(int value) {
     case 0:
     case 1:
     case 2:
+    case 3:
       return true;
     default:
       return false;

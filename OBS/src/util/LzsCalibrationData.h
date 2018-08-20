@@ -18,6 +18,7 @@ struct SendableCalibrationProps{
 	int64_t loc_y = 0;
 	double scale_x = 100.0F;
 	double scale_y  = 100.0F;
+	bool use_nn_interp = false;
 };
 
 class LzsCalibrationData{

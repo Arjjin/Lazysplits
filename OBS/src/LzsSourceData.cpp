@@ -62,6 +62,7 @@ void LzsSourceData::InitProps( obs_source_t* context ){
 	properties_.AddInt( &calib_data_.current_sendable_props_.loc_y, "calib_loc_y", "Calibration Y", -200, 200, 1 );
 	properties_.AddFloat( &calib_data_.current_sendable_props_.scale_x, "calib_scale_x", "Calibration width %", 10.0F, 400.0F, 0.1F );
 	properties_.AddFloat( &calib_data_.current_sendable_props_.scale_y, "calib_scale_y", "Calibration height %", 10.0F, 400.0F, 0.1F );
+	properties_.AddBool( &calib_data_.current_sendable_props_.use_nn_interp, "use_nn_interp", "NN scale interpolation" );
 	
 	obs_data_t* source_settings = obs_source_get_settings(context);
 	properties_.SetPropertyDefaults(source_settings);
@@ -188,6 +189,7 @@ bool LzsSourceData::PropCalibEnabledModified( obs_properties_t *props, obs_prope
 	obs_property_set_visible( obs_properties_get( props, "calib_loc_y" ), calib_active );
 	obs_property_set_visible( obs_properties_get( props, "calib_scale_x" ), calib_active );
 	obs_property_set_visible( obs_properties_get( props, "calib_scale_y" ), calib_active );
+	obs_property_set_visible( obs_properties_get( props, "use_nn_interp" ), calib_active );
 
 	return true;
 }

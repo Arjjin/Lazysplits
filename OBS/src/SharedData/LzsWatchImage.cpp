@@ -60,9 +60,23 @@ bool LzsWatchImageBase::MakeImage(){
 		int mix_pairing[] = { 0,0, 1,1, 2,2, 3,3, 3,4, 3,5 };
 		cv::mixChannels( &new_img, 1, mix_destination, 2, mix_pairing, 6 );
 
-		//resize BGR with linear interp and bitmask with NN
-		cv::resize( img_BGR_, img_BGR_, cv::Size( new_width, new_height ) );
-		cv::resize( img_mask_, img_mask_, cv::Size( new_width, new_height ), 0.0, 0.0, cv::INTER_NEAREST );
+		//resize BGR with cubic interp (unless manually overridden) and bitmask with NN
+		cv::resize(
+			img_BGR_,
+			img_BGR_,
+			cv::Size( new_width, new_height ),
+			0.0,
+			0.0,
+			current_calib_props_.use_nn_interp ? cv::INTER_NEAREST : cv::INTER_CUBIC
+		); 
+		cv::resize(
+			img_mask_,
+			img_mask_,
+			cv::Size( new_width, new_height ),
+			0.0,
+			0.0,
+			cv::INTER_NEAREST
+		); 
 	}
 	catch( cv::Exception cve ){
 		blog( LOG_ERROR, "[lazysplits][SharedData] error making watch image for %s; %s!", GetName().c_str(), cve.msg.c_str() );

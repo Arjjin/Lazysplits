@@ -130,6 +130,7 @@ class LzsWatchCharacterSet : public LzsWatchImageBase{
 
 		void MakeCharMap();
 		void MakeCharInput( const std::string& input_string );
+		cv::Mat GetCharMat( cv::Mat source_mat, int char_index, int char_width, int char_height );
 		const cv::Point2i GetAdditonalAreaOffset();
 
 		//const std::string character_input_;

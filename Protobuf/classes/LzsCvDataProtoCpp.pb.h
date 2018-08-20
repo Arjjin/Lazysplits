@@ -202,12 +202,13 @@ enum CharacterJustify {
   CHARACTER_JUSTIFY_UNUSED = 0,
   CHARACTER_JUSTIFY_LEFT = 1,
   CHARACTER_JUSTIFY_RIGHT = 2,
+  CHARACTER_JUSTIFY_CENTER = 3,
   CharacterJustify_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   CharacterJustify_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool CharacterJustify_IsValid(int value);
 const CharacterJustify CharacterJustify_MIN = CHARACTER_JUSTIFY_UNUSED;
-const CharacterJustify CharacterJustify_MAX = CHARACTER_JUSTIFY_RIGHT;
+const CharacterJustify CharacterJustify_MAX = CHARACTER_JUSTIFY_CENTER;
 const int CharacterJustify_ARRAYSIZE = CharacterJustify_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* CharacterJustify_descriptor();
