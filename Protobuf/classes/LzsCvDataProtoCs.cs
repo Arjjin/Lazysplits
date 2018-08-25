@@ -32,52 +32,55 @@ namespace LiveSplit.Lazysplits.Proto {
             "YW1lGAEgASgJEhUKDXJlbGF0aXZlX3BhdGgYAiABKAkijwEKCEdhbWVJbmZv",
             "EgwKBG5hbWUYASABKAkSQQoHdGFyZ2V0cxgCIAMoCzIwLkxpdmVTcGxpdC5M",
             "YXp5c3BsaXRzLlByb3RvLkdhbWVJbmZvLlRhcmdldEVudHJ5GjIKC1Rhcmdl",
-            "dEVudHJ5EgwKBG5hbWUYASABKAkSFQoNcmVsYXRpdmVfcGF0aBgCIAEoCSKZ",
-            "AwoKVGFyZ2V0SW5mbxIMCgRuYW1lGAEgASgJEjQKBHR5cGUYAiABKA4yJi5M",
+            "dEVudHJ5EgwKBG5hbWUYASABKAkSFQoNcmVsYXRpdmVfcGF0aBgCIAEoCSKc",
+            "BAoKVGFyZ2V0SW5mbxIMCgRuYW1lGAEgASgJEjQKBHR5cGUYAiABKA4yJi5M",
             "aXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90by5UYXJnZXRUeXBlEhcKD3NwbGl0",
             "X29mZnNldF9tcxgDIAEoERJCCgd3YXRjaGVzGAQgAygLMjEuTGl2ZVNwbGl0",
-            "LkxhenlzcGxpdHMuUHJvdG8uVGFyZ2V0SW5mby5XYXRjaEVudHJ5GukBCgpX",
-            "YXRjaEVudHJ5EgwKBG5hbWUYASABKAkSFQoNcmVsYXRpdmVfcGF0aBgCIAEo",
-            "CRINCgVpbmRleBgDIAEoERI3CgZhY3Rpb24YBCABKA4yJy5MaXZlU3BsaXQu",
-            "TGF6eXNwbGl0cy5Qcm90by5XYXRjaEFjdGlvbhISCgphY3Rpb25fdmFsGAUg",
-            "ASgNEkEKC3BlcnNpc3RlbmNlGAYgASgOMiwuTGl2ZVNwbGl0LkxhenlzcGxp",
-            "dHMuUHJvdG8uV2F0Y2hQZXJzaXN0ZW5jZRIXCg9wZXJzaXN0ZW5jZV9tYXgY",
-            "ByABKA0i2wcKCVdhdGNoSW5mbxIMCgRuYW1lGAEgASgJEjMKBHR5cGUYAiAB",
-            "KA4yJS5MaXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90by5XYXRjaFR5cGUSPgoP",
-            "YmFzZV9kaW1lbnNpb25zGAMgASgLMiUuTGl2ZVNwbGl0LkxhenlzcGxpdHMu",
-            "UHJvdG8uVVNjYWxhcjJkEj0KBGFyZWEYBCABKAsyLy5MaXZlU3BsaXQuTGF6",
-            "eXNwbGl0cy5Qcm90by5XYXRjaEluZm8uV2F0Y2hBcmVhEh8KF2FkZGl0aW9u",
-            "YWxfYXJlYV9wYWRkaW5nGAsgASgNEhYKDmJhc2VfdGhyZXNob2xkGAwgASgC",
-            "EjMKBWNvbG9yGAUgASgLMiQuTGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8u",
-            "UkdCQ29sb3ISGQoRaW1nX3JlbGF0aXZlX3BhdGgYBiABKAkSRwoRY2hhcmFj",
-            "dGVyX2p1c3RpZnkYByABKA4yLC5MaXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90",
-            "by5DaGFyYWN0ZXJKdXN0aWZ5EkYKEWNoYXJhY3Rlcl96X29yZGVyGAggASgO",
-            "MisuTGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8uQ2hhcmFjdGVyWk9yZGVy",
-            "EkgKCmNoYXJhY3RlcnMYCSADKAsyNC5MaXZlU3BsaXQuTGF6eXNwbGl0cy5Q",
-            "cm90by5XYXRjaEluZm8uQ2hhcmFjdGVyRW50cnkSVgoRYWRkaXRpb25hbF9v",
-            "ZmZzZXQYCiADKAsyOy5MaXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90by5XYXRj",
-            "aEluZm8uQWRkaXRpb25hbE9mZnNldEVudHJ5GnQKCVdhdGNoQXJlYRIyCgNs",
-            "b2MYASABKAsyJS5MaXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90by5VU2NhbGFy",
-            "MmQSMwoEc2l6ZRgCIAEoCzIlLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3Rv",
-            "LlVTY2FsYXIyZBpmCg5DaGFyYWN0ZXJFbnRyeRIXCg9jaGFyYWN0ZXJfaW5k",
-            "ZXgYASABKA0SFQoNY2hhcmFjdGVyX3ZhbBgCIAEoCRIRCgl4X3BhZGRpbmcY",
-            "AyABKBESEQoJeV9wYWRkaW5nGAQgASgRGnIKFUFkZGl0aW9uYWxPZmZzZXRF",
-            "bnRyeRIiChpjaGFyYWN0ZXJfbGVuZ3RoX3RocmVzaG9sZBgBIAEoDRI1CgZv",
-            "ZmZzZXQYAiABKAsyJS5MaXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90by5VU2Nh",
-            "bGFyMmQqWQoKVGFyZ2V0VHlwZRIOCgpUR1RfVU5VU0VEEAASDQoJVEdUX1JF",
-            "U0VUEAESDQoJVEdUX1NUQVJUEAISEAoMVEdUX1NUQU5EQVJEEAMSCwoHVEdU",
-            "X0VORBAEKlMKCVdhdGNoVHlwZRINCglXVF9VTlVTRUQQABIMCghXVF9DT0xP",
-            "UhABEhMKD1dUX0lNQUdFX1NUQVRJQxACEhQKEFdUX0NIQVJBQ1RFUl9TRVQQ",
-            "AypwCgtXYXRjaEFjdGlvbhINCglXQV9VTlVTRUQQABIWChJXQV9JTkNSRU1F",
-            "TlRfSU5ERVgQARIWChJXQV9ERUNSRU1FTlRfSU5ERVgQAhIRCg1XQV9HT1RP",
-            "X0lOREVYEAMSDwoLV0FfQ09NUExFVEUQBCpBChBXYXRjaFBlcnNpc3RlbmNl",
-            "EgsKB1dQX05PTkUQABISCg5XUF9TUEVDSUZZX01BWBABEgwKCFdQX1RPVEFM",
-            "EAIqhwEKEENoYXJhY3Rlckp1c3RpZnkSHAoYQ0hBUkFDVEVSX0pVU1RJRllf",
-            "VU5VU0VEEAASGgoWQ0hBUkFDVEVSX0pVU1RJRllfTEVGVBABEhsKF0NIQVJB",
-            "Q1RFUl9KVVNUSUZZX1JJR0hUEAISHAoYQ0hBUkFDVEVSX0pVU1RJRllfQ0VO",
-            "VEVSEAMqZwoPQ2hhcmFjdGVyWk9yZGVyEhYKEkNIQVJBQ1RFUl9aX1VOVVNF",
-            "RBAAEh0KGUNIQVJBQ1RFUl9aX0xFRlRfVE9fUklHSFQQARIdChlDSEFSQUNU",
-            "RVJfWl9SSUdIVF9UT19MRUZUEAJiBnByb3RvMw=="));
+            "LkxhenlzcGxpdHMuUHJvdG8uVGFyZ2V0SW5mby5XYXRjaEVudHJ5GicKCFdh",
+            "dGNoVmFyEgwKBG5hbWUYASABKAkSDQoFdmFsdWUYAiABKAkawwIKCldhdGNo",
+            "RW50cnkSEwoLZW50cnlfbGFiZWwYCSABKAkSDAoEbmFtZRgBIAEoCRIVCg1y",
+            "ZWxhdGl2ZV9wYXRoGAIgASgJEg0KBWluZGV4GAMgASgREjcKBmFjdGlvbhgE",
+            "IAEoDjInLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3RvLldhdGNoQWN0aW9u",
+            "EhIKCmFjdGlvbl92YWwYBSABKA0SQQoLcGVyc2lzdGVuY2UYBiABKA4yLC5M",
+            "aXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90by5XYXRjaFBlcnNpc3RlbmNlEhcK",
+            "D3BlcnNpc3RlbmNlX21heBgHIAEoDRJDCgp3YXRjaF92YXJzGAggAygLMi8u",
+            "TGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8uVGFyZ2V0SW5mby5XYXRjaFZh",
+            "ciLbBwoJV2F0Y2hJbmZvEgwKBG5hbWUYASABKAkSMwoEdHlwZRgCIAEoDjIl",
+            "LkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3RvLldhdGNoVHlwZRI+Cg9iYXNl",
+            "X2RpbWVuc2lvbnMYAyABKAsyJS5MaXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90",
+            "by5VU2NhbGFyMmQSPQoEYXJlYRgEIAEoCzIvLkxpdmVTcGxpdC5MYXp5c3Bs",
+            "aXRzLlByb3RvLldhdGNoSW5mby5XYXRjaEFyZWESHwoXYWRkaXRpb25hbF9h",
+            "cmVhX3BhZGRpbmcYCyABKA0SFgoOYmFzZV90aHJlc2hvbGQYDCABKAISMwoF",
+            "Y29sb3IYBSABKAsyJC5MaXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90by5SR0JD",
+            "b2xvchIZChFpbWdfcmVsYXRpdmVfcGF0aBgGIAEoCRJHChFjaGFyYWN0ZXJf",
+            "anVzdGlmeRgHIAEoDjIsLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3RvLkNo",
+            "YXJhY3Rlckp1c3RpZnkSRgoRY2hhcmFjdGVyX3pfb3JkZXIYCCABKA4yKy5M",
+            "aXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90by5DaGFyYWN0ZXJaT3JkZXISSAoK",
+            "Y2hhcmFjdGVycxgJIAMoCzI0LkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3Rv",
+            "LldhdGNoSW5mby5DaGFyYWN0ZXJFbnRyeRJWChFhZGRpdGlvbmFsX29mZnNl",
+            "dBgKIAMoCzI7LkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3RvLldhdGNoSW5m",
+            "by5BZGRpdGlvbmFsT2Zmc2V0RW50cnkadAoJV2F0Y2hBcmVhEjIKA2xvYxgB",
+            "IAEoCzIlLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3RvLlVTY2FsYXIyZBIz",
+            "CgRzaXplGAIgASgLMiUuTGl2ZVNwbGl0LkxhenlzcGxpdHMuUHJvdG8uVVNj",
+            "YWxhcjJkGmYKDkNoYXJhY3RlckVudHJ5EhcKD2NoYXJhY3Rlcl9pbmRleBgB",
+            "IAEoDRIVCg1jaGFyYWN0ZXJfdmFsGAIgASgJEhEKCXhfcGFkZGluZxgDIAEo",
+            "ERIRCgl5X3BhZGRpbmcYBCABKBEacgoVQWRkaXRpb25hbE9mZnNldEVudHJ5",
+            "EiIKGmNoYXJhY3Rlcl9sZW5ndGhfdGhyZXNob2xkGAEgASgNEjUKBm9mZnNl",
+            "dBgCIAEoCzIlLkxpdmVTcGxpdC5MYXp5c3BsaXRzLlByb3RvLlVTY2FsYXIy",
+            "ZCpZCgpUYXJnZXRUeXBlEg4KClRHVF9VTlVTRUQQABINCglUR1RfUkVTRVQQ",
+            "ARINCglUR1RfU1RBUlQQAhIQCgxUR1RfU1RBTkRBUkQQAxILCgdUR1RfRU5E",
+            "EAQqUwoJV2F0Y2hUeXBlEg0KCVdUX1VOVVNFRBAAEgwKCFdUX0NPTE9SEAES",
+            "EwoPV1RfSU1BR0VfU1RBVElDEAISFAoQV1RfQ0hBUkFDVEVSX1NFVBADKnAK",
+            "C1dhdGNoQWN0aW9uEg0KCVdBX1VOVVNFRBAAEhYKEldBX0lOQ1JFTUVOVF9J",
+            "TkRFWBABEhYKEldBX0RFQ1JFTUVOVF9JTkRFWBACEhEKDVdBX0dPVE9fSU5E",
+            "RVgQAxIPCgtXQV9DT01QTEVURRAEKkEKEFdhdGNoUGVyc2lzdGVuY2USCwoH",
+            "V1BfTk9ORRAAEhIKDldQX1NQRUNJRllfTUFYEAESDAoIV1BfVE9UQUwQAiqH",
+            "AQoQQ2hhcmFjdGVySnVzdGlmeRIcChhDSEFSQUNURVJfSlVTVElGWV9VTlVT",
+            "RUQQABIaChZDSEFSQUNURVJfSlVTVElGWV9MRUZUEAESGwoXQ0hBUkFDVEVS",
+            "X0pVU1RJRllfUklHSFQQAhIcChhDSEFSQUNURVJfSlVTVElGWV9DRU5URVIQ",
+            "AypnCg9DaGFyYWN0ZXJaT3JkZXISFgoSQ0hBUkFDVEVSX1pfVU5VU0VEEAAS",
+            "HQoZQ0hBUkFDVEVSX1pfTEVGVF9UT19SSUdIVBABEh0KGUNIQVJBQ1RFUl9a",
+            "X1JJR0hUX1RPX0xFRlQQAmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::LiveSplit.Lazysplits.Proto.TargetType), typeof(global::LiveSplit.Lazysplits.Proto.WatchType), typeof(global::LiveSplit.Lazysplits.Proto.WatchAction), typeof(global::LiveSplit.Lazysplits.Proto.WatchPersistence), typeof(global::LiveSplit.Lazysplits.Proto.CharacterJustify), typeof(global::LiveSplit.Lazysplits.Proto.CharacterZOrder), }, new pbr::GeneratedClrTypeInfo[] {
@@ -85,7 +88,8 @@ namespace LiveSplit.Lazysplits.Proto {
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.RGBColor), global::LiveSplit.Lazysplits.Proto.RGBColor.Parser, new[]{ "R", "G", "B" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameList), global::LiveSplit.Lazysplits.Proto.GameList.Parser, new[]{ "Games" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameList.Types.GameEntry), global::LiveSplit.Lazysplits.Proto.GameList.Types.GameEntry.Parser, new[]{ "Name", "RelativePath" }, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameInfo), global::LiveSplit.Lazysplits.Proto.GameInfo.Parser, new[]{ "Name", "Targets" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.GameInfo.Types.TargetEntry), global::LiveSplit.Lazysplits.Proto.GameInfo.Types.TargetEntry.Parser, new[]{ "Name", "RelativePath" }, null, null, null)}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.TargetInfo), global::LiveSplit.Lazysplits.Proto.TargetInfo.Parser, new[]{ "Name", "Type", "SplitOffsetMs", "Watches" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchEntry), global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchEntry.Parser, new[]{ "Name", "RelativePath", "Index", "Action", "ActionVal", "Persistence", "PersistenceMax" }, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.TargetInfo), global::LiveSplit.Lazysplits.Proto.TargetInfo.Parser, new[]{ "Name", "Type", "SplitOffsetMs", "Watches" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchVar), global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchVar.Parser, new[]{ "Name", "Value" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchEntry), global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchEntry.Parser, new[]{ "EntryLabel", "Name", "RelativePath", "Index", "Action", "ActionVal", "Persistence", "PersistenceMax", "WatchVars" }, null, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo), global::LiveSplit.Lazysplits.Proto.WatchInfo.Parser, new[]{ "Name", "Type", "BaseDimensions", "Area", "AdditionalAreaPadding", "BaseThreshold", "Color", "ImgRelativePath", "CharacterJustify", "CharacterZOrder", "Characters", "AdditionalOffset" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.WatchArea), global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.WatchArea.Parser, new[]{ "Loc", "Size" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.CharacterEntry), global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.CharacterEntry.Parser, new[]{ "CharacterIndex", "CharacterVal", "XPadding", "YPadding" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalOffsetEntry), global::LiveSplit.Lazysplits.Proto.WatchInfo.Types.AdditionalOffsetEntry.Parser, new[]{ "CharacterLengthThreshold", "Offset" }, null, null, null)})
@@ -1287,6 +1291,163 @@ namespace LiveSplit.Lazysplits.Proto {
     /// <summary>Container for nested types declared in the TargetInfo message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
+      public sealed partial class WatchVar : pb::IMessage<WatchVar> {
+        private static readonly pb::MessageParser<WatchVar> _parser = new pb::MessageParser<WatchVar>(() => new WatchVar());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<WatchVar> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::LiveSplit.Lazysplits.Proto.TargetInfo.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public WatchVar() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public WatchVar(WatchVar other) : this() {
+          name_ = other.name_;
+          value_ = other.value_;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public WatchVar Clone() {
+          return new WatchVar(this);
+        }
+
+        /// <summary>Field number for the "name" field.</summary>
+        public const int NameFieldNumber = 1;
+        private string name_ = "";
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string Name {
+          get { return name_; }
+          set {
+            name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "value" field.</summary>
+        public const int ValueFieldNumber = 2;
+        private string value_ = "";
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string Value {
+          get { return value_; }
+          set {
+            value_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as WatchVar);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(WatchVar other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (Name != other.Name) return false;
+          if (Value != other.Value) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (Name.Length != 0) hash ^= Name.GetHashCode();
+          if (Value.Length != 0) hash ^= Value.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (Name.Length != 0) {
+            output.WriteRawTag(10);
+            output.WriteString(Name);
+          }
+          if (Value.Length != 0) {
+            output.WriteRawTag(18);
+            output.WriteString(Value);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (Name.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+          }
+          if (Value.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(Value);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(WatchVar other) {
+          if (other == null) {
+            return;
+          }
+          if (other.Name.Length != 0) {
+            Name = other.Name;
+          }
+          if (other.Value.Length != 0) {
+            Value = other.Value;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                Name = input.ReadString();
+                break;
+              }
+              case 18: {
+                Value = input.ReadString();
+                break;
+              }
+            }
+          }
+        }
+
+      }
+
       public sealed partial class WatchEntry : pb::IMessage<WatchEntry> {
         private static readonly pb::MessageParser<WatchEntry> _parser = new pb::MessageParser<WatchEntry>(() => new WatchEntry());
         private pb::UnknownFieldSet _unknownFields;
@@ -1295,7 +1456,7 @@ namespace LiveSplit.Lazysplits.Proto {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static pbr::MessageDescriptor Descriptor {
-          get { return global::LiveSplit.Lazysplits.Proto.TargetInfo.Descriptor.NestedTypes[0]; }
+          get { return global::LiveSplit.Lazysplits.Proto.TargetInfo.Descriptor.NestedTypes[1]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1312,6 +1473,7 @@ namespace LiveSplit.Lazysplits.Proto {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public WatchEntry(WatchEntry other) : this() {
+          entryLabel_ = other.entryLabel_;
           name_ = other.name_;
           relativePath_ = other.relativePath_;
           index_ = other.index_;
@@ -1319,12 +1481,24 @@ namespace LiveSplit.Lazysplits.Proto {
           actionVal_ = other.actionVal_;
           persistence_ = other.persistence_;
           persistenceMax_ = other.persistenceMax_;
+          watchVars_ = other.watchVars_.Clone();
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public WatchEntry Clone() {
           return new WatchEntry(this);
+        }
+
+        /// <summary>Field number for the "entry_label" field.</summary>
+        public const int EntryLabelFieldNumber = 9;
+        private string entryLabel_ = "";
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string EntryLabel {
+          get { return entryLabel_; }
+          set {
+            entryLabel_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
         }
 
         /// <summary>Field number for the "name" field.</summary>
@@ -1404,6 +1578,16 @@ namespace LiveSplit.Lazysplits.Proto {
           }
         }
 
+        /// <summary>Field number for the "watch_vars" field.</summary>
+        public const int WatchVarsFieldNumber = 8;
+        private static readonly pb::FieldCodec<global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchVar> _repeated_watchVars_codec
+            = pb::FieldCodec.ForMessage(66, global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchVar.Parser);
+        private readonly pbc::RepeatedField<global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchVar> watchVars_ = new pbc::RepeatedField<global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchVar>();
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public pbc::RepeatedField<global::LiveSplit.Lazysplits.Proto.TargetInfo.Types.WatchVar> WatchVars {
+          get { return watchVars_; }
+        }
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override bool Equals(object other) {
           return Equals(other as WatchEntry);
@@ -1417,6 +1601,7 @@ namespace LiveSplit.Lazysplits.Proto {
           if (ReferenceEquals(other, this)) {
             return true;
           }
+          if (EntryLabel != other.EntryLabel) return false;
           if (Name != other.Name) return false;
           if (RelativePath != other.RelativePath) return false;
           if (Index != other.Index) return false;
@@ -1424,12 +1609,14 @@ namespace LiveSplit.Lazysplits.Proto {
           if (ActionVal != other.ActionVal) return false;
           if (Persistence != other.Persistence) return false;
           if (PersistenceMax != other.PersistenceMax) return false;
+          if(!watchVars_.Equals(other.watchVars_)) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override int GetHashCode() {
           int hash = 1;
+          if (EntryLabel.Length != 0) hash ^= EntryLabel.GetHashCode();
           if (Name.Length != 0) hash ^= Name.GetHashCode();
           if (RelativePath.Length != 0) hash ^= RelativePath.GetHashCode();
           if (Index != 0) hash ^= Index.GetHashCode();
@@ -1437,6 +1624,7 @@ namespace LiveSplit.Lazysplits.Proto {
           if (ActionVal != 0) hash ^= ActionVal.GetHashCode();
           if (Persistence != 0) hash ^= Persistence.GetHashCode();
           if (PersistenceMax != 0) hash ^= PersistenceMax.GetHashCode();
+          hash ^= watchVars_.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -1478,6 +1666,11 @@ namespace LiveSplit.Lazysplits.Proto {
             output.WriteRawTag(56);
             output.WriteUInt32(PersistenceMax);
           }
+          watchVars_.WriteTo(output, _repeated_watchVars_codec);
+          if (EntryLabel.Length != 0) {
+            output.WriteRawTag(74);
+            output.WriteString(EntryLabel);
+          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -1486,6 +1679,9 @@ namespace LiveSplit.Lazysplits.Proto {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
           int size = 0;
+          if (EntryLabel.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(EntryLabel);
+          }
           if (Name.Length != 0) {
             size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
           }
@@ -1507,6 +1703,7 @@ namespace LiveSplit.Lazysplits.Proto {
           if (PersistenceMax != 0) {
             size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PersistenceMax);
           }
+          size += watchVars_.CalculateSize(_repeated_watchVars_codec);
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
           }
@@ -1517,6 +1714,9 @@ namespace LiveSplit.Lazysplits.Proto {
         public void MergeFrom(WatchEntry other) {
           if (other == null) {
             return;
+          }
+          if (other.EntryLabel.Length != 0) {
+            EntryLabel = other.EntryLabel;
           }
           if (other.Name.Length != 0) {
             Name = other.Name;
@@ -1539,6 +1739,7 @@ namespace LiveSplit.Lazysplits.Proto {
           if (other.PersistenceMax != 0) {
             PersistenceMax = other.PersistenceMax;
           }
+          watchVars_.Add(other.watchVars_);
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
 
@@ -1576,6 +1777,14 @@ namespace LiveSplit.Lazysplits.Proto {
               }
               case 56: {
                 PersistenceMax = input.ReadUInt32();
+                break;
+              }
+              case 66: {
+                watchVars_.AddEntriesFrom(input, _repeated_watchVars_codec);
+                break;
+              }
+              case 74: {
+                EntryLabel = input.ReadString();
                 break;
               }
             }

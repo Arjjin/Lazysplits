@@ -30,22 +30,22 @@ namespace LiveSplit.Lazysplits.Proto {
             "c2FnZVR5cGUSFwoPc2hhcmVkX2RhdGFfZGlyGAMgASgJEhEKCWdhbWVfbmFt",
             "ZRgEIAEoCRITCgt0YXJnZXRfbmFtZRgFIAEoCRIYChB0YXJnZXRfdGltZXN0",
             "YW1wGAYgASgEIj0KC01lc3NhZ2VUeXBlEggKBE5PTkUQABISCg5SRVFVRVNU",
-            "X1JFU1lOQxABEhAKDFRBUkdFVF9GT1VORBACIqoDCglDc01lc3NhZ2USCgoC",
+            "X1JFU1lOQxABEhAKDFRBUkdFVF9GT1VORBACIrADCglDc01lc3NhZ2USCgoC",
             "aWQYASABKAUSPwoEdHlwZRgCIAEoDjIxLkxpdmVTcGxpdC5MYXp5c3BsaXRz",
             "LlByb3RvLkNzTWVzc2FnZS5NZXNzYWdlVHlwZRIXCg9zaGFyZWRfZGF0YV9k",
             "aXIYAyABKAkSEQoJZ2FtZV9uYW1lGAQgASgJEj0KB3RhcmdldHMYBSADKAsy",
             "LC5MaXZlU3BsaXQuTGF6eXNwbGl0cy5Qcm90by5Dc01lc3NhZ2UuVGFyZ2V0",
-            "GjsKDVdhdGNoVmFyaWFibGUSDQoFaW5kZXgYASABKA0SDAoEbmFtZRgCIAEo",
-            "CRINCgV2YWx1ZRgDIAEoCRprCgZUYXJnZXQSEwoLdGFyZ2V0X25hbWUYASAB",
-            "KAkSTAoPd2F0Y2hfdmFyaWFibGVzGAIgAygLMjMuTGl2ZVNwbGl0Lkxhenlz",
-            "cGxpdHMuUHJvdG8uQ3NNZXNzYWdlLldhdGNoVmFyaWFibGUiOwoLTWVzc2Fn",
-            "ZVR5cGUSCAoETk9ORRAAEhEKDUNMRUFSX1RBUkdFVFMQARIPCgtORVdfVEFS",
-            "R0VUUxACYgZwcm90bzM="));
+            "GkEKDVdhdGNoVmFyaWFibGUSEwoLZW50cnlfbGFiZWwYASABKAkSDAoEbmFt",
+            "ZRgCIAEoCRINCgV2YWx1ZRgDIAEoCRprCgZUYXJnZXQSEwoLdGFyZ2V0X25h",
+            "bWUYASABKAkSTAoPd2F0Y2hfdmFyaWFibGVzGAIgAygLMjMuTGl2ZVNwbGl0",
+            "LkxhenlzcGxpdHMuUHJvdG8uQ3NNZXNzYWdlLldhdGNoVmFyaWFibGUiOwoL",
+            "TWVzc2FnZVR5cGUSCAoETk9ORRAAEhEKDUNMRUFSX1RBUkdFVFMQARIPCgtO",
+            "RVdfVEFSR0VUUxACYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.CppMessage), global::LiveSplit.Lazysplits.Proto.CppMessage.Parser, new[]{ "Id", "Type", "SharedDataDir", "GameName", "TargetName", "TargetTimestamp" }, null, new[]{ typeof(global::LiveSplit.Lazysplits.Proto.CppMessage.Types.MessageType) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.CsMessage), global::LiveSplit.Lazysplits.Proto.CsMessage.Parser, new[]{ "Id", "Type", "SharedDataDir", "GameName", "Targets" }, null, new[]{ typeof(global::LiveSplit.Lazysplits.Proto.CsMessage.Types.MessageType) }, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.CsMessage.Types.WatchVariable), global::LiveSplit.Lazysplits.Proto.CsMessage.Types.WatchVariable.Parser, new[]{ "Index", "Name", "Value" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.CsMessage), global::LiveSplit.Lazysplits.Proto.CsMessage.Parser, new[]{ "Id", "Type", "SharedDataDir", "GameName", "Targets" }, null, new[]{ typeof(global::LiveSplit.Lazysplits.Proto.CsMessage.Types.MessageType) }, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.CsMessage.Types.WatchVariable), global::LiveSplit.Lazysplits.Proto.CsMessage.Types.WatchVariable.Parser, new[]{ "EntryLabel", "Name", "Value" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::LiveSplit.Lazysplits.Proto.CsMessage.Types.Target), global::LiveSplit.Lazysplits.Proto.CsMessage.Types.Target.Parser, new[]{ "TargetName", "WatchVariables" }, null, null, null)})
           }));
     }
@@ -601,7 +601,7 @@ namespace LiveSplit.Lazysplits.Proto {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public WatchVariable(WatchVariable other) : this() {
-          index_ = other.index_;
+          entryLabel_ = other.entryLabel_;
           name_ = other.name_;
           value_ = other.value_;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -612,14 +612,14 @@ namespace LiveSplit.Lazysplits.Proto {
           return new WatchVariable(this);
         }
 
-        /// <summary>Field number for the "index" field.</summary>
-        public const int IndexFieldNumber = 1;
-        private uint index_;
+        /// <summary>Field number for the "entry_label" field.</summary>
+        public const int EntryLabelFieldNumber = 1;
+        private string entryLabel_ = "";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        public uint Index {
-          get { return index_; }
+        public string EntryLabel {
+          get { return entryLabel_; }
           set {
-            index_ = value;
+            entryLabel_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
           }
         }
 
@@ -658,7 +658,7 @@ namespace LiveSplit.Lazysplits.Proto {
           if (ReferenceEquals(other, this)) {
             return true;
           }
-          if (Index != other.Index) return false;
+          if (EntryLabel != other.EntryLabel) return false;
           if (Name != other.Name) return false;
           if (Value != other.Value) return false;
           return Equals(_unknownFields, other._unknownFields);
@@ -667,7 +667,7 @@ namespace LiveSplit.Lazysplits.Proto {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public override int GetHashCode() {
           int hash = 1;
-          if (Index != 0) hash ^= Index.GetHashCode();
+          if (EntryLabel.Length != 0) hash ^= EntryLabel.GetHashCode();
           if (Name.Length != 0) hash ^= Name.GetHashCode();
           if (Value.Length != 0) hash ^= Value.GetHashCode();
           if (_unknownFields != null) {
@@ -683,9 +683,9 @@ namespace LiveSplit.Lazysplits.Proto {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
-          if (Index != 0) {
-            output.WriteRawTag(8);
-            output.WriteUInt32(Index);
+          if (EntryLabel.Length != 0) {
+            output.WriteRawTag(10);
+            output.WriteString(EntryLabel);
           }
           if (Name.Length != 0) {
             output.WriteRawTag(18);
@@ -703,8 +703,8 @@ namespace LiveSplit.Lazysplits.Proto {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
           int size = 0;
-          if (Index != 0) {
-            size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Index);
+          if (EntryLabel.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(EntryLabel);
           }
           if (Name.Length != 0) {
             size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
@@ -723,8 +723,8 @@ namespace LiveSplit.Lazysplits.Proto {
           if (other == null) {
             return;
           }
-          if (other.Index != 0) {
-            Index = other.Index;
+          if (other.EntryLabel.Length != 0) {
+            EntryLabel = other.EntryLabel;
           }
           if (other.Name.Length != 0) {
             Name = other.Name;
@@ -743,8 +743,8 @@ namespace LiveSplit.Lazysplits.Proto {
               default:
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                 break;
-              case 8: {
-                Index = input.ReadUInt32();
+              case 10: {
+                EntryLabel = input.ReadString();
                 break;
               }
               case 18: {

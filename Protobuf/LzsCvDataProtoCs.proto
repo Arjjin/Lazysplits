@@ -73,7 +73,13 @@ message GameInfo{
 }
 
 message TargetInfo{
+	message WatchVar{
+		string name = 1;
+		string value = 2;
+	}
+
 	message WatchEntry{
+		string entry_label = 9;
 		string name = 1;
 		string relative_path = 2;
 		sint32 index = 3;
@@ -81,6 +87,8 @@ message TargetInfo{
 		uint32 action_val = 5;
 		WatchPersistence persistence = 6;
 		uint32 persistence_max = 7;
+
+		repeated WatchVar watch_vars = 8;
 	}
 
 	string name = 1;

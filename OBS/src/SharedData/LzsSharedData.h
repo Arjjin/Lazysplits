@@ -6,6 +6,7 @@
 
 #include <opencv2\core.hpp>
 #include <opencv2\core\types.hpp>
+#include <google\protobuf\repeated_field.h>
 
 #include <string>
 #include <vector>
@@ -22,7 +23,7 @@ class LzsWatchBase{
 			const Proto::WatchInfo& watch_info,
 			const Proto::TargetInfo_WatchEntry& watch_entry,
 			const std::string& watch_dir,
-			const std::string& watch_var
+			const google::protobuf::RepeatedPtrField<Proto::CsMessage_WatchVariable>& watch_vars
 		);
 
 		bool IsGood();
@@ -43,6 +44,8 @@ class LzsWatchBase{
 		void SetUnitialized();
 		void SetGood();
 
+		const std::string& FindWatchVar( const std::string& var_name );
+
 		void ValidateData( int source_width, int source_height, const SendableCalibrationProps& calib_props );
 		bool ShouldRemakeData( int source_width, int source_height, const SendableCalibrationProps& calib_props );
 		virtual bool RemakeData() = 0;
@@ -59,7 +62,7 @@ class LzsWatchBase{
 		Proto::WatchPersistence persistence_;
 		int persistence_max_;
 		std::string watch_dir_;
-		std::string watch_var_;
+		std::unordered_map<std::string,std::string> watch_vars_;
 
 		cv::Rect area_;
 
@@ -74,7 +77,7 @@ class LzsWatchColor : public LzsWatchBase{
 			const Proto::WatchInfo& watch_info,
 			const Proto::TargetInfo_WatchEntry& watch_entry,
 			const std::string& watch_dir,
-			const std::string& watch_var
+			const google::protobuf::RepeatedPtrField<Proto::CsMessage_WatchVariable>& watch_vars
 		);
 		bool CvLogic( const cv::Mat& BGR_frame )override;
 	private :
@@ -91,7 +94,7 @@ class LzsWatchImageBase : public LzsWatchBase{
 			const Proto::WatchInfo& watch_info,
 			const Proto::TargetInfo_WatchEntry& watch_entry,
 			const std::string& watch_dir,
-			const std::string& watch_var
+			const google::protobuf::RepeatedPtrField<Proto::CsMessage_WatchVariable>& watch_vars
 		);
 	protected :
 		virtual bool MakeImage();
@@ -107,7 +110,7 @@ class LzsWatchImageStatic : public LzsWatchImageBase{
 			const Proto::WatchInfo& watch_info,
 			const Proto::TargetInfo_WatchEntry& watch_entry,
 			const std::string& watch_dir,
-			const std::string& watch_var
+			const google::protobuf::RepeatedPtrField<Proto::CsMessage_WatchVariable>& watch_vars
 		);
 		bool CvLogic( const cv::Mat& BGR_frame )override;
 	private :
@@ -120,7 +123,7 @@ class LzsWatchCharacterSet : public LzsWatchImageBase{
 			const Proto::WatchInfo& watch_info,
 			const Proto::TargetInfo_WatchEntry& watch_entry,
 			const std::string& watch_dir,
-			const std::string& watch_var
+			const google::protobuf::RepeatedPtrField<Proto::CsMessage_WatchVariable>& watch_vars
 		);
 		bool CvLogic( const cv::Mat& BGR_frame )override;
 	private :
@@ -134,21 +137,15 @@ class LzsWatchCharacterSet : public LzsWatchImageBase{
 		const cv::Point2i GetAdditonalAreaOffset();
 
 		//const std::string character_input_;
-		std::map<char,Proto::WatchInfo_CharacterEntry> character_map_;
+		std::unordered_map<char,Proto::WatchInfo_CharacterEntry> character_map_;
 		std::vector<Proto::WatchInfo_CharacterEntry> character_input_;
 
 };
 
-struct LzsWatchVar{
-	int watch_index_;
-	std::string watch_name_;
-	std::string value_;
-};
-
 class LzsTarget{
 	public :
-		LzsTarget( const std::string& game_info_dir, const Proto::TargetInfo& target_info, std::vector<std::shared_ptr<LzsWatchVar>> watch_vars );
-		bool ParseWatchList();
+		LzsTarget( const std::string& game_info_dir, const Proto::TargetInfo& target_info );
+		bool ParseWatchList( const google::protobuf::RepeatedPtrField<Proto::CsMessage_WatchVariable>& watch_vars_it );
 
 		const std::string& GetName();
 		Proto::TargetType GetType();
@@ -157,13 +154,11 @@ class LzsTarget{
 		void WatchAction( Proto::WatchAction action, int action_val );
 		bool IsComplete();
 	private :
-		const std::string FindWatchVar( int watch_index, const std::string& watch_name );
 
 		Proto::TargetInfo target_info_;
 		std::string game_info_dir_;
 		std::vector<std::shared_ptr<LzsWatchBase>> constant_watches_;
 		std::vector<std::shared_ptr<LzsWatchBase>> watches_;
-		std::vector<std::shared_ptr<LzsWatchVar>> watch_vars_;
 		uint32_t current_watch_index_;
 		bool is_complete_;
 };

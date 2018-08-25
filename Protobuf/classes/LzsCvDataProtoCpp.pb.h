@@ -39,7 +39,7 @@ namespace protobuf_LzsCvDataProtoCpp_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[12];
+  static const ::google::protobuf::internal::ParseTable schema[13];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -69,6 +69,9 @@ extern TargetInfoDefaultTypeInternal _TargetInfo_default_instance_;
 class TargetInfo_WatchEntry;
 class TargetInfo_WatchEntryDefaultTypeInternal;
 extern TargetInfo_WatchEntryDefaultTypeInternal _TargetInfo_WatchEntry_default_instance_;
+class TargetInfo_WatchVar;
+class TargetInfo_WatchVarDefaultTypeInternal;
+extern TargetInfo_WatchVarDefaultTypeInternal _TargetInfo_WatchVar_default_instance_;
 class UScalar2d;
 class UScalar2dDefaultTypeInternal;
 extern UScalar2dDefaultTypeInternal _UScalar2d_default_instance_;
@@ -95,6 +98,7 @@ template<> ::Lazysplits::Proto::GameList_GameEntry* Arena::CreateMaybeMessage<::
 template<> ::Lazysplits::Proto::RGBColor* Arena::CreateMaybeMessage<::Lazysplits::Proto::RGBColor>(Arena*);
 template<> ::Lazysplits::Proto::TargetInfo* Arena::CreateMaybeMessage<::Lazysplits::Proto::TargetInfo>(Arena*);
 template<> ::Lazysplits::Proto::TargetInfo_WatchEntry* Arena::CreateMaybeMessage<::Lazysplits::Proto::TargetInfo_WatchEntry>(Arena*);
+template<> ::Lazysplits::Proto::TargetInfo_WatchVar* Arena::CreateMaybeMessage<::Lazysplits::Proto::TargetInfo_WatchVar>(Arena*);
 template<> ::Lazysplits::Proto::UScalar2d* Arena::CreateMaybeMessage<::Lazysplits::Proto::UScalar2d>(Arena*);
 template<> ::Lazysplits::Proto::WatchInfo* Arena::CreateMaybeMessage<::Lazysplits::Proto::WatchInfo>(Arena*);
 template<> ::Lazysplits::Proto::WatchInfo_AdditionalOffsetEntry* Arena::CreateMaybeMessage<::Lazysplits::Proto::WatchInfo_AdditionalOffsetEntry>(Arena*);
@@ -961,6 +965,132 @@ class GameInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(
 };
 // -------------------------------------------------------------------
 
+class TargetInfo_WatchVar : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Lazysplits.Proto.TargetInfo.WatchVar) */ {
+ public:
+  TargetInfo_WatchVar();
+  virtual ~TargetInfo_WatchVar();
+
+  TargetInfo_WatchVar(const TargetInfo_WatchVar& from);
+
+  inline TargetInfo_WatchVar& operator=(const TargetInfo_WatchVar& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  TargetInfo_WatchVar(TargetInfo_WatchVar&& from) noexcept
+    : TargetInfo_WatchVar() {
+    *this = ::std::move(from);
+  }
+
+  inline TargetInfo_WatchVar& operator=(TargetInfo_WatchVar&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TargetInfo_WatchVar& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const TargetInfo_WatchVar* internal_default_instance() {
+    return reinterpret_cast<const TargetInfo_WatchVar*>(
+               &_TargetInfo_WatchVar_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  void Swap(TargetInfo_WatchVar* other);
+  friend void swap(TargetInfo_WatchVar& a, TargetInfo_WatchVar& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TargetInfo_WatchVar* New() const final {
+    return CreateMaybeMessage<TargetInfo_WatchVar>(NULL);
+  }
+
+  TargetInfo_WatchVar* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<TargetInfo_WatchVar>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const TargetInfo_WatchVar& from);
+  void MergeFrom(const TargetInfo_WatchVar& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TargetInfo_WatchVar* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string name = 1;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_name(::std::string&& value);
+  #endif
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // string value = 2;
+  void clear_value();
+  static const int kValueFieldNumber = 2;
+  const ::std::string& value() const;
+  void set_value(const ::std::string& value);
+  #if LANG_CXX11
+  void set_value(::std::string&& value);
+  #endif
+  void set_value(const char* value);
+  void set_value(const char* value, size_t size);
+  ::std::string* mutable_value();
+  ::std::string* release_value();
+  void set_allocated_value(::std::string* value);
+
+  // @@protoc_insertion_point(class_scope:Lazysplits.Proto.TargetInfo.WatchVar)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::internal::ArenaStringPtr value_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_LzsCvDataProtoCpp_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
 class TargetInfo_WatchEntry : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Lazysplits.Proto.TargetInfo.WatchEntry) */ {
  public:
   TargetInfo_WatchEntry();
@@ -996,7 +1126,7 @@ class TargetInfo_WatchEntry : public ::google::protobuf::Message /* @@protoc_ins
                &_TargetInfo_WatchEntry_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   void Swap(TargetInfo_WatchEntry* other);
   friend void swap(TargetInfo_WatchEntry& a, TargetInfo_WatchEntry& b) {
@@ -1048,6 +1178,18 @@ class TargetInfo_WatchEntry : public ::google::protobuf::Message /* @@protoc_ins
 
   // accessors -------------------------------------------------------
 
+  // repeated .Lazysplits.Proto.TargetInfo.WatchVar watch_vars = 8;
+  int watch_vars_size() const;
+  void clear_watch_vars();
+  static const int kWatchVarsFieldNumber = 8;
+  ::Lazysplits::Proto::TargetInfo_WatchVar* mutable_watch_vars(int index);
+  ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::TargetInfo_WatchVar >*
+      mutable_watch_vars();
+  const ::Lazysplits::Proto::TargetInfo_WatchVar& watch_vars(int index) const;
+  ::Lazysplits::Proto::TargetInfo_WatchVar* add_watch_vars();
+  const ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::TargetInfo_WatchVar >&
+      watch_vars() const;
+
   // string name = 1;
   void clear_name();
   static const int kNameFieldNumber = 1;
@@ -1075,6 +1217,20 @@ class TargetInfo_WatchEntry : public ::google::protobuf::Message /* @@protoc_ins
   ::std::string* mutable_relative_path();
   ::std::string* release_relative_path();
   void set_allocated_relative_path(::std::string* relative_path);
+
+  // string entry_label = 9;
+  void clear_entry_label();
+  static const int kEntryLabelFieldNumber = 9;
+  const ::std::string& entry_label() const;
+  void set_entry_label(const ::std::string& value);
+  #if LANG_CXX11
+  void set_entry_label(::std::string&& value);
+  #endif
+  void set_entry_label(const char* value);
+  void set_entry_label(const char* value, size_t size);
+  ::std::string* mutable_entry_label();
+  ::std::string* release_entry_label();
+  void set_allocated_entry_label(::std::string* entry_label);
 
   // sint32 index = 3;
   void clear_index();
@@ -1110,8 +1266,10 @@ class TargetInfo_WatchEntry : public ::google::protobuf::Message /* @@protoc_ins
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::TargetInfo_WatchVar > watch_vars_;
   ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::internal::ArenaStringPtr relative_path_;
+  ::google::protobuf::internal::ArenaStringPtr entry_label_;
   ::google::protobuf::int32 index_;
   int action_;
   ::google::protobuf::uint32 action_val_;
@@ -1157,7 +1315,7 @@ class TargetInfo : public ::google::protobuf::Message /* @@protoc_insertion_poin
                &_TargetInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   void Swap(TargetInfo* other);
   friend void swap(TargetInfo& a, TargetInfo& b) {
@@ -1207,6 +1365,7 @@ class TargetInfo : public ::google::protobuf::Message /* @@protoc_insertion_poin
 
   // nested types ----------------------------------------------------
 
+  typedef TargetInfo_WatchVar WatchVar;
   typedef TargetInfo_WatchEntry WatchEntry;
 
   // accessors -------------------------------------------------------
@@ -1297,7 +1456,7 @@ class WatchInfo_WatchArea : public ::google::protobuf::Message /* @@protoc_inser
                &_WatchInfo_WatchArea_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    9;
 
   void Swap(WatchInfo_WatchArea* other);
   friend void swap(WatchInfo_WatchArea& a, WatchInfo_WatchArea& b) {
@@ -1419,7 +1578,7 @@ class WatchInfo_CharacterEntry : public ::google::protobuf::Message /* @@protoc_
                &_WatchInfo_CharacterEntry_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    10;
 
   void Swap(WatchInfo_CharacterEntry* other);
   friend void swap(WatchInfo_CharacterEntry& a, WatchInfo_CharacterEntry& b) {
@@ -1551,7 +1710,7 @@ class WatchInfo_AdditionalOffsetEntry : public ::google::protobuf::Message /* @@
                &_WatchInfo_AdditionalOffsetEntry_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    11;
 
   void Swap(WatchInfo_AdditionalOffsetEntry* other);
   friend void swap(WatchInfo_AdditionalOffsetEntry& a, WatchInfo_AdditionalOffsetEntry& b) {
@@ -1667,7 +1826,7 @@ class WatchInfo : public ::google::protobuf::Message /* @@protoc_insertion_point
                &_WatchInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    12;
 
   void Swap(WatchInfo* other);
   friend void swap(WatchInfo& a, WatchInfo& b) {
@@ -2288,7 +2447,170 @@ GameInfo::targets() const {
 
 // -------------------------------------------------------------------
 
+// TargetInfo_WatchVar
+
+// string name = 1;
+inline void TargetInfo_WatchVar::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& TargetInfo_WatchVar::name() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.TargetInfo.WatchVar.name)
+  return name_.GetNoArena();
+}
+inline void TargetInfo_WatchVar::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.TargetInfo.WatchVar.name)
+}
+#if LANG_CXX11
+inline void TargetInfo_WatchVar::set_name(::std::string&& value) {
+  
+  name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Lazysplits.Proto.TargetInfo.WatchVar.name)
+}
+#endif
+inline void TargetInfo_WatchVar::set_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Lazysplits.Proto.TargetInfo.WatchVar.name)
+}
+inline void TargetInfo_WatchVar::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Lazysplits.Proto.TargetInfo.WatchVar.name)
+}
+inline ::std::string* TargetInfo_WatchVar::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.TargetInfo.WatchVar.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TargetInfo_WatchVar::release_name() {
+  // @@protoc_insertion_point(field_release:Lazysplits.Proto.TargetInfo.WatchVar.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TargetInfo_WatchVar::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.TargetInfo.WatchVar.name)
+}
+
+// string value = 2;
+inline void TargetInfo_WatchVar::clear_value() {
+  value_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& TargetInfo_WatchVar::value() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.TargetInfo.WatchVar.value)
+  return value_.GetNoArena();
+}
+inline void TargetInfo_WatchVar::set_value(const ::std::string& value) {
+  
+  value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.TargetInfo.WatchVar.value)
+}
+#if LANG_CXX11
+inline void TargetInfo_WatchVar::set_value(::std::string&& value) {
+  
+  value_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Lazysplits.Proto.TargetInfo.WatchVar.value)
+}
+#endif
+inline void TargetInfo_WatchVar::set_value(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Lazysplits.Proto.TargetInfo.WatchVar.value)
+}
+inline void TargetInfo_WatchVar::set_value(const char* value, size_t size) {
+  
+  value_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Lazysplits.Proto.TargetInfo.WatchVar.value)
+}
+inline ::std::string* TargetInfo_WatchVar::mutable_value() {
+  
+  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.TargetInfo.WatchVar.value)
+  return value_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TargetInfo_WatchVar::release_value() {
+  // @@protoc_insertion_point(field_release:Lazysplits.Proto.TargetInfo.WatchVar.value)
+  
+  return value_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TargetInfo_WatchVar::set_allocated_value(::std::string* value) {
+  if (value != NULL) {
+    
+  } else {
+    
+  }
+  value_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.TargetInfo.WatchVar.value)
+}
+
+// -------------------------------------------------------------------
+
 // TargetInfo_WatchEntry
+
+// string entry_label = 9;
+inline void TargetInfo_WatchEntry::clear_entry_label() {
+  entry_label_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& TargetInfo_WatchEntry::entry_label() const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.TargetInfo.WatchEntry.entry_label)
+  return entry_label_.GetNoArena();
+}
+inline void TargetInfo_WatchEntry::set_entry_label(const ::std::string& value) {
+  
+  entry_label_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:Lazysplits.Proto.TargetInfo.WatchEntry.entry_label)
+}
+#if LANG_CXX11
+inline void TargetInfo_WatchEntry::set_entry_label(::std::string&& value) {
+  
+  entry_label_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:Lazysplits.Proto.TargetInfo.WatchEntry.entry_label)
+}
+#endif
+inline void TargetInfo_WatchEntry::set_entry_label(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  entry_label_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:Lazysplits.Proto.TargetInfo.WatchEntry.entry_label)
+}
+inline void TargetInfo_WatchEntry::set_entry_label(const char* value, size_t size) {
+  
+  entry_label_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:Lazysplits.Proto.TargetInfo.WatchEntry.entry_label)
+}
+inline ::std::string* TargetInfo_WatchEntry::mutable_entry_label() {
+  
+  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.TargetInfo.WatchEntry.entry_label)
+  return entry_label_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* TargetInfo_WatchEntry::release_entry_label() {
+  // @@protoc_insertion_point(field_release:Lazysplits.Proto.TargetInfo.WatchEntry.entry_label)
+  
+  return entry_label_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void TargetInfo_WatchEntry::set_allocated_entry_label(::std::string* entry_label) {
+  if (entry_label != NULL) {
+    
+  } else {
+    
+  }
+  entry_label_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), entry_label);
+  // @@protoc_insertion_point(field_set_allocated:Lazysplits.Proto.TargetInfo.WatchEntry.entry_label)
+}
 
 // string name = 1;
 inline void TargetInfo_WatchEntry::clear_name() {
@@ -2464,6 +2786,36 @@ inline void TargetInfo_WatchEntry::set_persistence_max(::google::protobuf::uint3
   
   persistence_max_ = value;
   // @@protoc_insertion_point(field_set:Lazysplits.Proto.TargetInfo.WatchEntry.persistence_max)
+}
+
+// repeated .Lazysplits.Proto.TargetInfo.WatchVar watch_vars = 8;
+inline int TargetInfo_WatchEntry::watch_vars_size() const {
+  return watch_vars_.size();
+}
+inline void TargetInfo_WatchEntry::clear_watch_vars() {
+  watch_vars_.Clear();
+}
+inline ::Lazysplits::Proto::TargetInfo_WatchVar* TargetInfo_WatchEntry::mutable_watch_vars(int index) {
+  // @@protoc_insertion_point(field_mutable:Lazysplits.Proto.TargetInfo.WatchEntry.watch_vars)
+  return watch_vars_.Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::TargetInfo_WatchVar >*
+TargetInfo_WatchEntry::mutable_watch_vars() {
+  // @@protoc_insertion_point(field_mutable_list:Lazysplits.Proto.TargetInfo.WatchEntry.watch_vars)
+  return &watch_vars_;
+}
+inline const ::Lazysplits::Proto::TargetInfo_WatchVar& TargetInfo_WatchEntry::watch_vars(int index) const {
+  // @@protoc_insertion_point(field_get:Lazysplits.Proto.TargetInfo.WatchEntry.watch_vars)
+  return watch_vars_.Get(index);
+}
+inline ::Lazysplits::Proto::TargetInfo_WatchVar* TargetInfo_WatchEntry::add_watch_vars() {
+  // @@protoc_insertion_point(field_add:Lazysplits.Proto.TargetInfo.WatchEntry.watch_vars)
+  return watch_vars_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Lazysplits::Proto::TargetInfo_WatchVar >&
+TargetInfo_WatchEntry::watch_vars() const {
+  // @@protoc_insertion_point(field_list:Lazysplits.Proto.TargetInfo.WatchEntry.watch_vars)
+  return watch_vars_;
 }
 
 // -------------------------------------------------------------------
@@ -3269,6 +3621,8 @@ WatchInfo::additional_offset() const {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

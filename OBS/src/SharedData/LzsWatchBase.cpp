@@ -14,7 +14,7 @@ LzsWatchBase::LzsWatchBase(
 	const Proto::WatchInfo& watch_info,
 	const Proto::TargetInfo_WatchEntry& watch_entry,
 	const std::string& watch_dir,
-	const std::string& watch_var
+	const google::protobuf::RepeatedPtrField<Proto::CsMessage_WatchVariable>& watch_vars
 ){
 	watch_info_ = watch_info;
 	index_ = watch_entry.index();
@@ -23,7 +23,18 @@ LzsWatchBase::LzsWatchBase(
 	persistence_ = watch_entry.persistence();
 	persistence_max_ = watch_entry.persistence_max();
 	watch_dir_ = watch_dir;
-	watch_var_ = watch_var;
+
+	//search for/set external watch vars, kludged in from splits names in livesplits
+	for( auto watch_vars_it = watch_vars.begin(); watch_vars_it != watch_vars.end(); ++watch_vars_it ){
+		if( !watch_vars_it->entry_label().empty() &&  watch_vars_it->entry_label() == watch_entry.entry_label() ){
+			watch_vars_.emplace( watch_vars_it->name(), watch_vars_it->value() );
+		}
+	}
+	//search for/set internal watch vars, set from target info JSON
+	//do this after external watch vars so if we have dupes, the external vars take priority
+	for( auto watch_vars_it = watch_entry.watch_vars().begin(); watch_vars_it != watch_entry.watch_vars().end(); ++watch_vars_it ){
+		watch_vars_.emplace( watch_vars_it->name(), watch_vars_it->value() );
+	}
 
 	current_source_width_ = 0;
 	current_source_height_ = 0;
@@ -64,6 +75,17 @@ void LzsWatchBase::SetError(){ status_ = LZS_WATCH_ERROR; }
 void LzsWatchBase::SetUnitialized(){ status_ = LZS_WATCH_UNITIALIZED; }
 
 void LzsWatchBase::SetGood(){ status_ = LZS_WATCH_GOOD; }
+
+const std::string& LzsWatchBase::FindWatchVar( const std::string& var_name ){
+	auto var_it = watch_vars_.find(var_name);
+
+	if( var_it == watch_vars_.end() ){
+		return "";
+	}
+	else{
+		return var_it->second;
+	}
+}
 
 void LzsWatchBase::ValidateData( int source_width, int source_height, const SendableCalibrationProps& calib_props ){
 	if( ShouldRemakeData( source_width, source_height, calib_props ) ){
@@ -147,13 +169,14 @@ bool LzsWatchBase::CheckBounds(){
 }
 
 bool LzsWatchBase::IsDiffCalibProps( const SendableCalibrationProps& calib_props ){
-	return current_calib_props_.is_enabled != calib_props.is_enabled ||
-		   current_calib_props_.img_width  != calib_props.img_width  ||
-		   current_calib_props_.img_height != calib_props.img_height ||
-		   current_calib_props_.loc_x	   != calib_props.loc_x	     ||
-		   current_calib_props_.loc_y	   != calib_props.loc_y	     ||
-		   current_calib_props_.scale_x	   != calib_props.scale_x	 ||
-		   current_calib_props_.scale_y	   != calib_props.scale_y    ;
+	return current_calib_props_.is_enabled    != calib_props.is_enabled     ||
+		   current_calib_props_.img_width     != calib_props.img_width      ||
+		   current_calib_props_.img_height    != calib_props.img_height     ||
+		   current_calib_props_.loc_x	      != calib_props.loc_x	        ||
+		   current_calib_props_.loc_y	      != calib_props.loc_y	        ||
+		   current_calib_props_.scale_x	      != calib_props.scale_x	    ||
+		   current_calib_props_.scale_y	      != calib_props.scale_y        ||
+		   current_calib_props_.use_nn_interp != calib_props.use_nn_interp;
 }
 
 } //namepsace SharedData

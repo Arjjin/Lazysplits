@@ -18,14 +18,14 @@ LzsWatchCharacterSet::LzsWatchCharacterSet(
 	const Proto::WatchInfo& watch_info,
 	const Proto::TargetInfo_WatchEntry& watch_entry,
 	const std::string& watch_dir,
-	const std::string& watch_var
+	const google::protobuf::RepeatedPtrField<Proto::CsMessage_WatchVariable>& watch_vars
 )
-	:LzsWatchImageBase( watch_info, watch_entry, watch_dir, watch_var )
+	:LzsWatchImageBase( watch_info, watch_entry, watch_dir, watch_vars )
 {
 	//make an internal map of our character entries
 	MakeCharMap();
 	//create an internal container of character entries that corrspond to our character_input string from it
-	MakeCharInput(watch_var_);
+	MakeCharInput( FindWatchVar("char_input") );
 	 
 	/*
 	for( auto it = character_input_.begin(); it != character_input_.end(); ++it ){
@@ -42,7 +42,6 @@ LzsWatchCharacterSet::LzsWatchCharacterSet(
 bool LzsWatchCharacterSet::CvLogic( const cv::Mat& BGR_frame ){
 	cv::Mat cropped_frame = BGR_frame(area_);
 
-	/*
 	std::vector<int> compression_params;
 	compression_params.push_back(cv::IMWRITE_PNG_COMPRESSION);
 	compression_params.push_back(1);
@@ -50,7 +49,9 @@ bool LzsWatchCharacterSet::CvLogic( const cv::Mat& BGR_frame ){
 	cv::imwrite("source_frame.png ",BGR_frame,compression_params);
 	cv::imwrite("cropped_source_frame.png",cropped_frame,compression_params);
 	cv::imwrite("search_frame.png",img_BGR_,compression_params);
+	cv::imwrite("search_frame_mask.png",img_mask_,compression_params);
 	//blog( LOG_DEBUG, "[lazysplits][SharedData] area : %ix%i", area_.x, area_.y );
+	/*
 	*/
 
 	return ImgProc::FindImage( cropped_frame, img_BGR_, img_mask_, watch_info_.base_threshold() );
@@ -257,14 +258,14 @@ bool LzsWatchCharacterSet::MakeImage(){
 		int mix_pairing[] = { 0,0, 1,1, 2,2, 3,3, 3,4, 3,5 };
 		cv::mixChannels( &composite_image, 1, mix_destination, 2, mix_pairing, 6 );
 
-		//resize BGR with cubic interp (unless manually overridden) and bitmask with NN
+		//resize BGR with linear interp (unless manually overridden) and bitmask with NN
 		cv::resize(
 			img_BGR_,
 			img_BGR_,
 			cv::Size( new_width, new_height ),
 			0.0,
 			0.0,
-			current_calib_props_.use_nn_interp ? cv::INTER_NEAREST : cv::INTER_LINEAR
+			current_calib_props_.use_nn_interp ? cv::INTER_NEAREST: cv::INTER_LINEAR
 		); 
 		cv::resize(
 			img_mask_,
@@ -295,11 +296,13 @@ void LzsWatchCharacterSet::MakeCharMap(){
 }
 
 void LzsWatchCharacterSet::MakeCharInput( const std::string& input_string ){
-	//if we ever start using UTF8 this is gonna break pretty bad
-	for( int i = 0; i < input_string.length(); i++ ){
-		auto char_entry_it = character_map_.find( input_string.at(i) );
-		if( char_entry_it != character_map_.end() ){
-			character_input_.push_back( char_entry_it->second );
+	if( !input_string.empty() ){
+		//if we ever start using UTF8 this is gonna break pretty bad
+		for( int i = 0; i < input_string.length(); i++ ){
+			auto char_entry_it = character_map_.find( input_string.at(i) );
+			if( char_entry_it != character_map_.end() ){
+				character_input_.push_back( char_entry_it->second );
+			}
 		}
 	}
 }

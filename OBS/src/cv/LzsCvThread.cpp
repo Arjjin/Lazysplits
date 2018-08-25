@@ -236,7 +236,7 @@ void LzsCvThread::HandleProtobuf( std::shared_ptr<CvMsg> msg ){
 void LzsCvThread::HandleCalibrationData( std::shared_ptr<CvMsg> msg ){
 	std::shared_ptr<CvCalibrationDataMsg> calib_msg = std::static_pointer_cast<CvCalibrationDataMsg>(msg);
 	calib_props_ = calib_msg->calib_props_;
-	blog( LOG_DEBUG, "[lazysplits][%s] calibration %s; img dims : (%ix%i), offset : (%i,%i), scale : (%f,%f)",
+	blog( LOG_DEBUG, "[lazysplits][%s] calibration %s; img dims : (%ix%i), offset : (%i,%i), scale : (%f,%f), use NN interp : %i",
 		thread_name_.c_str(),
 		calib_props_.is_enabled ? "enabled" : "disabled",
 		calib_props_.img_width,
@@ -244,7 +244,8 @@ void LzsCvThread::HandleCalibrationData( std::shared_ptr<CvMsg> msg ){
 		calib_props_.loc_x,
 		calib_props_.loc_y,
 		calib_props_.scale_x,
-		calib_props_.scale_y
+		calib_props_.scale_y,
+		calib_props_.use_nn_interp
 	);
 }
 

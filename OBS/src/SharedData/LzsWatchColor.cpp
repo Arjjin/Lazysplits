@@ -10,9 +10,9 @@ LzsWatchColor::LzsWatchColor(
 	const Proto::WatchInfo& watch_info,
 	const Proto::TargetInfo_WatchEntry& watch_entry,
 	const std::string& watch_dir,
-	const std::string& watch_var
+	const google::protobuf::RepeatedPtrField<Proto::CsMessage_WatchVariable>& watch_vars
 )
-	:LzsWatchBase( watch_info, watch_entry, watch_dir, watch_var )
+	:LzsWatchBase( watch_info, watch_entry, watch_dir, watch_vars )
 {
 	auto color = watch_info.color();
 	RGB_scalar_ = cv::Scalar( color.r(), color.g(), color.b(), 255.0 );

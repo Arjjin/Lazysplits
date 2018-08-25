@@ -25,7 +25,7 @@ message CsMessage {
 		NEW_TARGETS = 2;
 	}
 	message WatchVariable{
-		uint32 index = 1;
+		string entry_label = 1;
 		string name = 2;
 		string value = 3;
 	}

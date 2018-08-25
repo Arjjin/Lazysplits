@@ -23,9 +23,10 @@ namespace protobuf_LzsCvDataProtoCpp_2eproto {
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_GameInfo_TargetEntry;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_GameList_GameEntry;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_RGBColor;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_TargetInfo_WatchEntry;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_TargetInfo_WatchVar;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_UScalar2d;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_WatchInfo_CharacterEntry;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_TargetInfo_WatchEntry;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_WatchInfo_AdditionalOffsetEntry;
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_LzsCvDataProtoCpp_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_WatchInfo_WatchArea;
 }  // namespace protobuf_LzsCvDataProtoCpp_2eproto
@@ -61,6 +62,11 @@ class GameInfoDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<GameInfo>
       _instance;
 } _GameInfo_default_instance_;
+class TargetInfo_WatchVarDefaultTypeInternal {
+ public:
+  ::google::protobuf::internal::ExplicitlyConstructed<TargetInfo_WatchVar>
+      _instance;
+} _TargetInfo_WatchVar_default_instance_;
 class TargetInfo_WatchEntryDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<TargetInfo_WatchEntry>
@@ -180,6 +186,20 @@ static void InitDefaultsGameInfo() {
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsGameInfo}, {
       &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_GameInfo_TargetEntry.base,}};
 
+static void InitDefaultsTargetInfo_WatchVar() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::Lazysplits::Proto::_TargetInfo_WatchVar_default_instance_;
+    new (ptr) ::Lazysplits::Proto::TargetInfo_WatchVar();
+    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::Lazysplits::Proto::TargetInfo_WatchVar::InitAsDefaultInstance();
+}
+
+::google::protobuf::internal::SCCInfo<0> scc_info_TargetInfo_WatchVar =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTargetInfo_WatchVar}, {}};
+
 static void InitDefaultsTargetInfo_WatchEntry() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -191,8 +211,9 @@ static void InitDefaultsTargetInfo_WatchEntry() {
   ::Lazysplits::Proto::TargetInfo_WatchEntry::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_TargetInfo_WatchEntry =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsTargetInfo_WatchEntry}, {}};
+::google::protobuf::internal::SCCInfo<1> scc_info_TargetInfo_WatchEntry =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsTargetInfo_WatchEntry}, {
+      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_TargetInfo_WatchVar.base,}};
 
 static void InitDefaultsTargetInfo() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -279,6 +300,7 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_GameList.base);
   ::google::protobuf::internal::InitSCC(&scc_info_GameInfo_TargetEntry.base);
   ::google::protobuf::internal::InitSCC(&scc_info_GameInfo.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_TargetInfo_WatchVar.base);
   ::google::protobuf::internal::InitSCC(&scc_info_TargetInfo_WatchEntry.base);
   ::google::protobuf::internal::InitSCC(&scc_info_TargetInfo.base);
   ::google::protobuf::internal::InitSCC(&scc_info_WatchInfo_WatchArea.base);
@@ -287,7 +309,7 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_WatchInfo.base);
 }
 
-::google::protobuf::Metadata file_level_metadata[12];
+::google::protobuf::Metadata file_level_metadata[13];
 const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[6];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
@@ -334,10 +356,18 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::GameInfo, name_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::GameInfo, targets_),
   ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo_WatchVar, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo_WatchVar, name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo_WatchVar, value_),
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo_WatchEntry, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo_WatchEntry, entry_label_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo_WatchEntry, name_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo_WatchEntry, relative_path_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo_WatchEntry, index_),
@@ -345,6 +375,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo_WatchEntry, action_val_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo_WatchEntry, persistence_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo_WatchEntry, persistence_max_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo_WatchEntry, watch_vars_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Lazysplits::Proto::TargetInfo, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -402,12 +433,13 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 22, -1, sizeof(::Lazysplits::Proto::GameList)},
   { 28, -1, sizeof(::Lazysplits::Proto::GameInfo_TargetEntry)},
   { 35, -1, sizeof(::Lazysplits::Proto::GameInfo)},
-  { 42, -1, sizeof(::Lazysplits::Proto::TargetInfo_WatchEntry)},
-  { 54, -1, sizeof(::Lazysplits::Proto::TargetInfo)},
-  { 63, -1, sizeof(::Lazysplits::Proto::WatchInfo_WatchArea)},
-  { 70, -1, sizeof(::Lazysplits::Proto::WatchInfo_CharacterEntry)},
-  { 79, -1, sizeof(::Lazysplits::Proto::WatchInfo_AdditionalOffsetEntry)},
-  { 86, -1, sizeof(::Lazysplits::Proto::WatchInfo)},
+  { 42, -1, sizeof(::Lazysplits::Proto::TargetInfo_WatchVar)},
+  { 49, -1, sizeof(::Lazysplits::Proto::TargetInfo_WatchEntry)},
+  { 63, -1, sizeof(::Lazysplits::Proto::TargetInfo)},
+  { 72, -1, sizeof(::Lazysplits::Proto::WatchInfo_WatchArea)},
+  { 79, -1, sizeof(::Lazysplits::Proto::WatchInfo_CharacterEntry)},
+  { 88, -1, sizeof(::Lazysplits::Proto::WatchInfo_AdditionalOffsetEntry)},
+  { 95, -1, sizeof(::Lazysplits::Proto::WatchInfo)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -417,6 +449,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_GameList_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_GameInfo_TargetEntry_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_GameInfo_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_TargetInfo_WatchVar_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_TargetInfo_WatchEntry_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_TargetInfo_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::Lazysplits::Proto::_WatchInfo_WatchArea_default_instance_),
@@ -440,7 +473,7 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 12);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 13);
 }
 
 void AddDescriptorsImpl() {
@@ -455,56 +488,59 @@ void AddDescriptorsImpl() {
       "\001\n\010GameInfo\022\014\n\004name\030\001 \001(\t\0227\n\007targets\030\002 \003"
       "(\0132&.Lazysplits.Proto.GameInfo.TargetEnt"
       "ry\0322\n\013TargetEntry\022\014\n\004name\030\001 \001(\t\022\025\n\rrelat"
-      "ive_path\030\002 \001(\t\"\361\002\n\nTargetInfo\022\014\n\004name\030\001 "
+      "ive_path\030\002 \001(\t\"\352\003\n\nTargetInfo\022\014\n\004name\030\001 "
       "\001(\t\022*\n\004type\030\002 \001(\0162\034.Lazysplits.Proto.Tar"
       "getType\022\027\n\017split_offset_ms\030\003 \001(\021\0228\n\007watc"
       "hes\030\004 \003(\0132\'.Lazysplits.Proto.TargetInfo."
-      "WatchEntry\032\325\001\n\nWatchEntry\022\014\n\004name\030\001 \001(\t\022"
-      "\025\n\rrelative_path\030\002 \001(\t\022\r\n\005index\030\003 \001(\021\022-\n"
-      "\006action\030\004 \001(\0162\035.Lazysplits.Proto.WatchAc"
-      "tion\022\022\n\naction_val\030\005 \001(\r\0227\n\013persistence\030"
-      "\006 \001(\0162\".Lazysplits.Proto.WatchPersistenc"
-      "e\022\027\n\017persistence_max\030\007 \001(\r\"\355\006\n\tWatchInfo"
-      "\022\014\n\004name\030\001 \001(\t\022)\n\004type\030\002 \001(\0162\033.Lazysplit"
-      "s.Proto.WatchType\0224\n\017base_dimensions\030\003 \001"
-      "(\0132\033.Lazysplits.Proto.UScalar2d\0223\n\004area\030"
-      "\004 \001(\0132%.Lazysplits.Proto.WatchInfo.Watch"
-      "Area\022\037\n\027additional_area_padding\030\013 \001(\r\022\026\n"
-      "\016base_threshold\030\014 \001(\002\022)\n\005color\030\005 \001(\0132\032.L"
-      "azysplits.Proto.RGBColor\022\031\n\021img_relative"
-      "_path\030\006 \001(\t\022=\n\021character_justify\030\007 \001(\0162\""
-      ".Lazysplits.Proto.CharacterJustify\022<\n\021ch"
-      "aracter_z_order\030\010 \001(\0162!.Lazysplits.Proto"
-      ".CharacterZOrder\022>\n\ncharacters\030\t \003(\0132*.L"
-      "azysplits.Proto.WatchInfo.CharacterEntry"
-      "\022L\n\021additional_offset\030\n \003(\01321.Lazysplits"
-      ".Proto.WatchInfo.AdditionalOffsetEntry\032`"
-      "\n\tWatchArea\022(\n\003loc\030\001 \001(\0132\033.Lazysplits.Pr"
-      "oto.UScalar2d\022)\n\004size\030\002 \001(\0132\033.Lazysplits"
-      ".Proto.UScalar2d\032f\n\016CharacterEntry\022\027\n\017ch"
-      "aracter_index\030\001 \001(\r\022\025\n\rcharacter_val\030\002 \001"
-      "(\t\022\021\n\tx_padding\030\003 \001(\021\022\021\n\ty_padding\030\004 \001(\021"
-      "\032h\n\025AdditionalOffsetEntry\022\"\n\032character_l"
-      "ength_threshold\030\001 \001(\r\022+\n\006offset\030\002 \001(\0132\033."
-      "Lazysplits.Proto.UScalar2d*Y\n\nTargetType"
-      "\022\016\n\nTGT_UNUSED\020\000\022\r\n\tTGT_RESET\020\001\022\r\n\tTGT_S"
-      "TART\020\002\022\020\n\014TGT_STANDARD\020\003\022\013\n\007TGT_END\020\004*S\n"
-      "\tWatchType\022\r\n\tWT_UNUSED\020\000\022\014\n\010WT_COLOR\020\001\022"
-      "\023\n\017WT_IMAGE_STATIC\020\002\022\024\n\020WT_CHARACTER_SET"
-      "\020\003*p\n\013WatchAction\022\r\n\tWA_UNUSED\020\000\022\026\n\022WA_I"
-      "NCREMENT_INDEX\020\001\022\026\n\022WA_DECREMENT_INDEX\020\002"
-      "\022\021\n\rWA_GOTO_INDEX\020\003\022\017\n\013WA_COMPLETE\020\004*A\n\020"
-      "WatchPersistence\022\013\n\007WP_NONE\020\000\022\022\n\016WP_SPEC"
-      "IFY_MAX\020\001\022\014\n\010WP_TOTAL\020\002*\207\001\n\020CharacterJus"
-      "tify\022\034\n\030CHARACTER_JUSTIFY_UNUSED\020\000\022\032\n\026CH"
-      "ARACTER_JUSTIFY_LEFT\020\001\022\033\n\027CHARACTER_JUST"
-      "IFY_RIGHT\020\002\022\034\n\030CHARACTER_JUSTIFY_CENTER\020"
-      "\003*g\n\017CharacterZOrder\022\026\n\022CHARACTER_Z_UNUS"
-      "ED\020\000\022\035\n\031CHARACTER_Z_LEFT_TO_RIGHT\020\001\022\035\n\031C"
-      "HARACTER_Z_RIGHT_TO_LEFT\020\002b\006proto3"
+      "WatchEntry\032\'\n\010WatchVar\022\014\n\004name\030\001 \001(\t\022\r\n\005"
+      "value\030\002 \001(\t\032\245\002\n\nWatchEntry\022\023\n\013entry_labe"
+      "l\030\t \001(\t\022\014\n\004name\030\001 \001(\t\022\025\n\rrelative_path\030\002"
+      " \001(\t\022\r\n\005index\030\003 \001(\021\022-\n\006action\030\004 \001(\0162\035.La"
+      "zysplits.Proto.WatchAction\022\022\n\naction_val"
+      "\030\005 \001(\r\0227\n\013persistence\030\006 \001(\0162\".Lazysplits"
+      ".Proto.WatchPersistence\022\027\n\017persistence_m"
+      "ax\030\007 \001(\r\0229\n\nwatch_vars\030\010 \003(\0132%.Lazysplit"
+      "s.Proto.TargetInfo.WatchVar\"\355\006\n\tWatchInf"
+      "o\022\014\n\004name\030\001 \001(\t\022)\n\004type\030\002 \001(\0162\033.Lazyspli"
+      "ts.Proto.WatchType\0224\n\017base_dimensions\030\003 "
+      "\001(\0132\033.Lazysplits.Proto.UScalar2d\0223\n\004area"
+      "\030\004 \001(\0132%.Lazysplits.Proto.WatchInfo.Watc"
+      "hArea\022\037\n\027additional_area_padding\030\013 \001(\r\022\026"
+      "\n\016base_threshold\030\014 \001(\002\022)\n\005color\030\005 \001(\0132\032."
+      "Lazysplits.Proto.RGBColor\022\031\n\021img_relativ"
+      "e_path\030\006 \001(\t\022=\n\021character_justify\030\007 \001(\0162"
+      "\".Lazysplits.Proto.CharacterJustify\022<\n\021c"
+      "haracter_z_order\030\010 \001(\0162!.Lazysplits.Prot"
+      "o.CharacterZOrder\022>\n\ncharacters\030\t \003(\0132*."
+      "Lazysplits.Proto.WatchInfo.CharacterEntr"
+      "y\022L\n\021additional_offset\030\n \003(\01321.Lazysplit"
+      "s.Proto.WatchInfo.AdditionalOffsetEntry\032"
+      "`\n\tWatchArea\022(\n\003loc\030\001 \001(\0132\033.Lazysplits.P"
+      "roto.UScalar2d\022)\n\004size\030\002 \001(\0132\033.Lazysplit"
+      "s.Proto.UScalar2d\032f\n\016CharacterEntry\022\027\n\017c"
+      "haracter_index\030\001 \001(\r\022\025\n\rcharacter_val\030\002 "
+      "\001(\t\022\021\n\tx_padding\030\003 \001(\021\022\021\n\ty_padding\030\004 \001("
+      "\021\032h\n\025AdditionalOffsetEntry\022\"\n\032character_"
+      "length_threshold\030\001 \001(\r\022+\n\006offset\030\002 \001(\0132\033"
+      ".Lazysplits.Proto.UScalar2d*Y\n\nTargetTyp"
+      "e\022\016\n\nTGT_UNUSED\020\000\022\r\n\tTGT_RESET\020\001\022\r\n\tTGT_"
+      "START\020\002\022\020\n\014TGT_STANDARD\020\003\022\013\n\007TGT_END\020\004*S"
+      "\n\tWatchType\022\r\n\tWT_UNUSED\020\000\022\014\n\010WT_COLOR\020\001"
+      "\022\023\n\017WT_IMAGE_STATIC\020\002\022\024\n\020WT_CHARACTER_SE"
+      "T\020\003*p\n\013WatchAction\022\r\n\tWA_UNUSED\020\000\022\026\n\022WA_"
+      "INCREMENT_INDEX\020\001\022\026\n\022WA_DECREMENT_INDEX\020"
+      "\002\022\021\n\rWA_GOTO_INDEX\020\003\022\017\n\013WA_COMPLETE\020\004*A\n"
+      "\020WatchPersistence\022\013\n\007WP_NONE\020\000\022\022\n\016WP_SPE"
+      "CIFY_MAX\020\001\022\014\n\010WP_TOTAL\020\002*\207\001\n\020CharacterJu"
+      "stify\022\034\n\030CHARACTER_JUSTIFY_UNUSED\020\000\022\032\n\026C"
+      "HARACTER_JUSTIFY_LEFT\020\001\022\033\n\027CHARACTER_JUS"
+      "TIFY_RIGHT\020\002\022\034\n\030CHARACTER_JUSTIFY_CENTER"
+      "\020\003*g\n\017CharacterZOrder\022\026\n\022CHARACTER_Z_UNU"
+      "SED\020\000\022\035\n\031CHARACTER_Z_LEFT_TO_RIGHT\020\001\022\035\n\031"
+      "CHARACTER_Z_RIGHT_TO_LEFT\020\002b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2234);
+      descriptor, 2355);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "LzsCvDataProtoCpp.proto", &protobuf_RegisterTypes);
 }
@@ -2303,9 +2339,310 @@ void GameInfo::InternalSwap(GameInfo* other) {
 
 // ===================================================================
 
+void TargetInfo_WatchVar::InitAsDefaultInstance() {
+}
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int TargetInfo_WatchVar::kNameFieldNumber;
+const int TargetInfo_WatchVar::kValueFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+TargetInfo_WatchVar::TargetInfo_WatchVar()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  ::google::protobuf::internal::InitSCC(
+      &protobuf_LzsCvDataProtoCpp_2eproto::scc_info_TargetInfo_WatchVar.base);
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:Lazysplits.Proto.TargetInfo.WatchVar)
+}
+TargetInfo_WatchVar::TargetInfo_WatchVar(const TargetInfo_WatchVar& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.name().size() > 0) {
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
+  value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.value().size() > 0) {
+    value_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.value_);
+  }
+  // @@protoc_insertion_point(copy_constructor:Lazysplits.Proto.TargetInfo.WatchVar)
+}
+
+void TargetInfo_WatchVar::SharedCtor() {
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  value_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+TargetInfo_WatchVar::~TargetInfo_WatchVar() {
+  // @@protoc_insertion_point(destructor:Lazysplits.Proto.TargetInfo.WatchVar)
+  SharedDtor();
+}
+
+void TargetInfo_WatchVar::SharedDtor() {
+  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  value_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+
+void TargetInfo_WatchVar::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const ::google::protobuf::Descriptor* TargetInfo_WatchVar::descriptor() {
+  ::protobuf_LzsCvDataProtoCpp_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_LzsCvDataProtoCpp_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
+}
+
+const TargetInfo_WatchVar& TargetInfo_WatchVar::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_LzsCvDataProtoCpp_2eproto::scc_info_TargetInfo_WatchVar.base);
+  return *internal_default_instance();
+}
+
+
+void TargetInfo_WatchVar::Clear() {
+// @@protoc_insertion_point(message_clear_start:Lazysplits.Proto.TargetInfo.WatchVar)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  value_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _internal_metadata_.Clear();
+}
+
+bool TargetInfo_WatchVar::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:Lazysplits.Proto.TargetInfo.WatchVar)
+  for (;;) {
+    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // string name = 1;
+      case 1: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_name()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->name().data(), static_cast<int>(this->name().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "Lazysplits.Proto.TargetInfo.WatchVar.name"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string value = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_value()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->value().data(), static_cast<int>(this->value().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "Lazysplits.Proto.TargetInfo.WatchVar.value"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:Lazysplits.Proto.TargetInfo.WatchVar)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:Lazysplits.Proto.TargetInfo.WatchVar)
+  return false;
+#undef DO_
+}
+
+void TargetInfo_WatchVar::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:Lazysplits.Proto.TargetInfo.WatchVar)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), static_cast<int>(this->name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.TargetInfo.WatchVar.name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->name(), output);
+  }
+
+  // string value = 2;
+  if (this->value().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->value().data(), static_cast<int>(this->value().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.TargetInfo.WatchVar.value");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->value(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
+  }
+  // @@protoc_insertion_point(serialize_end:Lazysplits.Proto.TargetInfo.WatchVar)
+}
+
+::google::protobuf::uint8* TargetInfo_WatchVar::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic; // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:Lazysplits.Proto.TargetInfo.WatchVar)
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string name = 1;
+  if (this->name().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->name().data(), static_cast<int>(this->name().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.TargetInfo.WatchVar.name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->name(), target);
+  }
+
+  // string value = 2;
+  if (this->value().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->value().data(), static_cast<int>(this->value().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.TargetInfo.WatchVar.value");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->value(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:Lazysplits.Proto.TargetInfo.WatchVar)
+  return target;
+}
+
+size_t TargetInfo_WatchVar::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Lazysplits.Proto.TargetInfo.WatchVar)
+  size_t total_size = 0;
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
+  }
+  // string name = 1;
+  if (this->name().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->name());
+  }
+
+  // string value = 2;
+  if (this->value().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->value());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void TargetInfo_WatchVar::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:Lazysplits.Proto.TargetInfo.WatchVar)
+  GOOGLE_DCHECK_NE(&from, this);
+  const TargetInfo_WatchVar* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const TargetInfo_WatchVar>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Lazysplits.Proto.TargetInfo.WatchVar)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Lazysplits.Proto.TargetInfo.WatchVar)
+    MergeFrom(*source);
+  }
+}
+
+void TargetInfo_WatchVar::MergeFrom(const TargetInfo_WatchVar& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Lazysplits.Proto.TargetInfo.WatchVar)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::google::protobuf::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.name().size() > 0) {
+
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
+  }
+  if (from.value().size() > 0) {
+
+    value_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.value_);
+  }
+}
+
+void TargetInfo_WatchVar::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:Lazysplits.Proto.TargetInfo.WatchVar)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void TargetInfo_WatchVar::CopyFrom(const TargetInfo_WatchVar& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Lazysplits.Proto.TargetInfo.WatchVar)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TargetInfo_WatchVar::IsInitialized() const {
+  return true;
+}
+
+void TargetInfo_WatchVar::Swap(TargetInfo_WatchVar* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void TargetInfo_WatchVar::InternalSwap(TargetInfo_WatchVar* other) {
+  using std::swap;
+  name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  value_.Swap(&other->value_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::google::protobuf::Metadata TargetInfo_WatchVar::GetMetadata() const {
+  protobuf_LzsCvDataProtoCpp_2eproto::protobuf_AssignDescriptorsOnce();
+  return ::protobuf_LzsCvDataProtoCpp_2eproto::file_level_metadata[kIndexInFileMessages];
+}
+
+
+// ===================================================================
+
 void TargetInfo_WatchEntry::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int TargetInfo_WatchEntry::kEntryLabelFieldNumber;
 const int TargetInfo_WatchEntry::kNameFieldNumber;
 const int TargetInfo_WatchEntry::kRelativePathFieldNumber;
 const int TargetInfo_WatchEntry::kIndexFieldNumber;
@@ -2313,6 +2650,7 @@ const int TargetInfo_WatchEntry::kActionFieldNumber;
 const int TargetInfo_WatchEntry::kActionValFieldNumber;
 const int TargetInfo_WatchEntry::kPersistenceFieldNumber;
 const int TargetInfo_WatchEntry::kPersistenceMaxFieldNumber;
+const int TargetInfo_WatchEntry::kWatchVarsFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 TargetInfo_WatchEntry::TargetInfo_WatchEntry()
@@ -2324,7 +2662,8 @@ TargetInfo_WatchEntry::TargetInfo_WatchEntry()
 }
 TargetInfo_WatchEntry::TargetInfo_WatchEntry(const TargetInfo_WatchEntry& from)
   : ::google::protobuf::Message(),
-      _internal_metadata_(NULL) {
+      _internal_metadata_(NULL),
+      watch_vars_(from.watch_vars_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.name().size() > 0) {
@@ -2333,6 +2672,10 @@ TargetInfo_WatchEntry::TargetInfo_WatchEntry(const TargetInfo_WatchEntry& from)
   relative_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.relative_path().size() > 0) {
     relative_path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relative_path_);
+  }
+  entry_label_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.entry_label().size() > 0) {
+    entry_label_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.entry_label_);
   }
   ::memcpy(&index_, &from.index_,
     static_cast<size_t>(reinterpret_cast<char*>(&persistence_max_) -
@@ -2343,6 +2686,7 @@ TargetInfo_WatchEntry::TargetInfo_WatchEntry(const TargetInfo_WatchEntry& from)
 void TargetInfo_WatchEntry::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   relative_path_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  entry_label_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&index_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&persistence_max_) -
       reinterpret_cast<char*>(&index_)) + sizeof(persistence_max_));
@@ -2356,6 +2700,7 @@ TargetInfo_WatchEntry::~TargetInfo_WatchEntry() {
 void TargetInfo_WatchEntry::SharedDtor() {
   name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   relative_path_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  entry_label_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void TargetInfo_WatchEntry::SetCachedSize(int size) const {
@@ -2378,8 +2723,10 @@ void TargetInfo_WatchEntry::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  watch_vars_.Clear();
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   relative_path_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  entry_label_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&index_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&persistence_max_) -
       reinterpret_cast<char*>(&index_)) + sizeof(persistence_max_));
@@ -2500,6 +2847,34 @@ bool TargetInfo_WatchEntry::MergePartialFromCodedStream(
         break;
       }
 
+      // repeated .Lazysplits.Proto.TargetInfo.WatchVar watch_vars = 8;
+      case 8: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(66u /* 66 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
+                input, add_watch_vars()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string entry_label = 9;
+      case 9: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(74u /* 74 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_entry_label()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->entry_label().data(), static_cast<int>(this->entry_label().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "Lazysplits.Proto.TargetInfo.WatchEntry.entry_label"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -2573,6 +2948,25 @@ void TargetInfo_WatchEntry::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(7, this->persistence_max(), output);
   }
 
+  // repeated .Lazysplits.Proto.TargetInfo.WatchVar watch_vars = 8;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->watch_vars_size()); i < n; i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      8,
+      this->watch_vars(static_cast<int>(i)),
+      output);
+  }
+
+  // string entry_label = 9;
+  if (this->entry_label().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->entry_label().data(), static_cast<int>(this->entry_label().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.TargetInfo.WatchEntry.entry_label");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      9, this->entry_label(), output);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
@@ -2636,6 +3030,25 @@ void TargetInfo_WatchEntry::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(7, this->persistence_max(), target);
   }
 
+  // repeated .Lazysplits.Proto.TargetInfo.WatchVar watch_vars = 8;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->watch_vars_size()); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        8, this->watch_vars(static_cast<int>(i)), deterministic, target);
+  }
+
+  // string entry_label = 9;
+  if (this->entry_label().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->entry_label().data(), static_cast<int>(this->entry_label().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "Lazysplits.Proto.TargetInfo.WatchEntry.entry_label");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        9, this->entry_label(), target);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -2653,6 +3066,17 @@ size_t TargetInfo_WatchEntry::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
+  // repeated .Lazysplits.Proto.TargetInfo.WatchVar watch_vars = 8;
+  {
+    unsigned int count = static_cast<unsigned int>(this->watch_vars_size());
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          this->watch_vars(static_cast<int>(i)));
+    }
+  }
+
   // string name = 1;
   if (this->name().size() > 0) {
     total_size += 1 +
@@ -2665,6 +3089,13 @@ size_t TargetInfo_WatchEntry::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->relative_path());
+  }
+
+  // string entry_label = 9;
+  if (this->entry_label().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->entry_label());
   }
 
   // sint32 index = 3;
@@ -2727,6 +3158,7 @@ void TargetInfo_WatchEntry::MergeFrom(const TargetInfo_WatchEntry& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  watch_vars_.MergeFrom(from.watch_vars_);
   if (from.name().size() > 0) {
 
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
@@ -2734,6 +3166,10 @@ void TargetInfo_WatchEntry::MergeFrom(const TargetInfo_WatchEntry& from) {
   if (from.relative_path().size() > 0) {
 
     relative_path_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.relative_path_);
+  }
+  if (from.entry_label().size() > 0) {
+
+    entry_label_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.entry_label_);
   }
   if (from.index() != 0) {
     set_index(from.index());
@@ -2776,9 +3212,12 @@ void TargetInfo_WatchEntry::Swap(TargetInfo_WatchEntry* other) {
 }
 void TargetInfo_WatchEntry::InternalSwap(TargetInfo_WatchEntry* other) {
   using std::swap;
+  CastToBase(&watch_vars_)->InternalSwap(CastToBase(&other->watch_vars_));
   name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   relative_path_.Swap(&other->relative_path_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  entry_label_.Swap(&other->entry_label_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(index_, other->index_);
   swap(action_, other->action_);
@@ -4834,6 +5273,9 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::GameInfo_Targ
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::GameInfo* Arena::CreateMaybeMessage< ::Lazysplits::Proto::GameInfo >(Arena* arena) {
   return Arena::CreateInternal< ::Lazysplits::Proto::GameInfo >(arena);
+}
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::TargetInfo_WatchVar* Arena::CreateMaybeMessage< ::Lazysplits::Proto::TargetInfo_WatchVar >(Arena* arena) {
+  return Arena::CreateInternal< ::Lazysplits::Proto::TargetInfo_WatchVar >(arena);
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Lazysplits::Proto::TargetInfo_WatchEntry* Arena::CreateMaybeMessage< ::Lazysplits::Proto::TargetInfo_WatchEntry >(Arena* arena) {
   return Arena::CreateInternal< ::Lazysplits::Proto::TargetInfo_WatchEntry >(arena);

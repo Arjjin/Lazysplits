@@ -60,18 +60,8 @@ namespace LiveSplit.Lazysplits.SharedData
                                         if( WatchVarData.Length == 3 )
                                         {
                                             var NewWatchVariable = new CsMessage.Types.WatchVariable();
-
-                                            //try and parse an int and head to next watchvar if it fails
-                                            uint index;
-                                            if( uint.TryParse( WatchVarData[0], out index) )
-                                            {
-                                                NewWatchVariable.Index = index;
-                                            }
-                                            else
-                                            {
-                                                continue;
-                                            }
                                 
+                                            NewWatchVariable.EntryLabel = WatchVarData[0];
                                             NewWatchVariable.Name = WatchVarData[1];
                                             NewWatchVariable.Value = WatchVarData[2];
                                 

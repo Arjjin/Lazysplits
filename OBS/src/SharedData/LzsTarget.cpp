@@ -8,16 +8,15 @@ namespace filesys = std::experimental::filesystem;
 namespace Lazysplits{
 namespace SharedData{
 
-LzsTarget::LzsTarget( const std::string& game_info_dir, const Proto::TargetInfo& target_info, std::vector<std::shared_ptr<LzsWatchVar>> watch_vars ){
+LzsTarget::LzsTarget( const std::string& game_info_dir, const Proto::TargetInfo& target_info ){
 	target_info_ = target_info;
 	game_info_dir_ = game_info_dir;
-	watch_vars_ = watch_vars;
 
 	current_watch_index_ = 0;
 	is_complete_ = false;
 }
 
-bool LzsTarget::ParseWatchList(){
+bool LzsTarget::ParseWatchList( const google::protobuf::RepeatedPtrField<Proto::CsMessage_WatchVariable>& watch_vars_it ){
 	auto watches = target_info_.watches();
 
 	for( auto watches_it = watches.begin(); watches_it != watches.end(); ++watches_it ){
@@ -39,24 +38,23 @@ bool LzsTarget::ParseWatchList(){
 		Proto::WatchInfo watch_info;
 		if( Proto::JsonFileToProto( watch_file_path.string(), &watch_info ) ){
 			int watch_index = watches_it->index();
-			std::string watch_var = FindWatchVar( watch_index, watch_info.name() );
 			Proto::WatchAction watch_action = watches_it->action();
 			int watch_action_val = watches_it->action_val();
 
 			switch( watch_info.type() ){
 				case Proto::WatchType::WT_COLOR :
 					watches_.push_back(
-						std::make_shared<LzsWatchColor>( watch_info, *watches_it, watch_path.string(), watch_var )
+						std::make_shared<LzsWatchColor>( watch_info, *watches_it, watch_path.string(), watch_vars_it )
 					);
 				break;
 				case Proto::WatchType::WT_IMAGE_STATIC :
 					watches_.push_back(
-						std::make_shared<LzsWatchImageStatic>( watch_info, *watches_it, watch_path.string(), watch_var )
+						std::make_shared<LzsWatchImageStatic>( watch_info, *watches_it, watch_path.string(), watch_vars_it )
 					);
 				break;
 				case Proto::WatchType::WT_CHARACTER_SET :
 					watches_.push_back(
-						std::make_shared<LzsWatchCharacterSet>( watch_info, *watches_it, watch_path.string(), watch_var )
+						std::make_shared<LzsWatchCharacterSet>( watch_info, *watches_it, watch_path.string(), watch_vars_it )
 					);
 				break;
 			}
@@ -140,17 +138,6 @@ void LzsTarget::WatchAction( Proto::WatchAction action, int action_val ){
 
 bool LzsTarget::IsComplete(){
 	return is_complete_;
-}
-
-const std::string LzsTarget::FindWatchVar( int watch_index, const std::string& watch_name ){
-	std::string found_var = "";
-	for( auto watch_var_it = watch_vars_.begin(); watch_var_it != watch_vars_.end(); ++watch_var_it ){
-		if( (*watch_var_it)->watch_index_ == watch_index && (*watch_var_it)->watch_name_ == watch_name ){
-			found_var = (*watch_var_it)->value_;
-		}
-	}
-
-	return found_var;
 }
 
 } //namepsace SharedData

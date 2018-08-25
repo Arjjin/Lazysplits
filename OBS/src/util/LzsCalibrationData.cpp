@@ -24,6 +24,7 @@ LzsCalibrationData::LzsCalibrationData( const std::string& obs_module_path ){
 	current_sendable_props_.loc_y = 0;
 	current_sendable_props_.scale_x = 100.0F;
 	current_sendable_props_.scale_y = 100.0F;
+	current_sendable_props_.use_nn_interp = false;
 
 	//load shader
 	filesys::path effect_path = obs_module_path;
@@ -87,27 +88,19 @@ bool LzsCalibrationData::ShouldResend(){
 		//only resend calib info changes if calibration is enabled
 		else if( current_sendable_props_.is_enabled && 
 				 (
-					current_sendable_props_.img_width  != last_sent_props_.img_width  ||
-					current_sendable_props_.img_height != last_sent_props_.img_height ||
-					current_sendable_props_.loc_x	   != last_sent_props_.loc_x	  ||	
-					current_sendable_props_.loc_y	   != last_sent_props_.loc_y	  ||
-					current_sendable_props_.scale_x	   != last_sent_props_.scale_x	  ||
-					current_sendable_props_.scale_y	   != last_sent_props_.scale_y
+					current_sendable_props_.img_width     != last_sent_props_.img_width     ||
+					current_sendable_props_.img_height    != last_sent_props_.img_height    ||
+					current_sendable_props_.loc_x	      != last_sent_props_.loc_x	        ||	
+					current_sendable_props_.loc_y	      != last_sent_props_.loc_y	        ||
+					current_sendable_props_.scale_x	      != last_sent_props_.scale_x	    ||
+					current_sendable_props_.scale_y	      != last_sent_props_.scale_y	    ||
+					current_sendable_props_.use_nn_interp != last_sent_props_.use_nn_interp
 				 )
 		){
 			return true;
 		}
 	}
 	return false;
-	/*
-	return current_sendable_props_.is_enabled != last_sent_props_.is_enabled ||
-		   current_sendable_props_.img_width  != last_sent_props_.img_width  ||
-		   current_sendable_props_.img_height != last_sent_props_.img_height ||
-		   current_sendable_props_.loc_x	  != last_sent_props_.loc_x		 ||	
-		   current_sendable_props_.loc_y	  != last_sent_props_.loc_y		 ||
-		   current_sendable_props_.scale_x	  != last_sent_props_.scale_x	 ||
-		   current_sendable_props_.scale_y	  != last_sent_props_.scale_y;
-	*/
 }
 
 const SendableCalibrationProps& LzsCalibrationData::SendData(){

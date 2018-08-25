@@ -20,9 +20,9 @@ LzsWatchImageBase::LzsWatchImageBase(
 	const Proto::WatchInfo& watch_info,
 	const Proto::TargetInfo_WatchEntry& watch_entry,
 	const std::string& watch_dir,
-	const std::string& watch_var
+	const google::protobuf::RepeatedPtrField<Proto::CsMessage_WatchVariable>& watch_vars
 )
-	:LzsWatchBase( watch_info, watch_entry, watch_dir, watch_var )
+	:LzsWatchBase( watch_info, watch_entry, watch_dir, watch_vars )
 {}
 
 bool LzsWatchImageBase::MakeImage(){
@@ -60,14 +60,14 @@ bool LzsWatchImageBase::MakeImage(){
 		int mix_pairing[] = { 0,0, 1,1, 2,2, 3,3, 3,4, 3,5 };
 		cv::mixChannels( &new_img, 1, mix_destination, 2, mix_pairing, 6 );
 
-		//resize BGR with cubic interp (unless manually overridden) and bitmask with NN
+		//resize BGR with linear interp (unless manually overridden) and bitmask with NN
 		cv::resize(
 			img_BGR_,
 			img_BGR_,
 			cv::Size( new_width, new_height ),
 			0.0,
 			0.0,
-			current_calib_props_.use_nn_interp ? cv::INTER_NEAREST : cv::INTER_CUBIC
+			current_calib_props_.use_nn_interp ? cv::INTER_NEAREST : cv::INTER_LINEAR
 		); 
 		cv::resize(
 			img_mask_,
@@ -123,9 +123,9 @@ LzsWatchImageStatic::LzsWatchImageStatic(
 	const Proto::WatchInfo& watch_info,
 	const Proto::TargetInfo_WatchEntry& watch_entry,
 	const std::string& watch_dir,
-	const std::string& watch_var
+	const google::protobuf::RepeatedPtrField<Proto::CsMessage_WatchVariable>& watch_vars
 )
-	:LzsWatchImageBase( watch_info, watch_entry, watch_dir, watch_var )
+	:LzsWatchImageBase( watch_info, watch_entry, watch_dir, watch_vars )
 {}
 
 
