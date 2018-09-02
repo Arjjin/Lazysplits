@@ -36,11 +36,11 @@ namespace LiveSplit.Lazysplits
             base.OnSwitchComparisonNext += OnBaseSwitchComparisonNext;
         }
 
-        public void AdjustedStart( int adjustedMs )
+        public void AdjustedStart( int offsetMs )
         {
             if (CurrentState.CurrentPhase == TimerPhase.NotRunning)
             {
-                TimeSpan AdjustedTimeSpan = new TimeSpan( 0, 0, 0, 0, adjustedMs );
+                TimeSpan AdjustedTimeSpan = new TimeSpan( 0, 0, 0, 0, offsetMs );
 
                 CurrentState.CurrentPhase = TimerPhase.Running;
                 CurrentState.CurrentSplitIndex = 0;
@@ -56,13 +56,13 @@ namespace LiveSplit.Lazysplits
             }
         }
 
-        public void AdjustedSplit( int adjustedMs )
+        public void AdjustedSplit( int offsetMs )
         {
             if (CurrentState.CurrentPhase == TimerPhase.Running && CurrentState.CurrentTime.RealTime > TimeSpan.Zero)
             {
-                TimeSpan AdjustedTimeSpan = new TimeSpan( 0, 0, 0, 0, adjustedMs );
+                TimeSpan AdjustedTimeSpan = new TimeSpan( 0, 0, 0, 0, offsetMs );
                 Time AdjTime = new Time();
-                AdjTime.RealTime = CurrentState.CurrentTime.RealTime - AdjustedTimeSpan;
+                AdjTime.RealTime = CurrentState.CurrentTime.RealTime + AdjustedTimeSpan;
 
                 CurrentState.CurrentSplit.SplitTime = AdjTime;
                 CurrentState.CurrentSplitIndex++;

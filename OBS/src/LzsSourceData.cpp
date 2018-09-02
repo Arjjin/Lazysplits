@@ -108,11 +108,12 @@ void LzsSourceData::OnSourceRenderVideo( gs_effect_t* effect ){
     obs_source_t *target = obs_filter_get_target(context_);
     obs_source_t *parent = obs_filter_get_parent(context_);
 	
+	//blog( LOG_DEBUG, "buf size : %i", frame_buffer_.FrameCount() );
+
 	if( cv_thread_.IsTargets() && !frame_buffer_.Full() ){
 		int throttle_mod = frame_buffer_.GetThrottleMod();
 		int fps_throttle = frame_limit_factor_ * throttle_mod;
 
-		//if( frame_count_ % throttle_mod == 0 ){
 		if( frame_count_ % fps_throttle == 0 ){
 			GrabRenderFrame( target, parent );
 		}
@@ -132,7 +133,6 @@ void LzsSourceData::OnSourceRenderVideo( gs_effect_t* effect ){
 void LzsSourceData::GrabRenderFrame( obs_source_t* target, obs_source_t* parent ){
 	if( !target || !parent || last_cap_ == frame_count_ ){ return; }
 	
-	auto epoch_ms = std::chrono::time_point_cast<std::chrono::milliseconds>( std::chrono::system_clock::now() ).time_since_epoch();
 	uint32_t target_width = obs_source_get_base_width(target);
 	uint32_t target_height = obs_source_get_base_height(target);
 
@@ -149,6 +149,7 @@ void LzsSourceData::GrabRenderFrame( obs_source_t* target, obs_source_t* parent 
 		gs_stagesurface_destroy(stagesurface_);
         stagesurface_ = gs_stagesurface_create( target_width, target_height, GS_RGBA );
 	}
+
 	if( gs_texrender_begin( texrender_, target_width, target_height ) ){
 		//clip our source image out of total output dimensions?
         gs_ortho(0.0f, (float)target_width, 0.0f, (float)target_height, 0.0F, 1.0F );
@@ -163,6 +164,7 @@ void LzsSourceData::GrabRenderFrame( obs_source_t* target, obs_source_t* parent 
 			std::shared_ptr<cv::Mat> mat_ptr = std::make_shared<cv::Mat>( target_height, target_width, CV_8UC4, tex_ptr, linesize );
 			gs_stagesurface_unmap(stagesurface_);
 			
+			auto epoch_ms = std::chrono::time_point_cast<std::chrono::milliseconds>( std::chrono::system_clock::now() ).time_since_epoch();
 			frame_buffer_.PushFrame( mat_ptr, epoch_ms.count() );
 		}
 	}

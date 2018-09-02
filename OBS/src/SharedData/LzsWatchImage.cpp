@@ -131,6 +131,21 @@ LzsWatchImageStatic::LzsWatchImageStatic(
 
 bool LzsWatchImageStatic::CvLogic( const cv::Mat& BGR_frame ){
 	cv::Mat cropped_frame = BGR_frame(area_);
+	
+	/*
+	if( _DEBUG ){
+		if( watch_info_.name() != "game mode screen" ){
+			std::vector<int> compression_params;
+			compression_params.push_back(cv::IMWRITE_PNG_COMPRESSION);
+			compression_params.push_back(1);
+
+			cv::imwrite("source_frame.png ",BGR_frame,compression_params);
+			cv::imwrite("cropped_source_frame.png",cropped_frame,compression_params);
+			cv::imwrite("search_frame.png",img_BGR_,compression_params);
+			cv::imwrite("search_frame_mask.png",img_mask_,compression_params);
+		}
+	}
+	*/
 
 	return ImgProc::FindImage( cropped_frame, img_BGR_, img_mask_, watch_info_.base_threshold() );
 }

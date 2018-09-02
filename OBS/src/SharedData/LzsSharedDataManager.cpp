@@ -65,28 +65,6 @@ bool LzsSharedDataManager::TryConstructTargetList( const Proto::CsMessage& cs_ms
 	for( auto target_it = targets.begin(); target_it != targets.end(); ++target_it ){
 		Proto::TargetInfo target_info;
 		if( current_game_.GetTargetInfo( target_it->target_name(), target_info ) ){
-			/*
-			//get watch vars
-			auto in_watch_vars = target_it->watch_variables();
-			for( auto watch_var_it = in_watch_vars.begin(); watch_var_it != in_watch_vars.end(); ++watch_var_it ){
-				if( watch_var_it->name().empty() || watch_var_it->value().empty() ){ continue; }
-
-				Proto::TargetInfo::WatchVar new_watch_var;
-				new_watch_var.set_index( watch_var_it->index() );
-				new_watch_var.set_name( watch_var_it->name() );
-				new_watch_var.set_val( watch_var_it->value() );
-
-				target_info.
-
-
-				auto new_watch_var = std::make_shared<LzsWatchVar>();
-				new_watch_var->watch_index_ = watch_var_it->index();
-				new_watch_var->watch_name_ = watch_var_it->name();
-				new_watch_var->value_ = watch_var_it->value();
-				out_watch_vars.push_back(new_watch_var);
-			}
-			*/
-
 			auto new_target = std::make_shared<LzsTarget>( current_game_.GetCurrentGamePath(), target_info );
 			if( new_target->ParseWatchList( target_it->watch_variables() ) ){
 				target_list.push_back(new_target);

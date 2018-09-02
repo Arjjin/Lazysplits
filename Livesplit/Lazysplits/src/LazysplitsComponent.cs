@@ -342,8 +342,9 @@ namespace LiveSplit.Lazysplits
                         string GamesMatch = ( msg.GameName == SharedDataManager.GetCurrentGameName() ) ? "match" : "don't match";
                         Log.Debug("Target '"+TargetInfo.Name+"' found - id : "+msg.Id + ", type : "+TargetInfo.Type.ToString()+", games : "+GamesMatch );
                         
-                        double epoch_ms = DateTime.Now.ToUniversalTime().Subtract( new DateTime( 1970, 1, 1) ).TotalMilliseconds;
-                        int total_offset = (int)( ( epoch_ms - msg.TargetTimestamp ) + TargetInfo.SplitOffsetMs );
+                        TimeSpan cur_ts = new TimeSpan(  DateTime.Now.ToUniversalTime().Subtract( new DateTime( 1970, 1, 1 ) ).Ticks );
+                        TimeSpan target_ts = new TimeSpan( (long)msg.TargetTimestamp*10000 );
+                        int total_offset = (target_ts-cur_ts).Milliseconds + TargetInfo.SplitOffsetMs;
 
                         switch( TargetInfo.Type )
                         {
