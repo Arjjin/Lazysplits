@@ -97,11 +97,12 @@ bool LzsWatchImageBase::CheckBounds(){
 		return false;
 	}
 	else if( area_ != new_area ){
+		area_ = new_area;
+
 		int area_img_width_diff = area_.width - img_BGR_.cols;
 		int area_img_height_diff = area_.height - img_BGR_.rows;
 		int additonal_area_padding = watch_info_.additional_area_padding();
 
-		area_ = new_area;
 		cv::Rect img_crop(
 			//area_x_neg_offset + additonal_area_padding,
 			//area_y_neg_offset + additonal_area_padding,

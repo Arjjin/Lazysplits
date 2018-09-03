@@ -105,20 +105,32 @@ void LzsCvThread::HandleFrameBuffer(){
 				auto watch_list = current_target->GetCurrentWatches();
 				bool target_found = false;
 				for( auto watch_it = watch_list.begin(); watch_it != watch_list.end(); ++watch_it ){
-					std::shared_ptr<SharedData::LzsWatchBase> current_watch = (*watch_it);
+					try{
+						std::shared_ptr<SharedData::LzsWatchBase> current_watch = (*watch_it);
 
-					if( current_watch->FindWatch( BGR_frame, calib_props_ ) ){
-						std::stringstream fn;
-						fn << "./images/found_" << current_watch->GetName().c_str() << ".png";
+						if( current_watch->FindWatch( BGR_frame, calib_props_ ) ){
+							std::stringstream fn;
+							fn << "./images/found_" << current_watch->GetName().c_str() << ".png";
 
-						blog( LOG_DEBUG, "[lazysplits][%s] %s watch found for threshold %f", thread_name_.c_str(),
-							current_watch->GetName().c_str(),
-							current_watch->GetThreshold()
+							blog( LOG_DEBUG, "[lazysplits][%s] %s watch found for threshold %f", thread_name_.c_str(),
+								current_watch->GetName().c_str(),
+								current_watch->GetThreshold()
+							);
+							cv::imwrite( fn.str().c_str(), BGR_frame, compression_params );
+
+							current_target->WatchAction( current_watch->GetAction(), current_watch->GetActionVal() );
+							break;
+						}
+					}
+					catch( cv::Exception cve ){
+						blog(
+							LOG_ERROR,
+							"[lazysplits][%s] HandleFrameBuffer() failed to process frame on watch \"%s\" of target \"%s\" \n->\n %s!",
+							thread_name_.c_str(),
+							(*watch_it)->GetName().c_str(),
+							(*target_it)->GetName().c_str(),
+							cve.msg.c_str()
 						);
-						cv::imwrite( fn.str().c_str(), BGR_frame, compression_params );
-
-						current_target->WatchAction( current_watch->GetAction(), current_watch->GetActionVal() );
-						break;
 					}
 				}
 				
@@ -132,8 +144,7 @@ void LzsCvThread::HandleFrameBuffer(){
 			}
 		}
 		catch( cv::Exception cve ){
-			blog( LOG_ERROR, "[lazysplits][%s] failed to process frame; %s!", thread_name_.c_str(), cve.msg.c_str() );
-			throw cve;
+			blog( LOG_ERROR, "[lazysplits][%s] HandleFrameBuffer() failed to process frame; %s!", thread_name_.c_str(), cve.msg.c_str() );
 		}
 		frame_buf_->PopFrame();
 	}
